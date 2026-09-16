@@ -44,6 +44,7 @@ sudo systemctl disable --now negroni-charge-limit.service  # 停止限制并取�
 | 登录界面虚拟键盘 | 配置 SDDM / KWin 使用 Plasma Keyboard 和 layer-shell，修复触屏登录输入问题 |
 | 远程维护 | 默认启用 SSH，允许 `oneplus` 密码或公钥登录，禁止 root 和空密码登录，首次启动生成主机密钥 |
 | 常用工具 | 预装 nano、curl、wget、htop、rsync、git、tmux、ripgrep 等 19 项[命令行工具](config/packages/common-tools.txt) |
+| Docker 内核支持 | 每次构建补齐 nftables 兼容与 NAT 模块，支持全新构建和续建；Docker / Compose 按需安装，详见[使用说明](docs/docker.md) |
 | 构建与校验 | 通过源码和产物指纹识别需要更新的镜像，核对内核模块及配置，检查 ext4、启动镜像、sparse 往返和 SHA-256 |
 
 ## 从这里开始
@@ -76,6 +77,7 @@ bash scripts/init-submodules.sh
 | 开启、配置和关闭充电限制 | [充电限制](docs/charge-limit.md) |
 | 调整屏幕和休眠的固件默认值 | [屏幕默认设置](docs/screen-defaults.md) |
 | 复现 CPU 性能与大小核调度优化 | [CPU 性能与调度指南](docs/cpu-performance.md) |
+| 安装 Docker、检查容器内核支持 | [Docker 使用与固件集成](docs/docker.md) |
 | 查找调研与历史操作记录 | [文档索引](docs/README.md) |
 | 提交问题或改动 | [贡献指南](CONTRIBUTING.md) |
 | 了解代码来源与许可 | [来源与许可](docs/licensing.md) |
@@ -102,9 +104,9 @@ bash scripts/init-submodules.sh
 
 ```sh
 bash scripts/check.sh                 # Shell / Python 语法及服务测试
-bash scripts/check.sh --with-kernel   # 另运行固定内核的策略与驱动测试
+bash scripts/check.sh --with-kernel   # 另运行固定内核的策略、驱动与 Docker 配置测试
 ```
 
-检查不需要 root 或手机；第二条命令要求先初始化子模块。GitHub Actions 执行相同检查，完整镜像构建和实机验证需另外进行。
+检查不需要 root 或手机；第二条命令要求先初始化子模块并安装 ARM64 交叉编译器、flex 和 bison。GitHub Actions 执行相同检查，完整镜像构建和实机验证需另外进行。
 
 感谢 [Arch Linux ARM](https://archlinuxarm.org/)、[Xlie Electronic Customs](https://github.com/Xlie-Electronic-Customs)、[postmarketOS](https://postmarketos.org/)、Linux、KDE 及相关上游项目的工作。

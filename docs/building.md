@@ -77,15 +77,15 @@ PY
 ./build.sh 7.3-rc2
 ```
 
-需要限制主编译阶段的并行度时，可使用 `JOBS=4 ./build.sh 7.3-rc2`；首次生成内核配置仍使用主机 CPU 数量。构建入口会获取分支并切换到已有本地分支，**不会自动将已有分支重置到远端最新提交**；构建前可用 `git -C linux rev-parse HEAD` 核对源码。
+需要限制主编译阶段的并行度时，可使用 `JOBS=4 ./build.sh 7.3-rc2`。构建入口会获取分支并切换到已有本地分支，**不会自动将已有分支重置到远端最新提交**；构建前可用 `git -C linux rev-parse HEAD` 核对源码。
 
 构建依次完成：
 
-1. 使用 `defconfig` 与 `sm8450.config` 编译内核、DTB 和模块；强制核对 8 核能力及功耗参数。
+1. 首次生成 `defconfig` 与 `sm8450.config`，每次构建合并 `config/kernel/docker.config` 并解析依赖，再编译内核、DTB 和模块；强制核对 Docker 配置、模块及自动加载别名和 8 核能力、功耗参数。
 2. 创建 `alarm/` 构建 chroot 与 `images/7.3-rc2/root.img`，安装系统和 Plasma Mobile。
 3. 配置账号、SDDM、SSH、GPU 服务、默认启用的 CPU 性能服务、屏幕默认设置、默认关闭的充电限制和 initramfs。
 4. 更新有变化的内核产物、CPU / 充电服务、屏幕默认设置和常用工具。
-5. 封装 Android 镜像，检查 ext4、sparse 往返、启动镜像内容并生成 SHA-256 与构建报告。
+5. 核对镜像内 Docker 模块及依赖索引，封装 Android 镜像，检查 ext4、sparse 往返、启动镜像内容并生成 SHA-256 与构建报告。
 
 中断后可重新执行同一命令。各阶段使用 `logs/7.3-rc2/` 下的完成标记；每次仍会运行增量 Kbuild，内核、CPU / 充电配置或屏幕默认设置更新会使镜像封装失效并重新生成。SSH、GPU、SDDM 等配置并非全部通过内容指纹自动更新，修改后应按[集成说明](build-integration.md)处理，或在全新工作区构建。
 

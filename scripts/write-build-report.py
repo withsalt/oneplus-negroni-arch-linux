@@ -68,6 +68,14 @@ charge_verification = log_directory / "charge-limit-verification.json"
 screen_verification = log_directory / "screen-defaults-verification.json"
 cpu_verification = log_directory / "cpu-performance-verification.json"
 capacity_verification = log_directory / "cpu-capacity-verification.json"
+docker_kernel_verification = log_directory / "docker-kernel-verification.json"
+docker_image_verification = log_directory / "docker-image-verification.json"
+report["validation"]["docker_kernel"] = docker_kernel_verification.exists()
+report["validation"]["docker_image"] = docker_image_verification.exists()
+if docker_kernel_verification.exists():
+    report["docker_kernel"] = json.loads(docker_kernel_verification.read_text())
+if docker_image_verification.exists():
+    report["docker_image"] = json.loads(docker_image_verification.read_text())
 report["validation"]["cpu_performance_configuration"] = cpu_verification.exists()
 report["validation"]["cpu_capacity_device_tree"] = capacity_verification.exists()
 if cpu_verification.exists():

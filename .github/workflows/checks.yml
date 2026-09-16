@@ -25,10 +25,10 @@ jobs:
           persist-credentials: false
       - name: Restore pinned submodules and local kernel commits
         run: bash scripts/init-submodules.sh
-      - name: Check scripts and run charge-limit tests
+      - name: Install kernel and image check tools
+        run: sudo apt-get update && sudo apt-get install -y device-tree-compiler mkbootimg gcc-aarch64-linux-gnu flex bison
+      - name: Check scripts, charge-limit behavior and Docker kernel configuration
         run: bash scripts/check.sh --with-kernel
-      - name: Install CPU device-tree build tools
-        run: sudo apt-get update && sudo apt-get install -y device-tree-compiler mkbootimg
       - name: Verify CPU defaults in fresh and existing rootfs images
         run: sudo python3 -B tests/test-cpu-performance-image.py
       - name: Rebuild CPU device-tree reference images

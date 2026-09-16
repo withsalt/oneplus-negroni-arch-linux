@@ -6,6 +6,7 @@ log_dir=${LOG_DIR:-logs}
 [[ -f "$log_dir/kernel.complete" && -f "$log_dir/rootfs.complete" ]]
 mkdir -p "$image_dir" "$log_dir"
 exec > >(tee "$log_dir/image-pack.log") 2>&1
+python3 scripts/verify-docker-image.py "$image_dir" "$log_dir"
 python3 scripts/verify-screen-defaults-image.py "$image_dir" "$log_dir"
 python3 scripts/verify-cpu-performance-image.py "$image_dir" "$log_dir"
 python3 scripts/verify-cpu-performance-dtb.py linux/output/arch/arm64/boot/dts/qcom/sm8450-oneplus-negroni.dtb "$log_dir"

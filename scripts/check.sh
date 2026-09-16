@@ -49,6 +49,8 @@ if [[ $with_kernel == true ]]; then
     cc -std=c11 -Wall -Wextra -Werror tests/charge-limit-policy.c -o "$check_dir/charge-limit-policy"
     "$check_dir/charge-limit-policy"
     python3 -B tests/test-charge-limit-driver.py
+    printf 'Checking Docker configuration in fresh and existing kernel outputs...\n'
+    python3 -B tests/test-docker-config.py
 fi
 
 printf 'All requested checks passed.\n'
