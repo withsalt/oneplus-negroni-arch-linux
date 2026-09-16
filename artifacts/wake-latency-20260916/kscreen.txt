@@ -1,0 +1,134 @@
+oneplus@192.168.188.91's  
+[01;32mOutput: [0;0m1 DSI-1 0a81af02-5017-4874-bbdb-0e4c9e6b9a4b
+	[01;32menabled[0;0m
+	[01;32mconnected[0;0m
+	[01;32mpriority 1[0;0m
+	[01;33mPanel[0;0m
+	[01;33mreplication source:[0;0m0
+	[01;34mModes: [0;0m 1:[01;32m1080x2412@120.00*[0;0m!  2:1080x2412@90.00  3:1080x2412@60.00 
+[01;33m	Custom modes:[0;0m None
+[01;33m	Geometry: [0;0m0,0 416x928
+[01;33m	Scale: [0;0m2.6
+[01;33m	Rotation: [0;0m1
+[01;33m	Overscan: [0;0m0
+[01;33m	Vrr: [0;0mincapable
+[01;33m	RgbRange: [0;0munknown
+[01;33m	HDR: [0;0mincapable
+[01;33m	Wide Color Gamut: [0;0mincapable
+[01;33m	ICC profile: [0;0mnone
+[01;33m	Color profile source: [0;0msRGB
+[01;33m	Color power preference: [0;0mprefer efficiency and performance
+[01;33m	Brightness control: [0;0msupported, set to 10% and dimming to 30%
+[01;33m	Color resolution: unknown
+[01;33m	Allow EDR: [0;0malways
+[01;33m	Sharpness control: [0;0munsupported
+[01;33m	Automatic brightness: [0;0munsupported
+[01;33m	Auto Rotate Policy: [0;0mincapable
+[01;33m	Adaptive backlight modulation: [0;0munsupported
+Usage: kscreen-doctor [options] [output.<name>.<setting> output.<name>.setting [...]]
+kscreen-doctor allows to change the screen setup from the command-line.
+
+Setting the output configuration is done in an atomic fashion, all settings
+are applied in a single command.
+kscreen-doctor can be used to enable and disable outputs, to position screens,
+change resolution (mode setting), etc.. You should put all your options into 
+a single invocation of kscreen-doctor, so they can all be applied at once.
+
+Usage examples:
+
+   Show output information:
+   $ kscreen-doctor -o
+   Output: 1 eDP-1 enabled connected Panel Modes: Modes: 1:800x600@60 [...] Geometry: 0,0 1280x800
+   Output: 70 HDMI-2 enabled connected  HDMI Modes: 1:800x600@60 [...] Geometry: 1280,0 1920x1080
+
+   Disable the hdmi output, enable the laptop panel and set it to a specific mode
+   $ kscreen-doctor output.HDMI-2.disable output.eDP-1.mode.1 output.eDP-1.enable
+
+   Position the hdmi monitor on the right of the laptop panel
+   $ kscreen-doctor output.HDMI-2.position.1280,0 output.eDP-1.position.0,0
+
+   Set resolution mode
+   $ kscreen-doctor output.HDMI-2.mode.1920x1080@60 
+
+   Set scale (note: fractional scaling is only supported on wayland)
+   $ kscreen-doctor output.HDMI-2.scale.2 
+
+   Set rotation (possible values: none, left, right, inverted, flipped, flipped90, flipped180, flipped270)
+   $ kscreen-doctor output.HDMI-2.rotation.left 
+
+   Set HDR mode (possible values: enable, disable)
+   $ kscreen-doctor output.HDMI-2.hdr.enable
+
+   Set SDR brightness (possible values: 100-1000)
+   $ kscreen-doctor output.HDMI-2.sdr-brightness.300
+
+   Toggle HDR and wide color gamut for the current active display
+   $ kscreen-doctor output.activeOutput.hdrAndWcg.toggle
+
+   Set brightness on non HDR screens (possible values: 0-100)
+   $ kscreen-doctor output.HDMI-2.brightness.10
+
+   Set wide color gamut mode (possible values: enable, disable)
+   $ kscreen-doctor output.HDMI-2.wcg.enable
+
+   Set ICC profile path for SDR mode
+   $ kscreen-doctor output.HDMI-2.iccprofile."/path/to/profile.icc"
+
+   Set color profile source for SDR mode (possible values: sRGB, ICC, EDID)
+   $ kscreen-doctor output.HDMI-2.colorProfileSource.ICC
+
+   Set ICC profile path for HDR mode
+   $ kscreen-doctor output.HDMI-2.hdrIccProfile."/path/to/profile.icc"
+
+   Set color profile source for HDR mode (possible values: ICC, EDID)
+   $ kscreen-doctor output.HDMI-2.hdrColorProfileSource.ICC
+
+   Show dpms information:
+   $ kscreen-doctor --dpms show
+
+   Set dpms mode: (possible values: on, off)
+   $ kscreen-doctor --dpms on
+   Add a custom mode: (arguments: width,height,refresh rate in mHz,blanking 'reduced' or 'full')
+   $ kscreen-doctor output.1.addCustomMode.1920.1080.75000.full
+   Remove a custom mode: (arguments: index in the custom mode list)
+   $ kscreen-doctor output.1.removeCustomMode.0
+
+Options:
+  -h, --help                   Displays help on commandline options.
+  --help-all                   Displays help, including generic Qt options.
+  -i, --info                   Show runtime information: backends, logging,
+                               etc.
+  -j, --json                   Show configuration in JSON format
+  -o, --outputs                Show outputs
+  -d, --dpms <off>             Display power management (wayland only)
+  -l, --log <comment>          Write a comment to the log file
+  --dpms-excluded <connector>  Do not apply the dpms change to the output with
+                               said model names
+
+Arguments:
+  config                       Specific output settings are separated by
+                               spaces, each setting is in the form of
+                               output.<name>.<setting>[.<value>]
+                               For example:
+                               $ kscreen-doctor output.HDMI-2.enable \ 
+                                              output.eDP-1.mode.4 \ 
+                                              output.eDP-1.position.1280,0
+                               Multiple settings are passed in order to have
+                               kscreen-doctor apply these settings in one go.
+
+NAME                                TYPE      SIGNATURE RESULT/VALUE FLAGS
+org.freedesktop.DBus.Introspectable interface -         -            -
+.Introspect                         method    -         s            -
+org.freedesktop.DBus.Peer           interface -         -            -
+.GetMachineId                       method    -         s            -
+.Ping                               method    -         -            -
+org.freedesktop.DBus.Properties     interface -         -            -
+.Get                                method    ss        v            -
+.GetAll                             method    s         a{sv}        -
+.Set                                method    ssv       -            -
+.PropertiesChanged                  signal    sa{sv}as  -            -
+org.kde.KWin.TabletModeManager      interface -         -            -
+.tabletMode                         property  b         true         emits-change
+.tabletModeAvailable                property  b         true         emits-change
+.tabletModeAvailableChanged         signal    b         -            -
+.tabletModeChanged                  signal    b         -            -

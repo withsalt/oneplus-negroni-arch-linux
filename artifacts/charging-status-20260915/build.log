@@ -1,0 +1,13 @@
+make[1]: Entering directory '/home/ubuntu/oneplus-negroni/linux/output'
+  CC [M]  drivers/power/supply/qcom_battmgr.o
+../drivers/power/supply/qcom_battmgr.c: In function ‘oplus_set_otg_boost_en_val’:
+../drivers/power/supply/qcom_battmgr.c:1597:40: warning: ordered comparison of pointer with integer zero [-Wextra]
+ 1597 |         if (battmgr->otg_boost_en_gpio <= 0)
+      |                                        ^~
+../drivers/power/supply/qcom_battmgr.c: In function ‘oplus_set_otg_ovp_en_val’:
+../drivers/power/supply/qcom_battmgr.c:1619:38: warning: ordered comparison of pointer with integer zero [-Wextra]
+ 1619 |         if (battmgr->otg_ovp_en_gpio <= 0)
+      |                                      ^~
+  MODPOST Module.symvers
+  LD [M]  drivers/power/supply/qcom_battmgr.ko
+make[1]: Leaving directory '/home/ubuntu/oneplus-negroni/linux/output'

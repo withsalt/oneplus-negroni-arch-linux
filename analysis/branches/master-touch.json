@@ -1,0 +1,113 @@
+{
+  "sha": "6397b9693a8ab3a423023035a5f4d0e1244860c5",
+  "node_id": "C_kwDOQbHa-9oAKDYzOTdiOTY5M2E4YWIzYTQyMzAyMzAzNWE1ZjRkMGUxMjQ0ODYwYzU",
+  "commit": {
+    "author": {
+      "name": "Nazar Kompanets",
+      "email": "xlie7669@gmail.com",
+      "date": "2026-08-28T21:43:44Z"
+    },
+    "committer": {
+      "name": "Nazar Kompanets",
+      "email": "xlie7669@gmail.com",
+      "date": "2026-09-13T20:06:27Z"
+    },
+    "message": "arm64: dts: qcom: sm8450-oneplus-negroni: solve issue with touchscreen",
+    "tree": {
+      "sha": "093b0ec620a80ed120698f9b4b288824b3250cb0",
+      "url": "https://api.github.com/repos/Xlie-Electronic-Customs/linux/git/trees/093b0ec620a80ed120698f9b4b288824b3250cb0"
+    },
+    "url": "https://api.github.com/repos/Xlie-Electronic-Customs/linux/git/commits/6397b9693a8ab3a423023035a5f4d0e1244860c5",
+    "comment_count": 0,
+    "verification": {
+      "verified": false,
+      "reason": "unsigned",
+      "signature": null,
+      "payload": null,
+      "verified_at": null
+    }
+  },
+  "url": "https://api.github.com/repos/Xlie-Electronic-Customs/linux/commits/6397b9693a8ab3a423023035a5f4d0e1244860c5",
+  "html_url": "https://github.com/Xlie-Electronic-Customs/linux/commit/6397b9693a8ab3a423023035a5f4d0e1244860c5",
+  "comments_url": "https://api.github.com/repos/Xlie-Electronic-Customs/linux/commits/6397b9693a8ab3a423023035a5f4d0e1244860c5/comments",
+  "author": {
+    "login": "ZXlieC",
+    "id": 209260556,
+    "node_id": "U_kgDODHkQDA",
+    "avatar_url": "https://avatars.githubusercontent.com/u/209260556?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/ZXlieC",
+    "html_url": "https://github.com/ZXlieC",
+    "followers_url": "https://api.github.com/users/ZXlieC/followers",
+    "following_url": "https://api.github.com/users/ZXlieC/following{/other_user}",
+    "gists_url": "https://api.github.com/users/ZXlieC/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/ZXlieC/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/ZXlieC/subscriptions",
+    "organizations_url": "https://api.github.com/users/ZXlieC/orgs",
+    "repos_url": "https://api.github.com/users/ZXlieC/repos",
+    "events_url": "https://api.github.com/users/ZXlieC/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/ZXlieC/received_events",
+    "type": "User",
+    "user_view_type": "public",
+    "site_admin": false
+  },
+  "committer": {
+    "login": "ZXlieC",
+    "id": 209260556,
+    "node_id": "U_kgDODHkQDA",
+    "avatar_url": "https://avatars.githubusercontent.com/u/209260556?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/ZXlieC",
+    "html_url": "https://github.com/ZXlieC",
+    "followers_url": "https://api.github.com/users/ZXlieC/followers",
+    "following_url": "https://api.github.com/users/ZXlieC/following{/other_user}",
+    "gists_url": "https://api.github.com/users/ZXlieC/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/ZXlieC/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/ZXlieC/subscriptions",
+    "organizations_url": "https://api.github.com/users/ZXlieC/orgs",
+    "repos_url": "https://api.github.com/users/ZXlieC/repos",
+    "events_url": "https://api.github.com/users/ZXlieC/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/ZXlieC/received_events",
+    "type": "User",
+    "user_view_type": "public",
+    "site_admin": false
+  },
+  "parents": [
+    {
+      "sha": "8b780401b7716b5f2c8966a2c53181d407abf1c7",
+      "url": "https://api.github.com/repos/Xlie-Electronic-Customs/linux/commits/8b780401b7716b5f2c8966a2c53181d407abf1c7",
+      "html_url": "https://github.com/Xlie-Electronic-Customs/linux/commit/8b780401b7716b5f2c8966a2c53181d407abf1c7"
+    }
+  ],
+  "stats": {
+    "total": 62,
+    "additions": 30,
+    "deletions": 32
+  },
+  "files": [
+    {
+      "sha": "92347d5c219210531b9788022efe0f74e1bb6df0",
+      "filename": "arch/arm64/boot/dts/qcom/sm8450-oneplus-negroni.dts",
+      "status": "modified",
+      "additions": 0,
+      "deletions": 3,
+      "changes": 3,
+      "blob_url": "https://github.com/Xlie-Electronic-Customs/linux/blob/6397b9693a8ab3a423023035a5f4d0e1244860c5/arch%2Farm64%2Fboot%2Fdts%2Fqcom%2Fsm8450-oneplus-negroni.dts",
+      "raw_url": "https://github.com/Xlie-Electronic-Customs/linux/raw/6397b9693a8ab3a423023035a5f4d0e1244860c5/arch%2Farm64%2Fboot%2Fdts%2Fqcom%2Fsm8450-oneplus-negroni.dts",
+      "contents_url": "https://api.github.com/repos/Xlie-Electronic-Customs/linux/contents/arch%2Farm64%2Fboot%2Fdts%2Fqcom%2Fsm8450-oneplus-negroni.dts?ref=6397b9693a8ab3a423023035a5f4d0e1244860c5",
+      "patch": "@@ -1160,9 +1160,6 @@\n &i2c4 {\n \tclock-frequency = <400000>;\n \tstatus = \"okay\";\n-        \n-        /delete-property/ dmas;\n-        /delete-property/ dma-names;\n \n \tsynaptics20031@4b {\n \t\tcompatible = \"synaptics-s3908\";"
+    },
+    {
+      "sha": "945791d6221f8807a60800dafd01fe1d8691e752",
+      "filename": "arch/arm64/boot/dts/qcom/sm8450.dtsi",
+      "status": "modified",
+      "additions": 30,
+      "deletions": 29,
+      "changes": 59,
+      "blob_url": "https://github.com/Xlie-Electronic-Customs/linux/blob/6397b9693a8ab3a423023035a5f4d0e1244860c5/arch%2Farm64%2Fboot%2Fdts%2Fqcom%2Fsm8450.dtsi",
+      "raw_url": "https://github.com/Xlie-Electronic-Customs/linux/raw/6397b9693a8ab3a423023035a5f4d0e1244860c5/arch%2Farm64%2Fboot%2Fdts%2Fqcom%2Fsm8450.dtsi",
+      "contents_url": "https://api.github.com/repos/Xlie-Electronic-Customs/linux/contents/arch%2Farm64%2Fboot%2Fdts%2Fqcom%2Fsm8450.dtsi?ref=6397b9693a8ab3a423023035a5f4d0e1244860c5",
+      "patch": "@@ -1271,7 +1271,7 @@\n \n \t\tgpi_dma0: dma-controller@900000 {\n \t\t\tcompatible = \"qcom,sm8450-gpi-dma\", \"qcom,sm6350-gpi-dma\";\n-\t\t\t#dma-cells = <3>;\n+\t\t\t#dma-cells = <5>;\n \t\t\treg = <0 0x00900000 0 0x60000>;\n \t\t\tinterrupts = <GIC_SPI 244 IRQ_TYPE_LEVEL_HIGH>,\n \t\t\t\t     <GIC_SPI 245 IRQ_TYPE_LEVEL_HIGH>,\n@@ -1287,6 +1287,7 @@\n \t\t\t\t     <GIC_SPI 255 IRQ_TYPE_LEVEL_HIGH>;\n \t\t\tdma-channels = <12>;\n \t\t\tdma-channel-mask = <0x7e>;\n+\t\t\tdma-coherent;\n \t\t\tiommus = <&apps_smmu 0x5b6 0x0>;\n \t\t\tstatus = \"disabled\";\n \t\t};\n@@ -1319,8 +1320,8 @@\n \t\t\t\t\t\t<&system_noc MASTER_A2NOC_SNOC 0 &gem_noc SLAVE_LLCC 0>,\n \t\t\t\t\t\t<&aggre2_noc MASTER_QUP_0 0 &mc_virt SLAVE_EBI1 0>;\n \t\t\t\tinterconnect-names = \"qup-core\", \"qup-config\", \"qup-memory\";\n-\t\t\t\tdmas = <&gpi_dma0 0 0 QCOM_GPI_I2C>,\n-\t\t\t\t       <&gpi_dma0 1 0 QCOM_GPI_I2C>;\n+\t\t\t\tdmas = <&gpi_dma0 0 0 QCOM_GPI_I2C 64 0>,\n+\t\t\t\t       <&gpi_dma0 1 0 QCOM_GPI_I2C 64 0>;\n \t\t\t\tdma-names = \"tx\", \"rx\";\n \t\t\t\tstatus = \"disabled\";\n \t\t\t};\n@@ -1339,8 +1340,8 @@\n \t\t\t\t\t\t<&system_noc MASTER_A2NOC_SNOC 0 &gem_noc SLAVE_LLCC 0>,\n \t\t\t\t\t\t<&aggre2_noc MASTER_QUP_0 0 &mc_virt SLAVE_EBI1 0>;\n \t\t\t\tinterconnect-names = \"qup-core\", \"qup-config\", \"qup-memory\";\n-\t\t\t\tdmas = <&gpi_dma0 0 0 QCOM_GPI_SPI>,\n-\t\t\t\t       <&gpi_dma0 1 0 QCOM_GPI_SPI>;\n+\t\t\t\tdmas = <&gpi_dma0 0 0 QCOM_GPI_SPI 64 0>,\n+\t\t\t\t       <&gpi_dma0 1 0 QCOM_GPI_SPI 64 0>;\n \t\t\t\tdma-names = \"tx\", \"rx\";\n \t\t\t\t#address-cells = <1>;\n \t\t\t\t#size-cells = <0>;\n@@ -1361,8 +1362,8 @@\n \t\t\t\t\t\t<&system_noc MASTER_A2NOC_SNOC 0 &gem_noc SLAVE_LLCC 0>,\n \t\t\t\t\t\t<&aggre2_noc MASTER_QUP_0 0 &mc_virt SLAVE_EBI1 0>;\n \t\t\t\tinterconnect-names = \"qup-core\", \"qup-config\", \"qup-memory\";\n-\t\t\t\tdmas = <&gpi_dma0 0 1 QCOM_GPI_I2C>,\n-\t\t\t\t       <&gpi_dma0 1 1 QCOM_GPI_I2C>;\n+\t\t\t\tdmas = <&gpi_dma0 0 1 QCOM_GPI_I2C 64 0>,\n+\t\t\t\t       <&gpi_dma0 1 1 QCOM_GPI_I2C 64 0>;\n \t\t\t\tdma-names = \"tx\", \"rx\";\n \t\t\t\tstatus = \"disabled\";\n \t\t\t};\n@@ -1379,8 +1380,8 @@\n \t\t\t\t\t\t<&system_noc MASTER_A2NOC_SNOC 0 &gem_noc SLAVE_LLCC 0>,\n \t\t\t\t\t\t<&aggre2_noc MASTER_QUP_0 0 &mc_virt SLAVE_EBI1 0>;\n \t\t\t\tinterconnect-names = \"qup-core\", \"qup-config\", \"qup-memory\";\n-\t\t\t\tdmas = <&gpi_dma0 0 1 QCOM_GPI_SPI>,\n-\t\t\t\t       <&gpi_dma0 1 1 QCOM_GPI_SPI>;\n+\t\t\t\tdmas = <&gpi_dma0 0 1 QCOM_GPI_SPI 64 0>,\n+\t\t\t\t       <&gpi_dma0 1 1 QCOM_GPI_SPI 64 0>;\n \t\t\t\tdma-names = \"tx\", \"rx\";\n \t\t\t\t#address-cells = <1>;\n \t\t\t\t#size-cells = <0>;\n@@ -1401,8 +1402,8 @@\n \t\t\t\t\t\t<&system_noc MASTER_A2NOC_SNOC 0 &gem_noc SLAVE_LLCC 0>,\n \t\t\t\t\t\t<&aggre2_noc MASTER_QUP_0 0 &mc_virt SLAVE_EBI1 0>;\n \t\t\t\tinterconnect-names = \"qup-core\", \"qup-config\", \"qup-memory\";\n-\t\t\t\tdmas = <&gpi_dma0 0 2 QCOM_GPI_I2C>,\n-\t\t\t\t       <&gpi_dma0 1 2 QCOM_GPI_I2C>;\n+\t\t\t\tdmas = <&gpi_dma0 0 2 QCOM_GPI_I2C 64 0>,\n+\t\t\t\t       <&gpi_dma0 1 2 QCOM_GPI_I2C 64 0>;\n \t\t\t\tdma-names = \"tx\", \"rx\";\n \t\t\t\tstatus = \"disabled\";\n \t\t\t};\n@@ -1419,8 +1420,8 @@\n \t\t\t\t\t\t<&system_noc MASTER_A2NOC_SNOC 0 &gem_noc SLAVE_LLCC 0>,\n \t\t\t\t\t\t<&aggre2_noc MASTER_QUP_0 0 &mc_virt SLAVE_EBI1 0>;\n \t\t\t\tinterconnect-names = \"qup-core\", \"qup-config\", \"qup-memory\";\n-\t\t\t\tdmas = <&gpi_dma0 0 2 QCOM_GPI_SPI>,\n-\t\t\t\t       <&gpi_dma0 1 2 QCOM_GPI_SPI>;\n+\t\t\t\tdmas = <&gpi_dma0 0 2 QCOM_GPI_SPI 64 0>,\n+\t\t\t\t       <&gpi_dma0 1 2 QCOM_GPI_SPI 64 0>;\n \t\t\t\tdma-names = \"tx\", \"rx\";\n \t\t\t\t#address-cells = <1>;\n \t\t\t\t#size-cells = <0>;\n@@ -1442,8 +1443,8 @@\n \t\t\t\t\t\t<&system_noc MASTER_A2NOC_SNOC 0 &gem_noc SLAVE_LLCC 0>,\n \t\t\t\t\t\t<&aggre2_noc MASTER_QUP_0 0 &mc_virt SLAVE_EBI1 0>;\n \t\t\t\tinterconnect-names = \"qup-core\", \"qup-config\", \"qup-memory\";\n-\t\t\t\tdmas = <&gpi_dma0 0 3 QCOM_GPI_I2C>,\n-\t\t\t\t       <&gpi_dma0 1 3 QCOM_GPI_I2C>;\n+\t\t\t\tdmas = <&gpi_dma0 0 3 QCOM_GPI_I2C 64 0>,\n+\t\t\t\t       <&gpi_dma0 1 3 QCOM_GPI_I2C 64 0>;\n \t\t\t\tdma-names = \"tx\", \"rx\";\n \t\t\t\tstatus = \"disabled\";\n \t\t\t};\n@@ -1460,8 +1461,8 @@\n \t\t\t\t\t\t<&system_noc MASTER_A2NOC_SNOC 0 &gem_noc SLAVE_LLCC 0>,\n \t\t\t\t\t\t<&aggre2_noc MASTER_QUP_0 0 &mc_virt SLAVE_EBI1 0>;\n \t\t\t\tinterconnect-names = \"qup-core\", \"qup-config\", \"qup-memory\";\n-\t\t\t\tdmas = <&gpi_dma0 0 3 QCOM_GPI_SPI>,\n-\t\t\t\t       <&gpi_dma0 1 3 QCOM_GPI_SPI>;\n+\t\t\t\tdmas = <&gpi_dma0 0 3 QCOM_GPI_SPI 64 0>,\n+\t\t\t\t       <&gpi_dma0 1 3 QCOM_GPI_SPI 64 0>;\n \t\t\t\tdma-names = \"tx\", \"rx\";\n \t\t\t\t#address-cells = <1>;\n \t\t\t\t#size-cells = <0>;\n@@ -1482,8 +1483,8 @@\n \t\t\t\t\t\t<&system_noc MASTER_A2NOC_SNOC 0 &gem_noc SLAVE_LLCC 0>,\n \t\t\t\t\t\t<&aggre2_noc MASTER_QUP_0 0 &mc_virt SLAVE_EBI1 0>;\n \t\t\t\tinterconnect-names = \"qup-core\", \"qup-config\", \"qup-memory\";\n-\t\t\t\tdmas = <&gpi_dma0 0 4 QCOM_GPI_I2C>,\n-\t\t\t\t       <&gpi_dma0 1 4 QCOM_GPI_I2C>;\n+\t\t\t\tdmas = <&gpi_dma0 0 4 QCOM_GPI_I2C 64 2>,\n+\t\t\t\t       <&gpi_dma0 1 4 QCOM_GPI_I2C 64 2>;\n \t\t\t\tdma-names = \"tx\", \"rx\";\n \t\t\t\tstatus = \"disabled\";\n \t\t\t};\n@@ -1502,8 +1503,8 @@\n \t\t\t\t\t\t<&system_noc MASTER_A2NOC_SNOC 0 &gem_noc SLAVE_LLCC 0>,\n \t\t\t\t\t\t<&aggre2_noc MASTER_QUP_0 0 &mc_virt SLAVE_EBI1 0>;\n \t\t\t\tinterconnect-names = \"qup-core\", \"qup-config\", \"qup-memory\";\n-\t\t\t\tdmas = <&gpi_dma0 0 4 QCOM_GPI_SPI>,\n-\t\t\t\t       <&gpi_dma0 1 4 QCOM_GPI_SPI>;\n+\t\t\t\tdmas = <&gpi_dma0 0 4 QCOM_GPI_SPI 64 2>,\n+\t\t\t\t       <&gpi_dma0 1 4 QCOM_GPI_SPI 64 2>;\n \t\t\t\tdma-names = \"tx\", \"rx\";\n \t\t\t\t#address-cells = <1>;\n \t\t\t\t#size-cells = <0>;\n@@ -1524,8 +1525,8 @@\n \t\t\t\t\t\t<&system_noc MASTER_A2NOC_SNOC 0 &gem_noc SLAVE_LLCC 0>,\n \t\t\t\t\t\t<&aggre2_noc MASTER_QUP_0 0 &mc_virt SLAVE_EBI1 0>;\n \t\t\t\tinterconnect-names = \"qup-core\", \"qup-config\", \"qup-memory\";\n-\t\t\t\tdmas = <&gpi_dma0 0 5 QCOM_GPI_I2C>,\n-\t\t\t\t       <&gpi_dma0 1 5 QCOM_GPI_I2C>;\n+\t\t\t\tdmas = <&gpi_dma0 0 5 QCOM_GPI_I2C 64 0>,\n+\t\t\t\t       <&gpi_dma0 1 5 QCOM_GPI_I2C 64 0>;\n \t\t\t\tdma-names = \"tx\", \"rx\";\n \t\t\t\tstatus = \"disabled\";\n \t\t\t};\n@@ -1542,8 +1543,8 @@\n \t\t\t\t\t\t<&system_noc MASTER_A2NOC_SNOC 0 &gem_noc SLAVE_LLCC 0>,\n \t\t\t\t\t\t<&aggre2_noc MASTER_QUP_0 0 &mc_virt SLAVE_EBI1 0>;\n \t\t\t\tinterconnect-names = \"qup-core\", \"qup-config\", \"qup-memory\";\n-\t\t\t\tdmas = <&gpi_dma0 0 5 QCOM_GPI_SPI>,\n-\t\t\t\t       <&gpi_dma0 1 5 QCOM_GPI_SPI>;\n+\t\t\t\tdmas = <&gpi_dma0 0 5 QCOM_GPI_SPI 64 0>,\n+\t\t\t\t       <&gpi_dma0 1 5 QCOM_GPI_SPI 64 0>;\n \t\t\t\tdma-names = \"tx\", \"rx\";\n \t\t\t\t#address-cells = <1>;\n \t\t\t\t#size-cells = <0>;\n@@ -1565,8 +1566,8 @@\n \t\t\t\t\t\t<&system_noc MASTER_A2NOC_SNOC 0 &gem_noc SLAVE_LLCC 0>,\n \t\t\t\t\t\t<&aggre2_noc MASTER_QUP_0 0 &mc_virt SLAVE_EBI1 0>;\n \t\t\t\tinterconnect-names = \"qup-core\", \"qup-config\", \"qup-memory\";\n-\t\t\t\tdmas = <&gpi_dma0 0 6 QCOM_GPI_I2C>,\n-\t\t\t\t       <&gpi_dma0 1 6 QCOM_GPI_I2C>;\n+\t\t\t\tdmas = <&gpi_dma0 0 6 QCOM_GPI_I2C 64 0>,\n+\t\t\t\t       <&gpi_dma0 1 6 QCOM_GPI_I2C 64 0>;\n \t\t\t\tdma-names = \"tx\", \"rx\";\n \t\t\t\tstatus = \"disabled\";\n \t\t\t};\n@@ -1583,8 +1584,8 @@\n \t\t\t\t\t\t<&system_noc MASTER_A2NOC_SNOC 0 &gem_noc SLAVE_LLCC 0>,\n \t\t\t\t\t\t<&aggre2_noc MASTER_QUP_0 0 &mc_virt SLAVE_EBI1 0>;\n \t\t\t\tinterconnect-names = \"qup-core\", \"qup-config\", \"qup-memory\";\n-\t\t\t\tdmas = <&gpi_dma0 0 6 QCOM_GPI_SPI>,\n-\t\t\t\t       <&gpi_dma0 1 6 QCOM_GPI_SPI>;\n+\t\t\t\tdmas = <&gpi_dma0 0 6 QCOM_GPI_SPI 64 0>,\n+\t\t\t\t       <&gpi_dma0 1 6 QCOM_GPI_SPI 64 0>;\n \t\t\t\tdma-names = \"tx\", \"rx\";\n \t\t\t\t#address-cells = <1>;\n \t\t\t\t#size-cells = <0>;"
+    }
+  ]
+}

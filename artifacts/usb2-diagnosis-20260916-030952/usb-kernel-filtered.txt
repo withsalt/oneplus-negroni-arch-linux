@@ -1,0 +1,228 @@
+10:manufacturer=Linux 7.3.0-rc2-sm8450+ xhci-hcd
+22:manufacturer=Linux 7.3.0-rc2-sm8450+ xhci-hcd
+32:DEVICE /sys/class/typec/port0
+38:uevent=DEVTYPE=typec_port
+40:DEVICE /sys/class/typec/port0-partner
+44:uevent=DEVTYPE=typec_partner
+51:DEVICE /sys/bus/platform/devices/88e3000.phy
+54:OF_FULLNAME=/soc@0/phy@88e3000
+64:uevent=DRIVER=dwc3-qcom
+67:OF_COMPATIBLE_0=qcom,sm8450-dwc3
+68:OF_COMPATIBLE_1=qcom,snps-dwc3
+70:MODALIAS=of:NusbT(null)Cqcom,sm8450-dwc3Cqcom,snps-dwc3
+93:DEVICE /sys/class/phy/phy-88e3000.phy.3
+95:OF_FULLNAME=/soc@0/phy@88e3000
+246:usbhid
+250:usbhid                 28672  0
+251:qcom_battmgr           28672  0
+259:/sys/kernel/debug/usb/ucsi/pmic_glink.ucsi.0/message_out
+260:/sys/kernel/debug/usb/ucsi/pmic_glink.ucsi.0/vbus_voltage
+261:/sys/kernel/debug/usb/ucsi/pmic_glink.ucsi.0/avg_current
+262:/sys/kernel/debug/usb/ucsi/pmic_glink.ucsi.0/peak_current
+263:/sys/kernel/debug/usb/ucsi/pmic_glink.ucsi.0/response
+264:/sys/kernel/debug/usb/ucsi/pmic_glink.ucsi.0/command
+265:/sys/kernel/debug/usb/xhci/xhci-hcd.2.auto/port_bandwidth/FS_BW
+266:/sys/kernel/debug/usb/xhci/xhci-hcd.2.auto/port_bandwidth/HS_BW
+267:/sys/kernel/debug/usb/xhci/xhci-hcd.2.auto/port_bandwidth/SS_BW
+268:/sys/kernel/debug/usb/xhci/xhci-hcd.2.auto/event-ring/trbs
+269:/sys/kernel/debug/usb/xhci/xhci-hcd.2.auto/event-ring/cycle
+270:/sys/kernel/debug/usb/xhci/xhci-hcd.2.auto/event-ring/dequeue
+271:/sys/kernel/debug/usb/xhci/xhci-hcd.2.auto/event-ring/enqueue
+272:/sys/kernel/debug/usb/xhci/xhci-hcd.2.auto/command-ring/trbs
+273:/sys/kernel/debug/usb/xhci/xhci-hcd.2.auto/command-ring/cycle
+274:/sys/kernel/debug/usb/xhci/xhci-hcd.2.auto/command-ring/dequeue
+275:/sys/kernel/debug/usb/xhci/xhci-hcd.2.auto/command-ring/enqueue
+276:/sys/kernel/debug/usb/xhci/xhci-hcd.2.auto/reg-ext-protocol:01
+277:/sys/kernel/debug/usb/xhci/xhci-hcd.2.auto/reg-ext-protocol:00
+278:/sys/kernel/debug/usb/xhci/xhci-hcd.2.auto/reg-ext-legsup:00
+279:/sys/kernel/debug/usb/xhci/xhci-hcd.2.auto/reg-runtime
+280:/sys/kernel/debug/usb/xhci/xhci-hcd.2.auto/reg-op
+281:/sys/kernel/debug/usb/xhci/xhci-hcd.2.auto/reg-cap
+487:[ 1035.844646] Modules linked in: cdc_ether usbnet r8152 mii hid_generic usbhid rfcomm q6prm_clocks q6apm_dai q6apm_lpass_dais snd_q6dsp_common q6prm qrtr_mhi algif_hash algif_skcipher af_alg bnep snd_q6apm ath11k_pci ath11k mac80211 qcom_camss fastrpc qcom_pd_mapper rpmsg_ctrl videobuf2_dma_sg libarc4 videobuf2_memops s5kjn1 videobuf2_v4l2 hci_uart snd_soc_wcd938x snd_soc_wcd938x_sdw videobuf2_common btqca nxp_nci_i2c cfg80211 v4l2_cci regmap_sdw btbcm nxp_nci snd_soc_wcd_common snd_soc_sc8280xp v4l2_fwnode mhi v4l2_async snd_soc_tfa9872 bluetooth videodev nci snd_soc_lpass_rx_macro snd_soc_lpass_tx_macro snd_soc_lpass_va_macro snd_soc_qcom_sdw snd_soc_wcd_classh rtc_pm8xxx snd_soc_qcom_common pwrseq_qcom_wcn soundwire_qcom snd_soc_wcd_mbhc snd_soc_hdmi_codec ecdh_generic snd_soc_lpass_macro_common nfc ecc snd_soc_core nvmem_qcom_spmi_sdam qcom_q6v5_pas qcom_stats mc i2c_qcom_cci qcom_pil_info qcom_q6v5 ipa coresight_stm snd_compress qcom_sysmon snd_pcm qcom_common stm_p_basic stm_core pci_pwrctrl_pwrseq qcom_rng
+488:[ 1035.846444]  coresight_cti snd_timer coresight_tmc coresight_replicator coresight_funnel snd qcom_battmgr qcomtee coresight soundcore soundwire_bus rfkill joydev fuse phy_qcom_qmp_ufs
+537:[ 1035.850662] Modules linked in: cdc_ether usbnet r8152 mii hid_generic usbhid rfcomm q6prm_clocks q6apm_dai q6apm_lpass_dais snd_q6dsp_common q6prm qrtr_mhi algif_hash algif_skcipher af_alg bnep snd_q6apm ath11k_pci ath11k mac80211 qcom_camss fastrpc qcom_pd_mapper rpmsg_ctrl videobuf2_dma_sg libarc4 videobuf2_memops s5kjn1 videobuf2_v4l2 hci_uart snd_soc_wcd938x snd_soc_wcd938x_sdw videobuf2_common btqca nxp_nci_i2c cfg80211 v4l2_cci regmap_sdw btbcm nxp_nci snd_soc_wcd_common snd_soc_sc8280xp v4l2_fwnode mhi v4l2_async snd_soc_tfa9872 bluetooth videodev nci snd_soc_lpass_rx_macro snd_soc_lpass_tx_macro snd_soc_lpass_va_macro snd_soc_qcom_sdw snd_soc_wcd_classh rtc_pm8xxx snd_soc_qcom_common pwrseq_qcom_wcn soundwire_qcom snd_soc_wcd_mbhc snd_soc_hdmi_codec ecdh_generic snd_soc_lpass_macro_common nfc ecc snd_soc_core nvmem_qcom_spmi_sdam qcom_q6v5_pas qcom_stats mc i2c_qcom_cci qcom_pil_info qcom_q6v5 ipa coresight_stm snd_compress qcom_sysmon snd_pcm qcom_common stm_p_basic stm_core pci_pwrctrl_pwrseq qcom_rng
+538:[ 1035.851667]  coresight_cti snd_timer coresight_tmc coresight_replicator coresight_funnel snd qcom_battmgr qcomtee coresight soundcore soundwire_bus rfkill joydev fuse phy_qcom_qmp_ufs
+587:[ 1035.855344] Modules linked in: cdc_ether usbnet r8152 mii hid_generic usbhid rfcomm q6prm_clocks q6apm_dai q6apm_lpass_dais snd_q6dsp_common q6prm qrtr_mhi algif_hash algif_skcipher af_alg bnep snd_q6apm ath11k_pci ath11k mac80211 qcom_camss fastrpc qcom_pd_mapper rpmsg_ctrl videobuf2_dma_sg libarc4 videobuf2_memops s5kjn1 videobuf2_v4l2 hci_uart snd_soc_wcd938x snd_soc_wcd938x_sdw videobuf2_common btqca nxp_nci_i2c cfg80211 v4l2_cci regmap_sdw btbcm nxp_nci snd_soc_wcd_common snd_soc_sc8280xp v4l2_fwnode mhi v4l2_async snd_soc_tfa9872 bluetooth videodev nci snd_soc_lpass_rx_macro snd_soc_lpass_tx_macro snd_soc_lpass_va_macro snd_soc_qcom_sdw snd_soc_wcd_classh rtc_pm8xxx snd_soc_qcom_common pwrseq_qcom_wcn soundwire_qcom snd_soc_wcd_mbhc snd_soc_hdmi_codec ecdh_generic snd_soc_lpass_macro_common nfc ecc snd_soc_core nvmem_qcom_spmi_sdam qcom_q6v5_pas qcom_stats mc i2c_qcom_cci qcom_pil_info qcom_q6v5 ipa coresight_stm snd_compress qcom_sysmon snd_pcm qcom_common stm_p_basic stm_core pci_pwrctrl_pwrseq qcom_rng
+588:[ 1035.856356]  coresight_cti snd_timer coresight_tmc coresight_replicator coresight_funnel snd qcom_battmgr qcomtee coresight soundcore soundwire_bus rfkill joydev fuse phy_qcom_qmp_ufs
+892:[ 1060.392717] Modules linked in: cdc_ether usbnet r8152 mii hid_generic usbhid rfcomm q6prm_clocks q6apm_dai q6apm_lpass_dais snd_q6dsp_common q6prm qrtr_mhi algif_hash algif_skcipher af_alg bnep snd_q6apm ath11k_pci ath11k mac80211 qcom_camss fastrpc qcom_pd_mapper rpmsg_ctrl videobuf2_dma_sg libarc4 videobuf2_memops s5kjn1 videobuf2_v4l2 hci_uart snd_soc_wcd938x snd_soc_wcd938x_sdw videobuf2_common btqca nxp_nci_i2c cfg80211 v4l2_cci regmap_sdw btbcm nxp_nci snd_soc_wcd_common snd_soc_sc8280xp v4l2_fwnode mhi v4l2_async snd_soc_tfa9872 bluetooth videodev nci snd_soc_lpass_rx_macro snd_soc_lpass_tx_macro snd_soc_lpass_va_macro snd_soc_qcom_sdw snd_soc_wcd_classh rtc_pm8xxx snd_soc_qcom_common pwrseq_qcom_wcn soundwire_qcom snd_soc_wcd_mbhc snd_soc_hdmi_codec ecdh_generic snd_soc_lpass_macro_common nfc ecc snd_soc_core nvmem_qcom_spmi_sdam qcom_q6v5_pas qcom_stats mc i2c_qcom_cci qcom_pil_info qcom_q6v5 ipa coresight_stm snd_compress qcom_sysmon snd_pcm qcom_common stm_p_basic stm_core pci_pwrctrl_pwrseq qcom_rng
+893:[ 1060.394018]  coresight_cti snd_timer coresight_tmc coresight_replicator coresight_funnel snd qcom_battmgr qcomtee coresight soundcore soundwire_bus rfkill joydev fuse phy_qcom_qmp_ufs
+941:[ 1060.397814] Modules linked in: cdc_ether usbnet r8152 mii hid_generic usbhid rfcomm q6prm_clocks q6apm_dai q6apm_lpass_dais snd_q6dsp_common q6prm qrtr_mhi algif_hash algif_skcipher af_alg bnep snd_q6apm ath11k_pci ath11k mac80211 qcom_camss fastrpc qcom_pd_mapper rpmsg_ctrl videobuf2_dma_sg libarc4 videobuf2_memops s5kjn1 videobuf2_v4l2 hci_uart snd_soc_wcd938x snd_soc_wcd938x_sdw videobuf2_common btqca nxp_nci_i2c cfg80211 v4l2_cci regmap_sdw btbcm nxp_nci snd_soc_wcd_common snd_soc_sc8280xp v4l2_fwnode mhi v4l2_async snd_soc_tfa9872 bluetooth videodev nci snd_soc_lpass_rx_macro snd_soc_lpass_tx_macro snd_soc_lpass_va_macro snd_soc_qcom_sdw snd_soc_wcd_classh rtc_pm8xxx snd_soc_qcom_common pwrseq_qcom_wcn soundwire_qcom snd_soc_wcd_mbhc snd_soc_hdmi_codec ecdh_generic snd_soc_lpass_macro_common nfc ecc snd_soc_core nvmem_qcom_spmi_sdam qcom_q6v5_pas qcom_stats mc i2c_qcom_cci qcom_pil_info qcom_q6v5 ipa coresight_stm snd_compress qcom_sysmon snd_pcm qcom_common stm_p_basic stm_core pci_pwrctrl_pwrseq qcom_rng
+942:[ 1060.398843]  coresight_cti snd_timer coresight_tmc coresight_replicator coresight_funnel snd qcom_battmgr qcomtee coresight soundcore soundwire_bus rfkill joydev fuse phy_qcom_qmp_ufs
+990:[ 1060.402393] Modules linked in: cdc_ether usbnet r8152 mii hid_generic usbhid rfcomm q6prm_clocks q6apm_dai q6apm_lpass_dais snd_q6dsp_common q6prm qrtr_mhi algif_hash algif_skcipher af_alg bnep snd_q6apm ath11k_pci ath11k mac80211 qcom_camss fastrpc qcom_pd_mapper rpmsg_ctrl videobuf2_dma_sg libarc4 videobuf2_memops s5kjn1 videobuf2_v4l2 hci_uart snd_soc_wcd938x snd_soc_wcd938x_sdw videobuf2_common btqca nxp_nci_i2c cfg80211 v4l2_cci regmap_sdw btbcm nxp_nci snd_soc_wcd_common snd_soc_sc8280xp v4l2_fwnode mhi v4l2_async snd_soc_tfa9872 bluetooth videodev nci snd_soc_lpass_rx_macro snd_soc_lpass_tx_macro snd_soc_lpass_va_macro snd_soc_qcom_sdw snd_soc_wcd_classh rtc_pm8xxx snd_soc_qcom_common pwrseq_qcom_wcn soundwire_qcom snd_soc_wcd_mbhc snd_soc_hdmi_codec ecdh_generic snd_soc_lpass_macro_common nfc ecc snd_soc_core nvmem_qcom_spmi_sdam qcom_q6v5_pas qcom_stats mc i2c_qcom_cci qcom_pil_info qcom_q6v5 ipa coresight_stm snd_compress qcom_sysmon snd_pcm qcom_common stm_p_basic stm_core pci_pwrctrl_pwrseq qcom_rng
+991:[ 1060.403426]  coresight_cti snd_timer coresight_tmc coresight_replicator coresight_funnel snd qcom_battmgr qcomtee coresight soundcore soundwire_bus rfkill joydev fuse phy_qcom_qmp_ufs
+1249:[ 1329.186508] usb 2-1: USB disconnect, device number 2
+1250:[ 1329.186755] usb 2-1.1: USB disconnect, device number 3
+1253:[ 1329.227418] xhci-hcd xhci-hcd.2.auto: remove, state 1
+1255:[ 1329.294035] xhci-hcd xhci-hcd.2.auto: USB bus 2 deregistered
+1256:[ 1329.294076] xhci-hcd xhci-hcd.2.auto: remove, state 4
+1258:[ 1329.302126] xhci-hcd xhci-hcd.2.auto: USB bus 1 deregistered
+1259:[ 1337.353804] qcom_battmgr.pmic_glink_power_supply pmic_glink.power-supply.0: unknown notification: 0x53
+1260:[ 1337.858879] xhci-hcd xhci-hcd.2.auto: xHCI Host Controller
+1261:[ 1337.859005] xhci-hcd xhci-hcd.2.auto: new USB bus registered, assigned bus number 1
+1262:[ 1337.861756] xhci-hcd xhci-hcd.2.auto: hcc params 0x0110ffc5 hci version 0x110 quirks 0x0000808000000010
+1263:[ 1337.861936] xhci-hcd xhci-hcd.2.auto: irq 196, io mem 0x0a600000
+1264:[ 1337.862438] xhci-hcd xhci-hcd.2.auto: xHCI Host Controller
+1265:[ 1337.862498] xhci-hcd xhci-hcd.2.auto: new USB bus registered, assigned bus number 2
+1266:[ 1337.862555] xhci-hcd xhci-hcd.2.auto: Host supports USB 3.1 Enhanced SuperSpeed
+1270:[ 1337.863745] usb usb1: Manufacturer: Linux 7.3.0-rc2-sm8450+ xhci-hcd
+1271:[ 1337.863783] usb usb1: SerialNumber: xhci-hcd.2.auto
+1278:[ 1337.868871] usb usb2: Manufacturer: Linux 7.3.0-rc2-sm8450+ xhci-hcd
+1279:[ 1337.868911] usb usb2: SerialNumber: xhci-hcd.2.auto
+1282:[ 1338.713026] usb 2-1: new SuperSpeed USB device number 2 using xhci-hcd
+1283:[ 1338.738015] usb 2-1: New USB device found, idVendor=0bda, idProduct=0423, bcdDevice= 1.90
+1284:[ 1338.744344] usb 2-1: New USB device strings: Mfr=1, Product=2, SerialNumber=0
+1285:[ 1338.744419] usb 2-1: Product: 4-Port USB 3.0 Hub
+1286:[ 1338.744465] usb 2-1: Manufacturer: Generic
+1289:[ 1339.086183] usb 2-1.1: new SuperSpeed USB device number 3 using xhci-hcd
+1290:[ 1339.113858] usb 2-1.1: New USB device found, idVendor=045e, idProduct=0955, bcdDevice= 1.41
+1291:[ 1339.130606] usb 2-1.1: New USB device strings: Mfr=1, Product=2, SerialNumber=0
+1292:[ 1339.130633] usb 2-1.1: Product: 4-Port USB 3.0 Hub
+1293:[ 1339.130643] usb 2-1.1: Manufacturer: Generic
+1296:[ 1339.466899] usb 2-1.1.1: new SuperSpeed USB device number 4 using xhci-hcd
+1297:[ 1339.483175] usb 2-1.1.1: New USB device found, idVendor=045e, idProduct=0927, bcdDevice=31.00
+1298:[ 1339.483680] usb 2-1.1.1: Int endpoint with wBytesPerInterval of 8 in config 2 interface 0 altsetting 0 ep 0x83: setting to 16
+1299:[ 1339.483947] usb 2-1.1.1: New USB device strings: Mfr=1, Product=2, SerialNumber=6
+1300:[ 1339.483959] usb 2-1.1.1: Product: Ethernet Adapter
+1301:[ 1339.483968] usb 2-1.1.1: Manufacturer: Microsoft
+1302:[ 1339.483976] usb 2-1.1.1: SerialNumber: 0013D9F5C
+1303:[ 1339.592769] r8152-cfgselector 2-1.1.1: reset SuperSpeed USB device number 4 using xhci-hcd
+1457:[ 3500.945741] usb 2-1: USB disconnect, device number 2
+1458:[ 3500.945820] usb 2-1.1: USB disconnect, device number 3
+1461:[ 3500.956657] qcom_battmgr.pmic_glink_power_supply pmic_glink.power-supply.0: unknown notification: 0x53
+1462:[ 3500.991682] xhci-hcd xhci-hcd.2.auto: remove, state 1
+1464:[ 3501.035210] xhci-hcd xhci-hcd.2.auto: USB bus 2 deregistered
+1465:[ 3501.035249] xhci-hcd xhci-hcd.2.auto: remove, state 4
+1467:[ 3501.045885] xhci-hcd xhci-hcd.2.auto: USB bus 1 deregistered
+1567:[ 3832.771998] qcom_battmgr.pmic_glink_power_supply pmic_glink.power-supply.0: unknown notification: 0x53
+1575:[ 3833.466167] xhci-hcd xhci-hcd.2.auto: xHCI Host Controller
+1576:[ 3833.466259] xhci-hcd xhci-hcd.2.auto: new USB bus registered, assigned bus number 1
+1577:[ 3833.469074] xhci-hcd xhci-hcd.2.auto: hcc params 0x0110ffc5 hci version 0x110 quirks 0x0000808000000010
+1578:[ 3833.469221] xhci-hcd xhci-hcd.2.auto: irq 196, io mem 0x0a600000
+1579:[ 3833.469636] xhci-hcd xhci-hcd.2.auto: xHCI Host Controller
+1580:[ 3833.469650] xhci-hcd xhci-hcd.2.auto: new USB bus registered, assigned bus number 2
+1581:[ 3833.469663] xhci-hcd xhci-hcd.2.auto: Host supports USB 3.1 Enhanced SuperSpeed
+1585:[ 3833.469860] usb usb1: Manufacturer: Linux 7.3.0-rc2-sm8450+ xhci-hcd
+1586:[ 3833.469868] usb usb1: SerialNumber: xhci-hcd.2.auto
+1593:[ 3833.471110] usb usb2: Manufacturer: Linux 7.3.0-rc2-sm8450+ xhci-hcd
+1594:[ 3833.471144] usb usb2: SerialNumber: xhci-hcd.2.auto
+1618:[ 3838.355572] qcom_battmgr.pmic_glink_power_supply pmic_glink.power-supply.0: voocphy recheck: PD adapter (type=17), requesting 9V/3A
+1623:[ 3838.824870] qcom_battmgr.pmic_glink_power_supply pmic_glink.power-supply.0: recheck: failed to set PDO 9000mV: 514
+1640:[ 3859.819951] xhci-hcd xhci-hcd.2.auto: remove, state 4
+1642:[ 3859.823848] xhci-hcd xhci-hcd.2.auto: USB bus 2 deregistered
+1643:[ 3859.823947] xhci-hcd xhci-hcd.2.auto: remove, state 4
+1645:[ 3859.829785] xhci-hcd xhci-hcd.2.auto: USB bus 1 deregistered
+1646:[ 3860.090688] xhci-hcd xhci-hcd.2.auto: xHCI Host Controller
+1647:[ 3860.090798] xhci-hcd xhci-hcd.2.auto: new USB bus registered, assigned bus number 1
+1648:[ 3860.093514] xhci-hcd xhci-hcd.2.auto: hcc params 0x0110ffc5 hci version 0x110 quirks 0x0000808000000010
+1649:[ 3860.093675] xhci-hcd xhci-hcd.2.auto: irq 196, io mem 0x0a600000
+1650:[ 3860.094191] xhci-hcd xhci-hcd.2.auto: xHCI Host Controller
+1651:[ 3860.094254] xhci-hcd xhci-hcd.2.auto: new USB bus registered, assigned bus number 2
+1652:[ 3860.094315] xhci-hcd xhci-hcd.2.auto: Host supports USB 3.1 Enhanced SuperSpeed
+1656:[ 3860.095616] usb usb1: Manufacturer: Linux 7.3.0-rc2-sm8450+ xhci-hcd
+1657:[ 3860.095662] usb usb1: SerialNumber: xhci-hcd.2.auto
+1664:[ 3860.099866] usb usb2: Manufacturer: Linux 7.3.0-rc2-sm8450+ xhci-hcd
+1665:[ 3860.099909] usb usb2: SerialNumber: xhci-hcd.2.auto
+1698:[ 3869.686804] qcom_battmgr.pmic_glink_power_supply pmic_glink.power-supply.0: unknown notification: 0x53
+1699:[ 3869.733412] xhci-hcd xhci-hcd.2.auto: remove, state 4
+1701:[ 3869.737198] xhci-hcd xhci-hcd.2.auto: USB bus 2 deregistered
+1702:[ 3869.737289] xhci-hcd xhci-hcd.2.auto: remove, state 4
+1704:[ 3869.743098] xhci-hcd xhci-hcd.2.auto: USB bus 1 deregistered
+1732:[ 3878.455939] qcom_battmgr.pmic_glink_power_supply pmic_glink.power-supply.0: unknown notification: 0x53
+1739:[ 3878.906996] xhci-hcd xhci-hcd.2.auto: xHCI Host Controller
+1740:[ 3878.907091] xhci-hcd xhci-hcd.2.auto: new USB bus registered, assigned bus number 1
+1741:[ 3878.909815] xhci-hcd xhci-hcd.2.auto: hcc params 0x0110ffc5 hci version 0x110 quirks 0x0000808000000010
+1742:[ 3878.909962] xhci-hcd xhci-hcd.2.auto: irq 196, io mem 0x0a600000
+1743:[ 3878.910438] xhci-hcd xhci-hcd.2.auto: xHCI Host Controller
+1744:[ 3878.910497] xhci-hcd xhci-hcd.2.auto: new USB bus registered, assigned bus number 2
+1745:[ 3878.910551] xhci-hcd xhci-hcd.2.auto: Host supports USB 3.1 Enhanced SuperSpeed
+1749:[ 3878.911584] usb usb1: Manufacturer: Linux 7.3.0-rc2-sm8450+ xhci-hcd
+1750:[ 3878.911625] usb usb1: SerialNumber: xhci-hcd.2.auto
+1757:[ 3878.913585] usb usb2: Manufacturer: Linux 7.3.0-rc2-sm8450+ xhci-hcd
+1758:[ 3878.913593] usb usb2: SerialNumber: xhci-hcd.2.auto
+1794:[ 3947.944545] qcom_battmgr.pmic_glink_power_supply pmic_glink.power-supply.0: unknown notification: 0x53
+1795:[ 3948.010183] xhci-hcd xhci-hcd.2.auto: remove, state 4
+1797:[ 3948.014042] xhci-hcd xhci-hcd.2.auto: USB bus 2 deregistered
+1798:[ 3948.014149] xhci-hcd xhci-hcd.2.auto: remove, state 4
+1800:[ 3948.020810] xhci-hcd xhci-hcd.2.auto: USB bus 1 deregistered
+1801:[ 3950.111507] qcom_battmgr.pmic_glink_power_supply pmic_glink.power-supply.0: unknown notification: 0x53
+1808:[ 3950.636633] xhci-hcd xhci-hcd.2.auto: xHCI Host Controller
+1809:[ 3950.636729] xhci-hcd xhci-hcd.2.auto: new USB bus registered, assigned bus number 1
+1810:[ 3950.639508] xhci-hcd xhci-hcd.2.auto: hcc params 0x0110ffc5 hci version 0x110 quirks 0x0000808000000010
+1811:[ 3950.639673] xhci-hcd xhci-hcd.2.auto: irq 196, io mem 0x0a600000
+1812:[ 3950.640296] xhci-hcd xhci-hcd.2.auto: xHCI Host Controller
+1813:[ 3950.640310] xhci-hcd xhci-hcd.2.auto: new USB bus registered, assigned bus number 2
+1814:[ 3950.640324] xhci-hcd xhci-hcd.2.auto: Host supports USB 3.1 Enhanced SuperSpeed
+1818:[ 3950.640596] usb usb1: Manufacturer: Linux 7.3.0-rc2-sm8450+ xhci-hcd
+1819:[ 3950.640606] usb usb1: SerialNumber: xhci-hcd.2.auto
+1826:[ 3950.643074] usb usb2: Manufacturer: Linux 7.3.0-rc2-sm8450+ xhci-hcd
+1827:[ 3950.643118] usb usb2: SerialNumber: xhci-hcd.2.auto
+1830:[ 3951.411096] usb 2-1: new SuperSpeed USB device number 2 using xhci-hcd
+1831:[ 3951.431650] usb 2-1: New USB device found, idVendor=0bda, idProduct=0423, bcdDevice= 1.90
+1832:[ 3951.433604] usb 2-1: New USB device strings: Mfr=1, Product=2, SerialNumber=0
+1833:[ 3951.433659] usb 2-1: Product: 4-Port USB 3.0 Hub
+1834:[ 3951.433703] usb 2-1: Manufacturer: Generic
+1837:[ 3951.768392] usb 2-1.1: new SuperSpeed USB device number 3 using xhci-hcd
+1838:[ 3951.801209] usb 2-1.1: New USB device found, idVendor=045e, idProduct=0955, bcdDevice= 1.41
+1839:[ 3951.814533] usb 2-1.1: New USB device strings: Mfr=1, Product=2, SerialNumber=0
+1840:[ 3951.814558] usb 2-1.1: Product: 4-Port USB 3.0 Hub
+1841:[ 3951.814569] usb 2-1.1: Manufacturer: Generic
+1844:[ 3952.159655] usb 2-1.1.1: new SuperSpeed USB device number 4 using xhci-hcd
+1845:[ 3952.180743] usb 2-1.1.1: New USB device found, idVendor=045e, idProduct=0927, bcdDevice=31.00
+1846:[ 3952.183057] usb 2-1.1.1: Int endpoint with wBytesPerInterval of 8 in config 2 interface 0 altsetting 0 ep 0x83: setting to 16
+1847:[ 3952.185349] usb 2-1.1.1: New USB device strings: Mfr=1, Product=2, SerialNumber=6
+1848:[ 3952.185400] usb 2-1.1.1: Product: Ethernet Adapter
+1849:[ 3952.185441] usb 2-1.1.1: Manufacturer: Microsoft
+1850:[ 3952.185480] usb 2-1.1.1: SerialNumber: 0013D9F5C
+1851:[ 3952.306185] r8152-cfgselector 2-1.1.1: reset SuperSpeed USB device number 4 using xhci-hcd
+1892:[ 3983.565884] usb 2-1: USB disconnect, device number 2
+1893:[ 3983.565981] usb 2-1.1: USB disconnect, device number 3
+1895:[ 3983.576053] qcom_battmgr.pmic_glink_power_supply pmic_glink.power-supply.0: unknown notification: 0x53
+1896:[ 3983.615498] xhci-hcd xhci-hcd.2.auto: remove, state 1
+1898:[ 3983.665854] xhci-hcd xhci-hcd.2.auto: USB bus 2 deregistered
+1899:[ 3983.665896] xhci-hcd xhci-hcd.2.auto: remove, state 4
+1901:[ 3983.670011] xhci-hcd xhci-hcd.2.auto: USB bus 1 deregistered
+1905:[ 3989.694316] qcom_battmgr.pmic_glink_power_supply pmic_glink.power-supply.0: unknown notification: 0x53
+1912:[ 3990.104404] xhci-hcd xhci-hcd.2.auto: xHCI Host Controller
+1913:[ 3990.104496] xhci-hcd xhci-hcd.2.auto: new USB bus registered, assigned bus number 1
+1914:[ 3990.107232] xhci-hcd xhci-hcd.2.auto: hcc params 0x0110ffc5 hci version 0x110 quirks 0x0000808000000010
+1915:[ 3990.107394] xhci-hcd xhci-hcd.2.auto: irq 196, io mem 0x0a600000
+1916:[ 3990.107900] xhci-hcd xhci-hcd.2.auto: xHCI Host Controller
+1917:[ 3990.107964] xhci-hcd xhci-hcd.2.auto: new USB bus registered, assigned bus number 2
+1918:[ 3990.108072] xhci-hcd xhci-hcd.2.auto: Host supports USB 3.1 Enhanced SuperSpeed
+1922:[ 3990.108317] usb usb1: Manufacturer: Linux 7.3.0-rc2-sm8450+ xhci-hcd
+1923:[ 3990.108325] usb usb1: SerialNumber: xhci-hcd.2.auto
+1930:[ 3990.109090] usb usb2: Manufacturer: Linux 7.3.0-rc2-sm8450+ xhci-hcd
+1931:[ 3990.109099] usb usb2: SerialNumber: xhci-hcd.2.auto
+1940:[ 4008.194721] xhci-hcd xhci-hcd.2.auto: remove, state 4
+1942:[ 4008.197535] xhci-hcd xhci-hcd.2.auto: USB bus 2 deregistered
+1943:[ 4008.197624] xhci-hcd xhci-hcd.2.auto: remove, state 4
+1945:[ 4008.205892] xhci-hcd xhci-hcd.2.auto: USB bus 1 deregistered
+1946:[ 4008.500471] xhci-hcd xhci-hcd.2.auto: xHCI Host Controller
+1947:[ 4008.500579] xhci-hcd xhci-hcd.2.auto: new USB bus registered, assigned bus number 1
+1948:[ 4008.503299] xhci-hcd xhci-hcd.2.auto: hcc params 0x0110ffc5 hci version 0x110 quirks 0x0000808000000010
+1949:[ 4008.503480] xhci-hcd xhci-hcd.2.auto: irq 196, io mem 0x0a600000
+1950:[ 4008.503987] xhci-hcd xhci-hcd.2.auto: xHCI Host Controller
+1951:[ 4008.504050] xhci-hcd xhci-hcd.2.auto: new USB bus registered, assigned bus number 2
+1952:[ 4008.504112] xhci-hcd xhci-hcd.2.auto: Host supports USB 3.1 Enhanced SuperSpeed
+1956:[ 4008.504795] usb usb1: Manufacturer: Linux 7.3.0-rc2-sm8450+ xhci-hcd
+1957:[ 4008.504840] usb usb1: SerialNumber: xhci-hcd.2.auto
+1964:[ 4008.507666] usb usb2: Manufacturer: Linux 7.3.0-rc2-sm8450+ xhci-hcd
+1965:[ 4008.507677] usb usb2: SerialNumber: xhci-hcd.2.auto
+1968:[ 4014.786654] qcom_battmgr.pmic_glink_power_supply pmic_glink.power-supply.0: unknown notification: 0x53
+1969:[ 4014.907010] xhci-hcd xhci-hcd.2.auto: remove, state 4
+1971:[ 4014.910554] xhci-hcd xhci-hcd.2.auto: USB bus 2 deregistered
+1972:[ 4014.910645] xhci-hcd xhci-hcd.2.auto: remove, state 4
+1974:[ 4014.917545] xhci-hcd xhci-hcd.2.auto: USB bus 1 deregistered
+1975:[ 4018.368823] qcom_battmgr.pmic_glink_power_supply pmic_glink.power-supply.0: unknown notification: 0x53
+1979:[ 4024.616471] qcom_battmgr.pmic_glink_power_supply pmic_glink.power-supply.0: voocphy recheck: PD adapter (type=6), requesting 9V/3A
+1980:[ 7691.045388] xhci-hcd xhci-hcd.2.auto: xHCI Host Controller
+1981:[ 7691.045501] xhci-hcd xhci-hcd.2.auto: new USB bus registered, assigned bus number 1
+1982:[ 7691.048242] xhci-hcd xhci-hcd.2.auto: hcc params 0x0110ffc5 hci version 0x110 quirks 0x0000808000000010
+1983:[ 7691.048419] xhci-hcd xhci-hcd.2.auto: irq 196, io mem 0x0a600000
+1984:[ 7691.048955] xhci-hcd xhci-hcd.2.auto: xHCI Host Controller
+1985:[ 7691.049021] xhci-hcd xhci-hcd.2.auto: new USB bus registered, assigned bus number 2
+1986:[ 7691.049083] xhci-hcd xhci-hcd.2.auto: Host supports USB 3.1 Enhanced SuperSpeed
+1990:[ 7691.049892] usb usb1: Manufacturer: Linux 7.3.0-rc2-sm8450+ xhci-hcd
+1991:[ 7691.049938] usb usb1: SerialNumber: xhci-hcd.2.auto
+1998:[ 7691.053959] usb usb2: Manufacturer: Linux 7.3.0-rc2-sm8450+ xhci-hcd
+1999:[ 7691.054004] usb usb2: SerialNumber: xhci-hcd.2.auto

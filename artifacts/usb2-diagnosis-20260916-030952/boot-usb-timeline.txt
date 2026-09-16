@@ -1,0 +1,235 @@
+[   31.524037] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: xHCI Host Controller
+[   31.524308] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: new USB bus registered, assigned bus number 1
+[   31.524436] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: hcc params 0x0110ffc5 hci version 0x110 quirks 0x0000808000000010
+[   31.524549] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: irq 196, io mem 0x0a600000
+[   31.524654] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: xHCI Host Controller
+[   31.524820] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: new USB bus registered, assigned bus number 2
+[   31.524944] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: Host supports USB 3.1 Enhanced SuperSpeed
+[   31.527682] oneplus-negroni kernel: hub 1-0:1.0: USB hub found
+[   31.527847] oneplus-negroni kernel: hub 1-0:1.0: 1 port detected
+[   31.532015] oneplus-negroni kernel: hub 2-0:1.0: USB hub found
+[   31.532221] oneplus-negroni kernel: hub 2-0:1.0: 1 port detected
+[   32.289060] oneplus-negroni kernel: usb 1-1: new high-speed USB device number 2 using xhci-hcd
+[   32.428468] oneplus-negroni kernel: usb 1-1: New USB device found, idVendor=0bda, idProduct=5423, bcdDevice= 1.90
+[   32.429118] oneplus-negroni kernel: usb 1-1: New USB device strings: Mfr=1, Product=2, SerialNumber=0
+[   32.429392] oneplus-negroni kernel: usb 1-1: Product: 4-Port USB 2.0 Hub
+[   32.429677] oneplus-negroni kernel: usb 1-1: Manufacturer: Generic
+[   32.488886] oneplus-negroni kernel: hub 1-1:1.0: USB hub found
+[   32.489481] oneplus-negroni kernel: hub 1-1:1.0: 4 ports detected
+[   32.557114] oneplus-negroni kernel: usb 2-1: new SuperSpeed USB device number 2 using xhci-hcd
+[   32.576067] oneplus-negroni kernel: usb 2-1: New USB device found, idVendor=0bda, idProduct=0423, bcdDevice= 1.90
+[   32.576586] oneplus-negroni kernel: usb 2-1: New USB device strings: Mfr=1, Product=2, SerialNumber=0
+[   32.576856] oneplus-negroni kernel: usb 2-1: Product: 4-Port USB 3.0 Hub
+[   32.577101] oneplus-negroni kernel: usb 2-1: Manufacturer: Generic
+[   32.605205] oneplus-negroni kernel: hub 2-1:1.0: USB hub found
+[   32.605831] oneplus-negroni kernel: hub 2-1:1.0: 4 ports detected
+[   32.844614] oneplus-negroni kernel: usb 1-1.4: new full-speed USB device number 3 using xhci-hcd
+[   32.936432] oneplus-negroni kernel: usb 1-1.4: New USB device found, idVendor=046d, idProduct=c52b, bcdDevice=24.11
+[   32.937096] oneplus-negroni kernel: usb 1-1.4: New USB device strings: Mfr=1, Product=2, SerialNumber=0
+[   32.937400] oneplus-negroni kernel: usb 1-1.4: Product: USB Receiver
+[   32.937656] oneplus-negroni kernel: usb 1-1.4: Manufacturer: Logitech
+[   33.212088] oneplus-negroni kernel: input: Logitech USB Receiver as /devices/platform/soc@0/a600000.usb/xhci-hcd.2.auto/usb1/1-1/1-1.4/1-1.4:1.0/0003:046D:C52B.0001/input/input5
+[   33.316736] oneplus-negroni kernel: hid-generic 0003:046D:C52B.0001: input,hidraw0: USB HID v1.11 Keyboard [Logitech USB Receiver] on usb-xhci-hcd.2.auto-1.4/input0
+[   33.319994] oneplus-negroni kernel: input: Logitech USB Receiver Mouse as /devices/platform/soc@0/a600000.usb/xhci-hcd.2.auto/usb1/1-1/1-1.4/1-1.4:1.1/0003:046D:C52B.0002/input/input6
+[   33.320370] oneplus-negroni kernel: input: Logitech USB Receiver Consumer Control as /devices/platform/soc@0/a600000.usb/xhci-hcd.2.auto/usb1/1-1/1-1.4/1-1.4:1.1/0003:046D:C52B.0002/input/input7
+[   33.376648] oneplus-negroni kernel: input: Logitech USB Receiver System Control as /devices/platform/soc@0/a600000.usb/xhci-hcd.2.auto/usb1/1-1/1-1.4/1-1.4:1.1/0003:046D:C52B.0002/input/input8
+[   33.377044] oneplus-negroni kernel: hid-generic 0003:046D:C52B.0002: input,hidraw1: USB HID v1.11 Mouse [Logitech USB Receiver] on usb-xhci-hcd.2.auto-1.4/input1
+[   33.380296] oneplus-negroni kernel: hid-generic 0003:046D:C52B.0003: hidraw2: USB HID v1.11 Device [Logitech USB Receiver] on usb-xhci-hcd.2.auto-1.4/input2
+[   37.164066] oneplus-negroni kernel: usb 1-1: USB disconnect, device number 2
+[   37.164995] oneplus-negroni kernel: usb 1-1.4: USB disconnect, device number 3
+[   64.341121] oneplus-negroni kernel: usb 2-1.1: new SuperSpeed USB device number 3 using xhci-hcd
+[   64.369138] oneplus-negroni kernel: usb 2-1.1: New USB device found, idVendor=045e, idProduct=0955, bcdDevice= 1.41
+[   64.380992] oneplus-negroni kernel: usb 2-1.1: New USB device strings: Mfr=1, Product=2, SerialNumber=0
+[   64.382080] oneplus-negroni kernel: usb 2-1.1: Product: 4-Port USB 3.0 Hub
+[   64.382366] oneplus-negroni kernel: usb 2-1.1: Manufacturer: Generic
+[   64.412991] oneplus-negroni kernel: hub 2-1.1:1.0: USB hub found
+[   64.416276] oneplus-negroni kernel: hub 2-1.1:1.0: 2 ports detected
+[   64.717045] oneplus-negroni kernel: usb 2-1.1.1: new SuperSpeed USB device number 4 using xhci-hcd
+[   64.740936] oneplus-negroni kernel: usb 2-1.1.1: New USB device found, idVendor=045e, idProduct=0927, bcdDevice=31.00
+[   64.741210] oneplus-negroni kernel: usb 2-1.1.1: Int endpoint with wBytesPerInterval of 8 in config 2 interface 0 altsetting 0 ep 0x83: setting to 16
+[   64.744266] oneplus-negroni kernel: usb 2-1.1.1: New USB device strings: Mfr=1, Product=2, SerialNumber=6
+[   64.747340] oneplus-negroni kernel: usb 2-1.1.1: Product: Ethernet Adapter
+[   64.750381] oneplus-negroni kernel: usb 2-1.1.1: Manufacturer: Microsoft
+[   64.750900] oneplus-negroni kernel: usb 2-1.1.1: SerialNumber: 0013D9F5C
+[ 1329.212134] oneplus-negroni kernel: usb 2-1: USB disconnect, device number 2
+[ 1329.220595] oneplus-negroni kernel: usb 2-1.1: USB disconnect, device number 3
+[ 1329.252023] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: remove, state 1
+[ 1329.316535] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: USB bus 2 deregistered
+[ 1329.320719] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: remove, state 4
+[ 1329.324059] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: USB bus 1 deregistered
+[ 1337.376184] oneplus-negroni kernel: qcom_battmgr.pmic_glink_power_supply pmic_glink.power-supply.0: unknown notification: 0x53
+[ 1337.884883] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: xHCI Host Controller
+[ 1337.888359] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: new USB bus registered, assigned bus number 1
+[ 1337.890857] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: hcc params 0x0110ffc5 hci version 0x110 quirks 0x0000808000000010
+[ 1337.893594] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: irq 196, io mem 0x0a600000
+[ 1337.895864] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: xHCI Host Controller
+[ 1337.897498] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: new USB bus registered, assigned bus number 2
+[ 1337.899184] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: Host supports USB 3.1 Enhanced SuperSpeed
+[ 1337.913593] oneplus-negroni kernel: hub 1-0:1.0: USB hub found
+[ 1337.916542] oneplus-negroni kernel: hub 1-0:1.0: 1 port detected
+[ 1337.933585] oneplus-negroni kernel: hub 2-0:1.0: USB hub found
+[ 1337.935718] oneplus-negroni kernel: hub 2-0:1.0: 1 port detected
+[ 1338.736892] oneplus-negroni kernel: usb 2-1: new SuperSpeed USB device number 2 using xhci-hcd
+[ 1338.760859] oneplus-negroni kernel: usb 2-1: New USB device found, idVendor=0bda, idProduct=0423, bcdDevice= 1.90
+[ 1338.768813] oneplus-negroni kernel: usb 2-1: New USB device strings: Mfr=1, Product=2, SerialNumber=0
+[ 1338.771635] oneplus-negroni kernel: usb 2-1: Product: 4-Port USB 3.0 Hub
+[ 1338.774163] oneplus-negroni kernel: usb 2-1: Manufacturer: Generic
+[ 1338.804147] oneplus-negroni kernel: hub 2-1:1.0: USB hub found
+[ 1338.807118] oneplus-negroni kernel: hub 2-1:1.0: 4 ports detected
+[ 1339.109277] oneplus-negroni kernel: usb 2-1.1: new SuperSpeed USB device number 3 using xhci-hcd
+[ 1339.136874] oneplus-negroni kernel: usb 2-1.1: New USB device found, idVendor=045e, idProduct=0955, bcdDevice= 1.41
+[ 1339.156857] oneplus-negroni kernel: usb 2-1.1: New USB device strings: Mfr=1, Product=2, SerialNumber=0
+[ 1339.159722] oneplus-negroni kernel: usb 2-1.1: Product: 4-Port USB 3.0 Hub
+[ 1339.162514] oneplus-negroni kernel: usb 2-1.1: Manufacturer: Generic
+[ 1339.192833] oneplus-negroni kernel: hub 2-1.1:1.0: USB hub found
+[ 1339.196359] oneplus-negroni kernel: hub 2-1.1:1.0: 2 ports detected
+[ 1339.492053] oneplus-negroni kernel: usb 2-1.1.1: new SuperSpeed USB device number 4 using xhci-hcd
+[ 1339.508128] oneplus-negroni kernel: usb 2-1.1.1: New USB device found, idVendor=045e, idProduct=0927, bcdDevice=31.00
+[ 1339.509942] oneplus-negroni kernel: usb 2-1.1.1: Int endpoint with wBytesPerInterval of 8 in config 2 interface 0 altsetting 0 ep 0x83: setting to 16
+[ 1339.510467] oneplus-negroni kernel: usb 2-1.1.1: New USB device strings: Mfr=1, Product=2, SerialNumber=6
+[ 1339.511351] oneplus-negroni kernel: usb 2-1.1.1: Product: Ethernet Adapter
+[ 1339.512833] oneplus-negroni kernel: usb 2-1.1.1: Manufacturer: Microsoft
+[ 1339.513541] oneplus-negroni kernel: usb 2-1.1.1: SerialNumber: 0013D9F5C
+[ 3500.944946] oneplus-negroni kernel: usb 2-1: USB disconnect, device number 2
+[ 3500.945954] oneplus-negroni kernel: usb 2-1.1: USB disconnect, device number 3
+[ 3500.956061] oneplus-negroni kernel: qcom_battmgr.pmic_glink_power_supply pmic_glink.power-supply.0: unknown notification: 0x53
+[ 3500.992031] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: remove, state 1
+[ 3501.037715] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: USB bus 2 deregistered
+[ 3501.040237] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: remove, state 4
+[ 3501.044215] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: USB bus 1 deregistered
+[ 3832.747086] oneplus-negroni kernel: qcom_battmgr.pmic_glink_power_supply pmic_glink.power-supply.0: unknown notification: 0x53
+[ 3833.627792] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: xHCI Host Controller
+[ 3833.630378] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: new USB bus registered, assigned bus number 1
+[ 3833.630796] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: hcc params 0x0110ffc5 hci version 0x110 quirks 0x0000808000000010
+[ 3833.631206] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: irq 196, io mem 0x0a600000
+[ 3833.633169] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: xHCI Host Controller
+[ 3833.634157] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: new USB bus registered, assigned bus number 2
+[ 3833.634566] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: Host supports USB 3.1 Enhanced SuperSpeed
+[ 3833.641637] oneplus-negroni kernel: hub 1-0:1.0: USB hub found
+[ 3833.642191] oneplus-negroni kernel: hub 1-0:1.0: 1 port detected
+[ 3833.649811] oneplus-negroni kernel: hub 2-0:1.0: USB hub found
+[ 3833.650367] oneplus-negroni kernel: hub 2-0:1.0: 1 port detected
+[ 3851.172677] oneplus-negroni kernel: qcom_battmgr.pmic_glink_power_supply pmic_glink.power-supply.0: voocphy recheck: PD adapter (type=17), requesting 9V/3A
+[ 3852.965906] oneplus-negroni kernel: qcom_battmgr.pmic_glink_power_supply pmic_glink.power-supply.0: recheck: failed to set PDO 9000mV: 514
+[ 3862.359113] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: remove, state 4
+[ 3862.359561] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: USB bus 2 deregistered
+[ 3862.359671] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: remove, state 4
+[ 3862.359952] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: USB bus 1 deregistered
+[ 3862.360097] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: xHCI Host Controller
+[ 3862.360220] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: new USB bus registered, assigned bus number 1
+[ 3862.360328] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: hcc params 0x0110ffc5 hci version 0x110 quirks 0x0000808000000010
+[ 3862.360433] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: irq 196, io mem 0x0a600000
+[ 3862.360539] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: xHCI Host Controller
+[ 3862.360645] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: new USB bus registered, assigned bus number 2
+[ 3862.360750] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: Host supports USB 3.1 Enhanced SuperSpeed
+[ 3862.362880] oneplus-negroni kernel: hub 1-0:1.0: USB hub found
+[ 3862.363055] oneplus-negroni kernel: hub 1-0:1.0: 1 port detected
+[ 3862.364283] oneplus-negroni kernel: hub 2-0:1.0: USB hub found
+[ 3862.364453] oneplus-negroni kernel: hub 2-0:1.0: 1 port detected
+[ 3875.712318] oneplus-negroni kernel: qcom_battmgr.pmic_glink_power_supply pmic_glink.power-supply.0: unknown notification: 0x53
+[ 3875.712845] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: remove, state 4
+[ 3875.713120] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: USB bus 2 deregistered
+[ 3875.713255] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: remove, state 4
+[ 3875.713473] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: USB bus 1 deregistered
+[ 3878.428092] oneplus-negroni kernel: qcom_battmgr.pmic_glink_power_supply pmic_glink.power-supply.0: unknown notification: 0x53
+[ 3878.880931] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: xHCI Host Controller
+[ 3878.882181] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: new USB bus registered, assigned bus number 1
+[ 3878.882605] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: hcc params 0x0110ffc5 hci version 0x110 quirks 0x0000808000000010
+[ 3878.882994] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: irq 196, io mem 0x0a600000
+[ 3878.883552] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: xHCI Host Controller
+[ 3878.883929] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: new USB bus registered, assigned bus number 2
+[ 3878.884367] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: Host supports USB 3.1 Enhanced SuperSpeed
+[ 3878.886470] oneplus-negroni kernel: hub 1-0:1.0: USB hub found
+[ 3878.886647] oneplus-negroni kernel: hub 1-0:1.0: 1 port detected
+[ 3878.888502] oneplus-negroni kernel: hub 2-0:1.0: USB hub found
+[ 3878.889058] oneplus-negroni kernel: hub 2-0:1.0: 1 port detected
+[ 3947.911756] oneplus-negroni kernel: qcom_battmgr.pmic_glink_power_supply pmic_glink.power-supply.0: unknown notification: 0x53
+[ 3947.980892] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: remove, state 4
+[ 3947.983432] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: USB bus 2 deregistered
+[ 3947.984421] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: remove, state 4
+[ 3947.988158] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: USB bus 1 deregistered
+[ 3950.078535] oneplus-negroni kernel: qcom_battmgr.pmic_glink_power_supply pmic_glink.power-supply.0: unknown notification: 0x53
+[ 3950.604831] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: xHCI Host Controller
+[ 3950.606554] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: new USB bus registered, assigned bus number 1
+[ 3950.607026] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: hcc params 0x0110ffc5 hci version 0x110 quirks 0x0000808000000010
+[ 3950.607413] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: irq 196, io mem 0x0a600000
+[ 3950.608269] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: xHCI Host Controller
+[ 3950.610371] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: new USB bus registered, assigned bus number 2
+[ 3950.612690] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: Host supports USB 3.1 Enhanced SuperSpeed
+[ 3950.618843] oneplus-negroni kernel: hub 1-0:1.0: USB hub found
+[ 3950.621027] oneplus-negroni kernel: hub 1-0:1.0: 1 port detected
+[ 3950.627491] oneplus-negroni kernel: hub 2-0:1.0: USB hub found
+[ 3950.628958] oneplus-negroni kernel: hub 2-0:1.0: 1 port detected
+[ 3951.380869] oneplus-negroni kernel: usb 2-1: new SuperSpeed USB device number 2 using xhci-hcd
+[ 3951.400122] oneplus-negroni kernel: usb 2-1: New USB device found, idVendor=0bda, idProduct=0423, bcdDevice= 1.90
+[ 3951.402741] oneplus-negroni kernel: usb 2-1: New USB device strings: Mfr=1, Product=2, SerialNumber=0
+[ 3951.404578] oneplus-negroni kernel: usb 2-1: Product: 4-Port USB 3.0 Hub
+[ 3951.406273] oneplus-negroni kernel: usb 2-1: Manufacturer: Generic
+[ 3951.428112] oneplus-negroni kernel: hub 2-1:1.0: USB hub found
+[ 3951.432820] oneplus-negroni kernel: hub 2-1:1.0: 4 ports detected
+[ 3951.736979] oneplus-negroni kernel: usb 2-1.1: new SuperSpeed USB device number 3 using xhci-hcd
+[ 3951.768960] oneplus-negroni kernel: usb 2-1.1: New USB device found, idVendor=045e, idProduct=0955, bcdDevice= 1.41
+[ 3951.784888] oneplus-negroni kernel: usb 2-1.1: New USB device strings: Mfr=1, Product=2, SerialNumber=0
+[ 3951.787759] oneplus-negroni kernel: usb 2-1.1: Product: 4-Port USB 3.0 Hub
+[ 3951.790117] oneplus-negroni kernel: usb 2-1.1: Manufacturer: Generic
+[ 3951.816146] oneplus-negroni kernel: hub 2-1.1:1.0: USB hub found
+[ 3951.818974] oneplus-negroni kernel: hub 2-1.1:1.0: 2 ports detected
+[ 3952.129194] oneplus-negroni kernel: usb 2-1.1.1: new SuperSpeed USB device number 4 using xhci-hcd
+[ 3952.148168] oneplus-negroni kernel: usb 2-1.1.1: New USB device found, idVendor=045e, idProduct=0927, bcdDevice=31.00
+[ 3952.149086] oneplus-negroni kernel: usb 2-1.1.1: Int endpoint with wBytesPerInterval of 8 in config 2 interface 0 altsetting 0 ep 0x83: setting to 16
+[ 3952.152137] oneplus-negroni kernel: usb 2-1.1.1: New USB device strings: Mfr=1, Product=2, SerialNumber=6
+[ 3952.155190] oneplus-negroni kernel: usb 2-1.1.1: Product: Ethernet Adapter
+[ 3952.157825] oneplus-negroni kernel: usb 2-1.1.1: Manufacturer: Microsoft
+[ 3952.160459] oneplus-negroni kernel: usb 2-1.1.1: SerialNumber: 0013D9F5C
+[ 3983.532460] oneplus-negroni kernel: usb 2-1: USB disconnect, device number 2
+[ 3983.533465] oneplus-negroni kernel: usb 2-1.1: USB disconnect, device number 3
+[ 3983.540361] oneplus-negroni kernel: qcom_battmgr.pmic_glink_power_supply pmic_glink.power-supply.0: unknown notification: 0x53
+[ 3983.580037] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: remove, state 1
+[ 3983.632976] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: USB bus 2 deregistered
+[ 3983.633093] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: remove, state 4
+[ 3983.636035] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: USB bus 1 deregistered
+[ 3989.657845] oneplus-negroni kernel: qcom_battmgr.pmic_glink_power_supply pmic_glink.power-supply.0: unknown notification: 0x53
+[ 3990.068131] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: xHCI Host Controller
+[ 3990.069250] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: new USB bus registered, assigned bus number 1
+[ 3990.072036] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: hcc params 0x0110ffc5 hci version 0x110 quirks 0x0000808000000010
+[ 3990.072999] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: irq 196, io mem 0x0a600000
+[ 3990.074601] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: xHCI Host Controller
+[ 3990.075916] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: new USB bus registered, assigned bus number 2
+[ 3990.077268] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: Host supports USB 3.1 Enhanced SuperSpeed
+[ 3990.081087] oneplus-negroni kernel: hub 1-0:1.0: USB hub found
+[ 3990.081662] oneplus-negroni kernel: hub 1-0:1.0: 1 port detected
+[ 3990.086744] oneplus-negroni kernel: hub 2-0:1.0: USB hub found
+[ 3990.087292] oneplus-negroni kernel: hub 2-0:1.0: 1 port detected
+[ 4008.833442] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: remove, state 4
+[ 4008.834620] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: USB bus 2 deregistered
+[ 4008.834999] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: remove, state 4
+[ 4008.835753] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: USB bus 1 deregistered
+[ 4008.836250] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: xHCI Host Controller
+[ 4008.836627] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: new USB bus registered, assigned bus number 1
+[ 4008.836975] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: hcc params 0x0110ffc5 hci version 0x110 quirks 0x0000808000000010
+[ 4008.837324] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: irq 196, io mem 0x0a600000
+[ 4008.837668] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: xHCI Host Controller
+[ 4008.838008] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: new USB bus registered, assigned bus number 2
+[ 4008.838356] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: Host supports USB 3.1 Enhanced SuperSpeed
+[ 4008.840698] oneplus-negroni kernel: hub 1-0:1.0: USB hub found
+[ 4008.841180] oneplus-negroni kernel: hub 1-0:1.0: 1 port detected
+[ 4008.843931] oneplus-negroni kernel: hub 2-0:1.0: USB hub found
+[ 4008.844479] oneplus-negroni kernel: hub 2-0:1.0: 1 port detected
+[ 4014.749230] oneplus-negroni kernel: qcom_battmgr.pmic_glink_power_supply pmic_glink.power-supply.0: unknown notification: 0x53
+[ 4014.872464] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: remove, state 4
+[ 4014.873720] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: USB bus 2 deregistered
+[ 4014.874044] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: remove, state 4
+[ 4014.880059] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: USB bus 1 deregistered
+[ 4018.330999] oneplus-negroni kernel: qcom_battmgr.pmic_glink_power_supply pmic_glink.power-supply.0: unknown notification: 0x53
+[ 4024.580460] oneplus-negroni kernel: qcom_battmgr.pmic_glink_power_supply pmic_glink.power-supply.0: voocphy recheck: PD adapter (type=6), requesting 9V/3A
+[ 7691.148062] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: xHCI Host Controller
+[ 7691.148284] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: new USB bus registered, assigned bus number 1
+[ 7691.152069] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: hcc params 0x0110ffc5 hci version 0x110 quirks 0x0000808000000010
+[ 7691.152186] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: irq 196, io mem 0x0a600000
+[ 7691.152283] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: xHCI Host Controller
+[ 7691.152378] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: new USB bus registered, assigned bus number 2
+[ 7691.152563] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: Host supports USB 3.1 Enhanced SuperSpeed
+[ 7691.153393] oneplus-negroni kernel: hub 1-0:1.0: USB hub found
+[ 7691.153541] oneplus-negroni kernel: hub 1-0:1.0: 1 port detected
+[ 7691.160038] oneplus-negroni kernel: hub 2-0:1.0: USB hub found
+[ 7691.160189] oneplus-negroni kernel: hub 2-0:1.0: 1 port detected

@@ -1,0 +1,19 @@
+# Local credentials and authentication helpers
+/image-credentials.json
+/.codex-askpass.sh
+/.codex-ssh-askpass
+/.agents/
+/.codex/
+
+# Downloaded inputs, rootfs, images and build/diagnostic output
+/alarm
+/downloads/
+/images/
+/logs/
+/analysis/validation/
+__pycache__/
+*.py[cod]
+*.ko
+
+# Host-specific migration verification
+/migration-verification.json

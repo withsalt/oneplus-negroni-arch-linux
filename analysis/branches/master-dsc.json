@@ -1,0 +1,101 @@
+{
+  "sha": "2913b2abdbbf86c1776e29ebee886081d5b41b15",
+  "node_id": "C_kwDOQbHa-9oAKDI5MTNiMmFiZGJiZjg2YzE3NzZlMjllYmVlODg2MDgxZDViNDFiMTU",
+  "commit": {
+    "author": {
+      "name": "Nazar Kompanets",
+      "email": "xlie7669@gmail.com",
+      "date": "2026-09-08T18:00:26Z"
+    },
+    "committer": {
+      "name": "Nazar Kompanets",
+      "email": "xlie7669@gmail.com",
+      "date": "2026-09-13T20:06:29Z"
+    },
+    "message": "drm/msm/dpu/ add normal support for DSC 1.2 color scheme",
+    "tree": {
+      "sha": "3aadeec19f6ce3bc538fac9cbe81f036b5f1b732",
+      "url": "https://api.github.com/repos/Xlie-Electronic-Customs/linux/git/trees/3aadeec19f6ce3bc538fac9cbe81f036b5f1b732"
+    },
+    "url": "https://api.github.com/repos/Xlie-Electronic-Customs/linux/git/commits/2913b2abdbbf86c1776e29ebee886081d5b41b15",
+    "comment_count": 0,
+    "verification": {
+      "verified": false,
+      "reason": "unsigned",
+      "signature": null,
+      "payload": null,
+      "verified_at": null
+    }
+  },
+  "url": "https://api.github.com/repos/Xlie-Electronic-Customs/linux/commits/2913b2abdbbf86c1776e29ebee886081d5b41b15",
+  "html_url": "https://github.com/Xlie-Electronic-Customs/linux/commit/2913b2abdbbf86c1776e29ebee886081d5b41b15",
+  "comments_url": "https://api.github.com/repos/Xlie-Electronic-Customs/linux/commits/2913b2abdbbf86c1776e29ebee886081d5b41b15/comments",
+  "author": {
+    "login": "ZXlieC",
+    "id": 209260556,
+    "node_id": "U_kgDODHkQDA",
+    "avatar_url": "https://avatars.githubusercontent.com/u/209260556?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/ZXlieC",
+    "html_url": "https://github.com/ZXlieC",
+    "followers_url": "https://api.github.com/users/ZXlieC/followers",
+    "following_url": "https://api.github.com/users/ZXlieC/following{/other_user}",
+    "gists_url": "https://api.github.com/users/ZXlieC/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/ZXlieC/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/ZXlieC/subscriptions",
+    "organizations_url": "https://api.github.com/users/ZXlieC/orgs",
+    "repos_url": "https://api.github.com/users/ZXlieC/repos",
+    "events_url": "https://api.github.com/users/ZXlieC/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/ZXlieC/received_events",
+    "type": "User",
+    "user_view_type": "public",
+    "site_admin": false
+  },
+  "committer": {
+    "login": "ZXlieC",
+    "id": 209260556,
+    "node_id": "U_kgDODHkQDA",
+    "avatar_url": "https://avatars.githubusercontent.com/u/209260556?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/ZXlieC",
+    "html_url": "https://github.com/ZXlieC",
+    "followers_url": "https://api.github.com/users/ZXlieC/followers",
+    "following_url": "https://api.github.com/users/ZXlieC/following{/other_user}",
+    "gists_url": "https://api.github.com/users/ZXlieC/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/ZXlieC/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/ZXlieC/subscriptions",
+    "organizations_url": "https://api.github.com/users/ZXlieC/orgs",
+    "repos_url": "https://api.github.com/users/ZXlieC/repos",
+    "events_url": "https://api.github.com/users/ZXlieC/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/ZXlieC/received_events",
+    "type": "User",
+    "user_view_type": "public",
+    "site_admin": false
+  },
+  "parents": [
+    {
+      "sha": "7ec624494d3f4aaf73507cccbe66a2dec8fbae3e",
+      "url": "https://api.github.com/repos/Xlie-Electronic-Customs/linux/commits/7ec624494d3f4aaf73507cccbe66a2dec8fbae3e",
+      "html_url": "https://github.com/Xlie-Electronic-Customs/linux/commit/7ec624494d3f4aaf73507cccbe66a2dec8fbae3e"
+    }
+  ],
+  "stats": {
+    "total": 17,
+    "additions": 14,
+    "deletions": 3
+  },
+  "files": [
+    {
+      "sha": "00c4058d90367c4c08a1aa5869f230a204ed821a",
+      "filename": "drivers/gpu/drm/msm/dsi/dsi_host.c",
+      "status": "modified",
+      "additions": 14,
+      "deletions": 3,
+      "changes": 17,
+      "blob_url": "https://github.com/Xlie-Electronic-Customs/linux/blob/2913b2abdbbf86c1776e29ebee886081d5b41b15/drivers%2Fgpu%2Fdrm%2Fmsm%2Fdsi%2Fdsi_host.c",
+      "raw_url": "https://github.com/Xlie-Electronic-Customs/linux/raw/2913b2abdbbf86c1776e29ebee886081d5b41b15/drivers%2Fgpu%2Fdrm%2Fmsm%2Fdsi%2Fdsi_host.c",
+      "contents_url": "https://api.github.com/repos/Xlie-Electronic-Customs/linux/contents/drivers%2Fgpu%2Fdrm%2Fmsm%2Fdsi%2Fdsi_host.c?ref=2913b2abdbbf86c1776e29ebee886081d5b41b15",
+      "patch": "@@ -1874,6 +1874,7 @@ static int dsi_host_parse_lane_data(struct msm_dsi_host *msm_host,\n static int dsi_populate_dsc_params(struct msm_dsi_host *msm_host, struct drm_dsc_config *dsc)\n {\n \tint ret;\n+\tenum drm_dsc_params_type type;\n \n \tif (dsc->bits_per_pixel & 0xf) {\n \t\tDRM_DEV_ERROR(&msm_host->pdev->dev, \"DSI does not support fractional bits_per_pixel\\n\");\n@@ -1898,14 +1899,24 @@ static int dsi_populate_dsc_params(struct msm_dsi_host *msm_host, struct drm_dsc\n \t}\n \n \tdsc->simple_422 = 0;\n-\tdsc->convert_rgb = 1;\n+\tdsc->convert_rgb = !(dsc->native_422 | dsc->native_420);\n \tdsc->vbr_enable = 0;\n \n \tdrm_dsc_set_const_params(dsc);\n \tdrm_dsc_set_rc_buf_thresh(dsc);\n \n-\t/* DPU supports only pre-SCR panels */\n-\tret = drm_dsc_setup_rc_params(dsc, DRM_DSC_1_1_PRE_SCR);\n+\tif (dsc->dsc_version_minor == 0x2) {\n+\t\tif (dsc->native_422)\n+\t\t\ttype = DRM_DSC_1_2_422;\n+\t\telse if (dsc->native_420)\n+\t\t\ttype = DRM_DSC_1_2_420;\n+\t\telse\n+\t\t\ttype = DRM_DSC_1_2_444;\n+\t}\n+\telse\n+\t\ttype = DRM_DSC_1_1_PRE_SCR;\n+\n+\tret = drm_dsc_setup_rc_params(dsc, type);\n \tif (ret) {\n \t\tDRM_DEV_ERROR(&msm_host->pdev->dev, \"could not find DSC RC parameters\\n\");\n \t\treturn ret;"
+    }
+  ]
+}

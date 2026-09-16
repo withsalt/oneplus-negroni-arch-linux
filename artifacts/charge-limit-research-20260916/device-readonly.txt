@@ -1,0 +1,94 @@
+2026-09-16T11:06:05+08:00
+Linux oneplus-negroni 7.3.0-rc2-sm8450+ #1 SMP PREEMPT Tue Sep 15 21:06:10 CST 2026 aarch64 GNU/Linux
+filename:       /lib/modules/7.3.0-rc2-sm8450+/kernel/drivers/power/supply/qcom_battmgr.ko
+license:        GPL
+description:    Qualcomm PMIC GLINK battery manager driver
+alias:          auxiliary:pmic_glink.power-supply
+depends:        
+intree:         Y
+name:           qcom_battmgr
+vermagic:       7.3.0-rc2-sm8450+ SMP preempt mod_unload aarch64
+88936815a1d73307096e91f1a34157e55570e733bceb2ca7807ca2568301cd84  /usr/lib/modules/7.3.0-rc2-sm8450+/kernel/drivers/power/supply/qcom_battmgr.ko
+total 0
+-r--r--r-- 1 root root 4096 Jan  3  1970 capacity
+-r--r--r-- 1 root root 4096 Sep 16 10:40 charge_counter
+-r--r--r-- 1 root root 4096 Jan  3  1970 charge_full
+-r--r--r-- 1 root root 4096 Sep 16 10:40 charge_full_design
+-r--r--r-- 1 root root 4096 Sep 16 10:40 charge_type
+-r--r--r-- 1 root root 4096 Jan  3  1970 current_now
+-r--r--r-- 1 root root 4096 Jan  3  1970 cycle_count
+lrwxrwxrwx 1 root root    0 Sep 16 10:26 device -> ../../../pmic_glink.power-supply.0
+drwxr-xr-x 2 root root    0 Jan  3  1970 extensions
+-r--r--r-- 1 root root 4096 Sep 16 10:40 health
+drwxr-xr-x 3 root root    0 Sep 16 10:20 hwmon37
+-r--r--r-- 1 root root 4096 Sep 16 10:40 internal_resistance
+-r--r--r-- 1 root root 4096 Jan  3  1970 model_name
+lrwxrwxrwx 1 root root    0 Sep 16 10:40 of_node -> ../../../../../../firmware/devicetree/base/pmic-glink
+drwxr-xr-x 2 root root    0 Jan  3  1970 power
+-r--r--r-- 1 root root 4096 Jan  3  1970 power_now
+-r--r--r-- 1 root root 4096 Jan  3  1970 present
+-r--r--r-- 1 root root 4096 Sep 16 10:40 state_of_health
+-r--r--r-- 1 root root 4096 Jan  3  1970 status
+lrwxrwxrwx 1 root root    0 Jan  3  1970 subsystem -> ../../../../../../class/power_supply
+-r--r--r-- 1 root root 4096 Jan  3  1970 technology
+-r--r--r-- 1 root root 4096 Jan  3  1970 temp
+-r--r--r-- 1 root root 4096 Sep 16 10:40 time_to_empty_avg
+-r--r--r-- 1 root root 4096 Sep 16 10:40 time_to_full_avg
+-r--r--r-- 1 root root 4096 Jan  3  1970 type
+-rw-r--r-- 1 root root 4096 Jan  3  1970 uevent
+-r--r--r-- 1 root root 4096 Sep 16 10:40 voltage_max
+-r--r--r-- 1 root root 4096 Jan  3  1970 voltage_now
+-r--r--r-- 1 root root 4096 Sep 16 10:40 voltage_ocv
+-r--r--r-- 1 root root 4096 Sep 16 10:40 waiting_for_supplier
+drwxr-xr-x 2 root root    0 Sep 16 10:20 wakeup7
+DEVTYPE=power_supply
+OF_NAME=pmic-glink
+OF_FULLNAME=/pmic-glink
+OF_COMPATIBLE_0=qcom,sm8450-pmic-glink
+OF_COMPATIBLE_1=qcom,pmic-glink
+OF_COMPATIBLE_N=2
+POWER_SUPPLY_NAME=qcom-battmgr-bat
+POWER_SUPPLY_TYPE=Battery
+POWER_SUPPLY_STATUS=Charging
+POWER_SUPPLY_CHARGE_TYPE=Standard
+POWER_SUPPLY_HEALTH=Good
+POWER_SUPPLY_PRESENT=1
+POWER_SUPPLY_TECHNOLOGY=Li-ion
+POWER_SUPPLY_CYCLE_COUNT=5
+POWER_SUPPLY_VOLTAGE_MAX=8900000
+POWER_SUPPLY_VOLTAGE_NOW=4347000
+POWER_SUPPLY_VOLTAGE_OCV=4347000
+POWER_SUPPLY_CURRENT_NOW=5000
+POWER_SUPPLY_POWER_NOW=-18896409
+POWER_SUPPLY_CHARGE_COUNTER=1641
+POWER_SUPPLY_CAPACITY=100
+POWER_SUPPLY_TEMP=334
+POWER_SUPPLY_TIME_TO_EMPTY_AVG=3600
+POWER_SUPPLY_TIME_TO_FULL_AVG=1800
+POWER_SUPPLY_TYPE=Battery
+POWER_SUPPLY_INTERNAL_RESISTANCE=0
+POWER_SUPPLY_STATE_OF_HEALTH=63
+POWER_SUPPLY_MODEL_NAME=QCOMMBATT01
+DEVTYPE=power_supply
+OF_NAME=pmic-glink
+OF_FULLNAME=/pmic-glink
+OF_COMPATIBLE_0=qcom,sm8450-pmic-glink
+OF_COMPATIBLE_1=qcom,pmic-glink
+OF_COMPATIBLE_N=2
+POWER_SUPPLY_NAME=qcom-battmgr-usb
+POWER_SUPPLY_TYPE=USB
+POWER_SUPPLY_ONLINE=1
+POWER_SUPPLY_VOLTAGE_MAX=9000000
+POWER_SUPPLY_VOLTAGE_NOW=8985000
+POWER_SUPPLY_CURRENT_MAX=3000000
+POWER_SUPPLY_CURRENT_NOW=381000
+POWER_SUPPLY_INPUT_CURRENT_LIMIT=3000000
+POWER_SUPPLY_TYPE=USB
+POWER_SUPPLY_USB_TYPE=Unknown SDP DCP CDP ACA C [PD] PD_DRP PD_PPS BrickID
+freeze mem
+WHO            UID USER PID  COMM           WHAT  WHY                                       MODE
+ModemManager   0   root 2678 ModemManager   sleep ModemManager needs to reset devices       delay
+NetworkManager 0   root 2492 NetworkManager sleep NetworkManager needs to turn off networks delay
+UPower         0   root 2646 upowerd        sleep Pause device polling                      delay
+
+3 inhibitors listed.

@@ -1,0 +1,5 @@
+Source: https://wiki.postmarketos.org/wiki/OnePlus_10_Pro_(oneplus-negroni)
+Retrieved: 2026-09-16 Asia/Shanghai
+
+OTG Vbus works when the ADSP remote processor up! USB 2.0 has some issues after connecting charger and with OTG adapters (descriptor error). With USB hub it work`s well(tested on Ugreen CM888)! Power Delivery charging with USB hub works! But if you wan`t get works USB 2.0 first one hub must be connected to phone and get powered with usb otg vbus and only than connect external charger.
+

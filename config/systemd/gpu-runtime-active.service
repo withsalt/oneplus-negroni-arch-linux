@@ -1,0 +1,11 @@
+[Unit]
+Description=Keep Adreno GPU active to avoid slow display wake
+Before=display-manager.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/sh -c 'printf on > /sys/bus/platform/devices/3d00000.gpu/power/control'
+RemainAfterExit=yes
+
+[Install]
+WantedBy=graphical.target

@@ -1,0 +1,19 @@
+[Unit]
+Description=Maintain OnePlus Negroni battery charge limit
+After=local-fs.target systemd-udevd.service systemd-logind.service
+Wants=systemd-logind.service
+StartLimitIntervalSec=0
+
+[Service]
+Type=notify
+NotifyAccess=all
+ExecStart=/usr/bin/systemd-inhibit --what=sleep --mode=block --who=negroni-charge-limit "--why=Battery charge limit requires SOC monitoring" /usr/local/libexec/negroni-charge-limit run
+ExecStopPost=/usr/local/libexec/negroni-charge-limit disable
+TimeoutStartSec=75
+TimeoutStopSec=20
+WatchdogSec=30
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target

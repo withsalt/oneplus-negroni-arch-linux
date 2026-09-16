@@ -1,0 +1,477 @@
+SSH failure: TIMEOUT
+ 
+
+SAMPLE=0 uptime=71.25
+status=Charging
+current_now=233000
+capacity=94
+usb_online=1
+UPower battery_qcom_battmgr_bat
+u 1
+s "battery-full-charging-symbolic"
+UPower DisplayDevice
+u 1
+s "battery-full-charging-symbolic"
+
+SAMPLE=1 uptime=76.42
+status=Charging
+current_now=232000
+capacity=94
+usb_online=1
+UPower battery_qcom_battmgr_bat
+u 1
+s "battery-full-charging-symbolic"
+UPower DisplayDevice
+u 1
+s "battery-full-charging-symbolic"
+
+SAMPLE=2 uptime=80.01
+status=Charging
+current_now=232000
+capacity=94
+usb_online=1
+UPower battery_qcom_battmgr_bat
+u 1
+s "battery-full-charging-symbolic"
+UPower DisplayDevice
+u 1
+s "battery-full-charging-symbolic"
+
+SAMPLE=3 uptime=83.80
+status=Charging
+current_now=231000
+capacity=94
+usb_online=1
+UPower battery_qcom_battmgr_bat
+u 1
+s "battery-full-charging-symbolic"
+UPower DisplayDevice
+u 1
+s "battery-full-charging-symbolic"
+
+SAMPLE=4 uptime=87.48
+status=Discharging
+current_now=-271000
+capacity=94
+usb_online=0
+UPower battery_qcom_battmgr_bat
+u 2
+s "battery-full-symbolic"
+UPower DisplayDevice
+u 2
+s "battery-full-symbolic"
+
+SAMPLE=5 uptime=109.15
+status=Charging
+current_now=253000
+capacity=94
+usb_online=1
+UPower battery_qcom_battmgr_bat
+u 1
+s "battery-full-charging-symbolic"
+UPower DisplayDevice
+u 1
+s "battery-full-charging-symbolic"
+
+SAMPLE=6 uptime=131.16
+status=Charging
+current_now=245000
+capacity=94
+usb_online=1
+UPower battery_qcom_battmgr_bat
+u 1
+s "battery-full-charging-symbolic"
+UPower DisplayDevice
+u 1
+s "battery-full-charging-symbolic"
+
+SAMPLE=7 uptime=154.04
+status=Charging
+current_now=236000
+capacity=94
+usb_online=1
+UPower battery_qcom_battmgr_bat
+u 1
+s "battery-full-charging-symbolic"
+UPower DisplayDevice
+u 1
+s "battery-full-charging-symbolic"
+
+SAMPLE=8 uptime=157.84
+status=Charging
+current_now=236000
+capacity=94
+usb_online=1
+UPower battery_qcom_battmgr_bat
+u 1
+s "battery-full-charging-symbolic"
+UPower DisplayDevice
+u 1
+s "battery-full-charging-symbolic"
+
+SAMPLE=9 uptime=161.63
+status=Charging
+current_now=236000
+capacity=94
+usb_online=1
+UPower battery_qcom_battmgr_bat
+u 1
+s "battery-full-charging-symbolic"
+UPower DisplayDevice
+u 1
+s "battery-full-charging-symbolic"
+
+SAMPLE=10 uptime=165.40
+status=Charging
+current_now=234000
+capacity=94
+usb_online=1
+UPower battery_qcom_battmgr_bat
+u 1
+s "battery-full-charging-symbolic"
+UPower DisplayDevice
+u 1
+s "battery-full-charging-symbolic"
+
+SAMPLE=11 uptime=169.61
+status=Charging
+current_now=233000
+capacity=94
+usb_online=1
+UPower battery_qcom_battmgr_bat
+u 1
+s "battery-full-charging-symbolic"
+UPower DisplayDevice
+u 1
+s "battery-full-charging-symbolic"
+
+SAMPLE=12 uptime=173.52
+status=Charging
+current_now=232000
+capacity=94
+usb_online=1
+UPower battery_qcom_battmgr_bat
+u 1
+s "battery-full-charging-symbolic"
+UPower DisplayDevice
+u 1
+s "battery-full-charging-symbolic"
+
+SAMPLE=13 uptime=177.31
+status=Charging
+current_now=230000
+capacity=94
+usb_online=1
+UPower battery_qcom_battmgr_bat
+u 1
+s "battery-full-charging-symbolic"
+UPower DisplayDevice
+u 1
+s "battery-full-charging-symbolic"
+
+SAMPLE=14 uptime=181.10
+status=Charging
+current_now=230000
+capacity=94
+usb_online=1
+UPower battery_qcom_battmgr_bat
+u 1
+s "battery-full-charging-symbolic"
+UPower DisplayDevice
+u 1
+s "battery-full-charging-symbolic"
+
+SAMPLE=15 uptime=187.42
+status=Charging
+current_now=229000
+capacity=94
+usb_online=1
+UPower battery_qcom_battmgr_bat
+u 1
+s "battery-full-charging-symbolic"
+UPower DisplayDevice
+u 1
+s "battery-full-charging-symbolic"
+
+SAMPLE=16 uptime=191.21
+status=Charging
+current_now=228000
+capacity=94
+usb_online=1
+UPower battery_qcom_battmgr_bat
+u 1
+s "battery-full-charging-symbolic"
+UPower DisplayDevice
+u 1
+s "battery-full-charging-symbolic"
+
+SAMPLE=17 uptime=194.99
+status=Charging
+current_now=227000
+capacity=94
+usb_online=1
+UPower battery_qcom_battmgr_bat
+u 1
+s "battery-full-charging-symbolic"
+UPower DisplayDevice
+u 1
+s "battery-full-charging-symbolic"
+
+SAMPLE=18 uptime=198.77
+status=Charging
+current_now=227000
+capacity=94
+usb_online=1
+UPower battery_qcom_battmgr_bat
+u 1
+s "battery-full-charging-symbolic"
+UPower DisplayDevice
+u 1
+s "battery-full-charging-symbolic"
+
+SAMPLE=19 uptime=202.16
+status=Charging
+current_now=227000
+capacity=94
+usb_online=1
+UPower battery_qcom_battmgr_bat
+u 1
+s "battery-full-charging-symbolic"
+UPower DisplayDevice
+u 1
+s "battery-full-charging-symbolic"
+
+SAMPLE=20 uptime=205.97
+status=Charging
+current_now=225000
+capacity=94
+usb_online=1
+UPower battery_qcom_battmgr_bat
+u 1
+s "battery-full-charging-symbolic"
+UPower DisplayDevice
+u 1
+s "battery-full-charging-symbolic"
+
+SAMPLE=21 uptime=209.76
+status=Charging
+current_now=224000
+capacity=94
+usb_online=1
+UPower battery_qcom_battmgr_bat
+u 1
+s "battery-full-charging-symbolic"
+UPower DisplayDevice
+u 1
+s "battery-full-charging-symbolic"
+
+SAMPLE=22 uptime=213.54
+status=Charging
+current_now=223000
+capacity=94
+usb_online=1
+UPower battery_qcom_battmgr_bat
+u 1
+s "battery-full-charging-symbolic"
+UPower DisplayDevice
+u 1
+s "battery-full-charging-symbolic"
+
+SAMPLE=23 uptime=217.33
+status=Charging
+current_now=223000
+capacity=94
+usb_online=1
+UPower battery_qcom_battmgr_bat
+u 1
+s "battery-full-charging-symbolic"
+UPower DisplayDevice
+u 1
+s "battery-full-charging-symbolic"
+
+SAMPLE=24 uptime=221.11
+status=Charging
+current_now=223000
+capacity=94
+usb_online=1
+UPower battery_qcom_battmgr_bat
+u 1
+s "battery-full-charging-symbolic"
+UPower DisplayDevice
+u 1
+s "battery-full-charging-symbolic"
+
+SAMPLE=25 uptime=224.90
+status=Charging
+current_now=222000
+capacity=94
+usb_online=1
+UPower battery_qcom_battmgr_bat
+u 1
+s "battery-full-charging-symbolic"
+UPower DisplayDevice
+u 1
+s "battery-full-charging-symbolic"
+
+SAMPLE=26 uptime=228.70
+status=Charging
+current_now=221000
+capacity=94
+usb_online=1
+UPower battery_qcom_battmgr_bat
+u 1
+s "battery-full-charging-symbolic"
+UPower DisplayDevice
+u 1
+s "battery-full-charging-symbolic"
+
+SAMPLE=27 uptime=232.30
+status=Charging
+current_now=220000
+capacity=94
+usb_online=1
+UPower battery_qcom_battmgr_bat
+u 1
+s "battery-full-charging-symbolic"
+UPower DisplayDevice
+u 1
+s "battery-full-charging-symbolic"
+
+SAMPLE=28 uptime=236.09
+status=Charging
+current_now=220000
+capacity=94
+usb_online=1
+UPower battery_qcom_battmgr_bat
+u 1
+s "battery-full-charging-symbolic"
+UPower DisplayDevice
+u 1
+s "battery-full-charging-symbolic"
+
+SAMPLE=29 uptime=239.88
+status=Charging
+current_now=219000
+capacity=94
+usb_online=1
+UPower battery_qcom_battmgr_bat
+u 1
+s "battery-full-charging-symbolic"
+UPower DisplayDevice
+u 1
+s "battery-full-charging-symbolic"
+
+SAMPLE=30 uptime=243.67
+status=Charging
+current_now=219000
+capacity=94
+usb_online=1
+UPower battery_qcom_battmgr_bat
+u 1
+s "battery-full-charging-symbolic"
+UPower DisplayDevice
+u 1
+s "battery-full-charging-symbolic"
+
+SAMPLE=31 uptime=247.48
+status=Charging
+current_now=219000
+capacity=94
+usb_online=1
+UPower battery_qcom_battmgr_bat
+u 1
+s "battery-full-charging-symbolic"
+UPower DisplayDevice
+u 1
+s "battery-full-charging-symbolic"
+
+SAMPLE=32 uptime=253.47
+status=Charging
+current_now=218000
+capacity=94
+usb_online=1
+UPower battery_qcom_battmgr_bat
+u 1
+s "battery-full-charging-symbolic"
+UPower DisplayDevice
+u 1
+s "battery-full-charging-symbolic"
+
+SAMPLE=33 uptime=257.26
+status=Charging
+current_now=216000
+capacity=94
+usb_online=1
+UPower battery_qcom_battmgr_bat
+u 1
+s "battery-full-charging-symbolic"
+UPower DisplayDevice
+u 1
+s "battery-full-charging-symbolic"
+
+SAMPLE=34 uptime=261.04
+status=Charging
+current_now=216000
+capacity=94
+usb_online=1
+UPower battery_qcom_battmgr_bat
+u 1
+s "battery-full-charging-symbolic"
+UPower DisplayDevice
+u 1
+s "battery-full-charging-symbolic"
+
+SAMPLE=35 uptime=264.82
+status=Charging
+current_now=216000
+capacity=94
+usb_online=1
+UPower battery_qcom_battmgr_bat
+u 1
+s "battery-full-charging-symbolic"
+UPower DisplayDevice
+u 1
+s "battery-full-charging-symbolic"
+
+SAMPLE=36 uptime=268.63
+status=Charging
+current_now=215000
+capacity=94
+usb_online=1
+UPower battery_qcom_battmgr_bat
+u 1
+s "battery-full-charging-symbolic"
+UPower DisplayDevice
+u 1
+s "battery-full-charging-symbolic"
+
+SAMPLE=37 uptime=272.42
+status=Charging
+current_now=214000
+capacity=94
+usb_online=1
+UPower battery_qcom_battmgr_bat
+u 1
+s "battery-full-charging-symbolic"
+UPower DisplayDevice
+u 1
+s "battery-full-charging-symbolic"
+
+SAMPLE=38 uptime=276.21
+status=Charging
+current_now=214000
+capacity=95
+usb_online=1
+UPower battery_qcom_battmgr_bat
+u 1
+s "battery-full-charging-symbolic"
+UPower DisplayDevice
+u 1
+s "battery-full-charging-symbolic"
+
+SAMPLE=39 uptime=280.00
+status=Charging
+current_now=215000
+capacity=95
+usb_online=
+

@@ -1,0 +1,59 @@
+2026-09-16T03:13:13+08:00
+
+== Regmap directories ==
+0-00
+0-01
+0-02
+0-03
+0-04
+0-07
+100000.clock-controller
+19200000.system-cache-controller-llcc0_base
+19200000.system-cache-controller-llcc1_base
+19200000.system-cache-controller-llcc2_base
+19200000.system-cache-controller-llcc3_base
+19200000.system-cache-controller-llcc_broadcast_base
+1f40000.hwlock
+2-0034
+2-0035
+3200000.codec-rx_macro
+3220000.codec-tx_macro
+33f0000.codec-va_macro
+3d90000.clock-controller
+aaf0000.clock-controller
+ade0000.clock-controller
+af00000.clock-controller
+c263000.thermal-sensor-srot
+c263000.thermal-sensor-tm
+c265000.thermal-sensor-srot
+c265000.thermal-sensor-tm
+sdw:3:0:0217:010d:00:3-wcd938x_csr
+
+== FSA4480 binding ==
+lrwxrwxrwx 1 root root 0 Sep 11 20:13 /sys/bus/i2c/devices/3-0042 -> ../../../devices/platform/soc@0/ac0000.geniqup/a98000.i2c/i2c-3/3-0042
+
+== Type-C alternate modes ==
+/sys/class/typec/port0-partner/device/power_role
+source [sink]
+/sys/class/typec/port0-partner/device/data_role
+host [device]
+/sys/class/typec/port0/power_role
+source [sink]
+/sys/class/typec/port0/data_role
+host [device]
+
+== FSA4480 register access availability ==
+/usr/bin/i2cget
+/usr/bin/i2ctransfer
+crw-rw---- 1 root i2c 89, 0 Sep 15 23:47 /dev/i2c-0
+crw-rw---- 1 root i2c 89, 1 Sep 15 23:47 /dev/i2c-1
+crw-rw---- 1 root i2c 89, 2 Jan  2  1970 /dev/i2c-2
+crw-rw---- 1 root i2c 89, 3 Sep 15 23:47 /dev/i2c-3
+crw-rw---- 1 root i2c 89, 4 Sep 15 23:47 /dev/i2c-4
+crw-rw---- 1 root i2c 89, 5 Jan  2  1970 /dev/i2c-5
+crw-rw---- 1 root i2c 89, 6 Jan  2  1970 /dev/i2c-6
+
+== Power attributes ==
+host
+host [device]
+source [sink]

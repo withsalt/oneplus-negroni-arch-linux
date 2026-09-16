@@ -1,0 +1,249 @@
+oneplus@192.168.188.91's  
+/sys/power/suspend_stats/fail: 0
+/sys/power/suspend_stats/failed_freeze: 0
+/sys/power/suspend_stats/failed_prepare: 0
+/sys/power/suspend_stats/failed_resume: 0
+/sys/power/suspend_stats/failed_resume_early: 0
+/sys/power/suspend_stats/failed_resume_noirq: 0
+/sys/power/suspend_stats/failed_suspend: 0
+/sys/power/suspend_stats/failed_suspend_late: 0
+/sys/power/suspend_stats/failed_suspend_noirq: 0
+/sys/power/suspend_stats/last_failed_dev: 
+/sys/power/suspend_stats/last_failed_errno: 0
+/sys/power/suspend_stats/last_failed_step: 
+/sys/power/suspend_stats/success: 0
+I: Bus=0000 Vendor=0000 Product=0000 Version=0000
+N: Name="pmic_pwrkey"
+P: Phys=pmic_pwrkey/input0
+S: Sysfs=/devices/platform/soc@0/c400000.spmi/spmi-0/0-00/c400000.spmi:pmic@0:pon@1300/c400000.spmi:pmic@0:pon@1300:pwrkey/input/input0
+U: Uniq=
+H: Handlers=kbd event0 
+B: PROP=0
+B: EV=3
+B: KEY=10000000000000 0
+
+I: Bus=0000 Vendor=0000 Product=0000 Version=0000
+N: Name="pmic_resin"
+P: Phys=pmic_resin/input0
+S: Sysfs=/devices/platform/soc@0/c400000.spmi/spmi-0/0-00/c400000.spmi:pmic@0:pon@1300/c400000.spmi:pmic@0:pon@1300:resin/input/input1
+U: Uniq=
+H: Handlers=kbd event1 
+B: PROP=0
+B: EV=3
+B: KEY=8000000000000 0
+
+I: Bus=0018 Vendor=0901 Product=0902 Version=0000
+N: Name="synaptics_common"
+P: Phys=
+S: Sysfs=/devices/platform/soc@0/9c0000.geniqup/990000.i2c/i2c-0/0-004b/input/input2
+U: Uniq=
+H: Handlers=event2 
+B: PROP=2
+B: EV=b
+B: KEY=420 0 0 0 0 0
+B: ABS=2e1800200000000
+
+I: Bus=0000 Vendor=0000 Product=0000 Version=0000
+N: Name="synaptics_common_kpd"
+P: Phys=
+S: Sysfs=/devices/platform/soc@0/9c0000.geniqup/990000.i2c/i2c-0/0-004b/input/input3
+U: Uniq=
+H: Handlers=event3 
+B: PROP=0
+B: EV=3
+B: KEY=0
+
+I: Bus=0019 Vendor=0001 Product=0001 Version=0100
+N: Name="gpio-keys"
+P: Phys=gpio-keys/input0
+S: Sysfs=/devices/platform/gpio-keys/input/input4
+U: Uniq=
+H: Handlers=kbd event4 
+B: PROP=0
+B: EV=3
+B: KEY=4000000000000 0
+
+0
+128
+ae01000.display-controller
+bridges
+client-1
+client-10
+client-11
+client-13
+client-14
+client-15
+client-16
+client-17
+client-8
+devcd1
+disabled
+connected
+disabled
+Off
+1080x2412
+1080x2412
+1080x2412
+/sys/bus/platform/devices/3d00000.gpu
+auto
+suspending
+465949
+372684
+66
+/sys/bus/platform/devices/3d6a000.gmu
+auto
+active
+465478
+394237
+/sys/bus/platform/devices/ae01000.display-controller
+auto
+suspended
+784389
+75301
+cat: /sys/bus/platform/devices/3d6a000.gmu/power/autosuspend_delay_ms: Input/output error
+cat: /sys/bus/platform/devices/ae01000.display-controller/power/autosuspend_delay_ms: Input/output error
+[Migration]
+MigratedProfilesToPlasma6=powerdevilrc
+[Desktops]
+Id_1=ef41a087-1c3a-4057-953e-db6ac2686a28
+Number=1
+Rows=1
+
+[Tiling][ef41a087-1c3a-4057-953e-db6ac2686a28][0a81af02-5017-4874-bbdb-0e4c9e6b9a4b]
+padding=4
+tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
+
+[Xwayland]
+Scale=2.6
+cat: /home/oneplus/.config/powerdevilrc: No such file or directory
+/usr/bin/python3
+/usr/bin/kscreen-doctor
+/sys/kernel/debug/dri/0/:
+DP-1
+DSI-1
+Writeback-1
+clients
+crtc-0
+crtc-1
+crtc-2
+debug
+devfreq
+disable_err_irq
+encoder-0
+encoder-1
+encoder-2
+fb
+framebuffer
+gem
+gem_names
+gpu
+hangcheck_period_ms
+hangrd
+internal_clients
+kms
+mm
+name
+rd
+shrink
+stall_reenable_time_us
+state
+
+/sys/kernel/debug/dri/128/:
+DP-1
+DSI-1
+Writeback-1
+clients
+crtc-0
+crtc-1
+crtc-2
+debug
+devfreq
+disable_err_irq
+encoder-0
+encoder-1
+encoder-2
+fb
+framebuffer
+gem
+gem_names
+gpu
+hangcheck_period_ms
+hangrd
+internal_clients
+kms
+mm
+name
+rd
+shrink
+stall_reenable_time_us
+state
+
+/sys/kernel/debug/dri/ae01000.display-controller/:
+DP-1
+DSI-1
+Writeback-1
+clients
+crtc-0
+crtc-1
+crtc-2
+debug
+devfreq
+disable_err_irq
+encoder-0
+encoder-1
+encoder-2
+fb
+framebuffer
+gem
+gem_names
+gpu
+hangcheck_period_ms
+hangrd
+internal_clients
+kms
+mm
+name
+rd
+shrink
+stall_reenable_time_us
+state
+
+/sys/kernel/debug/dri/client-1/:
+device
+proc_info
+
+/sys/kernel/debug/dri/client-10/:
+device
+proc_info
+
+/sys/kernel/debug/dri/client-11/:
+device
+proc_info
+
+/sys/kernel/debug/dri/client-13/:
+device
+proc_info
+
+/sys/kernel/debug/dri/client-14/:
+device
+proc_info
+
+/sys/kernel/debug/dri/client-15/:
+device
+proc_info
+
+/sys/kernel/debug/dri/client-16/:
+device
+proc_info
+
+/sys/kernel/debug/dri/client-17/:
+device
+proc_info
+
+/sys/kernel/debug/dri/client-8/:
+device
+proc_info
+ls: cannot access '/sys/kernel/tracing/events/power': No such file or directory
+ls: cannot access '/sys/kernel/tracing/events/input': No such file or directory
+ls: cannot access '/sys/kernel/tracing/events/drm': No such file or directory
+ls: cannot access '/sys/kernel/tracing/events/msm': No such file or directory

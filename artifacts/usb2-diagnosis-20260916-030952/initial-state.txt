@@ -1,0 +1,67 @@
+2026-09-16T03:09:52+08:00
+Linux oneplus-negroni 7.3.0-rc2-sm8450+ #1 SMP PREEMPT Tue Sep 15 21:06:10 CST 2026 aarch64 GNU/Linux
+ 03:09:52 up  3:14,  4 users,  load average: 0.09, 0.08, 0.08
+uid=1000(oneplus) gid=1000(oneplus) groups=1000(oneplus),983(video),992(input),995(audio),998(wheel)
+lo               UNKNOWN        127.0.0.1/8 ::1/128 
+wlp1s0           UP             192.168.188.91/24 240e:39b:ed0:44e1:2a5f:4083:3e76:b3f4/64 fe80::3732:eb2f:63b3:3fe7/64 
+rmnet_ipa0       DOWN           
+I: Bus=0000 Vendor=0000 Product=0000 Version=0000
+N: Name="pmic_pwrkey"
+P: Phys=pmic_pwrkey/input0
+S: Sysfs=/devices/platform/soc@0/c400000.spmi/spmi-0/0-00/c400000.spmi:pmic@0:pon@1300/c400000.spmi:pmic@0:pon@1300:pwrkey/input/input0
+U: Uniq=
+H: Handlers=kbd event0 
+B: PROP=0
+B: EV=3
+B: KEY=10000000000000 0
+
+I: Bus=0000 Vendor=0000 Product=0000 Version=0000
+N: Name="pmic_resin"
+P: Phys=pmic_resin/input0
+S: Sysfs=/devices/platform/soc@0/c400000.spmi/spmi-0/0-00/c400000.spmi:pmic@0:pon@1300/c400000.spmi:pmic@0:pon@1300:resin/input/input1
+U: Uniq=
+H: Handlers=kbd event1 
+B: PROP=0
+B: EV=3
+B: KEY=8000000000000 0
+
+I: Bus=0018 Vendor=0901 Product=0902 Version=0000
+N: Name="synaptics_common"
+P: Phys=
+S: Sysfs=/devices/platform/soc@0/9c0000.geniqup/990000.i2c/i2c-0/0-004b/input/input2
+U: Uniq=
+H: Handlers=event2 
+B: PROP=2
+B: EV=b
+B: KEY=420 0 0 0 0 0
+B: ABS=2e1800200000000
+
+I: Bus=0000 Vendor=0000 Product=0000 Version=0000
+N: Name="synaptics_common_kpd"
+P: Phys=
+S: Sysfs=/devices/platform/soc@0/9c0000.geniqup/990000.i2c/i2c-0/0-004b/input/input3
+U: Uniq=
+H: Handlers=event3 
+B: PROP=0
+B: EV=3
+B: KEY=0
+
+I: Bus=0019 Vendor=0001 Product=0001 Version=0100
+N: Name="gpio-keys"
+P: Phys=gpio-keys/input0
+S: Sysfs=/devices/platform/gpio-keys/input/input4
+U: Uniq=
+H: Handlers=kbd event4 
+B: PROP=0
+B: EV=3
+B: KEY=4000000000000 0
+
+/sys/class/usb_role/a600000.usb-role-switch/role
+host
+/sys/class/typec/port0/data_role
+host [device]
+/sys/class/typec/port0/power_role
+source [sink]
+/sys/class/typec/port0/port_type
+/sys/class/typec/port0/orientation
+normal

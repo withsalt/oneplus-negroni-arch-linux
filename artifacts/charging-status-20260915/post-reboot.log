@@ -1,0 +1,22 @@
+ 
+1970-01-02T09:20:22Z
+7.3.0-rc2-sm8450+
+d73833ce-172c-4087-8931-5fc8f4c0e2d4
+95aea53772dcf05c55c49a69450018cb9a32e3886f8a5b09765cc62a1d3f7eb9  /sys/module/qcom_battmgr/notes/.note.gnu.build-id
+status=Charging
+current_now=251000
+capacity=94
+/sys/class/power_supply/qcom-battmgr-usb online=1
+/sys/class/power_supply/qcom-battmgr-wls online=0
+/sys/class/power_supply/ucsi-source-psy-pmic_glink.ucsi.01 online=1
+UPower battery_qcom_battmgr_bat
+u 1
+t 1789485114
+d 94
+s "battery-full-charging-symbolic"
+UPower DisplayDevice
+u 1
+t 1789485114
+d 94
+s "battery-full-charging-symbolic"
+active

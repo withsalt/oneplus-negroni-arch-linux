@@ -1,0 +1,6 @@
+2026-09-16: installed /etc/systemd/system/gpu-runtime-active.service on the phone.
+systemctl enable --now gpu-runtime-active.service: succeeded.
+systemctl is-enabled gpu-runtime-active.service: enabled
+systemctl is-active gpu-runtime-active.service: active
+/sys/bus/platform/devices/3d00000.gpu/power/control: on
+Resolved ordering: Before=shutdown.target graphical.target sddm.service

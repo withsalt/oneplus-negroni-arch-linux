@@ -1,0 +1,11 @@
+oneplus@192.168.188.91's  
+2026-09-16T00:15:02,557654811+08:00
+1203.93 9493.55
+   2983 Ssl  do_sys_poll                      kwin_wayland_wr
+   2990 Sl   do_sys_poll                      kwin_wayland
+   3173 Ssl  do_sys_poll                      org_kde_powerde
+   3573 Sl   do_sys_poll                      kscreenlocker_g
+On
+121
+0
+-- No entries --

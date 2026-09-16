@@ -1,0 +1,197 @@
+oneplus@192.168.188.91's  
+[  865.016392] oneplus-negroni systemd[1]: dbus-:1.2-org.kde.powerdevil.backlighthelper@2.service: Deactivated successfully.
+[  866.874958] oneplus-negroni systemd-logind[2385]: Power key pressed short.
+[  880.483924] oneplus-negroni sshd-session[3649]: Accepted password for oneplus from 192.168.188.22 port 51032 ssh2
+[  880.502662] oneplus-negroni sshd-session[3649]: pam_unix(sshd:session): session opened for user oneplus(uid=1000) by oneplus(uid=0)
+[  880.558176] oneplus-negroni systemd-logind[2385]: New session '8' of user 'oneplus' with class 'user' and type 'tty'.
+[  880.589169] oneplus-negroni systemd[1]: Started Session 8 of User oneplus.
+[  880.978677] oneplus-negroni sudo[3654]:  oneplus : PWD=/home/oneplus ; USER=root ; COMMAND=/usr/bin/bash -c 'journalctl -b --since "3 minutes ago" --no-pager -o short-monotonic; ps -eLo pid,tid,stat,wchan:36,comm | grep -E "kwin|gpu|gmu|kworker"; cat /sys/kernel/debug/dri/0/hangcheck_period_ms; cat /sys/class/drm/card0-DSI-1/dpms'
+[  880.979313] oneplus-negroni sudo[3654]: pam_unix(sudo:session): session opened for user root(uid=0) by oneplus(uid=1000)
+[  881.086419] oneplus-negroni sudo[3654]: pam_unix(sudo:session): session closed for user root
+[  881.092328] oneplus-negroni sshd-session[3653]: Received disconnect from 192.168.188.22 port 51032:11: disconnected by user
+[  881.093091] oneplus-negroni sshd-session[3653]: Disconnected from user oneplus 192.168.188.22 port 51032
+[  881.099315] oneplus-negroni sshd-session[3649]: pam_unix(sshd:session): session closed for user oneplus
+[  881.113844] oneplus-negroni systemd[1]: session-8.scope: Deactivated successfully.
+[  881.121567] oneplus-negroni systemd-logind[2385]: Session 8 logged out. Waiting for processes to exit.
+[  881.124577] oneplus-negroni systemd-logind[2385]: Removed session 8.
+[  909.434312] oneplus-negroni systemd[1]: Starting Cleanup of Temporary Directories...
+[  909.604367] oneplus-negroni systemd-tmpfiles[3665]: Opening file "/tmp/sddm--simkmB" failed, proceeding without lock: No such device or address
+[  909.611564] oneplus-negroni systemd[1]: systemd-tmpfiles-clean.service: Deactivated successfully.
+[  909.612668] oneplus-negroni systemd[1]: Finished Cleanup of Temporary Directories.
+[  914.517069] oneplus-negroni sshd-session[3667]: Accepted password for oneplus from 192.168.188.22 port 55072 ssh2
+[  914.533635] oneplus-negroni sshd-session[3667]: pam_unix(sshd:session): session opened for user oneplus(uid=1000) by oneplus(uid=0)
+[  914.594518] oneplus-negroni systemd-logind[2385]: New session '9' of user 'oneplus' with class 'user' and type 'tty'.
+[  914.646990] oneplus-negroni systemd[1]: Started Session 9 of User oneplus.
+[  915.036902] oneplus-negroni sudo[3672]:  oneplus : PWD=/home/oneplus ; USER=root ; COMMAND=/usr/bin/bash -c 'python3 -u -c \'import glob#012import json#012import os#012from pathlib import Path#012import select#012import struct#012import time#012#012paths = {#012    \'"\'"\'dpms\'"\'"\': \'"\'"\'/sys/class/drm/card0-DSI-1/dpms\'"\'"\',#012    \'"\'"\'gpu\'"\'"\': \'"\'"\'/sys/bus/platform/devices/3d00000.gpu/power/runtime_status\'"\'"\',#012    \'"\'"\'gmu\'"\'"\': \'"\'"\'/sys/bus/platform/devices/3d6a000.gmu/power/runtime_status\'"\'"\',#012    \'"\'"\'dpu\'"\'"\': \'"\'"\'/sys/bus/platform/devices/ae01000.display-controller/power/runtime_status\'"\'"\',#012}#012for p in glob.glob(\'"\'"\'/sys/class/backlight/*/actual_brightness\'"\'"\'):#012    paths[\'"\'"\'brightness\'"\'"\'] = p#012kwin = [p.parent for p in Path(\'"\'"\'/proc\'"\'"\').glob(\'"\'"\'[0-9]*/comm\'"\'"\')#012        if p.read_text().strip() == \'"\'"\'kwin_wayland\'"\'"\']#012for p in kwin:#012
+[  915.036913] oneplus-negroni sudo[3672]:  oneplus : (command continued) paths[\'"\'"\'kwin_\'"\'"\' + p.name] = str(p / \'"\'"\'wchan\'"\'"\')#012#012def emit(kind, **fields):#012    print(json.dumps({\'"\'"\'t\'"\'"\': time.monotonic(), \'"\'"\'kind\'"\'"\': kind, **fields}), flush=True)#012#012fd = os.open(\'"\'"\'/dev/input/event0\'"\'"\', os.O_RDONLY | os.O_NONBLOCK)#012last = None#012end = time.monotonic() + 55#012last_stack = 0#012emit(\'"\'"\'start\'"\'"\')#012while time.monotonic() < end:#012    if select.select([fd], [], [], 0)[0]:#012        data = os.read(fd, 24 * 64)#012        for off in range(0, len(data), 24):#012            sec, usec, typ, code, val = struct.unpack(\'"\'"\'llHHi\'"\'"\', data[off:off+24])#012            emit(\'"\'"\'input\'"\'"\', type=typ, code=code, value=val, event_time=sec+usec/1e6)#012    state = {}#012    for key, path in paths.items():#012        try:#012            state[key] = Path(path).read_text().strip()#012        except OSError as e:#012
+[  915.036918] oneplus-negroni sudo[3672]:  oneplus : (command continued) state[key] = str(e)#012    if state != last:#012        emit(\'"\'"\'state\'"\'"\', **state)#012        last = state#012    if time.monotonic() - last_stack >= 1:#012        last_stack = time.monotonic()#012        for p in kwin:#012            for thread in (p / \'"\'"\'task\'"\'"\').glob(\'"\'"\'*\'"\'"\'):#012                try:#012                    if \'"\'"\') D\'"\'"\' in (thread / \'"\'"\'stat\'"\'"\').read_text():#012                        emit(\'"\'"\'blocked\'"\'"\', tid=thread.name, stack=(thread / \'"\'"\'stack\'"\'"\').read_text())#012                except OSError:#012                    pass#012    time.sleep(0.05)#012emit(\'"\'"\'end\'"\'"\')#012\''
+[  915.037306] oneplus-negroni sudo[3672]: pam_unix(sudo:session): session opened for user root(uid=0) by oneplus(uid=1000)
+[  915.284525] oneplus-negroni kernel: dsi_err_worker: status=5
+[  915.340681] oneplus-negroni kernel: dsi_err_worker: status=4
+[  915.392827] oneplus-negroni kernel: dsi_err_worker: status=4
+[  915.445057] oneplus-negroni kernel: dsi_err_worker: status=4
+[  915.496987] oneplus-negroni kernel: dsi_err_worker: status=4
+[  915.553052] oneplus-negroni kernel: dsi_err_worker: status=4
+[  915.608948] oneplus-negroni kernel: dsi_err_worker: status=4
+[  915.664992] oneplus-negroni kernel: dsi_err_worker: status=4
+[  915.720942] oneplus-negroni kernel: dsi_err_worker: status=4
+[  915.776870] oneplus-negroni kernel: dsi_err_worker: status=4
+[  920.308855] oneplus-negroni kernel: dsi_err_worker: 80 callbacks suppressed
+[  920.328523] oneplus-negroni kernel: dsi_err_worker: status=4
+[  920.364813] oneplus-negroni kernel: dsi_err_worker: status=4
+[  920.420955] oneplus-negroni kernel: dsi_err_worker: status=4
+[  920.472789] oneplus-negroni kernel: dsi_err_worker: status=4
+[  920.528943] oneplus-negroni kernel: dsi_err_worker: status=4
+[  920.581299] oneplus-negroni kernel: dsi_err_worker: status=4
+[  920.633051] oneplus-negroni kernel: dsi_err_worker: status=4
+[  920.689008] oneplus-negroni kernel: dsi_err_worker: status=4
+[  920.744992] oneplus-negroni kernel: dsi_err_worker: status=4
+[  920.796948] oneplus-negroni kernel: dsi_err_worker: status=4
+[  925.361066] oneplus-negroni kernel: dsi_err_worker: 83 callbacks suppressed
+[  925.361537] oneplus-negroni kernel: dsi_err_worker: status=4
+[  925.417042] oneplus-negroni kernel: dsi_err_worker: status=4
+[  925.473081] oneplus-negroni kernel: dsi_err_worker: status=4
+[  925.528835] oneplus-negroni kernel: dsi_err_worker: status=4
+[  925.600981] oneplus-negroni kernel: dsi_err_worker: status=4
+[  925.657284] oneplus-negroni kernel: dsi_err_worker: status=4
+[  925.717021] oneplus-negroni kernel: dsi_err_worker: status=4
+[  925.772983] oneplus-negroni kernel: dsi_err_worker: status=4
+[  925.828918] oneplus-negroni kernel: dsi_err_worker: status=4
+[  925.885052] oneplus-negroni kernel: dsi_err_worker: status=4
+[  927.093761] oneplus-negroni systemd[1]: Started dbus-:1.2-org.kde.powerdevil.backlighthelper@3.service.
+[  935.748351] oneplus-negroni sshd-session[3703]: Accepted password for oneplus from 192.168.188.22 port 40782 ssh2
+[  935.753760] oneplus-negroni sshd-session[3703]: pam_unix(sshd:session): session opened for user oneplus(uid=1000) by oneplus(uid=0)
+[  935.809205] oneplus-negroni systemd-logind[2385]: New session '10' of user 'oneplus' with class 'user' and type 'tty'.
+[  935.857155] oneplus-negroni systemd[1]: Started Session 10 of User oneplus.
+[  936.165593] oneplus-negroni sudo[3708]:  oneplus : PWD=/home/oneplus ; USER=root ; COMMAND=/usr/bin/bash -c 'journalctl -b --since "3 minutes ago" --no-pager -o short-monotonic'
+[  936.166236] oneplus-negroni sudo[3708]: pam_unix(sudo:session): session opened for user root(uid=0) by oneplus(uid=1000)
+[  936.179375] oneplus-negroni sudo[3708]: pam_unix(sudo:session): session closed for user root
+[  936.191288] oneplus-negroni sshd-session[3707]: Received disconnect from 192.168.188.22 port 40782:11: disconnected by user
+[  936.191531] oneplus-negroni sshd-session[3707]: Disconnected from user oneplus 192.168.188.22 port 40782
+[  936.193833] oneplus-negroni sshd-session[3703]: pam_unix(sshd:session): session closed for user oneplus
+[  936.210726] oneplus-negroni systemd[1]: session-10.scope: Deactivated successfully.
+[  936.218215] oneplus-negroni systemd-logind[2385]: Session 10 logged out. Waiting for processes to exit.
+[  936.224186] oneplus-negroni systemd-logind[2385]: Removed session 10.
+[  937.009564] oneplus-negroni systemd[1]: dbus-:1.2-org.kde.powerdevil.backlighthelper@3.service: Deactivated successfully.
+[  937.010909] oneplus-negroni sshd-session[3714]: Accepted password for oneplus from 192.168.188.22 port 40798 ssh2
+[  937.028768] oneplus-negroni sshd-session[3714]: pam_unix(sshd:session): session opened for user oneplus(uid=1000) by oneplus(uid=0)
+[  937.072986] oneplus-negroni systemd-logind[2385]: New session '11' of user 'oneplus' with class 'user' and type 'tty'.
+[  937.102391] oneplus-negroni systemd[1]: Started Session 11 of User oneplus.
+[  937.169071] oneplus-negroni kscreen-doctor[3721]: Detected locale "C" with character encoding "ANSI_X3.4-1968", which is not UTF-8.
+                                                     Qt depends on a UTF-8 locale, and has switched to "C.UTF-8" instead.
+                                                     If this causes problems, reconfigure your locale. See the locale(1) manual
+                                                     for more information.
+[  937.315807] oneplus-negroni kscreen-doctor[3726]: Detected locale "C" with character encoding "ANSI_X3.4-1968", which is not UTF-8.
+                                                     Qt depends on a UTF-8 locale, and has switched to "C.UTF-8" instead.
+                                                     If this causes problems, reconfigure your locale. See the locale(1) manual
+                                                     for more information.
+[  937.342138] oneplus-negroni sshd-session[3719]: Received disconnect from 192.168.188.22 port 40798:11: disconnected by user
+[  937.342487] oneplus-negroni sshd-session[3719]: Disconnected from user oneplus 192.168.188.22 port 40798
+[  937.346045] oneplus-negroni sshd-session[3714]: pam_unix(sshd:session): session closed for user oneplus
+[  937.361743] oneplus-negroni systemd-logind[2385]: Session 11 logged out. Waiting for processes to exit.
+[  937.363207] oneplus-negroni systemd[1]: session-11.scope: Deactivated successfully.
+[  937.375042] oneplus-negroni systemd-logind[2385]: Removed session 11.
+[  952.965494] oneplus-negroni sshd-session[3732]: Accepted password for oneplus from 192.168.188.22 port 40466 ssh2
+[  952.984515] oneplus-negroni sshd-session[3732]: pam_unix(sshd:session): session opened for user oneplus(uid=1000) by oneplus(uid=0)
+[  953.031537] oneplus-negroni systemd-logind[2385]: New session '12' of user 'oneplus' with class 'user' and type 'tty'.
+[  953.070195] oneplus-negroni systemd[1]: Started Session 12 of User oneplus.
+[  953.155040] oneplus-negroni kscreen-doctor[3740]: Detected locale "C" with character encoding "ANSI_X3.4-1968", which is not UTF-8.
+                                                     Qt depends on a UTF-8 locale, and has switched to "C.UTF-8" instead.
+                                                     If this causes problems, reconfigure your locale. See the locale(1) manual
+                                                     for more information.
+[  963.274556] oneplus-negroni kscreen-doctor[3748]: Detected locale "C" with character encoding "ANSI_X3.4-1968", which is not UTF-8.
+                                                     Qt depends on a UTF-8 locale, and has switched to "C.UTF-8" instead.
+                                                     If this causes problems, reconfigure your locale. See the locale(1) manual
+                                                     for more information.
+[  963.317106] oneplus-negroni systemd[1]: Started dbus-:1.2-org.kde.powerdevil.backlighthelper@4.service.
+[  963.348069] oneplus-negroni kernel: dsi_err_worker: 27 callbacks suppressed
+[  963.348181] oneplus-negroni kernel: dsi_err_worker: status=4
+[  963.369161] oneplus-negroni kscreen-doctor[3759]: Detected locale "C" with character encoding "ANSI_X3.4-1968", which is not UTF-8.
+                                                     Qt depends on a UTF-8 locale, and has switched to "C.UTF-8" instead.
+                                                     If this causes problems, reconfigure your locale. See the locale(1) manual
+                                                     for more information.
+[  963.400058] oneplus-negroni kernel: dsi_err_worker: status=4
+[  963.452067] oneplus-negroni kernel: dsi_err_worker: status=4
+[  963.504669] oneplus-negroni kernel: dsi_err_worker: status=4
+[  963.556086] oneplus-negroni kernel: dsi_err_worker: status=5
+[  963.603876] oneplus-negroni sshd-session[3736]: Received disconnect from 192.168.188.22 port 40466:11: disconnected by user
+[  963.604128] oneplus-negroni sshd-session[3736]: Disconnected from user oneplus 192.168.188.22 port 40466
+[  963.605869] oneplus-negroni sshd-session[3732]: pam_unix(sshd:session): session closed for user oneplus
+[  963.610754] oneplus-negroni systemd[1]: session-12.scope: Deactivated successfully.
+[  963.614038] oneplus-negroni systemd-logind[2385]: Session 12 logged out. Waiting for processes to exit.
+[  963.615614] oneplus-negroni systemd-logind[2385]: Removed session 12.
+[  963.616080] oneplus-negroni kernel: dsi_err_worker: status=5
+[  963.672276] oneplus-negroni kernel: dsi_err_worker: status=5
+[  963.732022] oneplus-negroni kernel: dsi_err_worker: status=5
+[  963.792022] oneplus-negroni kernel: dsi_err_worker: status=5
+[  963.848087] oneplus-negroni kernel: dsi_err_worker: status=5
+[  966.276160] oneplus-negroni sshd-session[3846]: Accepted password for oneplus from 192.168.188.22 port 59334 ssh2
+[  966.290625] oneplus-negroni sshd-session[3846]: pam_unix(sshd:session): session opened for user oneplus(uid=1000) by oneplus(uid=0)
+[  966.328585] oneplus-negroni systemd-logind[2385]: New session '13' of user 'oneplus' with class 'user' and type 'tty'.
+[  966.366408] oneplus-negroni systemd[1]: Started Session 13 of User oneplus.
+[  966.664324] oneplus-negroni sudo[3851]:  oneplus : PWD=/home/oneplus ; USER=root ; COMMAND=/usr/bin/bash -c 'for f in /sys/class/devcoredump/devcd*/data; do head -c 32000 "$f"; done'
+[  966.666659] oneplus-negroni sudo[3851]: pam_unix(sudo:session): session opened for user root(uid=0) by oneplus(uid=1000)
+[  966.677337] oneplus-negroni sudo[3851]: pam_unix(sudo:session): session closed for user root
+[  966.687617] oneplus-negroni sshd-session[3850]: Received disconnect from 192.168.188.22 port 59334:11: disconnected by user
+[  966.688246] oneplus-negroni sshd-session[3850]: Disconnected from user oneplus 192.168.188.22 port 59334
+[  966.693199] oneplus-negroni sshd-session[3846]: pam_unix(sshd:session): session closed for user oneplus
+[  966.711015] oneplus-negroni systemd[1]: session-13.scope: Deactivated successfully.
+[  966.717502] oneplus-negroni systemd-logind[2385]: Session 13 logged out. Waiting for processes to exit.
+[  966.720327] oneplus-negroni systemd-logind[2385]: Removed session 13.
+[  968.397090] oneplus-negroni kernel: dsi_err_worker: 77 callbacks suppressed
+[  968.397561] oneplus-negroni kernel: dsi_err_worker: status=4
+[  968.453030] oneplus-negroni kernel: dsi_err_worker: status=4
+[  968.512853] oneplus-negroni kernel: dsi_err_worker: status=4
+[  968.569036] oneplus-negroni kernel: dsi_err_worker: status=4
+[  968.628991] oneplus-negroni kernel: dsi_err_worker: status=4
+[  968.688920] oneplus-negroni kernel: dsi_err_worker: status=4
+[  968.760832] oneplus-negroni kernel: dsi_err_worker: status=4
+[  968.820891] oneplus-negroni kernel: dsi_err_worker: status=4
+[  968.880901] oneplus-negroni kernel: dsi_err_worker: status=4
+[  968.941035] oneplus-negroni kernel: dsi_err_worker: status=4
+[  969.984344] oneplus-negroni kernel: gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[  969.987621] oneplus-negroni kernel: geni_i2c 990000.i2c: prep_slave_sg failed
+[  969.988379] oneplus-negroni kernel: geni_i2c 990000.i2c: GPI transfer failed: -5
+[  970.178016] oneplus-negroni kscreenlocker_greet[3573]: file:///usr/share/plasma/shells/org.kde.plasma.mobileshell/contents/lockscreen/FlickContainer.qml:91:5 Parameter "totalDeltaX" is not declared. Injection of parameters into signal handlers is deprecated. Use JavaScript functions with formal parameters instead.
+[  970.252168] oneplus-negroni kernel: gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[  970.253116] oneplus-negroni kernel: geni_i2c 990000.i2c: prep_slave_sg failed
+[  970.253807] oneplus-negroni kernel: geni_i2c 990000.i2c: GPI transfer failed: -5
+[  970.316474] oneplus-negroni sudo[3672]: pam_unix(sudo:session): session closed for user root
+[  970.322447] oneplus-negroni sshd-session[3671]: Received disconnect from 192.168.188.22 port 55072:11: disconnected by user
+[  970.322751] oneplus-negroni sshd-session[3671]: Disconnected from user oneplus 192.168.188.22 port 55072
+[  970.324422] oneplus-negroni sshd-session[3667]: pam_unix(sshd:session): session closed for user oneplus
+[  970.327234] oneplus-negroni systemd[1]: session-9.scope: Deactivated successfully.
+[  970.328385] oneplus-negroni systemd[1]: session-9.scope: Consumed 5.398s CPU time over 55.680s wall clock time, 21.4M memory peak.
+[  970.331386] oneplus-negroni systemd-logind[2385]: Session 9 logged out. Waiting for processes to exit.
+[  970.333366] oneplus-negroni systemd-logind[2385]: Removed session 9.
+[  970.504459] oneplus-negroni kernel: gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[  970.507290] oneplus-negroni kernel: geni_i2c 990000.i2c: prep_slave_sg failed
+[  970.510246] oneplus-negroni kernel: geni_i2c 990000.i2c: GPI transfer failed: -5
+[  977.476910] oneplus-negroni kernel: gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[  977.480493] oneplus-negroni kernel: geni_i2c 990000.i2c: prep_slave_sg failed
+[  977.483004] oneplus-negroni kernel: geni_i2c 990000.i2c: GPI transfer failed: -5
+[  977.744849] oneplus-negroni kernel: gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[  977.748189] oneplus-negroni kernel: geni_i2c 990000.i2c: prep_slave_sg failed
+[  977.750693] oneplus-negroni kernel: geni_i2c 990000.i2c: GPI transfer failed: -5
+[  979.412848] oneplus-negroni kernel: gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[  979.416260] oneplus-negroni kernel: geni_i2c 990000.i2c: prep_slave_sg failed
+[  979.418776] oneplus-negroni kernel: geni_i2c 990000.i2c: GPI transfer failed: -5
+[  979.441000] oneplus-negroni plasmashell[3150]: Raising top panel over the lockscreen
+[  979.441063] oneplus-negroni plasmashell[3150]: Attempting to raise overlay:  ActionDrawerWindow_QMLTYPE_433(0xaaab017f6ed0) true
+[  979.441323] oneplus-negroni plasmashell[3150]: Initialized overlay successfully
+[  979.445180] oneplus-negroni plasmashell[3150]: XDG activation token arrived, activating window: ActionDrawerWindow_QMLTYPE_433(0xaaab017f6ed0)
+[  980.021194] oneplus-negroni systemd[1]: dbus-:1.2-org.kde.powerdevil.backlighthelper@4.service: Deactivated successfully.
+[  981.188050] oneplus-negroni kernel: gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[  981.190739] oneplus-negroni kernel: geni_i2c 990000.i2c: prep_slave_sg failed
+[  981.192766] oneplus-negroni kernel: geni_i2c 990000.i2c: GPI transfer failed: -5
+[  982.948429] oneplus-negroni kernel: gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[  982.949255] oneplus-negroni kernel: geni_i2c 990000.i2c: prep_slave_sg failed
+[  982.949415] oneplus-negroni kernel: geni_i2c 990000.i2c: GPI transfer failed: -5
+[  983.012676] oneplus-negroni sshd-session[3881]: Accepted password for oneplus from 192.168.188.22 port 47218 ssh2
+[  983.018092] oneplus-negroni sshd-session[3881]: pam_unix(sshd:session): session opened for user oneplus(uid=1000) by oneplus(uid=0)
+[  983.038293] oneplus-negroni systemd-logind[2385]: New session '14' of user 'oneplus' with class 'user' and type 'tty'.
+[  983.068335] oneplus-negroni systemd[1]: Started Session 14 of User oneplus.
+[  983.400404] oneplus-negroni sudo[3886]:  oneplus : PWD=/home/oneplus ; USER=root ; COMMAND=/usr/bin/bash -c 'journalctl -b --since "2 minutes ago" --no-pager -o short-monotonic; cat /sys/bus/platform/devices/3d00000.gpu/power/runtime_status; cat /sys/class/drm/card0-DSI-1/dpms'
+[  983.400931] oneplus-negroni sudo[3886]: pam_unix(sudo:session): session opened for user root(uid=0) by oneplus(uid=1000)
+active
+On

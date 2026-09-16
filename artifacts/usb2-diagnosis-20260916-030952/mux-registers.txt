@@ -1,0 +1,10 @@
+2026-09-16T03:14:12+08:00
+
+== FSA4480 device ID register 0x00 ==
+0x09
+
+== FSA4480 switch enable/select registers 0x04/0x05 ==
+0x98 0x18
+
+== FSA4480 switch status registers 0x06/0x07 ==
+0x05 0x00

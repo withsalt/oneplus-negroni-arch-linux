@@ -1,0 +1,300 @@
+oneplus@192.168.188.91's  
+[  719.059563] oneplus-negroni systemd[1]: Started dbus-:1.2-org.kde.powerdevil.backlighthelper@1.service.
+[  730.019736] oneplus-negroni systemd[1]: dbus-:1.2-org.kde.powerdevil.backlighthelper@1.service: Deactivated successfully.
+[  825.733126] oneplus-negroni sshd-session[3522]: Accepted password for oneplus from 192.168.188.22 port 55128 ssh2
+[  825.748760] oneplus-negroni sshd-session[3522]: pam_unix(sshd:session): session opened for user oneplus(uid=1000) by oneplus(uid=0)
+[  825.794879] oneplus-negroni systemd-logind[2385]: New session '5' of user 'oneplus' with class 'user' and type 'tty'.
+[  825.830216] oneplus-negroni systemd[1]: Started Session 5 of User oneplus.
+[  826.234208] oneplus-negroni sudo[3527]:  oneplus : PWD=/home/oneplus ; USER=root ; COMMAND=/usr/bin/bash -c 'date -Ins; uname -a; uptime; cat /proc/cmdline; loginctl list-sessions; systemctl --failed --no-pager; cat /sys/power/mem_sleep; cat /sys/power/state; cat /sys/power/suspend_stats/*; ps -eo pid,user,stat,pcpu,pmem,comm --sort=-pcpu | head -25; journalctl -b -k --no-pager -o short-monotonic | tail -240'
+[  826.234891] oneplus-negroni sudo[3527]: pam_unix(sudo:session): session opened for user root(uid=0) by oneplus(uid=1000)
+[  826.298555] oneplus-negroni sudo[3527]: pam_unix(sudo:session): session closed for user root
+[  826.318094] oneplus-negroni sshd-session[3526]: Received disconnect from 192.168.188.22 port 55128:11: disconnected by user
+[  826.318941] oneplus-negroni sshd-session[3526]: Disconnected from user oneplus 192.168.188.22 port 55128
+[  826.324723] oneplus-negroni sshd-session[3522]: pam_unix(sshd:session): session closed for user oneplus
+[  826.328587] oneplus-negroni systemd[1]: session-5.scope: Deactivated successfully.
+[  826.331279] oneplus-negroni systemd-logind[2385]: Session 5 logged out. Waiting for processes to exit.
+[  826.335710] oneplus-negroni systemd-logind[2385]: Removed session 5.
+[  850.448081] oneplus-negroni kernel: gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[  850.449336] oneplus-negroni kernel: geni_i2c 990000.i2c: prep_slave_sg failed
+[  850.450191] oneplus-negroni kernel: geni_i2c 990000.i2c: GPI transfer failed: -5
+[  850.708434] oneplus-negroni kernel: gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[  850.711723] oneplus-negroni kernel: geni_i2c 990000.i2c: prep_slave_sg failed
+[  850.714573] oneplus-negroni kernel: geni_i2c 990000.i2c: GPI transfer failed: -5
+[  852.772156] oneplus-negroni kernel: gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[  852.775410] oneplus-negroni kernel: geni_i2c 990000.i2c: prep_slave_sg failed
+[  852.778387] oneplus-negroni kernel: geni_i2c 990000.i2c: GPI transfer failed: -5
+[  853.036214] oneplus-negroni kernel: gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[  853.037059] oneplus-negroni kernel: geni_i2c 990000.i2c: prep_slave_sg failed
+[  853.037546] oneplus-negroni kernel: geni_i2c 990000.i2c: GPI transfer failed: -5
+[  853.296479] oneplus-negroni kernel: gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[  853.299716] oneplus-negroni kernel: geni_i2c 990000.i2c: prep_slave_sg failed
+[  853.302298] oneplus-negroni kernel: geni_i2c 990000.i2c: GPI transfer failed: -5
+[  853.564460] oneplus-negroni kernel: gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[  853.567717] oneplus-negroni kernel: geni_i2c 990000.i2c: prep_slave_sg failed
+[  853.570736] oneplus-negroni kernel: geni_i2c 990000.i2c: GPI transfer failed: -5
+[  853.820246] oneplus-negroni kernel: gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[  853.821123] oneplus-negroni kernel: geni_i2c 990000.i2c: prep_slave_sg failed
+[  853.821609] oneplus-negroni kernel: geni_i2c 990000.i2c: GPI transfer failed: -5
+[  854.073640] oneplus-negroni systemd-logind[2385]: Power key pressed short.
+[  854.080077] oneplus-negroni kernel: gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[  854.083378] oneplus-negroni kernel: geni_i2c 990000.i2c: prep_slave_sg failed
+[  854.089449] oneplus-negroni kernel: geni_i2c 990000.i2c: GPI transfer failed: -5
+[  854.164148] oneplus-negroni systemd[1]: Started dbus-:1.2-org.kde.powerdevil.backlighthelper@2.service.
+[  854.340673] oneplus-negroni kernel: gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[  854.342131] oneplus-negroni kernel: geni_i2c 990000.i2c: prep_slave_sg failed
+[  854.343205] oneplus-negroni kernel: geni_i2c 990000.i2c: GPI transfer failed: -5
+[  854.344870] oneplus-negroni kwin_wayland[2990]: Detected a touch move that never has been down, discarding
+[  854.344885] oneplus-negroni kwin_wayland[2990]: Detected a touch move that never has been down, discarding
+[  854.344891] oneplus-negroni kwin_wayland[2990]: Detected a touch move that never has been down, discarding
+[  854.344897] oneplus-negroni kwin_wayland[2990]: Detected a touch move that never has been down, discarding
+[  854.344902] oneplus-negroni kwin_wayland[2990]: Detected a touch move that never has been down, discarding
+[  854.344907] oneplus-negroni kwin_wayland[2990]: Detected a touch move that never has been down, discarding
+[  854.344911] oneplus-negroni kwin_wayland[2990]: Detected a touch move that never has been down, discarding
+[  854.344914] oneplus-negroni kwin_wayland[2990]: Detected a touch move that never has been down, discarding
+[  854.344918] oneplus-negroni kwin_wayland[2990]: Detected a touch move that never has been down, discarding
+[  854.344922] oneplus-negroni kwin_wayland[2990]: Detected a touch move that never has been down, discarding
+[  854.344925] oneplus-negroni kwin_wayland[2990]: Detected a touch move that never has been down, discarding
+[  854.344929] oneplus-negroni kwin_wayland[2990]: Detected a touch move that never has been down, discarding
+[  854.344933] oneplus-negroni kwin_wayland[2990]: Detected a touch move that never has been down, discarding
+[  854.344937] oneplus-negroni kwin_wayland[2990]: Detected a touch move that never has been down, discarding
+[  854.344940] oneplus-negroni kwin_wayland[2990]: Detected a touch move that never has been down, discarding
+[  854.344944] oneplus-negroni kwin_wayland[2990]: Detected a touch move that never has been down, discarding
+[  854.344948] oneplus-negroni kwin_wayland[2990]: Detected a touch move that never has been down, discarding
+[  854.344951] oneplus-negroni kwin_wayland[2990]: Detected a touch move that never has been down, discarding
+[  854.344954] oneplus-negroni kwin_wayland[2990]: Detected a touch move that never has been down, discarding
+[  854.344958] oneplus-negroni kwin_wayland[2990]: Detected a touch move that never has been down, discarding
+[  854.344961] oneplus-negroni kwin_wayland[2990]: Detected a touch move that never has been down, discarding
+[  854.344965] oneplus-negroni kwin_wayland[2990]: Detected a touch move that never has been down, discarding
+[  854.344968] oneplus-negroni kwin_wayland[2990]: Detected a touch move that never has been down, discarding
+[  854.344972] oneplus-negroni kwin_wayland[2990]: Detected a touch move that never has been down, discarding
+[  854.345030] oneplus-negroni kwin_wayland[2990]: Detected a touch move that never has been down, discarding
+[  854.345036] oneplus-negroni kwin_wayland[2990]: Detected a touch move that never has been down, discarding
+[  854.345040] oneplus-negroni kwin_wayland[2990]: Detected a touch move that never has been down, discarding
+[  854.345045] oneplus-negroni kwin_wayland[2990]: Detected a touch move that never has been down, discarding
+[  854.345048] oneplus-negroni kwin_wayland[2990]: Detected a touch move that never has been down, discarding
+[  854.360874] oneplus-negroni kwin_wayland[2990]: Detected a touch move that never has been down, discarding
+[  854.362835] oneplus-negroni kwin_wayland[2990]: Detected a touch move that never has been down, discarding
+[  854.370982] oneplus-negroni kwin_wayland[2990]: Detected a touch move that never has been down, discarding
+[  854.378911] oneplus-negroni kwin_wayland[2990]: Detected a touch move that never has been down, discarding
+[  854.395145] oneplus-negroni kwin_wayland[2990]: Detected a touch move that never has been down, discarding
+[  854.403290] oneplus-negroni kwin_wayland[2990]: Detected a touch move that never has been down, discarding
+[  854.411339] oneplus-negroni kwin_wayland[2990]: Detected a touch move that never has been down, discarding
+[  854.419476] oneplus-negroni kwin_wayland[2990]: Detected a touch move that never has been down, discarding
+[  854.427598] oneplus-negroni kwin_wayland[2990]: Detected a touch move that never has been down, discarding
+[  854.435749] oneplus-negroni kwin_wayland[2990]: Detected a touch move that never has been down, discarding
+[  854.443834] oneplus-negroni kwin_wayland[2990]: Detected a touch move that never has been down, discarding
+[  854.451904] oneplus-negroni kwin_wayland[2990]: Detected a touch move that never has been down, discarding
+[  854.460055] oneplus-negroni kwin_wayland[2990]: Detected a touch move that never has been down, discarding
+[  854.468182] oneplus-negroni kwin_wayland[2990]: Detected a touch move that never has been down, discarding
+[  854.476216] oneplus-negroni kwin_wayland[2990]: Detected a touch move that never has been down, discarding
+[  854.484326] oneplus-negroni kwin_wayland[2990]: Detected a touch move that never has been down, discarding
+[  854.493036] oneplus-negroni kwin_wayland[2990]: Detected a touch move that never has been down, discarding
+[  854.501026] oneplus-negroni kwin_wayland[2990]: Detected a touch move that never has been down, discarding
+[  854.508817] oneplus-negroni kwin_wayland[2990]: Detected a touch move that never has been down, discarding
+[  854.516858] oneplus-negroni kwin_wayland[2990]: Detected a touch move that never has been down, discarding
+[  854.524871] oneplus-negroni kwin_wayland[2990]: Detected a touch move that never has been down, discarding
+[  854.533024] oneplus-negroni kwin_wayland[2990]: Detected a touch move that never has been down, discarding
+[  854.541087] oneplus-negroni kwin_wayland[2990]: Detected a touch move that never has been down, discarding
+[  854.549161] oneplus-negroni kwin_wayland[2990]: Detected a touch move that never has been down, discarding
+[  854.557243] oneplus-negroni kwin_wayland[2990]: Detected a touch move that never has been down, discarding
+[  854.565420] oneplus-negroni kwin_wayland[2990]: Detected a touch move that never has been down, discarding
+[  854.573479] oneplus-negroni kwin_wayland[2990]: Detected a touch move that never has been down, discarding
+[  854.581653] oneplus-negroni kwin_wayland[2990]: Detected a touch move that never has been down, discarding
+[  854.589681] oneplus-negroni kwin_wayland[2990]: Detected a touch move that never has been down, discarding
+[  854.600324] oneplus-negroni kernel: gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[  854.602134] oneplus-negroni kernel: geni_i2c 990000.i2c: prep_slave_sg failed
+[  854.603718] oneplus-negroni kernel: geni_i2c 990000.i2c: GPI transfer failed: -5
+[  854.620861] oneplus-negroni kwin_wayland[2990]: Detected a touch move that never has been down, discarding
+[  854.621443] oneplus-negroni kwin_wayland[2990]: Detected a touch move that never has been down, discarding
+[  854.622275] oneplus-negroni kwin_wayland[2990]: Detected a touch move that never has been down, discarding
+[  854.630220] oneplus-negroni kwin_wayland[2990]: Detected a touch move that never has been down, discarding
+[  854.638274] oneplus-negroni kwin_wayland[2990]: Detected a touch move that never has been down, discarding
+[  854.647794] oneplus-negroni kwin_wayland[2990]: Detected a touch move that never has been down, discarding
+[  854.655869] oneplus-negroni kwin_wayland[2990]: Detected a touch move that never has been down, discarding
+[  854.755356] oneplus-negroni kwin_wayland[2990]: Detected a touch move that never has been down, discarding
+[  854.761491] oneplus-negroni kwin_wayland[2990]: Detected a touch move that never has been down, discarding
+[  854.772293] oneplus-negroni kwin_wayland[2990]: Detected a touch move that never has been down, discarding
+[  854.778252] oneplus-negroni kwin_wayland[2990]: Detected a touch move that never has been down, discarding
+[  854.785535] oneplus-negroni kwin_wayland[2990]: Detected a touch move that never has been down, discarding
+[  854.793678] oneplus-negroni kwin_wayland[2990]: Detected a touch move that never has been down, discarding
+[  854.811280] oneplus-negroni kwin_wayland[2990]: Detected a touch move that never has been down, discarding
+[  854.820101] oneplus-negroni kwin_wayland[2990]: Detected a touch move that never has been down, discarding
+[  854.828442] oneplus-negroni kwin_wayland[2990]: Detected a touch move that never has been down, discarding
+[  854.834094] oneplus-negroni kwin_wayland[2990]: Detected a touch move that never has been down, discarding
+[  854.842254] oneplus-negroni kwin_wayland[2990]: Detected a touch move that never has been down, discarding
+[  854.850980] oneplus-negroni kwin_wayland[2990]: Detected a touch move that never has been down, discarding
+[  854.860057] oneplus-negroni kernel: gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[  854.863103] oneplus-negroni kernel: geni_i2c 990000.i2c: prep_slave_sg failed
+[  854.865647] oneplus-negroni kernel: geni_i2c 990000.i2c: GPI transfer failed: -5
+[  854.885399] oneplus-negroni kwin_wayland[2990]: Detected a touch move that never has been down, discarding
+[  854.885418] oneplus-negroni kwin_wayland[2990]: Detected a touch move that never has been down, discarding
+[  854.890946] oneplus-negroni kwin_wayland[2990]: Detected a touch move that never has been down, discarding
+[  854.903181] oneplus-negroni kwin_wayland[2990]: Detected a touch move that never has been down, discarding
+[  854.907119] oneplus-negroni kwin_wayland[2990]: Detected a touch move that never has been down, discarding
+[  854.916984] oneplus-negroni kwin_wayland[2990]: Detected a touch move that never has been down, discarding
+[  854.923231] oneplus-negroni kwin_wayland[2990]: Detected a touch move that never has been down, discarding
+[  854.935237] oneplus-negroni kwin_wayland[2990]: Detected a touch move that never has been down, discarding
+[  854.939349] oneplus-negroni kwin_wayland[2990]: Detected a touch move that never has been down, discarding
+[  854.949716] oneplus-negroni kwin_wayland[2990]: Detected a touch move that never has been down, discarding
+[  854.955712] oneplus-negroni kwin_wayland[2990]: Detected a touch move that never has been down, discarding
+[  854.965792] oneplus-negroni kwin_wayland[2990]: Detected a touch move that never has been down, discarding
+[  854.971894] oneplus-negroni kwin_wayland[2990]: Detected a touch move that never has been down, discarding
+[  854.981692] oneplus-negroni kwin_wayland[2990]: Detected a touch move that never has been down, discarding
+[  854.991205] oneplus-negroni kwin_wayland[2990]: Detected a touch move that never has been down, discarding
+[  854.996147] oneplus-negroni kwin_wayland[2990]: Detected a touch move that never has been down, discarding
+[  855.005663] oneplus-negroni kwin_wayland[2990]: Detected a touch that never started, discarding
+[  855.312081] oneplus-negroni kernel: gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[  855.312990] oneplus-negroni kernel: geni_i2c 990000.i2c: prep_slave_sg failed
+[  855.313478] oneplus-negroni kernel: geni_i2c 990000.i2c: GPI transfer failed: -5
+[  859.230798] oneplus-negroni systemd-logind[2385]: Power key pressed short.
+[  860.155084] oneplus-negroni sshd-session[3575]: Accepted password for oneplus from 192.168.188.22 port 40764 ssh2
+[  860.155276] oneplus-negroni sshd-session[3574]: Accepted password for oneplus from 192.168.188.22 port 40752 ssh2
+[  860.159244] oneplus-negroni sshd-session[3574]: pam_unix(sshd:session): session opened for user oneplus(uid=1000) by oneplus(uid=0)
+[  860.159479] oneplus-negroni sshd-session[3575]: pam_unix(sshd:session): session opened for user oneplus(uid=1000) by oneplus(uid=0)
+[  860.176194] oneplus-negroni systemd-logind[2385]: New session '6' of user 'oneplus' with class 'user' and type 'tty'.
+[  860.200466] oneplus-negroni systemd[1]: Started Session 6 of User oneplus.
+[  860.209483] oneplus-negroni systemd-logind[2385]: New session '7' of user 'oneplus' with class 'user' and type 'tty'.
+[  860.211756] oneplus-negroni systemd[1]: Started Session 7 of User oneplus.
+[  860.523774] oneplus-negroni sudo[3589]:  oneplus : PWD=/home/oneplus ; USER=root ; COMMAND=/usr/bin/bash -c 'journalctl -b --no-pager -o short-monotonic'
+[  860.524332] oneplus-negroni sudo[3589]: pam_unix(sudo:session): session opened for user root(uid=0) by oneplus(uid=1000)
+[  860.525291] oneplus-negroni sudo[3593]:  oneplus : PWD=/home/oneplus ; USER=root ; COMMAND=/usr/bin/bash -c 'for f in /sys/power/suspend_stats/*; do echo "$f: $(cat "$f")"; done; cat /proc/bus/input/devices; ls /sys/kernel/debug/dri; ls /sys/class/devcoredump; cat /sys/class/drm/card*-DSI-*/{status,enabled,dpms,modes}; for d in /sys/bus/platform/devices/3d00000.gpu /sys/bus/platform/devices/3d6a000.gmu /sys/bus/platform/devices/ae01000.display-controller; do echo "$d"; cat "$d"/power/{control,runtime_status,runtime_active_time,runtime_suspended_time,autosuspend_delay_ms}; done; cat /home/oneplus/.config/powerdevilrc /home/oneplus/.config/powermanagementprofilesrc /home/oneplus/.config/kwinrc; ls /sys/kernel/tracing/events/{power,input,drm,msm}; command -v python3; command -v kscreen-doctor; command -v strace; ls /sys/kernel/debug/dri/*/'
+[  860.525469] oneplus-negroni sudo[3593]: pam_unix(sudo:session): session opened for user root(uid=0) by oneplus(uid=1000)
+[  860.559112] oneplus-negroni sudo[3593]: pam_unix(sudo:session): session closed for user root
+[  860.564295] oneplus-negroni sshd-session[3590]: Received disconnect from 192.168.188.22 port 40764:11: disconnected by user
+[  860.564390] oneplus-negroni sshd-session[3590]: Disconnected from user oneplus 192.168.188.22 port 40764
+[  860.564975] oneplus-negroni sshd-session[3575]: pam_unix(sshd:session): session closed for user oneplus
+[  860.567520] oneplus-negroni systemd[1]: session-7.scope: Deactivated successfully.
+[  860.569254] oneplus-negroni systemd-logind[2385]: Session 7 logged out. Waiting for processes to exit.
+[  860.571061] oneplus-negroni systemd-logind[2385]: Removed session 7.
+[  860.626918] oneplus-negroni sudo[3589]: pam_unix(sudo:session): session closed for user root
+[  860.703952] oneplus-negroni sshd-session[3588]: Received disconnect from 192.168.188.22 port 40752:11: disconnected by user
+[  860.704079] oneplus-negroni sshd-session[3588]: Disconnected from user oneplus 192.168.188.22 port 40752
+[  860.704810] oneplus-negroni sshd-session[3574]: pam_unix(sshd:session): session closed for user oneplus
+[  860.707050] oneplus-negroni systemd[1]: session-6.scope: Deactivated successfully.
+[  860.709079] oneplus-negroni systemd-logind[2385]: Session 6 logged out. Waiting for processes to exit.
+[  860.710217] oneplus-negroni systemd-logind[2385]: Removed session 6.
+[  861.655442] oneplus-negroni kscreenlocker_greet[3573]: Connecting to deprecated signal QDBusConnectionInterface::serviceOwnerChanged(QString,QString,QString)
+[  861.684866] oneplus-negroni kscreenlocker_greet[3573]: file:///usr/share/plasma/shells/org.kde.plasma.mobileshell/contents/lockscreen/Keypad.qml:80:9: QML LayoutItemProxy: Detected anchors on an item that is managed by a layout. This is undefined behavior; use Layout.alignment instead.
+[  861.685249] oneplus-negroni kscreenlocker_greet[3573]: file:///usr/share/plasma/shells/org.kde.plasma.mobileshell/contents/lockscreen/Keypad.qml:35:9: QML LayoutItemProxy: Detected anchors on an item that is managed by a layout. This is undefined behavior; use Layout.alignment instead.
+[  861.757150] oneplus-negroni kscreenlocker_greet[3573]: file:///usr/share/plasma/shells/org.kde.plasma.mobileshell/contents/lockscreen/Keypad.qml:80:9: QML LayoutItemProxy: Detected anchors on an item that is managed by a layout. This is undefined behavior; use Layout.alignment instead.
+[  861.759692] oneplus-negroni kscreenlocker_greet[3573]: file:///usr/share/plasma/shells/org.kde.plasma.mobileshell/contents/lockscreen/Keypad.qml:80:9: QML LayoutItemProxy: Detected anchors on an item that is managed by a layout. This is undefined behavior; use Layout.alignment instead.
+[  861.759767] oneplus-negroni kscreenlocker_greet[3573]: file:///usr/share/plasma/shells/org.kde.plasma.mobileshell/contents/lockscreen/Keypad.qml:35:9: QML LayoutItemProxy: Detected anchors on an item that is managed by a layout. This is undefined behavior; use Layout.alignment instead.
+[  861.830333] oneplus-negroni kscreenlocker_greet[3573]: prompt secret:  
+[  862.572280] oneplus-negroni kscreenlocker_greet[3573]: qrc:/org/kde/plasma/private/mobileshell/BaseItem.qml:31: TypeError: Cannot read property 'implicitWidth' of null
+[  862.572453] oneplus-negroni kscreenlocker_greet[3573]: qrc:/org/kde/plasma/private/mobileshell/BaseItem.qml:30: TypeError: Cannot read property 'implicitHeight' of null
+[  865.016392] oneplus-negroni systemd[1]: dbus-:1.2-org.kde.powerdevil.backlighthelper@2.service: Deactivated successfully.
+[  866.874958] oneplus-negroni systemd-logind[2385]: Power key pressed short.
+[  880.483924] oneplus-negroni sshd-session[3649]: Accepted password for oneplus from 192.168.188.22 port 51032 ssh2
+[  880.502662] oneplus-negroni sshd-session[3649]: pam_unix(sshd:session): session opened for user oneplus(uid=1000) by oneplus(uid=0)
+[  880.558176] oneplus-negroni systemd-logind[2385]: New session '8' of user 'oneplus' with class 'user' and type 'tty'.
+[  880.589169] oneplus-negroni systemd[1]: Started Session 8 of User oneplus.
+[  880.978677] oneplus-negroni sudo[3654]:  oneplus : PWD=/home/oneplus ; USER=root ; COMMAND=/usr/bin/bash -c 'journalctl -b --since "3 minutes ago" --no-pager -o short-monotonic; ps -eLo pid,tid,stat,wchan:36,comm | grep -E "kwin|gpu|gmu|kworker"; cat /sys/kernel/debug/dri/0/hangcheck_period_ms; cat /sys/class/drm/card0-DSI-1/dpms'
+[  880.979313] oneplus-negroni sudo[3654]: pam_unix(sudo:session): session opened for user root(uid=0) by oneplus(uid=1000)
+      4       4 I<   rescuer_thread                       kworker/R-rcu_gp
+      5       5 I<   rescuer_thread                       kworker/R-sync_wq
+      6       6 I<   rescuer_thread                       kworker/R-kvfree_rcu_reclaim
+      7       7 I<   rescuer_thread                       kworker/R-slub_flushwq
+      8       8 I<   rescuer_thread                       kworker/R-netns
+     11      11 I<   worker_thread                        kworker/0:0H-kblockd
+     13      13 I<   rescuer_thread                       kworker/R-mm_percpu_wq
+     24      24 I<   worker_thread                        kworker/1:0H-kblockd
+     28      28 I    worker_thread                        kworker/2:0-mm_percpu_wq
+     29      29 I<   worker_thread                        kworker/2:0H-kblockd
+     34      34 I<   worker_thread                        kworker/3:0H
+     39      39 I<   worker_thread                        kworker/4:0H-kblockd
+     44      44 I<   worker_thread                        kworker/5:0H-kblockd
+     49      49 I<   worker_thread                        kworker/6:0H-kblockd
+     54      54 I<   worker_thread                        kworker/7:0H-kblockd
+     56      56 I<   rescuer_thread                       kworker/R-inet_frag_wq
+     61      61 I<   rescuer_thread                       kworker/R-writeback
+     65      65 I<   rescuer_thread                       kworker/R-bio_complete
+     66      66 I<   rescuer_thread                       kworker/R-kblockd
+     67      67 I<   rescuer_thread                       kworker/R-kintegrityd
+     71      71 I<   rescuer_thread                       kworker/R-edac-poller
+     72      72 I<   rescuer_thread                       kworker/R-devfreq_wq
+     74      74 I<   rescuer_thread                       kworker/R-quota_events_unbound
+     76      76 I    worker_thread                        kworker/3:1-events
+     77      77 I<   rescuer_thread                       kworker/R-rpciod
+     78      78 I<   rescuer_thread                       kworker/R-xprtiod
+     79      79 I    worker_thread                        kworker/2:1-cgroup_release
+     81      81 I<   rescuer_thread                       kworker/R-nfsiod
+     82      82 I<   rescuer_thread                       kworker/R-kthrotld
+     85      85 I    worker_thread                        kworker/3:4-events
+     87      87 I    worker_thread                        kworker/u32:3-events_unbound
+     89      89 I    worker_thread                        kworker/u32:5-async
+     91      91 I<   worker_thread                        kworker/u33:0-ufs_clk_gating_0
+     92      92 I<   rescuer_thread                       kworker/R-vfio-irqfd-cleanup
+    105     105 I<   rescuer_thread                       kworker/R-mld
+    106     106 I<   rescuer_thread                       kworker/R-ipv6_addrconf
+    114     114 I<   rescuer_thread                       kworker/R-pdr_notifier_wq
+    119     119 I    worker_thread                        kworker/u32:6-async
+    122     122 I<   rescuer_thread                       kworker/R-syna_async
+    123     123 I<   rescuer_thread                       kworker/R-syna_tcm_helper
+    125     125 I<   rescuer_thread                       kworker/R-sp_resume0
+    126     126 I<   rescuer_thread                       kworker/R-volume_key_trigger0
+    131     131 I    worker_thread                        kworker/4:7-cgroup_release
+    139     139 I    worker_thread                        kworker/0:10-mm_percpu_wq
+    151     151 I    worker_thread                        kworker/1:3-mm_percpu_wq
+    155     155 S    kthread_worker_fn                    gpu-worker
+    158     158 I<   rescuer_thread                       kworker/R-ring0
+    159     159 I<   rescuer_thread                       kworker/R-ring1
+    160     160 I<   rescuer_thread                       kworker/R-ring2
+    161     161 I<   rescuer_thread                       kworker/R-ring3
+    183     183 I    worker_thread                        kworker/7:7-cgroup_free
+    184     184 I    worker_thread                        kworker/7:8-cgroup_free
+    192     192 I    worker_thread                        kworker/6:3-events
+    212     212 I    worker_thread                        kworker/5:2-events
+    215     215 I<   rescuer_thread                       kworker/R-scsi_tmf_0
+    217     217 I<   rescuer_thread                       kworker/R-ufs_eh_wq_0
+    218     218 I<   rescuer_thread                       kworker/R-ufs_clk_gating_0
+    219     219 I<   rescuer_thread                       kworker/R-ufs_clkscaling_0
+    229     229 I    worker_thread                        kworker/u32:9-async
+    230     230 I<   worker_thread                        kworker/7:1H-kblockd
+    231     231 I<   worker_thread                        kworker/6:1H-kblockd
+    232     232 I<   worker_thread                        kworker/5:1H-kblockd
+    233     233 I<   worker_thread                        kworker/4:1H-kblockd
+    234     234 I<   worker_thread                        kworker/2:1H-kblockd
+    274     274 I<   worker_thread                        kworker/0:1H-kblockd
+    275     275 I<   worker_thread                        kworker/3:1H-kblockd
+    276     276 I<   worker_thread                        kworker/u33:1-hci0
+    283     283 I<   worker_thread                        kworker/1:1H-kblockd
+    296     296 I<   rescuer_thread                       kworker/R-ext4-rsv-conversion
+    434     434 I<   rescuer_thread                       kworker/R-ext4-rsv-conversion
+   2470    2470 I    worker_thread                        kworker/5:5-events
+   2492    2492 I<   rescuer_thread                       kworker/R-qcom_apr_rx
+   2493    2493 I<   rescuer_thread                       kworker/R-pdr_notifier_wq
+   2520    2520 I<   rescuer_thread                       kworker/R-cfg80211
+   2521    2521 I<   rescuer_thread                       kworker/R-nfc0_nci_cmd_wq
+   2522    2522 I<   rescuer_thread                       kworker/R-nfc0_nci_rx_wq
+   2523    2523 I<   rescuer_thread                       kworker/R-nfc0_nci_tx_wq
+   2528    2528 I<   rescuer_thread                       kworker/R-ath11k_wq
+   2529    2529 I<   rescuer_thread                       kworker/R-ath11k_aux_wq
+   2571    2571 I<   rescuer_thread                       kworker/R-pmic_glink.ucsi.0-con1
+   2900    2900 I    worker_thread                        kworker/6:0-events
+   2901    2901 I    worker_thread                        kworker/4:0-events
+   2902    2902 I    worker_thread                        kworker/0:0-events
+   2903    2903 I    worker_thread                        kworker/1:1-cgroup_release
+   2938    2938 I<   worker_thread                        kworker/u33:2
+   2983    2983 Ssl  do_sys_poll                          kwin_wayland_wr
+   2990    2990 Sl   do_sys_poll                          kwin_wayland
+   2990    3006 SNl  futex_wait                           kwin_wa:disk$0
+   2990    3007 Sl   futex_wait                           kwin_way:ir3q0
+   2990    3010 SNl  futex_wait                           kwin_wa:disk$0
+   2990    3011 Sl   futex_wait                           kwin_way:ir3q0
+   2990    3015 Sl   futex_wait                           kwin_way:ir3q1
+   2990    3016 Sl   futex_wait                           kwin_way:ir3q2
+   2990    3017 SNl  futex_wait                           kwin_w:traceq0
+   2990    3018 Sl   futex_wait                           kwin_way:gdrv0
+   2990    3020 SNl  futex_wait                           kwin_w:traceq0
+   2990    3021 Sl   futex_wait                           kwin_way:gdrv0
+   3066    3066 I    worker_thread                        kworker/3:0
+   3150    3249 Ssl  do_sys_poll                          krunner_kwin
+   3276    3276 I    worker_thread                        kworker/7:0-mm_percpu_wq
+   3407    3407 I    worker_thread                        kworker/u32:0-ufs_clkscaling_0
+   3477    3477 I    worker_thread                        kworker/6:1
+   3517    3517 I    worker_thread                        kworker/0:1-cgroup_release
+   3518    3518 I    worker_thread                        kworker/0:2
+   3547    3547 I    worker_thread                        kworker/1:0
+   3629    3629 I    worker_thread                        kworker/2:2-cgroup_free
+250
+On

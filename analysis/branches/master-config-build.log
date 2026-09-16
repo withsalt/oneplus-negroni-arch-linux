@@ -1,0 +1,3102 @@
+make: Entering directory '/home/ubuntu/oneplus-negroni/analysis/validation/master-source'
+make[1]: 进入目录“/home/ubuntu/oneplus-negroni/analysis/validation/master-output”
+  UPD     /home/ubuntu/oneplus-negroni/analysis/validation/master-output/Makefile
+  HOSTCC  scripts/basic/fixdep
+  HOSTCC  scripts/kconfig/conf.o
+  HOSTCC  scripts/kconfig/confdata.o
+  HOSTCC  scripts/kconfig/expr.o
+  LEX     scripts/kconfig/lexer.lex.c
+  YACC    scripts/kconfig/parser.tab.[ch]
+  HOSTCC  scripts/kconfig/lexer.lex.o
+  HOSTCC  scripts/kconfig/menu.o
+  HOSTCC  scripts/kconfig/parser.tab.o
+  HOSTCC  scripts/kconfig/preprocess.o
+  HOSTCC  scripts/kconfig/symbol.o
+  HOSTCC  scripts/kconfig/util.o
+  HOSTLD  scripts/kconfig/conf
+*** Default configuration is based on 'defconfig'
+#
+# configuration written to .config
+#
+make[1]: 离开目录“/home/ubuntu/oneplus-negroni/analysis/validation/master-output”
+make: Leaving directory '/home/ubuntu/oneplus-negroni/analysis/validation/master-source'
+make: Entering directory '/home/ubuntu/oneplus-negroni/analysis/validation/master-source'
+make[1]: 进入目录“/home/ubuntu/oneplus-negroni/analysis/validation/master-output”
+Using .config as base
+Merging /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config
+Value of CONFIG_LOCALVERSION is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_LOCALVERSION=""
+New value: CONFIG_LOCALVERSION="-sm8450"
+
+Value of CONFIG_LOCALVERSION_AUTO is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_LOCALVERSION_AUTO=y
+New value: # CONFIG_LOCALVERSION_AUTO is not set
+
+Value of CONFIG_PSI is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_PSI is not set
+New value: CONFIG_PSI=y
+
+Value of CONFIG_CFS_BANDWIDTH is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_CFS_BANDWIDTH is not set
+New value: CONFIG_CFS_BANDWIDTH=y
+
+Value of CONFIG_CHECKPOINT_RESTORE is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_CHECKPOINT_RESTORE is not set
+New value: CONFIG_CHECKPOINT_RESTORE=y
+
+Value of CONFIG_BOOT_CONFIG is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_BOOT_CONFIG is not set
+New value: CONFIG_BOOT_CONFIG=y
+
+Value of CONFIG_ARCH_ACTIONS is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_ARCH_ACTIONS=y
+New value: CONFIG_ARCH_ACTIONS=n
+
+Value of CONFIG_ARCH_AIROHA is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_ARCH_AIROHA=y
+New value: CONFIG_ARCH_AIROHA=n
+
+Value of CONFIG_ARCH_SUNXI is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_ARCH_SUNXI=y
+New value: CONFIG_ARCH_SUNXI=n
+
+Value of CONFIG_ARCH_ALPINE is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_ARCH_ALPINE=y
+New value: CONFIG_ARCH_ALPINE=n
+
+Value of CONFIG_ARCH_APPLE is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_ARCH_APPLE=y
+New value: CONFIG_ARCH_APPLE=n
+
+Value of CONFIG_ARCH_ASPEED is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_ARCH_ASPEED=y
+New value: CONFIG_ARCH_ASPEED=n
+
+Value of CONFIG_ARCH_AXIADO is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_ARCH_AXIADO=y
+New value: CONFIG_ARCH_AXIADO=n
+
+Value of CONFIG_ARCH_BCM is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_ARCH_BCM=y
+New value: CONFIG_ARCH_BCM=n
+
+Value of CONFIG_ARCH_BCM2835 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_ARCH_BCM2835=y
+New value: CONFIG_ARCH_BCM2835=n
+
+Value of CONFIG_ARCH_BCM_IPROC is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_ARCH_BCM_IPROC=y
+New value: CONFIG_ARCH_BCM_IPROC=n
+
+Value of CONFIG_ARCH_BCMBCA is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_ARCH_BCMBCA=y
+New value: CONFIG_ARCH_BCMBCA=n
+
+Value of CONFIG_ARCH_BRCMSTB is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_ARCH_BRCMSTB=y
+New value: CONFIG_ARCH_BRCMSTB=n
+
+Value of CONFIG_ARCH_BERLIN is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_ARCH_BERLIN=y
+New value: CONFIG_ARCH_BERLIN=n
+
+Value of CONFIG_ARCH_BITMAIN is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_ARCH_BITMAIN is not set
+New value: CONFIG_ARCH_BITMAIN=n
+
+Value of CONFIG_ARCH_BLAIZE is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_ARCH_BLAIZE=y
+New value: CONFIG_ARCH_BLAIZE=n
+
+Value of CONFIG_ARCH_BST is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_ARCH_BST=y
+New value: CONFIG_ARCH_BST=n
+
+Value of CONFIG_ARCH_CIX is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_ARCH_CIX=y
+New value: CONFIG_ARCH_CIX=n
+
+Value of CONFIG_ARCH_EXYNOS is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_ARCH_EXYNOS=y
+New value: CONFIG_ARCH_EXYNOS=n
+
+Value of CONFIG_ARCH_K3 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_ARCH_K3=y
+New value: CONFIG_ARCH_K3=n
+
+Value of CONFIG_ARCH_LG1K is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_ARCH_LG1K=y
+New value: CONFIG_ARCH_LG1K=n
+
+Value of CONFIG_ARCH_HISI is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_ARCH_HISI=y
+New value: CONFIG_ARCH_HISI=n
+
+Value of CONFIG_ARCH_KEEMBAY is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_ARCH_KEEMBAY=y
+New value: CONFIG_ARCH_KEEMBAY=n
+
+Value of CONFIG_ARCH_MEDIATEK is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_ARCH_MEDIATEK=y
+New value: CONFIG_ARCH_MEDIATEK=n
+
+Value of CONFIG_ARCH_MESON is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_ARCH_MESON=y
+New value: CONFIG_ARCH_MESON=n
+
+Value of CONFIG_ARCH_MICROCHIP is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_ARCH_MICROCHIP=y
+New value: CONFIG_ARCH_MICROCHIP=n
+
+Value of CONFIG_ARCH_SPARX5 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_ARCH_SPARX5=y
+New value: CONFIG_ARCH_SPARX5=n
+
+Value of CONFIG_ARCH_MVEBU is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_ARCH_MVEBU=y
+New value: CONFIG_ARCH_MVEBU=n
+
+Value of CONFIG_ARCH_NXP is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_ARCH_NXP=y
+New value: CONFIG_ARCH_NXP=n
+
+Value of CONFIG_ARCH_LAYERSCAPE is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_ARCH_LAYERSCAPE=y
+New value: CONFIG_ARCH_LAYERSCAPE=n
+
+Value of CONFIG_ARCH_MXC is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_ARCH_MXC=y
+New value: CONFIG_ARCH_MXC=n
+
+Value of CONFIG_ARCH_S32 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_ARCH_S32=y
+New value: CONFIG_ARCH_S32=n
+
+Value of CONFIG_ARCH_MA35 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_ARCH_MA35=y
+New value: CONFIG_ARCH_MA35=n
+
+Value of CONFIG_ARCH_NPCM is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_ARCH_NPCM=y
+New value: CONFIG_ARCH_NPCM=n
+
+Value of CONFIG_ARCH_REALTEK is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_ARCH_REALTEK=y
+New value: CONFIG_ARCH_REALTEK=n
+
+Value of CONFIG_ARCH_RENESAS is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_ARCH_RENESAS=y
+New value: CONFIG_ARCH_RENESAS=n
+
+Value of CONFIG_ARCH_ROCKCHIP is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_ARCH_ROCKCHIP=y
+New value: CONFIG_ARCH_ROCKCHIP=n
+
+Value of CONFIG_ARCH_SEATTLE is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_ARCH_SEATTLE=y
+New value: CONFIG_ARCH_SEATTLE=n
+
+Value of CONFIG_ARCH_INTEL_SOCFPGA is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_ARCH_INTEL_SOCFPGA=y
+New value: CONFIG_ARCH_INTEL_SOCFPGA=n
+
+Value of CONFIG_ARCH_SOPHGO is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_ARCH_SOPHGO=y
+New value: CONFIG_ARCH_SOPHGO=n
+
+Value of CONFIG_ARCH_STM32 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_ARCH_STM32=y
+New value: CONFIG_ARCH_STM32=n
+
+Value of CONFIG_ARCH_SYNQUACER is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_ARCH_SYNQUACER=y
+New value: CONFIG_ARCH_SYNQUACER=n
+
+Value of CONFIG_ARCH_TEGRA is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_ARCH_TEGRA=y
+New value: CONFIG_ARCH_TEGRA=n
+
+Value of CONFIG_ARCH_SPRD is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_ARCH_SPRD=y
+New value: CONFIG_ARCH_SPRD=n
+
+Value of CONFIG_ARCH_THUNDER is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_ARCH_THUNDER=y
+New value: CONFIG_ARCH_THUNDER=n
+
+Value of CONFIG_ARCH_THUNDER2 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_ARCH_THUNDER2=y
+New value: CONFIG_ARCH_THUNDER2=n
+
+Value of CONFIG_ARCH_UNIPHIER is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_ARCH_UNIPHIER=y
+New value: CONFIG_ARCH_UNIPHIER=n
+
+Value of CONFIG_ARCH_VEXPRESS is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_ARCH_VEXPRESS=y
+New value: CONFIG_ARCH_VEXPRESS=n
+
+Value of CONFIG_ARCH_VISCONTI is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_ARCH_VISCONTI=y
+New value: CONFIG_ARCH_VISCONTI=n
+
+Value of CONFIG_ARCH_XGENE is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_ARCH_XGENE=y
+New value: CONFIG_ARCH_XGENE=n
+
+Value of CONFIG_ARCH_ZYNQMP is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_ARCH_ZYNQMP=y
+New value: CONFIG_ARCH_ZYNQMP=n
+
+Value of CONFIG_CAVIUM_ERRATUM_22375 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_CAVIUM_ERRATUM_22375=y
+New value: CONFIG_CAVIUM_ERRATUM_22375=n
+
+Value of CONFIG_CAVIUM_ERRATUM_23144 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_CAVIUM_ERRATUM_23144=y
+New value: CONFIG_CAVIUM_ERRATUM_23144=n
+
+Value of CONFIG_CAVIUM_ERRATUM_23154 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_CAVIUM_ERRATUM_23154=y
+New value: CONFIG_CAVIUM_ERRATUM_23154=n
+
+Value of CONFIG_CAVIUM_ERRATUM_27456 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_CAVIUM_ERRATUM_27456=y
+New value: CONFIG_CAVIUM_ERRATUM_27456=n
+
+Value of CONFIG_CAVIUM_ERRATUM_30115 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_CAVIUM_ERRATUM_30115=y
+New value: CONFIG_CAVIUM_ERRATUM_30115=n
+
+Value of CONFIG_CAVIUM_TX2_ERRATUM_219 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_CAVIUM_TX2_ERRATUM_219=y
+New value: CONFIG_CAVIUM_TX2_ERRATUM_219=n
+
+Value of CONFIG_FUJITSU_ERRATUM_010001 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_FUJITSU_ERRATUM_010001=y
+New value: CONFIG_FUJITSU_ERRATUM_010001=n
+
+Value of CONFIG_HISILICON_ERRATUM_161600802 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_HISILICON_ERRATUM_161600802=y
+New value: CONFIG_HISILICON_ERRATUM_161600802=n
+
+Value of CONFIG_NVIDIA_CARMEL_CNP_ERRATUM is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_NVIDIA_CARMEL_CNP_ERRATUM=y
+New value: CONFIG_NVIDIA_CARMEL_CNP_ERRATUM=n
+
+Value of CONFIG_ROCKCHIP_ERRATUM_3588001 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_ROCKCHIP_ERRATUM_3588001=y
+New value: CONFIG_ROCKCHIP_ERRATUM_3588001=n
+
+Value of CONFIG_SOCIONEXT_SYNQUACER_PREITS is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SOCIONEXT_SYNQUACER_PREITS=y
+New value: CONFIG_SOCIONEXT_SYNQUACER_PREITS=n
+
+Value of CONFIG_EFI is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_EFI=y
+New value: CONFIG_EFI=n
+
+Value of CONFIG_HIBERNATION is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_HIBERNATION=y
+New value: CONFIG_HIBERNATION=n
+
+Value of CONFIG_PM_AUTOSLEEP is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_PM_AUTOSLEEP is not set
+New value: CONFIG_PM_AUTOSLEEP=y
+
+Value of CONFIG_PM_WAKELOCKS is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_PM_WAKELOCKS is not set
+New value: CONFIG_PM_WAKELOCKS=y
+
+Value of CONFIG_CPU_FREQ_GOV_POWERSAVE is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_CPU_FREQ_GOV_POWERSAVE=m
+New value: CONFIG_CPU_FREQ_GOV_POWERSAVE=y
+
+Value of CONFIG_ACPI is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_ACPI=y
+New value: CONFIG_ACPI=n
+
+Value of CONFIG_VIRTUALIZATION is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_VIRTUALIZATION=y
+New value: CONFIG_VIRTUALIZATION=n
+
+Value of CONFIG_BLK_DEV_THROTTLING is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_BLK_DEV_THROTTLING is not set
+New value: CONFIG_BLK_DEV_THROTTLING=y
+
+Value of CONFIG_BINFMT_MISC is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_BINFMT_MISC is not set
+New value: CONFIG_BINFMT_MISC=m
+
+Value of CONFIG_PACKET_DIAG is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_PACKET_DIAG is not set
+New value: CONFIG_PACKET_DIAG=y
+
+Value of CONFIG_UNIX_DIAG is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_UNIX_DIAG is not set
+New value: CONFIG_UNIX_DIAG=y
+
+Value of CONFIG_SYN_COOKIES is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_SYN_COOKIES is not set
+New value: CONFIG_SYN_COOKIES=y
+
+Value of CONFIG_TCP_CONG_ADVANCED is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_TCP_CONG_ADVANCED is not set
+New value: CONFIG_TCP_CONG_ADVANCED=y
+
+Value of CONFIG_BRIDGE_NETFILTER is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_BRIDGE_NETFILTER=m
+New value: CONFIG_BRIDGE_NETFILTER=y
+
+Value of CONFIG_NF_TABLES is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_NF_TABLES is not set
+New value: CONFIG_NF_TABLES=m
+
+Value of CONFIG_NETFILTER_XT_MATCH_COMMENT is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_NETFILTER_XT_MATCH_COMMENT is not set
+New value: CONFIG_NETFILTER_XT_MATCH_COMMENT=m
+
+Value of CONFIG_IP_VS_PROTO_TCP is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_IP_VS_PROTO_TCP is not set
+New value: CONFIG_IP_VS_PROTO_TCP=y
+
+Value of CONFIG_IP_VS_PROTO_UDP is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_IP_VS_PROTO_UDP is not set
+New value: CONFIG_IP_VS_PROTO_UDP=y
+
+Value of CONFIG_IP_VS_RR is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_IP_VS_RR is not set
+New value: CONFIG_IP_VS_RR=y
+
+Value of CONFIG_IP_VS_NFCT is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_IP_VS_NFCT is not set
+New value: CONFIG_IP_VS_NFCT=y
+
+Value of CONFIG_NET_DSA is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_NET_DSA=m
+New value: CONFIG_NET_DSA=n
+
+Value of CONFIG_NET_SCH_HTB is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_NET_SCH_HTB is not set
+New value: CONFIG_NET_SCH_HTB=y
+
+Value of CONFIG_NET_SCH_PRIO is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_NET_SCH_PRIO is not set
+New value: CONFIG_NET_SCH_PRIO=y
+
+Value of CONFIG_NET_SCH_MULTIQ is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_NET_SCH_MULTIQ is not set
+New value: CONFIG_NET_SCH_MULTIQ=y
+
+Value of CONFIG_NET_SCH_CBS is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_NET_SCH_CBS=m
+New value: CONFIG_NET_SCH_CBS=n
+
+Value of CONFIG_NET_SCH_ETF is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_NET_SCH_ETF=m
+New value: CONFIG_NET_SCH_ETF=n
+
+Value of CONFIG_NET_SCH_TAPRIO is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_NET_SCH_TAPRIO=m
+New value: CONFIG_NET_SCH_TAPRIO=n
+
+Value of CONFIG_NET_SCH_MQPRIO is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_NET_SCH_MQPRIO=m
+New value: CONFIG_NET_SCH_MQPRIO=n
+
+Value of CONFIG_NET_CLS_BASIC is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_NET_CLS_BASIC=m
+New value: CONFIG_NET_CLS_BASIC=n
+
+Value of CONFIG_NET_CLS_CGROUP is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_NET_CLS_CGROUP is not set
+New value: CONFIG_NET_CLS_CGROUP=m
+
+Value of CONFIG_NET_CLS_FLOWER is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_NET_CLS_FLOWER=m
+New value: CONFIG_NET_CLS_FLOWER=n
+
+Value of CONFIG_NET_CLS_ACT is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_NET_CLS_ACT=y
+New value: CONFIG_NET_CLS_ACT=n
+
+Value of CONFIG_NET_ACT_GACT is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_NET_ACT_GACT=m
+New value: CONFIG_NET_ACT_GACT=n
+
+Value of CONFIG_NET_ACT_MIRRED is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_NET_ACT_MIRRED=m
+New value: CONFIG_NET_ACT_MIRRED=n
+
+Value of CONFIG_NET_ACT_GATE is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_NET_ACT_GATE=m
+New value: CONFIG_NET_ACT_GATE=n
+
+Value of CONFIG_NETLINK_DIAG is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_NETLINK_DIAG is not set
+New value: CONFIG_NETLINK_DIAG=m
+
+Value of CONFIG_QRTR is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_QRTR=m
+New value: CONFIG_QRTR=y
+
+Value of CONFIG_QRTR_SMD is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_QRTR_SMD=m
+New value: CONFIG_QRTR_SMD=y
+
+Value of CONFIG_QRTR_TUN is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_QRTR_TUN=m
+New value: CONFIG_QRTR_TUN=y
+
+Value of CONFIG_CGROUP_NET_PRIO is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_CGROUP_NET_PRIO is not set
+New value: CONFIG_CGROUP_NET_PRIO=y
+
+Value of CONFIG_CAN is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_CAN=m
+New value: CONFIG_CAN=n
+
+Value of CONFIG_BT_RFCOMM is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_BT_RFCOMM is not set
+New value: CONFIG_BT_RFCOMM=m
+
+Value of CONFIG_BT_BNEP is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_BT_BNEP is not set
+New value: CONFIG_BT_BNEP=m
+
+Value of CONFIG_BT_LE is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_BT_LE is not set
+New value: CONFIG_BT_LE=y
+
+Value of CONFIG_NET_9P is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_NET_9P=m
+New value: CONFIG_NET_9P=n
+
+Value of CONFIG_PCI_PASID is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_PCI_PASID=y
+New value: CONFIG_PCI_PASID=n
+
+Value of CONFIG_PCIE_ALTERA is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_PCIE_ALTERA=y
+New value: CONFIG_PCIE_ALTERA=n
+
+Value of CONFIG_PCI_HOST_THUNDER_PEM is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_PCI_HOST_THUNDER_PEM=y
+New value: CONFIG_PCI_HOST_THUNDER_PEM=n
+
+Value of CONFIG_PCI_HOST_THUNDER_ECAM is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_PCI_HOST_THUNDER_ECAM=y
+New value: CONFIG_PCI_HOST_THUNDER_ECAM=n
+
+Value of CONFIG_PCI_XGENE is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_PCI_XGENE=y
+New value: CONFIG_PCI_XGENE=n
+
+Value of CONFIG_PCI_MESON is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_PCI_MESON=m
+New value: CONFIG_PCI_MESON=n
+
+Value of CONFIG_PCI_HISI is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_PCI_HISI=y
+New value: CONFIG_PCI_HISI=n
+
+Value of CONFIG_PCIE_KIRIN is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_PCIE_KIRIN=y
+New value: CONFIG_PCIE_KIRIN=n
+
+Value of CONFIG_UEVENT_HELPER is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_UEVENT_HELPER is not set
+New value: CONFIG_UEVENT_HELPER=y
+
+Value of CONFIG_FW_LOADER_USER_HELPER is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_FW_LOADER_USER_HELPER=y
+New value: CONFIG_FW_LOADER_USER_HELPER=n
+
+Value of CONFIG_FW_LOADER_USER_HELPER_FALLBACK is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_FW_LOADER_USER_HELPER_FALLBACK is not set
+New value: CONFIG_FW_LOADER_USER_HELPER_FALLBACK=n
+
+Value of CONFIG_FW_LOADER_COMPRESS is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_FW_LOADER_COMPRESS is not set
+New value: CONFIG_FW_LOADER_COMPRESS=y
+
+Value of CONFIG_GNSS_MTK_SERIAL is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_GNSS_MTK_SERIAL=m
+New value: CONFIG_GNSS_MTK_SERIAL=n
+
+Value of CONFIG_MTD is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_MTD=y
+New value: CONFIG_MTD=n
+
+Value of CONFIG_ZRAM is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_ZRAM is not set
+New value: CONFIG_ZRAM=m
+
+Value of CONFIG_BLK_DEV_RAM is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_BLK_DEV_RAM is not set
+New value: CONFIG_BLK_DEV_RAM=y
+
+Value of CONFIG_BLK_DEV_NVME is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_BLK_DEV_NVME=m
+New value: CONFIG_BLK_DEV_NVME=n
+
+Value of CONFIG_SRAM is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SRAM=y
+New value: CONFIG_SRAM=n
+
+Value of CONFIG_XILINX_SDFEC is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_XILINX_SDFEC=m
+New value: CONFIG_XILINX_SDFEC=n
+
+Value of CONFIG_TPS6594_ESM is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_TPS6594_ESM=m
+New value: CONFIG_TPS6594_ESM=n
+
+Value of CONFIG_TPS6594_PFSM is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_TPS6594_PFSM=m
+New value: CONFIG_TPS6594_PFSM=n
+
+Value of CONFIG_MXM_UP is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_MXM_UP is not set
+New value: CONFIG_MXM_UP=y
+
+Value of CONFIG_MXM_DOWN is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_MXM_DOWN is not set
+New value: CONFIG_MXM_DOWN=y
+
+Value of CONFIG_UACCE is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_UACCE=m
+New value: CONFIG_UACCE=n
+
+Value of CONFIG_MISC_RP1 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_MISC_RP1=m
+New value: CONFIG_MISC_RP1=n
+
+Value of CONFIG_SCSI_SCAN_ASYNC is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_SCSI_SCAN_ASYNC is not set
+New value: CONFIG_SCSI_SCAN_ASYNC=y
+
+Value of CONFIG_MEGARAID_SAS is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_MEGARAID_SAS=y
+New value: CONFIG_MEGARAID_SAS=n
+
+Value of CONFIG_SCSI_MPT3SAS is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SCSI_MPT3SAS=m
+New value: CONFIG_SCSI_MPT3SAS=n
+
+Value of CONFIG_ATA is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_ATA=y
+New value: CONFIG_ATA=n
+
+Value of CONFIG_BLK_DEV_MD is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_BLK_DEV_MD=m
+New value: CONFIG_BLK_DEV_MD=n
+
+Value of CONFIG_DM_CRYPT is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_DM_CRYPT is not set
+New value: CONFIG_DM_CRYPT=y
+
+Value of CONFIG_DM_THIN_PROVISIONING is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_DM_THIN_PROVISIONING is not set
+New value: CONFIG_DM_THIN_PROVISIONING=y
+
+Value of CONFIG_DM_MIRROR is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_DM_MIRROR=m
+New value: CONFIG_DM_MIRROR=n
+
+Value of CONFIG_DM_ZERO is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_DM_ZERO=m
+New value: CONFIG_DM_ZERO=n
+
+Value of CONFIG_DUMMY is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_DUMMY is not set
+New value: CONFIG_DUMMY=m
+
+Value of CONFIG_WIREGUARD is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_WIREGUARD is not set
+New value: CONFIG_WIREGUARD=m
+
+Value of CONFIG_IPVLAN is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_IPVLAN is not set
+New value: CONFIG_IPVLAN=m
+
+Value of CONFIG_VXLAN is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_VXLAN is not set
+New value: CONFIG_VXLAN=m
+
+Value of CONFIG_ATL1C is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_ATL1C=m
+New value: CONFIG_ATL1C=n
+
+Value of CONFIG_BNX2X is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_BNX2X=m
+New value: CONFIG_BNX2X=n
+
+Value of CONFIG_MACB is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_MACB=m
+New value: CONFIG_MACB=n
+
+Value of CONFIG_THUNDER_NIC_BGX is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_THUNDER_NIC_BGX=m
+New value: CONFIG_THUNDER_NIC_BGX=n
+
+Value of CONFIG_THUNDER_NIC_RGX is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_THUNDER_NIC_RGX=m
+New value: CONFIG_THUNDER_NIC_RGX=n
+
+Value of CONFIG_HIX5HD2_GMAC is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_HIX5HD2_GMAC=m
+New value: CONFIG_HIX5HD2_GMAC=n
+
+Value of CONFIG_HNS_DSAF is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_HNS_DSAF=m
+New value: CONFIG_HNS_DSAF=n
+
+Value of CONFIG_HNS_ENET is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_HNS_ENET=m
+New value: CONFIG_HNS_ENET=n
+
+Value of CONFIG_HNS3 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_HNS3=m
+New value: CONFIG_HNS3=n
+
+Value of CONFIG_IGB is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_IGB=m
+New value: CONFIG_IGB=n
+
+Value of CONFIG_IGBVF is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_IGBVF=m
+New value: CONFIG_IGBVF=n
+
+Value of CONFIG_MLX4_EN is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_MLX4_EN=m
+New value: CONFIG_MLX4_EN=n
+
+Value of CONFIG_MLX5_CORE is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_MLX5_CORE=m
+New value: CONFIG_MLX5_CORE=n
+
+Value of CONFIG_NET_VENDOR_NI is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_NET_VENDOR_NI is not set
+New value: CONFIG_NET_VENDOR_NI=n
+
+Value of CONFIG_SMC91X is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SMC91X=m
+New value: CONFIG_SMC91X=n
+
+Value of CONFIG_NET_VENDOR_SOCIONEXT is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_NET_VENDOR_SOCIONEXT=y
+New value: CONFIG_NET_VENDOR_SOCIONEXT=n
+
+Value of CONFIG_STMMAC_ETH is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_STMMAC_ETH=m
+New value: CONFIG_STMMAC_ETH=n
+
+Value of CONFIG_AQUANTIA_PHY is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_AQUANTIA_PHY=y
+New value: CONFIG_AQUANTIA_PHY=n
+
+Value of CONFIG_MICREL_PHY is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_MICREL_PHY=y
+New value: CONFIG_MICREL_PHY=n
+
+Value of CONFIG_MICROSEMI_PHY is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_MICROSEMI_PHY=y
+New value: CONFIG_MICROSEMI_PHY=n
+
+Value of CONFIG_REALTEK_PHY is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_REALTEK_PHY=y
+New value: CONFIG_REALTEK_PHY=n
+
+Value of CONFIG_VITESSE_PHY is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_VITESSE_PHY=y
+New value: CONFIG_VITESSE_PHY=n
+
+Value of CONFIG_MDIO_THUNDER is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_MDIO_THUNDER=m
+New value: CONFIG_MDIO_THUNDER=n
+
+Value of CONFIG_MDIO_BUS_MUX_MULTIPLEXER is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_MDIO_BUS_MUX_MULTIPLEXER=y
+New value: CONFIG_MDIO_BUS_MUX_MULTIPLEXER=n
+
+Value of CONFIG_MDIO_BUS_MUX_MMIOREG is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_MDIO_BUS_MUX_MMIOREG=y
+New value: CONFIG_MDIO_BUS_MUX_MMIOREG=n
+
+Value of CONFIG_USB_NET_PLUSB is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_USB_NET_PLUSB=m
+New value: CONFIG_USB_NET_PLUSB=n
+
+Value of CONFIG_ATH10K is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_ATH10K=m
+New value: CONFIG_ATH10K=n
+
+Value of CONFIG_ATH10K_PCI is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_ATH10K_PCI=m
+New value: CONFIG_ATH10K_PCI=n
+
+Value of CONFIG_WCN36XX is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_WCN36XX=m
+New value: CONFIG_WCN36XX=n
+
+Value of CONFIG_ATH11K_AHB is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_ATH11K_AHB=m
+New value: CONFIG_ATH11K_AHB=n
+
+Value of CONFIG_ATH11K_DEBUG is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_ATH11K_DEBUG is not set
+New value: CONFIG_ATH11K_DEBUG=y
+
+Value of CONFIG_ATH12K is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_ATH12K=m
+New value: CONFIG_ATH12K=n
+
+Value of CONFIG_BRCMFMAC is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_BRCMFMAC=m
+New value: CONFIG_BRCMFMAC=n
+
+Value of CONFIG_WLAN_VENDOR_INTEL is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_WLAN_VENDOR_INTEL=y
+New value: CONFIG_WLAN_VENDOR_INTEL=n
+
+Value of CONFIG_WLAN_VENDOR_MARVELL is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_WLAN_VENDOR_MARVELL=y
+New value: CONFIG_WLAN_VENDOR_MARVELL=n
+
+Value of CONFIG_MWIFIEX_PCIE is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_MWIFIEX_PCIE=m
+New value: CONFIG_MWIFIEX_PCIE=n
+
+Value of CONFIG_MT7921E is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_MT7921E=m
+New value: CONFIG_MT7921E=n
+
+Value of CONFIG_WLAN_VENDOR_MICROCHIP is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_WLAN_VENDOR_MICROCHIP=y
+New value: CONFIG_WLAN_VENDOR_MICROCHIP=n
+
+Value of CONFIG_WLAN_VENDOR_PURELIFI is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_WLAN_VENDOR_PURELIFI=y
+New value: CONFIG_WLAN_VENDOR_PURELIFI=n
+
+Value of CONFIG_WLAN_VENDOR_RALINK is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_WLAN_VENDOR_RALINK=y
+New value: CONFIG_WLAN_VENDOR_RALINK=n
+
+Value of CONFIG_WL18XX is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_WL18XX=m
+New value: CONFIG_WL18XX=n
+
+Value of CONFIG_WLCORE is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_WLCORE=m
+New value: CONFIG_WLCORE=n
+
+Value of CONFIG_WLAN_VENDOR_QUANTENNA is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_WLAN_VENDOR_QUANTENNA=y
+New value: CONFIG_WLAN_VENDOR_QUANTENNA=n
+
+Value of CONFIG_INPUT_JOYDEV is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_INPUT_JOYDEV is not set
+New value: CONFIG_INPUT_JOYDEV=m
+
+Value of CONFIG_KEYBOARD_ADC is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_KEYBOARD_ADC=m
+New value: CONFIG_KEYBOARD_ADC=n
+
+Value of CONFIG_MOUSE_ELAN_I2C is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_MOUSE_ELAN_I2C=m
+New value: CONFIG_MOUSE_ELAN_I2C=n
+
+Value of CONFIG_TOUCHSCREEN_ATMEL_MXT is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_TOUCHSCREEN_ATMEL_MXT=m
+New value: CONFIG_TOUCHSCREEN_ATMEL_MXT=n
+
+Value of CONFIG_TOUCHSCREEN_GOODIX is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_TOUCHSCREEN_GOODIX=m
+New value: CONFIG_TOUCHSCREEN_GOODIX=n
+
+Value of CONFIG_TOUCHSCREEN_ELAN is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_TOUCHSCREEN_ELAN=m
+New value: CONFIG_TOUCHSCREEN_ELAN=n
+
+Value of CONFIG_TOUCHSCREEN_EDT_FT5X06 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_TOUCHSCREEN_EDT_FT5X06=m
+New value: CONFIG_TOUCHSCREEN_EDT_FT5X06=n
+
+Value of CONFIG_TOUCHSCREEN_SYNAPTICS_TCM_ONCELL is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_TOUCHSCREEN_SYNAPTICS_TCM_ONCELL is not set
+New value: CONFIG_TOUCHSCREEN_SYNAPTICS_TCM_ONCELL=y
+
+Value of CONFIG_INPUT_UINPUT is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_INPUT_UINPUT is not set
+New value: CONFIG_INPUT_UINPUT=m
+
+Value of CONFIG_SERIAL_XILINX_PS_UART is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SERIAL_XILINX_PS_UART=y
+New value: CONFIG_SERIAL_XILINX_PS_UART=n
+
+Value of CONFIG_SERIAL_FSL_LPUART is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SERIAL_FSL_LPUART=y
+New value: CONFIG_SERIAL_FSL_LPUART=n
+
+Value of CONFIG_SERIAL_FSL_LINFLEXUART is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SERIAL_FSL_LINFLEXUART=y
+New value: CONFIG_SERIAL_FSL_LINFLEXUART=n
+
+Value of CONFIG_HW_RANDOM_CAVIUM is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_HW_RANDOM_CAVIUM=y
+New value: CONFIG_HW_RANDOM_CAVIUM=n
+
+Value of CONFIG_TCG_TPM is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_TCG_TPM=y
+New value: CONFIG_TCG_TPM=n
+
+Value of CONFIG_I2C_MUX_PCA954x is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_I2C_MUX_PCA954x=y
+New value: CONFIG_I2C_MUX_PCA954x=n
+
+Value of CONFIG_I2C_DESIGNWARE_PLATFORM is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_I2C_DESIGNWARE_PLATFORM=y
+New value: CONFIG_I2C_DESIGNWARE_PLATFORM=n
+
+Value of CONFIG_I2C_QCOM_GENI is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_I2C_QCOM_GENI=m
+New value: CONFIG_I2C_QCOM_GENI=y
+
+Value of CONFIG_I2C_RK3X is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_I2C_RK3X=y
+New value: CONFIG_I2C_RK3X=n
+
+Value of CONFIG_SPI_CADENCE_QUADSPI is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SPI_CADENCE_QUADSPI=y
+New value: CONFIG_SPI_CADENCE_QUADSPI=n
+
+Value of CONFIG_SPI_DESIGNWARE is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SPI_DESIGNWARE=m
+New value: CONFIG_SPI_DESIGNWARE=n
+
+Value of CONFIG_SPI_PL022 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SPI_PL022=y
+New value: CONFIG_SPI_PL022=n
+
+Value of CONFIG_SPI_QCOM_GENI is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SPI_QCOM_GENI=m
+New value: CONFIG_SPI_QCOM_GENI=y
+
+Value of CONFIG_SPI_XILINX is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SPI_XILINX=m
+New value: CONFIG_SPI_XILINX=n
+
+Value of CONFIG_SPI_ZYNQMP_GQSPI is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SPI_ZYNQMP_GQSPI=m
+New value: CONFIG_SPI_ZYNQMP_GQSPI=n
+
+Value of CONFIG_PINCTRL_DA9062 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_PINCTRL_DA9062=m
+New value: CONFIG_PINCTRL_DA9062=n
+
+Value of CONFIG_PINCTRL_RK805 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_PINCTRL_RK805=m
+New value: CONFIG_PINCTRL_RK805=n
+
+Value of CONFIG_PINCTRL_SX150X is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_PINCTRL_SX150X=m
+New value: CONFIG_PINCTRL_SX150X=n
+
+Value of CONFIG_PINCTRL_TPS6594 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_PINCTRL_TPS6594=m
+New value: CONFIG_PINCTRL_TPS6594=n
+
+Value of CONFIG_PINCTRL_RP1 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_PINCTRL_RP1=m
+New value: CONFIG_PINCTRL_RP1=n
+
+Value of CONFIG_PINCTRL_IMX_SCMI is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_PINCTRL_IMX_SCMI=y
+New value: CONFIG_PINCTRL_IMX_SCMI=n
+
+Value of CONFIG_PINCTRL_IPQ5018 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_PINCTRL_IPQ5018=y
+New value: CONFIG_PINCTRL_IPQ5018=n
+
+Value of CONFIG_PINCTRL_IPQ5332 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_PINCTRL_IPQ5332=y
+New value: CONFIG_PINCTRL_IPQ5332=n
+
+Value of CONFIG_PINCTRL_IPQ5424 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_PINCTRL_IPQ5424=y
+New value: CONFIG_PINCTRL_IPQ5424=n
+
+Value of CONFIG_PINCTRL_IPQ8074 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_PINCTRL_IPQ8074=y
+New value: CONFIG_PINCTRL_IPQ8074=n
+
+Value of CONFIG_PINCTRL_IPQ6018 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_PINCTRL_IPQ6018=y
+New value: CONFIG_PINCTRL_IPQ6018=n
+
+Value of CONFIG_PINCTRL_IPQ9574 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_PINCTRL_IPQ9574=y
+New value: CONFIG_PINCTRL_IPQ9574=n
+
+Value of CONFIG_PINCTRL_KAANAPALI is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_PINCTRL_KAANAPALI=y
+New value: CONFIG_PINCTRL_KAANAPALI=n
+
+Value of CONFIG_PINCTRL_MSM8916 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_PINCTRL_MSM8916=y
+New value: CONFIG_PINCTRL_MSM8916=n
+
+Value of CONFIG_PINCTRL_MSM8953 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_PINCTRL_MSM8953=y
+New value: CONFIG_PINCTRL_MSM8953=n
+
+Value of CONFIG_PINCTRL_MSM8976 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_PINCTRL_MSM8976=y
+New value: CONFIG_PINCTRL_MSM8976=n
+
+Value of CONFIG_PINCTRL_MSM8994 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_PINCTRL_MSM8994=y
+New value: CONFIG_PINCTRL_MSM8994=n
+
+Value of CONFIG_PINCTRL_MSM8996 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_PINCTRL_MSM8996=y
+New value: CONFIG_PINCTRL_MSM8996=n
+
+Value of CONFIG_PINCTRL_MSM8998 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_PINCTRL_MSM8998=y
+New value: CONFIG_PINCTRL_MSM8998=n
+
+Value of CONFIG_PINCTRL_QCM2290 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_PINCTRL_QCM2290=y
+New value: CONFIG_PINCTRL_QCM2290=n
+
+Value of CONFIG_PINCTRL_QCS404 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_PINCTRL_QCS404=y
+New value: CONFIG_PINCTRL_QCS404=n
+
+Value of CONFIG_PINCTRL_QCS615 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_PINCTRL_QCS615=y
+New value: CONFIG_PINCTRL_QCS615=n
+
+Value of CONFIG_PINCTRL_QCS8300 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_PINCTRL_QCS8300=y
+New value: CONFIG_PINCTRL_QCS8300=n
+
+Value of CONFIG_PINCTRL_QDU1000 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_PINCTRL_QDU1000=y
+New value: CONFIG_PINCTRL_QDU1000=n
+
+Value of CONFIG_PINCTRL_SA8775P is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_PINCTRL_SA8775P=y
+New value: CONFIG_PINCTRL_SA8775P=n
+
+Value of CONFIG_PINCTRL_SC7180 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_PINCTRL_SC7180=y
+New value: CONFIG_PINCTRL_SC7180=n
+
+Value of CONFIG_PINCTRL_SC7280 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_PINCTRL_SC7280=y
+New value: CONFIG_PINCTRL_SC7280=n
+
+Value of CONFIG_PINCTRL_SC8180X is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_PINCTRL_SC8180X=y
+New value: CONFIG_PINCTRL_SC8180X=n
+
+Value of CONFIG_PINCTRL_SC8280XP is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_PINCTRL_SC8280XP=y
+New value: CONFIG_PINCTRL_SC8280XP=n
+
+Value of CONFIG_PINCTRL_SDM660 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_PINCTRL_SDM660=y
+New value: CONFIG_PINCTRL_SDM660=n
+
+Value of CONFIG_PINCTRL_SDM670 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_PINCTRL_SDM670=y
+New value: CONFIG_PINCTRL_SDM670=n
+
+Value of CONFIG_PINCTRL_SDM845 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_PINCTRL_SDM845=y
+New value: CONFIG_PINCTRL_SDM845=n
+
+Value of CONFIG_PINCTRL_SDX75 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_PINCTRL_SDX75=y
+New value: CONFIG_PINCTRL_SDX75=n
+
+Value of CONFIG_PINCTRL_SM4450 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_PINCTRL_SM4450=y
+New value: CONFIG_PINCTRL_SM4450=n
+
+Value of CONFIG_PINCTRL_SM6115 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_PINCTRL_SM6115=y
+New value: CONFIG_PINCTRL_SM6115=n
+
+Value of CONFIG_PINCTRL_SM6125 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_PINCTRL_SM6125=y
+New value: CONFIG_PINCTRL_SM6125=n
+
+Value of CONFIG_PINCTRL_SM6350 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_PINCTRL_SM6350=y
+New value: CONFIG_PINCTRL_SM6350=n
+
+Value of CONFIG_PINCTRL_SM6375 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_PINCTRL_SM6375=y
+New value: CONFIG_PINCTRL_SM6375=n
+
+Value of CONFIG_PINCTRL_MILOS is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_PINCTRL_MILOS=y
+New value: CONFIG_PINCTRL_MILOS=n
+
+Value of CONFIG_PINCTRL_SM8150 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_PINCTRL_SM8150=y
+New value: CONFIG_PINCTRL_SM8150=n
+
+Value of CONFIG_PINCTRL_SM8250 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_PINCTRL_SM8250=y
+New value: CONFIG_PINCTRL_SM8250=n
+
+Value of CONFIG_PINCTRL_SM8350 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_PINCTRL_SM8350=y
+New value: CONFIG_PINCTRL_SM8350=n
+
+Value of CONFIG_PINCTRL_SM8550 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_PINCTRL_SM8550=y
+New value: CONFIG_PINCTRL_SM8550=n
+
+Value of CONFIG_PINCTRL_SM8650 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_PINCTRL_SM8650=y
+New value: CONFIG_PINCTRL_SM8650=n
+
+Value of CONFIG_PINCTRL_SM8750 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_PINCTRL_SM8750=y
+New value: CONFIG_PINCTRL_SM8750=n
+
+Value of CONFIG_PINCTRL_X1E80100 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_PINCTRL_X1E80100=y
+New value: CONFIG_PINCTRL_X1E80100=n
+
+Value of CONFIG_PINCTRL_LPASS_LPI is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_PINCTRL_LPASS_LPI=m
+New value: CONFIG_PINCTRL_LPASS_LPI=y
+
+Value of CONFIG_PINCTRL_SC7280_LPASS_LPI is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_PINCTRL_SC7280_LPASS_LPI=m
+New value: CONFIG_PINCTRL_SC7280_LPASS_LPI=n
+
+Value of CONFIG_PINCTRL_SM6115_LPASS_LPI is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_PINCTRL_SM6115_LPASS_LPI=m
+New value: CONFIG_PINCTRL_SM6115_LPASS_LPI=n
+
+Value of CONFIG_PINCTRL_SM8250_LPASS_LPI is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_PINCTRL_SM8250_LPASS_LPI=m
+New value: CONFIG_PINCTRL_SM8250_LPASS_LPI=n
+
+Value of CONFIG_PINCTRL_SM8450_LPASS_LPI is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_PINCTRL_SM8450_LPASS_LPI=m
+New value: CONFIG_PINCTRL_SM8450_LPASS_LPI=y
+
+Value of CONFIG_PINCTRL_SC8280XP_LPASS_LPI is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_PINCTRL_SC8280XP_LPASS_LPI=m
+New value: CONFIG_PINCTRL_SC8280XP_LPASS_LPI=n
+
+Value of CONFIG_PINCTRL_SM8550_LPASS_LPI is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_PINCTRL_SM8550_LPASS_LPI=m
+New value: CONFIG_PINCTRL_SM8550_LPASS_LPI=n
+
+Value of CONFIG_PINCTRL_SM8650_LPASS_LPI is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_PINCTRL_SM8650_LPASS_LPI=m
+New value: CONFIG_PINCTRL_SM8650_LPASS_LPI=n
+
+Value of CONFIG_GPIO_ALTERA is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_GPIO_ALTERA=m
+New value: CONFIG_GPIO_ALTERA=n
+
+Value of CONFIG_GPIO_DWAPB is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_GPIO_DWAPB=y
+New value: CONFIG_GPIO_DWAPB=n
+
+Value of CONFIG_GPIO_MB86S7X is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_GPIO_MB86S7X=y
+New value: CONFIG_GPIO_MB86S7X=n
+
+Value of CONFIG_GPIO_PL061 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_GPIO_PL061=y
+New value: CONFIG_GPIO_PL061=n
+
+Value of CONFIG_GPIO_WCD934X is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_GPIO_WCD934X=m
+New value: CONFIG_GPIO_WCD934X=n
+
+Value of CONFIG_GPIO_XGENE is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_GPIO_XGENE=y
+New value: CONFIG_GPIO_XGENE=n
+
+Value of CONFIG_GPIO_XILINX is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_GPIO_XILINX=m
+New value: CONFIG_GPIO_XILINX=n
+
+Value of CONFIG_GPIO_MAX732X is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_GPIO_MAX732X=y
+New value: CONFIG_GPIO_MAX732X=n
+
+Value of CONFIG_GPIO_PCA953X is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_GPIO_PCA953X=y
+New value: CONFIG_GPIO_PCA953X=n
+
+Value of CONFIG_GPIO_PCF857X is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_GPIO_PCF857X=m
+New value: CONFIG_GPIO_PCF857X=n
+
+Value of CONFIG_GPIO_TPIC2810 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_GPIO_TPIC2810=m
+New value: CONFIG_GPIO_TPIC2810=n
+
+Value of CONFIG_GPIO_ADP5585 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_GPIO_ADP5585=m
+New value: CONFIG_GPIO_ADP5585=n
+
+Value of CONFIG_GPIO_MAX77759 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_GPIO_MAX77759=m
+New value: CONFIG_GPIO_MAX77759=n
+
+Value of CONFIG_POWER_RESET_QCOM_PON is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_POWER_RESET_QCOM_PON=m
+New value: CONFIG_POWER_RESET_QCOM_PON=y
+
+Value of CONFIG_POWER_RESET_XGENE is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_POWER_RESET_XGENE=y
+New value: CONFIG_POWER_RESET_XGENE=n
+
+Value of CONFIG_POWER_RESET_SYSCON is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_POWER_RESET_SYSCON=y
+New value: CONFIG_POWER_RESET_SYSCON=n
+
+Value of CONFIG_NVMEM_REBOOT_MODE is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_NVMEM_REBOOT_MODE=m
+New value: CONFIG_NVMEM_REBOOT_MODE=y
+
+Value of CONFIG_BATTERY_SBS is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_BATTERY_SBS=m
+New value: CONFIG_BATTERY_SBS=n
+
+Value of CONFIG_BATTERY_MAX17042 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_BATTERY_MAX17042=m
+New value: CONFIG_BATTERY_MAX17042=n
+
+Value of CONFIG_CHARGER_RK817 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_CHARGER_RK817=m
+New value: CONFIG_CHARGER_RK817=n
+
+Value of CONFIG_SENSORS_ARM_SCPI is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SENSORS_ARM_SCPI=y
+New value: CONFIG_SENSORS_ARM_SCPI=n
+
+Value of CONFIG_SENSORS_LM75 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SENSORS_LM75=m
+New value: CONFIG_SENSORS_LM75=n
+
+Value of CONFIG_SENSORS_LM90 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SENSORS_LM90=m
+New value: CONFIG_SENSORS_LM90=n
+
+Value of CONFIG_SENSORS_PWM_FAN is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SENSORS_PWM_FAN=m
+New value: CONFIG_SENSORS_PWM_FAN=n
+
+Value of CONFIG_SENSORS_INA2XX is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SENSORS_INA2XX=m
+New value: CONFIG_SENSORS_INA2XX=n
+
+Value of CONFIG_SENSORS_INA3221 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SENSORS_INA3221=m
+New value: CONFIG_SENSORS_INA3221=n
+
+Value of CONFIG_GENERIC_ADC_THERMAL is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_GENERIC_ADC_THERMAL=m
+New value: CONFIG_GENERIC_ADC_THERMAL=y
+
+Value of CONFIG_QCOM_SPMI_ADC_TM5 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_QCOM_SPMI_ADC_TM5=m
+New value: CONFIG_QCOM_SPMI_ADC_TM5=y
+
+Value of CONFIG_QCOM_SPMI_TEMP_ALARM is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_QCOM_SPMI_TEMP_ALARM=m
+New value: CONFIG_QCOM_SPMI_TEMP_ALARM=y
+
+Value of CONFIG_ARM_SP805_WATCHDOG is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_ARM_SP805_WATCHDOG=y
+New value: CONFIG_ARM_SP805_WATCHDOG=n
+
+Value of CONFIG_ARM_SBSA_WATCHDOG is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_ARM_SBSA_WATCHDOG=y
+New value: CONFIG_ARM_SBSA_WATCHDOG=n
+
+Value of CONFIG_DW_WATCHDOG is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_DW_WATCHDOG=y
+New value: CONFIG_DW_WATCHDOG=n
+
+Value of CONFIG_ARM_SMC_WATCHDOG is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_ARM_SMC_WATCHDOG=y
+New value: CONFIG_ARM_SMC_WATCHDOG=n
+
+Value of CONFIG_MFD_ADP5585 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_MFD_ADP5585=m
+New value: CONFIG_MFD_ADP5585=n
+
+Value of CONFIG_MFD_BD9571MWV is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_MFD_BD9571MWV=y
+New value: CONFIG_MFD_BD9571MWV=n
+
+Value of CONFIG_MFD_AXP20X_I2C is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_MFD_AXP20X_I2C=y
+New value: CONFIG_MFD_AXP20X_I2C=n
+
+Value of CONFIG_MFD_DA9062 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_MFD_DA9062=m
+New value: CONFIG_MFD_DA9062=n
+
+Value of CONFIG_MFD_HI6421_PMIC is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_MFD_HI6421_PMIC=y
+New value: CONFIG_MFD_HI6421_PMIC=n
+
+Value of CONFIG_MFD_MAX77620 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_MFD_MAX77620=y
+New value: CONFIG_MFD_MAX77620=n
+
+Value of CONFIG_MFD_MAX77759 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_MFD_MAX77759=m
+New value: CONFIG_MFD_MAX77759=n
+
+Value of CONFIG_MFD_MT6360 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_MFD_MT6360=y
+New value: CONFIG_MFD_MT6360=n
+
+Value of CONFIG_MFD_MT6397 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_MFD_MT6397=y
+New value: CONFIG_MFD_MT6397=n
+
+Value of CONFIG_MFD_RK8XX is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_MFD_RK8XX=y
+New value: CONFIG_MFD_RK8XX=n
+
+Value of CONFIG_MFD_RK8XX_I2C is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_MFD_RK8XX_I2C=y
+New value: CONFIG_MFD_RK8XX_I2C=n
+
+Value of CONFIG_MFD_RK8XX_SPI is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_MFD_RK8XX_SPI=y
+New value: CONFIG_MFD_RK8XX_SPI=n
+
+Value of CONFIG_MFD_SEC_CORE is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_MFD_SEC_CORE=y
+New value: CONFIG_MFD_SEC_CORE=n
+
+Value of CONFIG_MFD_SEC_I2C is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_MFD_SEC_I2C=y
+New value: CONFIG_MFD_SEC_I2C=n
+
+Value of CONFIG_MFD_TI_AM335X_TSCADC is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_MFD_TI_AM335X_TSCADC=m
+New value: CONFIG_MFD_TI_AM335X_TSCADC=n
+
+Value of CONFIG_MFD_TI_LP873X is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_MFD_TI_LP873X=m
+New value: CONFIG_MFD_TI_LP873X=n
+
+Value of CONFIG_MFD_TPS65219 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_MFD_TPS65219=y
+New value: CONFIG_MFD_TPS65219=n
+
+Value of CONFIG_MFD_TPS6594_I2C is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_MFD_TPS6594_I2C=m
+New value: CONFIG_MFD_TPS6594_I2C=n
+
+Value of CONFIG_MFD_WM8994 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_MFD_WM8994=m
+New value: CONFIG_MFD_WM8994=n
+
+Value of CONFIG_MFD_ROHM_BD718XX is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_MFD_ROHM_BD718XX=y
+New value: CONFIG_MFD_ROHM_BD718XX=n
+
+Value of CONFIG_MFD_WCD934X is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_MFD_WCD934X=m
+New value: CONFIG_MFD_WCD934X=n
+
+Value of CONFIG_REGULATOR_FAN53555 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_REGULATOR_FAN53555=y
+New value: CONFIG_REGULATOR_FAN53555=n
+
+Value of CONFIG_REGULATOR_MAX8973 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_REGULATOR_MAX8973=y
+New value: CONFIG_REGULATOR_MAX8973=n
+
+Value of CONFIG_REGULATOR_MP8859 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_REGULATOR_MP8859=y
+New value: CONFIG_REGULATOR_MP8859=n
+
+Value of CONFIG_REGULATOR_MT6315 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_REGULATOR_MT6315=m
+New value: CONFIG_REGULATOR_MT6315=n
+
+Value of CONFIG_REGULATOR_MT6360 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_REGULATOR_MT6360=y
+New value: CONFIG_REGULATOR_MT6360=n
+
+Value of CONFIG_REGULATOR_PCA9450 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_REGULATOR_PCA9450=y
+New value: CONFIG_REGULATOR_PCA9450=n
+
+Value of CONFIG_REGULATOR_PF8X00 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_REGULATOR_PF8X00=y
+New value: CONFIG_REGULATOR_PF8X00=n
+
+Value of CONFIG_REGULATOR_PFUZE100 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_REGULATOR_PFUZE100=y
+New value: CONFIG_REGULATOR_PFUZE100=n
+
+Value of CONFIG_REGULATOR_RAA215300 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_REGULATOR_RAA215300=y
+New value: CONFIG_REGULATOR_RAA215300=n
+
+Value of CONFIG_REGULATOR_RK808 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_REGULATOR_RK808=y
+New value: CONFIG_REGULATOR_RK808=n
+
+Value of CONFIG_REGULATOR_TPS65132 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_REGULATOR_TPS65132=m
+New value: CONFIG_REGULATOR_TPS65132=n
+
+Value of CONFIG_REGULATOR_TPS65219 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_REGULATOR_TPS65219=y
+New value: CONFIG_REGULATOR_TPS65219=n
+
+Value of CONFIG_REGULATOR_VCTRL is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_REGULATOR_VCTRL=m
+New value: CONFIG_REGULATOR_VCTRL=n
+
+Value of CONFIG_RC_CORE is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_RC_CORE=m
+New value: CONFIG_RC_CORE=y
+
+Value of CONFIG_LIRC is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_LIRC is not set
+New value: CONFIG_LIRC=y
+
+Value of CONFIG_RC_DECODERS is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_RC_DECODERS=y
+New value: CONFIG_RC_DECODERS=n
+
+Value of CONFIG_IR_GPIO_CIR is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_IR_GPIO_CIR=m
+New value: CONFIG_IR_GPIO_CIR=n
+
+Value of CONFIG_MEDIA_ANALOG_TV_SUPPORT is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_MEDIA_ANALOG_TV_SUPPORT=y
+New value: CONFIG_MEDIA_ANALOG_TV_SUPPORT=n
+
+Value of CONFIG_MEDIA_DIGITAL_TV_SUPPORT is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_MEDIA_DIGITAL_TV_SUPPORT=y
+New value: CONFIG_MEDIA_DIGITAL_TV_SUPPORT=n
+
+Value of CONFIG_MEDIA_SDR_SUPPORT is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_MEDIA_SDR_SUPPORT=y
+New value: CONFIG_MEDIA_SDR_SUPPORT=n
+
+Value of CONFIG_VIDEO_IMX219 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_VIDEO_IMX219=m
+New value: CONFIG_VIDEO_IMX219=n
+
+Value of CONFIG_VIDEO_IMX412 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_VIDEO_IMX412=m
+New value: CONFIG_VIDEO_IMX412=n
+
+Value of CONFIG_VIDEO_OV5640 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_VIDEO_OV5640=m
+New value: CONFIG_VIDEO_OV5640=n
+
+Value of CONFIG_VIDEO_OV5645 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_VIDEO_OV5645=m
+New value: CONFIG_VIDEO_OV5645=n
+
+Value of CONFIG_DRM is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_DRM=m
+New value: CONFIG_DRM=y
+
+Value of CONFIG_DRM_CLIENT_LOG is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_DRM_CLIENT_LOG is not set
+New value: CONFIG_DRM_CLIENT_LOG=y
+
+Value of CONFIG_DRM_DISPLAY_HELPER is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_DRM_DISPLAY_HELPER=m
+New value: CONFIG_DRM_DISPLAY_HELPER=y
+
+Value of CONFIG_DRM_DISPLAY_DP_AUX_CEC is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_DRM_DISPLAY_DP_AUX_CEC is not set
+New value: CONFIG_DRM_DISPLAY_DP_AUX_CEC=y
+
+Value of CONFIG_DRM_DISPLAY_DP_AUX_CHARDEV is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_DRM_DISPLAY_DP_AUX_CHARDEV is not set
+New value: CONFIG_DRM_DISPLAY_DP_AUX_CHARDEV=y
+
+Value of CONFIG_DRM_HDLCD is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_DRM_HDLCD=m
+New value: CONFIG_DRM_HDLCD=n
+
+Value of CONFIG_DRM_MALI_DISPLAY is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_DRM_MALI_DISPLAY=m
+New value: CONFIG_DRM_MALI_DISPLAY=n
+
+Value of CONFIG_DRM_KOMEDA is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_DRM_KOMEDA=m
+New value: CONFIG_DRM_KOMEDA=n
+
+Value of CONFIG_DRM_DISPLAY_CONNECTOR is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_DRM_DISPLAY_CONNECTOR=m
+New value: CONFIG_DRM_DISPLAY_CONNECTOR=y
+
+Value of CONFIG_DRM_I2C_NXP_TDA998X is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_DRM_I2C_NXP_TDA998X=m
+New value: CONFIG_DRM_I2C_NXP_TDA998X=n
+
+Value of CONFIG_DRM_ITE_IT6263 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_DRM_ITE_IT6263=m
+New value: CONFIG_DRM_ITE_IT6263=n
+
+Value of CONFIG_DRM_LONTIUM_LT8912B is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_DRM_LONTIUM_LT8912B=m
+New value: CONFIG_DRM_LONTIUM_LT8912B=n
+
+Value of CONFIG_DRM_LONTIUM_LT9611 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_DRM_LONTIUM_LT9611=m
+New value: CONFIG_DRM_LONTIUM_LT9611=n
+
+Value of CONFIG_DRM_LONTIUM_LT9611UXC is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_DRM_LONTIUM_LT9611UXC=m
+New value: CONFIG_DRM_LONTIUM_LT9611UXC=n
+
+Value of CONFIG_DRM_ITE_IT66121 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_DRM_ITE_IT66121=m
+New value: CONFIG_DRM_ITE_IT66121=n
+
+Value of CONFIG_DRM_NWL_MIPI_DSI is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_DRM_NWL_MIPI_DSI=m
+New value: CONFIG_DRM_NWL_MIPI_DSI=n
+
+Value of CONFIG_DRM_PARADE_PS8640 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_DRM_PARADE_PS8640=m
+New value: CONFIG_DRM_PARADE_PS8640=n
+
+Value of CONFIG_DRM_SAMSUNG_DSIM is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_DRM_SAMSUNG_DSIM=m
+New value: CONFIG_DRM_SAMSUNG_DSIM=n
+
+Value of CONFIG_DRM_SII902X is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_DRM_SII902X=m
+New value: CONFIG_DRM_SII902X=n
+
+Value of CONFIG_DRM_SIMPLE_BRIDGE is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_DRM_SIMPLE_BRIDGE=m
+New value: CONFIG_DRM_SIMPLE_BRIDGE=n
+
+Value of CONFIG_DRM_THINE_THC63LVD1024 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_DRM_THINE_THC63LVD1024=m
+New value: CONFIG_DRM_THINE_THC63LVD1024=n
+
+Value of CONFIG_DRM_TOSHIBA_TC358767 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_DRM_TOSHIBA_TC358767=m
+New value: CONFIG_DRM_TOSHIBA_TC358767=n
+
+Value of CONFIG_DRM_TOSHIBA_TC358768 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_DRM_TOSHIBA_TC358768=m
+New value: CONFIG_DRM_TOSHIBA_TC358768=n
+
+Value of CONFIG_DRM_TI_TFP410 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_DRM_TI_TFP410=m
+New value: CONFIG_DRM_TI_TFP410=n
+
+Value of CONFIG_DRM_TI_SN65DSI83 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_DRM_TI_SN65DSI83=m
+New value: CONFIG_DRM_TI_SN65DSI83=n
+
+Value of CONFIG_DRM_TI_SN65DSI86 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_DRM_TI_SN65DSI86=m
+New value: CONFIG_DRM_TI_SN65DSI86=n
+
+Value of CONFIG_DRM_ANALOGIX_ANX7625 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_DRM_ANALOGIX_ANX7625=m
+New value: CONFIG_DRM_ANALOGIX_ANX7625=n
+
+Value of CONFIG_DRM_I2C_ADV7511 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_DRM_I2C_ADV7511=m
+New value: CONFIG_DRM_I2C_ADV7511=n
+
+Value of CONFIG_DRM_CDNS_DSI is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_DRM_CDNS_DSI=m
+New value: CONFIG_DRM_CDNS_DSI=y
+
+Value of CONFIG_DRM_CDNS_MHDP8546 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_DRM_CDNS_MHDP8546=m
+New value: CONFIG_DRM_CDNS_MHDP8546=n
+
+Value of CONFIG_DRM_ETNAVIV is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_DRM_ETNAVIV=m
+New value: CONFIG_DRM_ETNAVIV=n
+
+Value of CONFIG_DRM_GUD is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_DRM_GUD is not set
+New value: CONFIG_DRM_GUD=m
+
+Value of CONFIG_DRM_HISI_HIBMC is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_DRM_HISI_HIBMC=m
+New value: CONFIG_DRM_HISI_HIBMC=n
+
+Value of CONFIG_DRM_HISI_KIRIN is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_DRM_HISI_KIRIN=m
+New value: CONFIG_DRM_HISI_KIRIN=n
+
+Value of CONFIG_DRM_POWERVR is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_DRM_POWERVR=m
+New value: CONFIG_DRM_POWERVR=n
+
+Value of CONFIG_DRM_LIMA is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_DRM_LIMA=m
+New value: CONFIG_DRM_LIMA=n
+
+Value of CONFIG_DRM_MSM is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_DRM_MSM=m
+New value: CONFIG_DRM_MSM=y
+
+Value of CONFIG_DRM_MSM_MDP4 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_DRM_MSM_MDP4=y
+New value: CONFIG_DRM_MSM_MDP4=n
+
+Value of CONFIG_DRM_MSM_MDP5 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_DRM_MSM_MDP5=y
+New value: CONFIG_DRM_MSM_MDP5=n
+
+Value of CONFIG_DRM_MSM_DSI_20NM_PHY is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_DRM_MSM_DSI_20NM_PHY=y
+New value: CONFIG_DRM_MSM_DSI_20NM_PHY=n
+
+Value of CONFIG_DRM_MSM_DSI_28NM_8960_PHY is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_DRM_MSM_DSI_28NM_8960_PHY=y
+New value: CONFIG_DRM_MSM_DSI_28NM_8960_PHY=n
+
+Value of CONFIG_DRM_MSM_DSI_14NM_PHY is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_DRM_MSM_DSI_14NM_PHY=y
+New value: CONFIG_DRM_MSM_DSI_14NM_PHY=n
+
+Value of CONFIG_DRM_MSM_DSI_10NM_PHY is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_DRM_MSM_DSI_10NM_PHY=y
+New value: CONFIG_DRM_MSM_DSI_10NM_PHY=n
+
+Value of CONFIG_DRM_NOUVEAU is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_DRM_NOUVEAU=m
+New value: CONFIG_DRM_NOUVEAU=n
+
+Value of CONFIG_DRM_PANEL_BOE_TV101WUM_NL6 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_DRM_PANEL_BOE_TV101WUM_NL6=m
+New value: CONFIG_DRM_PANEL_BOE_TV101WUM_NL6=n
+
+Value of CONFIG_DRM_PANEL_LVDS is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_DRM_PANEL_LVDS=m
+New value: CONFIG_DRM_PANEL_LVDS=n
+
+Value of CONFIG_DRM_PANEL_MANTIX_MLAF057WE51 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_DRM_PANEL_MANTIX_MLAF057WE51=m
+New value: CONFIG_DRM_PANEL_MANTIX_MLAF057WE51=n
+
+Value of CONFIG_DRM_PANEL_RAYDIUM_RM67191 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_DRM_PANEL_RAYDIUM_RM67191=m
+New value: CONFIG_DRM_PANEL_RAYDIUM_RM67191=n
+
+Value of CONFIG_DRM_PANEL_SAMSUNG_S6E3HC3 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_DRM_PANEL_SAMSUNG_S6E3HC3 is not set
+New value: CONFIG_DRM_PANEL_SAMSUNG_S6E3HC3=y
+
+Value of CONFIG_DRM_PANEL_SITRONIX_ST7703 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_DRM_PANEL_SITRONIX_ST7703=m
+New value: CONFIG_DRM_PANEL_SITRONIX_ST7703=n
+
+Value of CONFIG_DRM_PANEL_TRULY_NT35597_WQXGA is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_DRM_PANEL_TRULY_NT35597_WQXGA=m
+New value: CONFIG_DRM_PANEL_TRULY_NT35597_WQXGA=n
+
+Value of CONFIG_DRM_PANEL_VISIONOX_VTDR6130 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_DRM_PANEL_VISIONOX_VTDR6130=m
+New value: CONFIG_DRM_PANEL_VISIONOX_VTDR6130=n
+
+Value of CONFIG_DRM_PANFROST is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_DRM_PANFROST=m
+New value: CONFIG_DRM_PANFROST=n
+
+Value of CONFIG_DRM_PANTHOR is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_DRM_PANTHOR=m
+New value: CONFIG_DRM_PANTHOR=n
+
+Value of CONFIG_DRM_PL111 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_DRM_PL111=m
+New value: CONFIG_DRM_PL111=n
+
+Value of CONFIG_DRM_SIMPLEDRM is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_DRM_SIMPLEDRM is not set
+New value: CONFIG_DRM_SIMPLEDRM=n
+
+Value of CONFIG_DRM_TIDSS is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_DRM_TIDSS=m
+New value: CONFIG_DRM_TIDSS=n
+
+Value of CONFIG_FB_SIMPLE is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_FB_SIMPLE is not set
+New value: CONFIG_FB_SIMPLE=y
+
+Value of CONFIG_BACKLIGHT_CLASS_DEVICE is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_BACKLIGHT_CLASS_DEVICE=m
+New value: CONFIG_BACKLIGHT_CLASS_DEVICE=y
+
+Value of CONFIG_BACKLIGHT_LP855X is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_BACKLIGHT_LP855X=m
+New value: CONFIG_BACKLIGHT_LP855X=n
+
+Value of CONFIG_FRAMEBUFFER_CONSOLE_LEGACY_ACCELERATION is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_FRAMEBUFFER_CONSOLE_LEGACY_ACCELERATION is not set
+New value: CONFIG_FRAMEBUFFER_CONSOLE_LEGACY_ACCELERATION=y
+
+Value of CONFIG_FRAMEBUFFER_CONSOLE_ROTATION is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_FRAMEBUFFER_CONSOLE_ROTATION is not set
+New value: CONFIG_FRAMEBUFFER_CONSOLE_ROTATION=y
+
+Value of CONFIG_FRAMEBUFFER_CONSOLE_DEFERRED_TAKEOVER is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_FRAMEBUFFER_CONSOLE_DEFERRED_TAKEOVER is not set
+New value: CONFIG_FRAMEBUFFER_CONSOLE_DEFERRED_TAKEOVER=y
+
+Value of CONFIG_SND_SOC_FSL_ASRC is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SND_SOC_FSL_ASRC=m
+New value: CONFIG_SND_SOC_FSL_ASRC=n
+
+Value of CONFIG_SND_SOC_FSL_SAI is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SND_SOC_FSL_SAI=m
+New value: CONFIG_SND_SOC_FSL_SAI=n
+
+Value of CONFIG_SND_SOC_FSL_AUDMIX is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SND_SOC_FSL_AUDMIX=m
+New value: CONFIG_SND_SOC_FSL_AUDMIX=n
+
+Value of CONFIG_SND_SOC_FSL_SPDIF is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SND_SOC_FSL_SPDIF=m
+New value: CONFIG_SND_SOC_FSL_SPDIF=n
+
+Value of CONFIG_SND_SOC_FSL_MICFIL is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SND_SOC_FSL_MICFIL=m
+New value: CONFIG_SND_SOC_FSL_MICFIL=n
+
+Value of CONFIG_SND_SOC_QCOM is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SND_SOC_QCOM=m
+New value: CONFIG_SND_SOC_QCOM=y
+
+Value of CONFIG_SND_SOC_SC8280XP is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SND_SOC_SC8280XP=m
+New value: CONFIG_SND_SOC_SC8280XP=y
+
+Value of CONFIG_SND_SOC_ADAU7002 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SND_SOC_ADAU7002=m
+New value: CONFIG_SND_SOC_ADAU7002=n
+
+Value of CONFIG_SND_SOC_AK4613 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SND_SOC_AK4613=m
+New value: CONFIG_SND_SOC_AK4613=n
+
+Value of CONFIG_SND_SOC_CS35L41_I2C is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_SND_SOC_CS35L41_I2C is not set
+New value: CONFIG_SND_SOC_CS35L41_I2C=y
+
+Value of CONFIG_SND_SOC_DA7213 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SND_SOC_DA7213=m
+New value: CONFIG_SND_SOC_DA7213=n
+
+Value of CONFIG_SND_SOC_ES7134 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SND_SOC_ES7134=m
+New value: CONFIG_SND_SOC_ES7134=n
+
+Value of CONFIG_SND_SOC_ES7241 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SND_SOC_ES7241=m
+New value: CONFIG_SND_SOC_ES7241=n
+
+Value of CONFIG_SND_SOC_ES8316 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SND_SOC_ES8316=m
+New value: CONFIG_SND_SOC_ES8316=n
+
+Value of CONFIG_SND_SOC_GTM601 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SND_SOC_GTM601=m
+New value: CONFIG_SND_SOC_GTM601=n
+
+Value of CONFIG_SND_SOC_MAX98357A is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SND_SOC_MAX98357A=m
+New value: CONFIG_SND_SOC_MAX98357A=n
+
+Value of CONFIG_SND_SOC_MAX98927 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SND_SOC_MAX98927=m
+New value: CONFIG_SND_SOC_MAX98927=n
+
+Value of CONFIG_SND_SOC_MSM8916_WCD_ANALOG is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SND_SOC_MSM8916_WCD_ANALOG=m
+New value: CONFIG_SND_SOC_MSM8916_WCD_ANALOG=n
+
+Value of CONFIG_SND_SOC_MSM8916_WCD_DIGITAL is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SND_SOC_MSM8916_WCD_DIGITAL=m
+New value: CONFIG_SND_SOC_MSM8916_WCD_DIGITAL=n
+
+Value of CONFIG_SND_SOC_PCM3168A_I2C is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SND_SOC_PCM3168A_I2C=m
+New value: CONFIG_SND_SOC_PCM3168A_I2C=n
+
+Value of CONFIG_SND_SOC_RK817 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SND_SOC_RK817=m
+New value: CONFIG_SND_SOC_RK817=n
+
+Value of CONFIG_SND_SOC_RL6231 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SND_SOC_RL6231=m
+New value: CONFIG_SND_SOC_RL6231=n
+
+Value of CONFIG_SND_SOC_RT5640 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SND_SOC_RT5640=m
+New value: CONFIG_SND_SOC_RT5640=n
+
+Value of CONFIG_SND_SOC_RT5659 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SND_SOC_RT5659=m
+New value: CONFIG_SND_SOC_RT5659=n
+
+Value of CONFIG_SND_SOC_RT5663 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SND_SOC_RT5663=m
+New value: CONFIG_SND_SOC_RT5663=n
+
+Value of CONFIG_SND_SOC_RT5682 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SND_SOC_RT5682=m
+New value: CONFIG_SND_SOC_RT5682=n
+
+Value of CONFIG_SND_SOC_SGTL5000 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SND_SOC_SGTL5000=m
+New value: CONFIG_SND_SOC_SGTL5000=n
+
+Value of CONFIG_SND_SOC_TAS2552 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SND_SOC_TAS2552=m
+New value: CONFIG_SND_SOC_TAS2552=n
+
+Value of CONFIG_SND_SOC_TAS571X is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SND_SOC_TAS571X=m
+New value: CONFIG_SND_SOC_TAS571X=n
+
+Value of CONFIG_SND_SOC_TFA9872 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_SND_SOC_TFA9872 is not set
+New value: CONFIG_SND_SOC_TFA9872=m
+
+Value of CONFIG_SND_SOC_TLV320AIC31XX is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SND_SOC_TLV320AIC31XX=m
+New value: CONFIG_SND_SOC_TLV320AIC31XX=n
+
+Value of CONFIG_SND_SOC_TLV320AIC32X4 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SND_SOC_TLV320AIC32X4=m
+New value: CONFIG_SND_SOC_TLV320AIC32X4=n
+
+Value of CONFIG_SND_SOC_TLV320AIC3X is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SND_SOC_TLV320AIC3X=m
+New value: CONFIG_SND_SOC_TLV320AIC3X=n
+
+Value of CONFIG_SND_SOC_TS3A227E is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SND_SOC_TS3A227E=m
+New value: CONFIG_SND_SOC_TS3A227E=n
+
+Value of CONFIG_SND_SOC_WCD9335 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SND_SOC_WCD9335=m
+New value: CONFIG_SND_SOC_WCD9335=n
+
+Value of CONFIG_SND_SOC_WCD934X is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SND_SOC_WCD934X=m
+New value: CONFIG_SND_SOC_WCD934X=n
+
+Value of CONFIG_SND_SOC_WCD938X_SDW is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SND_SOC_WCD938X_SDW=m
+New value: CONFIG_SND_SOC_WCD938X_SDW=y
+
+Value of CONFIG_SND_SOC_WM8524 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SND_SOC_WM8524=m
+New value: CONFIG_SND_SOC_WM8524=n
+
+Value of CONFIG_SND_SOC_WM8904 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SND_SOC_WM8904=m
+New value: CONFIG_SND_SOC_WM8904=n
+
+Value of CONFIG_SND_SOC_WM8960 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SND_SOC_WM8960=m
+New value: CONFIG_SND_SOC_WM8960=n
+
+Value of CONFIG_SND_SOC_WM8962 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SND_SOC_WM8962=m
+New value: CONFIG_SND_SOC_WM8962=n
+
+Value of CONFIG_SND_SOC_WM8978 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SND_SOC_WM8978=m
+New value: CONFIG_SND_SOC_WM8978=n
+
+Value of CONFIG_SND_SOC_WSA881X is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SND_SOC_WSA881X=m
+New value: CONFIG_SND_SOC_WSA881X=n
+
+Value of CONFIG_SND_SOC_MT6358 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SND_SOC_MT6358=m
+New value: CONFIG_SND_SOC_MT6358=n
+
+Value of CONFIG_SND_SOC_NAU8822 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SND_SOC_NAU8822=m
+New value: CONFIG_SND_SOC_NAU8822=n
+
+Value of CONFIG_SND_SOC_LPASS_VA_MACRO is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SND_SOC_LPASS_VA_MACRO=m
+New value: CONFIG_SND_SOC_LPASS_VA_MACRO=y
+
+Value of CONFIG_SND_SOC_LPASS_RX_MACRO is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SND_SOC_LPASS_RX_MACRO=m
+New value: CONFIG_SND_SOC_LPASS_RX_MACRO=y
+
+Value of CONFIG_SND_SOC_LPASS_TX_MACRO is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SND_SOC_LPASS_TX_MACRO=m
+New value: CONFIG_SND_SOC_LPASS_TX_MACRO=y
+
+Value of CONFIG_SND_SIMPLE_CARD_UTILS is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SND_SIMPLE_CARD_UTILS=m
+New value: CONFIG_SND_SIMPLE_CARD_UTILS=n
+
+Value of CONFIG_SND_SIMPLE_CARD is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SND_SIMPLE_CARD=m
+New value: CONFIG_SND_SIMPLE_CARD=n
+
+Value of CONFIG_SND_AUDIO_GRAPH_CARD is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SND_AUDIO_GRAPH_CARD=m
+New value: CONFIG_SND_AUDIO_GRAPH_CARD=n
+
+Value of CONFIG_HID_BATTERY_STRENGTH is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_HID_BATTERY_STRENGTH is not set
+New value: CONFIG_HID_BATTERY_STRENGTH=y
+
+Value of CONFIG_HIDRAW is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_HIDRAW is not set
+New value: CONFIG_HIDRAW=y
+
+Value of CONFIG_UHID is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_UHID is not set
+New value: CONFIG_UHID=m
+
+Value of CONFIG_HID_GENERIC is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_HID_GENERIC=y
+New value: CONFIG_HID_GENERIC=m
+
+Value of CONFIG_HID_SONY is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_HID_SONY is not set
+New value: CONFIG_HID_SONY=m
+
+Value of CONFIG_USB_HID is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_USB_HID=y
+New value: CONFIG_USB_HID=m
+
+Value of CONFIG_USB_CONN_GPIO is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_USB_CONN_GPIO=y
+New value: CONFIG_USB_CONN_GPIO=n
+
+Value of CONFIG_USB_ANNOUNCE_NEW_DEVICES is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_USB_ANNOUNCE_NEW_DEVICES is not set
+New value: CONFIG_USB_ANNOUNCE_NEW_DEVICES=y
+
+Value of CONFIG_USB_XHCI_PCI_RENESAS is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_USB_XHCI_PCI_RENESAS=m
+New value: CONFIG_USB_XHCI_PCI_RENESAS=n
+
+Value of CONFIG_USB_MUSB_HDRC is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_USB_MUSB_HDRC=y
+New value: CONFIG_USB_MUSB_HDRC=n
+
+Value of CONFIG_USB_DWC2 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_USB_DWC2=y
+New value: CONFIG_USB_DWC2=n
+
+Value of CONFIG_USB_CHIPIDEA is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_USB_CHIPIDEA=y
+New value: CONFIG_USB_CHIPIDEA=n
+
+Value of CONFIG_USB_ISP1760 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_USB_ISP1760=y
+New value: CONFIG_USB_ISP1760=n
+
+Value of CONFIG_USB_HSIC_USB3503 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_USB_HSIC_USB3503=y
+New value: CONFIG_USB_HSIC_USB3503=n
+
+Value of CONFIG_NOP_USB_XCEIV is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_NOP_USB_XCEIV=y
+New value: CONFIG_NOP_USB_XCEIV=n
+
+Value of CONFIG_U_SERIAL_CONSOLE is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_U_SERIAL_CONSOLE is not set
+New value: CONFIG_U_SERIAL_CONSOLE=y
+
+Value of CONFIG_USB_CONFIGFS is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_USB_CONFIGFS=m
+New value: CONFIG_USB_CONFIGFS=y
+
+Value of CONFIG_USB_CONFIGFS_F_HID is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_USB_CONFIGFS_F_HID is not set
+New value: CONFIG_USB_CONFIGFS_F_HID=y
+
+Value of CONFIG_TYPEC is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_TYPEC=m
+New value: CONFIG_TYPEC=y
+
+Value of CONFIG_TYPEC_TCPM is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_TYPEC_TCPM=m
+New value: CONFIG_TYPEC_TCPM=y
+
+Value of CONFIG_TYPEC_FUSB302 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_TYPEC_FUSB302=m
+New value: CONFIG_TYPEC_FUSB302=n
+
+Value of CONFIG_TYPEC_QCOM_PMIC is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_TYPEC_QCOM_PMIC=m
+New value: CONFIG_TYPEC_QCOM_PMIC=y
+
+Value of CONFIG_TYPEC_UCSI is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_TYPEC_UCSI=m
+New value: CONFIG_TYPEC_UCSI=y
+
+Value of CONFIG_UCSI_PMIC_GLINK is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_UCSI_PMIC_GLINK=m
+New value: CONFIG_UCSI_PMIC_GLINK=y
+
+Value of CONFIG_TYPEC_HD3SS3220 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_TYPEC_HD3SS3220=m
+New value: CONFIG_TYPEC_HD3SS3220=n
+
+Value of CONFIG_TYPEC_MUX_FSA4480 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_TYPEC_MUX_FSA4480=m
+New value: CONFIG_TYPEC_MUX_FSA4480=y
+
+Value of CONFIG_TYPEC_MUX_GPIO_SBU is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_TYPEC_MUX_GPIO_SBU=m
+New value: CONFIG_TYPEC_MUX_GPIO_SBU=y
+
+Value of CONFIG_TYPEC_MUX_NB7VPQ904M is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_TYPEC_MUX_NB7VPQ904M=m
+New value: CONFIG_TYPEC_MUX_NB7VPQ904M=y
+
+Value of CONFIG_TYPEC_DP_ALTMODE is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_TYPEC_DP_ALTMODE=m
+New value: CONFIG_TYPEC_DP_ALTMODE=y
+
+Value of CONFIG_MMC_SDHCI_OF_ARASAN is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_MMC_SDHCI_OF_ARASAN=y
+New value: CONFIG_MMC_SDHCI_OF_ARASAN=n
+
+Value of CONFIG_MMC_SDHCI_CADENCE is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_MMC_SDHCI_CADENCE=y
+New value: CONFIG_MMC_SDHCI_CADENCE=n
+
+Value of CONFIG_MMC_SDHCI_F_SDH30 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_MMC_SDHCI_F_SDH30=y
+New value: CONFIG_MMC_SDHCI_F_SDH30=n
+
+Value of CONFIG_MMC_DW_EXYNOS is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_MMC_DW_EXYNOS=y
+New value: CONFIG_MMC_DW_EXYNOS=n
+
+Value of CONFIG_MMC_DW_HI3798CV200 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_MMC_DW_HI3798CV200=y
+New value: CONFIG_MMC_DW_HI3798CV200=n
+
+Value of CONFIG_MMC_DW_K3 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_MMC_DW_K3=y
+New value: CONFIG_MMC_DW_K3=n
+
+Value of CONFIG_MMC_MTK is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_MMC_MTK=y
+New value: CONFIG_MMC_MTK=n
+
+Value of CONFIG_MMC_SDHCI_XENON is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_MMC_SDHCI_XENON=y
+New value: CONFIG_MMC_SDHCI_XENON=n
+
+Value of CONFIG_MMC_SDHCI_AM654 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_MMC_SDHCI_AM654=y
+New value: CONFIG_MMC_SDHCI_AM654=n
+
+Value of CONFIG_SCSI_UFS_CDNS_PLATFORM is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SCSI_UFS_CDNS_PLATFORM=m
+New value: CONFIG_SCSI_UFS_CDNS_PLATFORM=y
+
+Value of CONFIG_SCSI_UFS_QCOM is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SCSI_UFS_QCOM=m
+New value: CONFIG_SCSI_UFS_QCOM=y
+
+Value of CONFIG_LEDS_CLASS_FLASH is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_LEDS_CLASS_FLASH=m
+New value: CONFIG_LEDS_CLASS_FLASH=y
+
+Value of CONFIG_LEDS_QCOM_FLASH is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_LEDS_QCOM_FLASH=m
+New value: CONFIG_LEDS_QCOM_FLASH=y
+
+Value of CONFIG_LEDS_TRIGGER_ONESHOT is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_LEDS_TRIGGER_ONESHOT is not set
+New value: CONFIG_LEDS_TRIGGER_ONESHOT=y
+
+Value of CONFIG_LEDS_TRIGGER_BACKLIGHT is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_LEDS_TRIGGER_BACKLIGHT is not set
+New value: CONFIG_LEDS_TRIGGER_BACKLIGHT=y
+
+Value of CONFIG_LEDS_TRIGGER_ACTIVITY is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_LEDS_TRIGGER_ACTIVITY is not set
+New value: CONFIG_LEDS_TRIGGER_ACTIVITY=y
+
+Value of CONFIG_EDAC_QCOM is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_EDAC_QCOM is not set
+New value: CONFIG_EDAC_QCOM=y
+
+Value of CONFIG_RTC_DRV_DS1307 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_RTC_DRV_DS1307=m
+New value: CONFIG_RTC_DRV_DS1307=n
+
+Value of CONFIG_RTC_DRV_HYM8563 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_RTC_DRV_HYM8563=m
+New value: CONFIG_RTC_DRV_HYM8563=n
+
+Value of CONFIG_RTC_DRV_NVIDIA_VRS10 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_RTC_DRV_NVIDIA_VRS10=m
+New value: CONFIG_RTC_DRV_NVIDIA_VRS10=n
+
+Value of CONFIG_RTC_DRV_RK808 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_RTC_DRV_RK808=m
+New value: CONFIG_RTC_DRV_RK808=n
+
+Value of CONFIG_RTC_DRV_ISL1208 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_RTC_DRV_ISL1208=m
+New value: CONFIG_RTC_DRV_ISL1208=n
+
+Value of CONFIG_RTC_DRV_PCF85363 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_RTC_DRV_PCF85363=m
+New value: CONFIG_RTC_DRV_PCF85363=n
+
+Value of CONFIG_RTC_DRV_PCF8563 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_RTC_DRV_PCF8563=m
+New value: CONFIG_RTC_DRV_PCF8563=n
+
+Value of CONFIG_RTC_DRV_M41T80 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_RTC_DRV_M41T80=m
+New value: CONFIG_RTC_DRV_M41T80=n
+
+Value of CONFIG_RTC_DRV_BQ32K is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_RTC_DRV_BQ32K=m
+New value: CONFIG_RTC_DRV_BQ32K=n
+
+Value of CONFIG_RTC_DRV_TPS6594 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_RTC_DRV_TPS6594=m
+New value: CONFIG_RTC_DRV_TPS6594=n
+
+Value of CONFIG_RTC_DRV_RX8581 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_RTC_DRV_RX8581=m
+New value: CONFIG_RTC_DRV_RX8581=n
+
+Value of CONFIG_RTC_DRV_RV3028 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_RTC_DRV_RV3028=m
+New value: CONFIG_RTC_DRV_RV3028=n
+
+Value of CONFIG_RTC_DRV_RV8803 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_RTC_DRV_RV8803=m
+New value: CONFIG_RTC_DRV_RV8803=n
+
+Value of CONFIG_RTC_DRV_S5M is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_RTC_DRV_S5M=y
+New value: CONFIG_RTC_DRV_S5M=n
+
+Value of CONFIG_RTC_DRV_DS3232 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_RTC_DRV_DS3232=y
+New value: CONFIG_RTC_DRV_DS3232=n
+
+Value of CONFIG_RTC_DRV_PCF2127 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_RTC_DRV_PCF2127=m
+New value: CONFIG_RTC_DRV_PCF2127=n
+
+Value of CONFIG_RTC_DRV_PCF85063 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_RTC_DRV_PCF85063=m
+New value: CONFIG_RTC_DRV_PCF85063=n
+
+Value of CONFIG_RTC_DRV_DA9063 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_RTC_DRV_DA9063=m
+New value: CONFIG_RTC_DRV_DA9063=n
+
+Value of CONFIG_RTC_DRV_ZYNQMP is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_RTC_DRV_ZYNQMP=m
+New value: CONFIG_RTC_DRV_ZYNQMP=n
+
+Value of CONFIG_RTC_DRV_PL031 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_RTC_DRV_PL031=y
+New value: CONFIG_RTC_DRV_PL031=n
+
+Value of CONFIG_RTC_DRV_IMX_BBM_SCMI is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_RTC_DRV_IMX_BBM_SCMI=y
+New value: CONFIG_RTC_DRV_IMX_BBM_SCMI=n
+
+Value of CONFIG_FSL_EDMA is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_FSL_EDMA=y
+New value: CONFIG_FSL_EDMA=n
+
+Value of CONFIG_MV_XOR_V2 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_MV_XOR_V2=y
+New value: CONFIG_MV_XOR_V2=n
+
+Value of CONFIG_PL330_DMA is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_PL330_DMA=y
+New value: CONFIG_PL330_DMA=n
+
+Value of CONFIG_XILINX_DMA is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_XILINX_DMA=m
+New value: CONFIG_XILINX_DMA=n
+
+Value of CONFIG_XILINX_ZYNQMP_DMA is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_XILINX_ZYNQMP_DMA=m
+New value: CONFIG_XILINX_ZYNQMP_DMA=n
+
+Value of CONFIG_XILINX_ZYNQMP_DPDMA is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_XILINX_ZYNQMP_DPDMA=m
+New value: CONFIG_XILINX_ZYNQMP_DPDMA=n
+
+Value of CONFIG_QCOM_GPI_DMA is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_QCOM_GPI_DMA=m
+New value: CONFIG_QCOM_GPI_DMA=y
+
+Value of CONFIG_DW_EDMA is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_DW_EDMA=m
+New value: CONFIG_DW_EDMA=n
+
+Value of CONFIG_DMABUF_HEAPS_SYSTEM is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_DMABUF_HEAPS_SYSTEM=m
+New value: CONFIG_DMABUF_HEAPS_SYSTEM=y
+
+Value of CONFIG_DMABUF_HEAPS_CMA is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_DMABUF_HEAPS_CMA=m
+New value: CONFIG_DMABUF_HEAPS_CMA=y
+
+Value of CONFIG_CHROME_PLATFORMS is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_CHROME_PLATFORMS=y
+New value: CONFIG_CHROME_PLATFORMS=n
+
+Value of CONFIG_SURFACE_PLATFORMS is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SURFACE_PLATFORMS=y
+New value: CONFIG_SURFACE_PLATFORMS=n
+
+Value of CONFIG_ARM64_PLATFORM_DEVICES is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_ARM64_PLATFORM_DEVICES=y
+New value: CONFIG_ARM64_PLATFORM_DEVICES=n
+
+Value of CONFIG_COMMON_CLK_RK808 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_COMMON_CLK_RK808=y
+New value: CONFIG_COMMON_CLK_RK808=n
+
+Value of CONFIG_COMMON_CLK_CS2000_CP is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_COMMON_CLK_CS2000_CP=y
+New value: CONFIG_COMMON_CLK_CS2000_CP=n
+
+Value of CONFIG_COMMON_CLK_XGENE is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_COMMON_CLK_XGENE=y
+New value: CONFIG_COMMON_CLK_XGENE=n
+
+Value of CONFIG_COMMON_CLK_RS9_PCIE is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_COMMON_CLK_RS9_PCIE=y
+New value: CONFIG_COMMON_CLK_RS9_PCIE=n
+
+Value of CONFIG_COMMON_CLK_VC3 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_COMMON_CLK_VC3=y
+New value: CONFIG_COMMON_CLK_VC3=n
+
+Value of CONFIG_COMMON_CLK_VC5 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_COMMON_CLK_VC5=y
+New value: CONFIG_COMMON_CLK_VC5=n
+
+Value of CONFIG_CLK_ELIZA_DISPCC is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_CLK_ELIZA_DISPCC=m
+New value: CONFIG_CLK_ELIZA_DISPCC=n
+
+Value of CONFIG_CLK_ELIZA_GCC is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_CLK_ELIZA_GCC=y
+New value: CONFIG_CLK_ELIZA_GCC=n
+
+Value of CONFIG_CLK_ELIZA_TCSRCC is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_CLK_ELIZA_TCSRCC=m
+New value: CONFIG_CLK_ELIZA_TCSRCC=n
+
+Value of CONFIG_CLK_GLYMUR_DISPCC is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_CLK_GLYMUR_DISPCC=m
+New value: CONFIG_CLK_GLYMUR_DISPCC=n
+
+Value of CONFIG_CLK_GLYMUR_GCC is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_CLK_GLYMUR_GCC=y
+New value: CONFIG_CLK_GLYMUR_GCC=n
+
+Value of CONFIG_CLK_GLYMUR_TCSRCC is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_CLK_GLYMUR_TCSRCC=m
+New value: CONFIG_CLK_GLYMUR_TCSRCC=n
+
+Value of CONFIG_CLK_KAANAPALI_GCC is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_CLK_KAANAPALI_GCC=y
+New value: CONFIG_CLK_KAANAPALI_GCC=n
+
+Value of CONFIG_CLK_KAANAPALI_TCSRCC is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_CLK_KAANAPALI_TCSRCC=m
+New value: CONFIG_CLK_KAANAPALI_TCSRCC=n
+
+Value of CONFIG_CLK_X1E80100_CAMCC is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_CLK_X1E80100_CAMCC=m
+New value: CONFIG_CLK_X1E80100_CAMCC=n
+
+Value of CONFIG_CLK_X1E80100_DISPCC is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_CLK_X1E80100_DISPCC=m
+New value: CONFIG_CLK_X1E80100_DISPCC=n
+
+Value of CONFIG_CLK_X1E80100_GCC is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_CLK_X1E80100_GCC=y
+New value: CONFIG_CLK_X1E80100_GCC=n
+
+Value of CONFIG_CLK_X1E80100_GPUCC is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_CLK_X1E80100_GPUCC=m
+New value: CONFIG_CLK_X1E80100_GPUCC=n
+
+Value of CONFIG_CLK_X1E80100_TCSRCC is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_CLK_X1E80100_TCSRCC=y
+New value: CONFIG_CLK_X1E80100_TCSRCC=n
+
+Value of CONFIG_CLK_X1P42100_CAMCC is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_CLK_X1P42100_CAMCC=m
+New value: CONFIG_CLK_X1P42100_CAMCC=n
+
+Value of CONFIG_CLK_X1P42100_GPUCC is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_CLK_X1P42100_GPUCC=m
+New value: CONFIG_CLK_X1P42100_GPUCC=n
+
+Value of CONFIG_CLK_X1P42100_VIDEOCC is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_CLK_X1P42100_VIDEOCC=m
+New value: CONFIG_CLK_X1P42100_VIDEOCC=n
+
+Value of CONFIG_CLK_QCM2290_GPUCC is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_CLK_QCM2290_GPUCC=m
+New value: CONFIG_CLK_QCM2290_GPUCC=n
+
+Value of CONFIG_QCOM_A53PLL is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_QCOM_A53PLL=y
+New value: CONFIG_QCOM_A53PLL=n
+
+Value of CONFIG_QCOM_CLK_APCS_MSM8916 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_QCOM_CLK_APCS_MSM8916=y
+New value: CONFIG_QCOM_CLK_APCS_MSM8916=n
+
+Value of CONFIG_QCOM_CLK_APCC_MSM8996 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_QCOM_CLK_APCC_MSM8996=y
+New value: CONFIG_QCOM_CLK_APCC_MSM8996=n
+
+Value of CONFIG_IPQ_APSS_PLL is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_IPQ_APSS_PLL=y
+New value: CONFIG_IPQ_APSS_PLL=n
+
+Value of CONFIG_IPQ_APSS_5424 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_IPQ_APSS_5424=y
+New value: CONFIG_IPQ_APSS_5424=n
+
+Value of CONFIG_IPQ_APSS_6018 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_IPQ_APSS_6018=y
+New value: CONFIG_IPQ_APSS_6018=n
+
+Value of CONFIG_IPQ_CMN_PLL is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_IPQ_CMN_PLL=m
+New value: CONFIG_IPQ_CMN_PLL=n
+
+Value of CONFIG_IPQ_GCC_5018 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_IPQ_GCC_5018=y
+New value: CONFIG_IPQ_GCC_5018=n
+
+Value of CONFIG_IPQ_GCC_5210 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_IPQ_GCC_5210=y
+New value: CONFIG_IPQ_GCC_5210=n
+
+Value of CONFIG_IPQ_GCC_5332 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_IPQ_GCC_5332=y
+New value: CONFIG_IPQ_GCC_5332=n
+
+Value of CONFIG_IPQ_GCC_5424 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_IPQ_GCC_5424=y
+New value: CONFIG_IPQ_GCC_5424=n
+
+Value of CONFIG_IPQ_GCC_6018 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_IPQ_GCC_6018=y
+New value: CONFIG_IPQ_GCC_6018=n
+
+Value of CONFIG_IPQ_GCC_8074 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_IPQ_GCC_8074=y
+New value: CONFIG_IPQ_GCC_8074=n
+
+Value of CONFIG_IPQ_GCC_9574 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_IPQ_GCC_9574=y
+New value: CONFIG_IPQ_GCC_9574=n
+
+Value of CONFIG_IPQ_GCC_9650 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_IPQ_GCC_9650=y
+New value: CONFIG_IPQ_GCC_9650=n
+
+Value of CONFIG_IPQ_NSSCC_5424 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_IPQ_NSSCC_5424=m
+New value: CONFIG_IPQ_NSSCC_5424=n
+
+Value of CONFIG_MSM_GCC_8916 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_MSM_GCC_8916=y
+New value: CONFIG_MSM_GCC_8916=n
+
+Value of CONFIG_MSM_GCC_8953 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_MSM_GCC_8953=y
+New value: CONFIG_MSM_GCC_8953=n
+
+Value of CONFIG_MSM_MMCC_8994 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_MSM_MMCC_8994=m
+New value: CONFIG_MSM_MMCC_8994=n
+
+Value of CONFIG_MSM_GCC_8994 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_MSM_GCC_8994=y
+New value: CONFIG_MSM_GCC_8994=n
+
+Value of CONFIG_MSM_GCC_8996 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_MSM_GCC_8996=y
+New value: CONFIG_MSM_GCC_8996=n
+
+Value of CONFIG_MSM_MMCC_8996 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_MSM_MMCC_8996=m
+New value: CONFIG_MSM_MMCC_8996=n
+
+Value of CONFIG_MSM_GCC_8998 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_MSM_GCC_8998=y
+New value: CONFIG_MSM_GCC_8998=n
+
+Value of CONFIG_MSM_MMCC_8998 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_MSM_MMCC_8998=m
+New value: CONFIG_MSM_MMCC_8998=n
+
+Value of CONFIG_QCM_GCC_2290 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_QCM_GCC_2290=y
+New value: CONFIG_QCM_GCC_2290=n
+
+Value of CONFIG_QCM_DISPCC_2290 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_QCM_DISPCC_2290=m
+New value: CONFIG_QCM_DISPCC_2290=n
+
+Value of CONFIG_QCS_DISPCC_615 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_QCS_DISPCC_615=m
+New value: CONFIG_QCS_DISPCC_615=n
+
+Value of CONFIG_QCS_CAMCC_615 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_QCS_CAMCC_615=m
+New value: CONFIG_QCS_CAMCC_615=n
+
+Value of CONFIG_QCS_GCC_404 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_QCS_GCC_404=y
+New value: CONFIG_QCS_GCC_404=n
+
+Value of CONFIG_SA_CAMCC_8775P is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SA_CAMCC_8775P=m
+New value: CONFIG_SA_CAMCC_8775P=n
+
+Value of CONFIG_QCS_GCC_8300 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_QCS_GCC_8300=y
+New value: CONFIG_QCS_GCC_8300=n
+
+Value of CONFIG_QCS_GCC_615 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_QCS_GCC_615=y
+New value: CONFIG_QCS_GCC_615=n
+
+Value of CONFIG_QCS_GPUCC_615 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_QCS_GPUCC_615=m
+New value: CONFIG_QCS_GPUCC_615=n
+
+Value of CONFIG_QCS_VIDEOCC_615 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_QCS_VIDEOCC_615=m
+New value: CONFIG_QCS_VIDEOCC_615=n
+
+Value of CONFIG_SC_CAMCC_7280 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SC_CAMCC_7280=m
+New value: CONFIG_SC_CAMCC_7280=n
+
+Value of CONFIG_SC_CAMCC_8280XP is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SC_CAMCC_8280XP=m
+New value: CONFIG_SC_CAMCC_8280XP=n
+
+Value of CONFIG_SA_DISPCC_8775P is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SA_DISPCC_8775P=m
+New value: CONFIG_SA_DISPCC_8775P=n
+
+Value of CONFIG_SC_DISPCC_7280 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SC_DISPCC_7280=m
+New value: CONFIG_SC_DISPCC_7280=n
+
+Value of CONFIG_SC_DISPCC_8280XP is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SC_DISPCC_8280XP=m
+New value: CONFIG_SC_DISPCC_8280XP=n
+
+Value of CONFIG_SA_GCC_8775P is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SA_GCC_8775P=y
+New value: CONFIG_SA_GCC_8775P=n
+
+Value of CONFIG_SA_GPUCC_8775P is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SA_GPUCC_8775P=m
+New value: CONFIG_SA_GPUCC_8775P=n
+
+Value of CONFIG_SC_GCC_7180 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SC_GCC_7180=y
+New value: CONFIG_SC_GCC_7180=n
+
+Value of CONFIG_SC_GCC_7280 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SC_GCC_7280=y
+New value: CONFIG_SC_GCC_7280=n
+
+Value of CONFIG_SC_GCC_8180X is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SC_GCC_8180X=y
+New value: CONFIG_SC_GCC_8180X=n
+
+Value of CONFIG_SC_GCC_8280XP is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SC_GCC_8280XP=y
+New value: CONFIG_SC_GCC_8280XP=n
+
+Value of CONFIG_SC_GPUCC_7180 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SC_GPUCC_7180=m
+New value: CONFIG_SC_GPUCC_7180=n
+
+Value of CONFIG_SC_GPUCC_7280 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SC_GPUCC_7280=m
+New value: CONFIG_SC_GPUCC_7280=n
+
+Value of CONFIG_SC_GPUCC_8280XP is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SC_GPUCC_8280XP=m
+New value: CONFIG_SC_GPUCC_8280XP=n
+
+Value of CONFIG_SC_LPASSCC_8280XP is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SC_LPASSCC_8280XP=m
+New value: CONFIG_SC_LPASSCC_8280XP=n
+
+Value of CONFIG_SC_LPASS_CORECC_7280 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SC_LPASS_CORECC_7280=m
+New value: CONFIG_SC_LPASS_CORECC_7280=n
+
+Value of CONFIG_SC_VIDEOCC_7280 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SC_VIDEOCC_7280=m
+New value: CONFIG_SC_VIDEOCC_7280=n
+
+Value of CONFIG_SDM_CAMCC_845 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SDM_CAMCC_845=m
+New value: CONFIG_SDM_CAMCC_845=n
+
+Value of CONFIG_QDU_GCC_1000 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_QDU_GCC_1000=y
+New value: CONFIG_QDU_GCC_1000=n
+
+Value of CONFIG_SDM_GCC_845 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SDM_GCC_845=y
+New value: CONFIG_SDM_GCC_845=n
+
+Value of CONFIG_SDM_GPUCC_845 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SDM_GPUCC_845=y
+New value: CONFIG_SDM_GPUCC_845=n
+
+Value of CONFIG_SDM_VIDEOCC_845 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SDM_VIDEOCC_845=y
+New value: CONFIG_SDM_VIDEOCC_845=n
+
+Value of CONFIG_SDM_DISPCC_845 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SDM_DISPCC_845=y
+New value: CONFIG_SDM_DISPCC_845=n
+
+Value of CONFIG_SDM_LPASSCC_845 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SDM_LPASSCC_845=m
+New value: CONFIG_SDM_LPASSCC_845=n
+
+Value of CONFIG_SDX_GCC_75 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SDX_GCC_75=y
+New value: CONFIG_SDX_GCC_75=n
+
+Value of CONFIG_SM_CAMCC_6350 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SM_CAMCC_6350=m
+New value: CONFIG_SM_CAMCC_6350=n
+
+Value of CONFIG_SM_CAMCC_MILOS is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SM_CAMCC_MILOS=m
+New value: CONFIG_SM_CAMCC_MILOS=n
+
+Value of CONFIG_SM_CAMCC_8250 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SM_CAMCC_8250=m
+New value: CONFIG_SM_CAMCC_8250=n
+
+Value of CONFIG_SM_CAMCC_8450 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SM_CAMCC_8450=m
+New value: CONFIG_SM_CAMCC_8450=y
+
+Value of CONFIG_SM_CAMCC_8550 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SM_CAMCC_8550=m
+New value: CONFIG_SM_CAMCC_8550=n
+
+Value of CONFIG_SM_CAMCC_8650 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SM_CAMCC_8650=m
+New value: CONFIG_SM_CAMCC_8650=n
+
+Value of CONFIG_SM_CAMCC_8750 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SM_CAMCC_8750=m
+New value: CONFIG_SM_CAMCC_8750=n
+
+Value of CONFIG_SM_DISPCC_6115 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SM_DISPCC_6115=m
+New value: CONFIG_SM_DISPCC_6115=n
+
+Value of CONFIG_SM_DISPCC_8250 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SM_DISPCC_8250=y
+New value: CONFIG_SM_DISPCC_8250=n
+
+Value of CONFIG_SM_DISPCC_6350 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SM_DISPCC_6350=m
+New value: CONFIG_SM_DISPCC_6350=n
+
+Value of CONFIG_SM_DISPCC_MILOS is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SM_DISPCC_MILOS=m
+New value: CONFIG_SM_DISPCC_MILOS=n
+
+Value of CONFIG_SM_DISPCC_8450 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SM_DISPCC_8450=m
+New value: CONFIG_SM_DISPCC_8450=y
+
+Value of CONFIG_SM_DISPCC_8550 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SM_DISPCC_8550=m
+New value: CONFIG_SM_DISPCC_8550=n
+
+Value of CONFIG_SM_DISPCC_8750 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SM_DISPCC_8750=m
+New value: CONFIG_SM_DISPCC_8750=n
+
+Value of CONFIG_SM_GCC_4450 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SM_GCC_4450=y
+New value: CONFIG_SM_GCC_4450=n
+
+Value of CONFIG_SM_GCC_6115 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SM_GCC_6115=y
+New value: CONFIG_SM_GCC_6115=n
+
+Value of CONFIG_SM_GCC_6350 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SM_GCC_6350=y
+New value: CONFIG_SM_GCC_6350=n
+
+Value of CONFIG_SM_GCC_MILOS is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SM_GCC_MILOS=y
+New value: CONFIG_SM_GCC_MILOS=n
+
+Value of CONFIG_SM_GCC_8150 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SM_GCC_8150=y
+New value: CONFIG_SM_GCC_8150=n
+
+Value of CONFIG_SM_GCC_8250 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SM_GCC_8250=y
+New value: CONFIG_SM_GCC_8250=n
+
+Value of CONFIG_SM_GCC_8350 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SM_GCC_8350=y
+New value: CONFIG_SM_GCC_8350=n
+
+Value of CONFIG_SM_GCC_8550 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SM_GCC_8550=y
+New value: CONFIG_SM_GCC_8550=n
+
+Value of CONFIG_SM_GCC_8650 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SM_GCC_8650=y
+New value: CONFIG_SM_GCC_8650=n
+
+Value of CONFIG_SM_GCC_8750 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SM_GCC_8750=y
+New value: CONFIG_SM_GCC_8750=n
+
+Value of CONFIG_SM_GPUCC_6115 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SM_GPUCC_6115=m
+New value: CONFIG_SM_GPUCC_6115=n
+
+Value of CONFIG_SM_GPUCC_6350 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SM_GPUCC_6350=m
+New value: CONFIG_SM_GPUCC_6350=n
+
+Value of CONFIG_SM_GPUCC_MILOS is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SM_GPUCC_MILOS=m
+New value: CONFIG_SM_GPUCC_MILOS=n
+
+Value of CONFIG_SM_GPUCC_8150 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SM_GPUCC_8150=y
+New value: CONFIG_SM_GPUCC_8150=n
+
+Value of CONFIG_SM_GPUCC_8250 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SM_GPUCC_8250=y
+New value: CONFIG_SM_GPUCC_8250=n
+
+Value of CONFIG_SM_GPUCC_8350 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SM_GPUCC_8350=m
+New value: CONFIG_SM_GPUCC_8350=n
+
+Value of CONFIG_SM_GPUCC_8450 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SM_GPUCC_8450=m
+New value: CONFIG_SM_GPUCC_8450=y
+
+Value of CONFIG_SM_GPUCC_8550 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SM_GPUCC_8550=m
+New value: CONFIG_SM_GPUCC_8550=n
+
+Value of CONFIG_SM_GPUCC_8650 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SM_GPUCC_8650=m
+New value: CONFIG_SM_GPUCC_8650=n
+
+Value of CONFIG_SM_GPUCC_8750 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SM_GPUCC_8750=m
+New value: CONFIG_SM_GPUCC_8750=n
+
+Value of CONFIG_SM_TCSRCC_8550 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SM_TCSRCC_8550=y
+New value: CONFIG_SM_TCSRCC_8550=n
+
+Value of CONFIG_SM_TCSRCC_8650 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SM_TCSRCC_8650=y
+New value: CONFIG_SM_TCSRCC_8650=n
+
+Value of CONFIG_SM_TCSRCC_8750 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SM_TCSRCC_8750=m
+New value: CONFIG_SM_TCSRCC_8750=n
+
+Value of CONFIG_SA_VIDEOCC_8775P is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SA_VIDEOCC_8775P=m
+New value: CONFIG_SA_VIDEOCC_8775P=n
+
+Value of CONFIG_SM_VIDEOCC_6350 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SM_VIDEOCC_6350=m
+New value: CONFIG_SM_VIDEOCC_6350=n
+
+Value of CONFIG_SM_VIDEOCC_MILOS is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SM_VIDEOCC_MILOS=m
+New value: CONFIG_SM_VIDEOCC_MILOS=n
+
+Value of CONFIG_SM_VIDEOCC_8250 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SM_VIDEOCC_8250=y
+New value: CONFIG_SM_VIDEOCC_8250=n
+
+Value of CONFIG_SM_VIDEOCC_8550 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SM_VIDEOCC_8550=m
+New value: CONFIG_SM_VIDEOCC_8550=n
+
+Value of CONFIG_SM_VIDEOCC_8750 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SM_VIDEOCC_8750=m
+New value: CONFIG_SM_VIDEOCC_8750=n
+
+Value of CONFIG_CLK_GFM_LPASS_SM8250 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_CLK_GFM_LPASS_SM8250=m
+New value: CONFIG_CLK_GFM_LPASS_SM8250=n
+
+Value of CONFIG_SM_VIDEOCC_8450 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SM_VIDEOCC_8450=m
+New value: CONFIG_SM_VIDEOCC_8450=y
+
+Value of CONFIG_XILINX_VCU is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_XILINX_VCU=m
+New value: CONFIG_XILINX_VCU=n
+
+Value of CONFIG_COMMON_CLK_XLNX_CLKWZRD is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_COMMON_CLK_XLNX_CLKWZRD=m
+New value: CONFIG_COMMON_CLK_XLNX_CLKWZRD=n
+
+Value of CONFIG_REMOTEPROC_CDEV is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_REMOTEPROC_CDEV is not set
+New value: CONFIG_REMOTEPROC_CDEV=y
+
+Value of CONFIG_RPMSG_CHAR is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_RPMSG_CHAR=m
+New value: CONFIG_RPMSG_CHAR=y
+
+Value of CONFIG_RPMSG_QCOM_GLINK_SMEM is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_RPMSG_QCOM_GLINK_SMEM=m
+New value: CONFIG_RPMSG_QCOM_GLINK_SMEM=y
+
+Value of CONFIG_SOUNDWIRE is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SOUNDWIRE=m
+New value: CONFIG_SOUNDWIRE=y
+
+Value of CONFIG_SOUNDWIRE_QCOM is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SOUNDWIRE_QCOM=m
+New value: CONFIG_SOUNDWIRE_QCOM=y
+
+Value of CONFIG_FSL_RCPM is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_FSL_RCPM=y
+New value: CONFIG_FSL_RCPM=n
+
+Value of CONFIG_QCOM_LLCC is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_QCOM_LLCC=m
+New value: CONFIG_QCOM_LLCC=y
+
+Value of CONFIG_QCOM_OCMEM is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_QCOM_OCMEM=m
+New value: CONFIG_QCOM_OCMEM=y
+
+Value of CONFIG_QCOM_PMIC_GLINK is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_QCOM_PMIC_GLINK=m
+New value: CONFIG_QCOM_PMIC_GLINK=y
+
+Value of CONFIG_QCOM_RMTFS_MEM is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_QCOM_RMTFS_MEM=m
+New value: CONFIG_QCOM_RMTFS_MEM=y
+
+Value of CONFIG_QCOM_SOCINFO is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_QCOM_SOCINFO=m
+New value: CONFIG_QCOM_SOCINFO=y
+
+Value of CONFIG_QCOM_APR is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_QCOM_APR=m
+New value: CONFIG_QCOM_APR=y
+
+Value of CONFIG_ARCH_R9A07G044 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_ARCH_R9A07G044=y
+New value: CONFIG_ARCH_R9A07G044=n
+
+Value of CONFIG_DEVFREQ_GOV_PERFORMANCE is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_DEVFREQ_GOV_PERFORMANCE is not set
+New value: CONFIG_DEVFREQ_GOV_PERFORMANCE=y
+
+Value of CONFIG_DEVFREQ_GOV_POWERSAVE is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_DEVFREQ_GOV_POWERSAVE is not set
+New value: CONFIG_DEVFREQ_GOV_POWERSAVE=y
+
+Value of CONFIG_DEVFREQ_GOV_PASSIVE is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_DEVFREQ_GOV_PASSIVE=m
+New value: CONFIG_DEVFREQ_GOV_PASSIVE=y
+
+Value of CONFIG_EXTCON_PTN5150 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_EXTCON_PTN5150=m
+New value: CONFIG_EXTCON_PTN5150=n
+
+Value of CONFIG_MAX9611 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_MAX9611=m
+New value: CONFIG_MAX9611=n
+
+Value of CONFIG_QCOM_SPMI_ADC5 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_QCOM_SPMI_ADC5=m
+New value: CONFIG_QCOM_SPMI_ADC5=y
+
+Value of CONFIG_SENSORS_ISL29018 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SENSORS_ISL29018=m
+New value: CONFIG_SENSORS_ISL29018=n
+
+Value of CONFIG_MPL3115 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_MPL3115=m
+New value: CONFIG_MPL3115=n
+
+Value of CONFIG_PHY_QCOM_PCIE2 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_PHY_QCOM_PCIE2=m
+New value: CONFIG_PHY_QCOM_PCIE2=y
+
+Value of CONFIG_PHY_QCOM_QMP is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_PHY_QCOM_QMP=m
+New value: CONFIG_PHY_QCOM_QMP=y
+
+Value of CONFIG_PHY_QCOM_QMP_COMBO is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_PHY_QCOM_QMP_COMBO=m
+New value: CONFIG_PHY_QCOM_QMP_COMBO=y
+
+Value of CONFIG_PHY_QCOM_QMP_PCIE is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_PHY_QCOM_QMP_PCIE=m
+New value: CONFIG_PHY_QCOM_QMP_PCIE=y
+
+Value of CONFIG_PHY_QCOM_QMP_PCIE_8996 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_PHY_QCOM_QMP_PCIE_8996=m
+New value: CONFIG_PHY_QCOM_QMP_PCIE_8996=y
+
+Value of CONFIG_PHY_QCOM_QMP_USB is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_PHY_QCOM_QMP_USB=m
+New value: CONFIG_PHY_QCOM_QMP_USB=y
+
+Value of CONFIG_PHY_QCOM_QUSB2 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_PHY_QCOM_QUSB2=m
+New value: CONFIG_PHY_QCOM_QUSB2=y
+
+Value of CONFIG_PHY_QCOM_EUSB2_REPEATER is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_PHY_QCOM_EUSB2_REPEATER=m
+New value: CONFIG_PHY_QCOM_EUSB2_REPEATER=y
+
+Value of CONFIG_PHY_QCOM_USB_HS is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_PHY_QCOM_USB_HS=m
+New value: CONFIG_PHY_QCOM_USB_HS=y
+
+Value of CONFIG_PHY_QCOM_USB_SNPS_FEMTO_V2 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_PHY_QCOM_USB_SNPS_FEMTO_V2=m
+New value: CONFIG_PHY_QCOM_USB_SNPS_FEMTO_V2=y
+
+Value of CONFIG_PHY_QCOM_USB_HSIC is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_PHY_QCOM_USB_HSIC is not set
+New value: CONFIG_PHY_QCOM_USB_HSIC=y
+
+Value of CONFIG_PHY_QCOM_USB_HS_28NM is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_PHY_QCOM_USB_HS_28NM=m
+New value: CONFIG_PHY_QCOM_USB_HS_28NM=y
+
+Value of CONFIG_PHY_QCOM_USB_SS is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_PHY_QCOM_USB_SS=m
+New value: CONFIG_PHY_QCOM_USB_SS=y
+
+Value of CONFIG_ANDROID_BINDER_IPC is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_ANDROID_BINDER_IPC is not set
+New value: CONFIG_ANDROID_BINDER_IPC=y
+
+Value of CONFIG_EEPROM_AT24 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_EEPROM_AT24=m
+New value: CONFIG_EEPROM_AT24=n
+
+Value of CONFIG_EEPROM_AT25 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_EEPROM_AT25=m
+New value: CONFIG_EEPROM_AT25=n
+
+Value of CONFIG_NVMEM_RMEM is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_NVMEM_RMEM=m
+New value: CONFIG_NVMEM_RMEM=n
+
+Value of CONFIG_FPGA is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_FPGA=y
+New value: CONFIG_FPGA=n
+
+Value of CONFIG_SLIMBUS is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SLIMBUS=m
+New value: CONFIG_SLIMBUS=y
+
+Value of CONFIG_SLIM_QCOM_NGD_CTRL is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_SLIM_QCOM_NGD_CTRL=m
+New value: CONFIG_SLIM_QCOM_NGD_CTRL=y
+
+Value of CONFIG_INTERCONNECT_QCOM_KAANAPALI is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_INTERCONNECT_QCOM_KAANAPALI=y
+New value: CONFIG_INTERCONNECT_QCOM_KAANAPALI=n
+
+Value of CONFIG_INTERCONNECT_QCOM_MSM8916 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_INTERCONNECT_QCOM_MSM8916=m
+New value: CONFIG_INTERCONNECT_QCOM_MSM8916=n
+
+Value of CONFIG_INTERCONNECT_QCOM_MSM8953 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_INTERCONNECT_QCOM_MSM8953=y
+New value: CONFIG_INTERCONNECT_QCOM_MSM8953=n
+
+Value of CONFIG_INTERCONNECT_QCOM_MSM8996 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_INTERCONNECT_QCOM_MSM8996=y
+New value: CONFIG_INTERCONNECT_QCOM_MSM8996=n
+
+Value of CONFIG_INTERCONNECT_QCOM_OSM_L3 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_INTERCONNECT_QCOM_OSM_L3=m
+New value: CONFIG_INTERCONNECT_QCOM_OSM_L3=y
+
+Value of CONFIG_INTERCONNECT_QCOM_QCM2290 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_INTERCONNECT_QCOM_QCM2290=y
+New value: CONFIG_INTERCONNECT_QCOM_QCM2290=n
+
+Value of CONFIG_INTERCONNECT_QCOM_QCS404 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_INTERCONNECT_QCOM_QCS404=m
+New value: CONFIG_INTERCONNECT_QCOM_QCS404=n
+
+Value of CONFIG_INTERCONNECT_QCOM_QCS615 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_INTERCONNECT_QCOM_QCS615=y
+New value: CONFIG_INTERCONNECT_QCOM_QCS615=n
+
+Value of CONFIG_INTERCONNECT_QCOM_QCS8300 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_INTERCONNECT_QCOM_QCS8300=y
+New value: CONFIG_INTERCONNECT_QCOM_QCS8300=n
+
+Value of CONFIG_INTERCONNECT_QCOM_QDU1000 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_INTERCONNECT_QCOM_QDU1000=y
+New value: CONFIG_INTERCONNECT_QCOM_QDU1000=n
+
+Value of CONFIG_INTERCONNECT_QCOM_SA8775P is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_INTERCONNECT_QCOM_SA8775P=y
+New value: CONFIG_INTERCONNECT_QCOM_SA8775P=n
+
+Value of CONFIG_INTERCONNECT_QCOM_SC7180 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_INTERCONNECT_QCOM_SC7180=y
+New value: CONFIG_INTERCONNECT_QCOM_SC7180=n
+
+Value of CONFIG_INTERCONNECT_QCOM_SC7280 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_INTERCONNECT_QCOM_SC7280=y
+New value: CONFIG_INTERCONNECT_QCOM_SC7280=n
+
+Value of CONFIG_INTERCONNECT_QCOM_SC8180X is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_INTERCONNECT_QCOM_SC8180X=y
+New value: CONFIG_INTERCONNECT_QCOM_SC8180X=n
+
+Value of CONFIG_INTERCONNECT_QCOM_SC8280XP is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_INTERCONNECT_QCOM_SC8280XP=y
+New value: CONFIG_INTERCONNECT_QCOM_SC8280XP=n
+
+Value of CONFIG_INTERCONNECT_QCOM_SDM845 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_INTERCONNECT_QCOM_SDM845=y
+New value: CONFIG_INTERCONNECT_QCOM_SDM845=n
+
+Value of CONFIG_INTERCONNECT_QCOM_SDX75 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_INTERCONNECT_QCOM_SDX75=y
+New value: CONFIG_INTERCONNECT_QCOM_SDX75=n
+
+Value of CONFIG_INTERCONNECT_QCOM_SM6115 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_INTERCONNECT_QCOM_SM6115=y
+New value: CONFIG_INTERCONNECT_QCOM_SM6115=n
+
+Value of CONFIG_INTERCONNECT_QCOM_SM6350 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_INTERCONNECT_QCOM_SM6350=y
+New value: CONFIG_INTERCONNECT_QCOM_SM6350=n
+
+Value of CONFIG_INTERCONNECT_QCOM_MILOS is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_INTERCONNECT_QCOM_MILOS=y
+New value: CONFIG_INTERCONNECT_QCOM_MILOS=n
+
+Value of CONFIG_INTERCONNECT_QCOM_SM8150 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_INTERCONNECT_QCOM_SM8150=y
+New value: CONFIG_INTERCONNECT_QCOM_SM8150=n
+
+Value of CONFIG_INTERCONNECT_QCOM_SM8250 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_INTERCONNECT_QCOM_SM8250=y
+New value: CONFIG_INTERCONNECT_QCOM_SM8250=n
+
+Value of CONFIG_INTERCONNECT_QCOM_SM8350 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_INTERCONNECT_QCOM_SM8350=y
+New value: CONFIG_INTERCONNECT_QCOM_SM8350=n
+
+Value of CONFIG_INTERCONNECT_QCOM_SM8550 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_INTERCONNECT_QCOM_SM8550=y
+New value: CONFIG_INTERCONNECT_QCOM_SM8550=n
+
+Value of CONFIG_INTERCONNECT_QCOM_SM8650 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_INTERCONNECT_QCOM_SM8650=y
+New value: CONFIG_INTERCONNECT_QCOM_SM8650=n
+
+Value of CONFIG_INTERCONNECT_QCOM_SM8750 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_INTERCONNECT_QCOM_SM8750=y
+New value: CONFIG_INTERCONNECT_QCOM_SM8750=n
+
+Value of CONFIG_INTERCONNECT_QCOM_X1E80100 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_INTERCONNECT_QCOM_X1E80100=y
+New value: CONFIG_INTERCONNECT_QCOM_X1E80100=n
+
+Value of CONFIG_EXT2_FS is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_EXT2_FS is not set
+New value: CONFIG_EXT2_FS=n
+
+Value of CONFIG_BTRFS_FS is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_BTRFS_FS=m
+New value: CONFIG_BTRFS_FS=n
+
+Value of CONFIG_F2FS_FS is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_F2FS_FS is not set
+New value: CONFIG_F2FS_FS=y
+
+Value of CONFIG_QFMT_V2 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_QFMT_V2 is not set
+New value: CONFIG_QFMT_V2=y
+
+Value of CONFIG_FAT_DEFAULT_UTF8 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_FAT_DEFAULT_UTF8 is not set
+New value: CONFIG_FAT_DEFAULT_UTF8=y
+
+Value of CONFIG_SQUASHFS_XATTR is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_SQUASHFS_XATTR is not set
+New value: CONFIG_SQUASHFS_XATTR=y
+
+Value of CONFIG_SQUASHFS_LZ4 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_SQUASHFS_LZ4 is not set
+New value: CONFIG_SQUASHFS_LZ4=y
+
+Value of CONFIG_SQUASHFS_LZO is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_SQUASHFS_LZO is not set
+New value: CONFIG_SQUASHFS_LZO=y
+
+Value of CONFIG_SQUASHFS_XZ is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_SQUASHFS_XZ is not set
+New value: CONFIG_SQUASHFS_XZ=y
+
+Value of CONFIG_PSTORE_CONSOLE is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_PSTORE_CONSOLE is not set
+New value: CONFIG_PSTORE_CONSOLE=y
+
+Value of CONFIG_PSTORE_PMSG is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_PSTORE_PMSG is not set
+New value: CONFIG_PSTORE_PMSG=y
+
+Value of CONFIG_PSTORE_RAM is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_PSTORE_RAM=m
+New value: CONFIG_PSTORE_RAM=y
+
+Value of CONFIG_NLS_DEFAULT is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_NLS_DEFAULT="iso8859-1"
+New value: CONFIG_NLS_DEFAULT="utf8"
+
+Value of CONFIG_NLS_UTF8 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_NLS_UTF8 is not set
+New value: CONFIG_NLS_UTF8=y
+
+Value of CONFIG_KEY_DH_OPERATIONS is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_KEY_DH_OPERATIONS is not set
+New value: CONFIG_KEY_DH_OPERATIONS=y
+
+Value of CONFIG_SECURITY_NETWORK is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_SECURITY_NETWORK is not set
+New value: CONFIG_SECURITY_NETWORK=y
+
+Value of CONFIG_SECURITY_PATH is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_SECURITY_PATH is not set
+New value: CONFIG_SECURITY_PATH=y
+
+Value of CONFIG_SECURITY_LANDLOCK is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_SECURITY_LANDLOCK is not set
+New value: CONFIG_SECURITY_LANDLOCK=y
+
+Value of CONFIG_CRYPTO_KPP is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_CRYPTO_KPP=m
+New value: CONFIG_CRYPTO_KPP=y
+
+Value of CONFIG_CRYPTO_XTS is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_CRYPTO_XTS=m
+New value: CONFIG_CRYPTO_XTS=y
+
+Value of CONFIG_CRYPTO_LZO is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_CRYPTO_LZO=y
+New value: CONFIG_CRYPTO_LZO=m
+
+Value of CONFIG_CRYPTO_LZ4 is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_CRYPTO_LZ4=y
+New value: CONFIG_CRYPTO_LZ4=m
+
+Value of CONFIG_CRYPTO_USER_API_HASH is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_CRYPTO_USER_API_HASH is not set
+New value: CONFIG_CRYPTO_USER_API_HASH=m
+
+Value of CONFIG_CRYPTO_USER_API_SKCIPHER is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_CRYPTO_USER_API_SKCIPHER is not set
+New value: CONFIG_CRYPTO_USER_API_SKCIPHER=m
+
+Value of CONFIG_CRYPTO_DEV_CCREE is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_CRYPTO_DEV_CCREE=m
+New value: CONFIG_CRYPTO_DEV_CCREE=n
+
+Value of CONFIG_PKCS8_PRIVATE_KEY_PARSER is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: # CONFIG_PKCS8_PRIVATE_KEY_PARSER is not set
+New value: CONFIG_PKCS8_PRIVATE_KEY_PARSER=y
+
+Value of CONFIG_LZ4_COMPRESS is redefined by fragment /home/ubuntu/oneplus-negroni/analysis/validation/master-source/arch/arm64/configs/sm8450.config:
+Previous value: CONFIG_LZ4_COMPRESS=y
+New value: CONFIG_LZ4_COMPRESS=m
+
+#
+# merged configuration written to .config (needs make)
+#
+#
+# configuration written to .config
+#
+make[1]: 离开目录“/home/ubuntu/oneplus-negroni/analysis/validation/master-output”
+make: Leaving directory '/home/ubuntu/oneplus-negroni/analysis/validation/master-source'

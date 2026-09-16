@@ -1,0 +1,113 @@
+{
+  "sha": "475e3ec5a9d100da7a8790f59396fee815e12508",
+  "node_id": "C_kwDOQbHa-9oAKDQ3NWUzZWM1YTlkMTAwZGE3YTg3OTBmNTkzOTZmZWU4MTVlMTI1MDg",
+  "commit": {
+    "author": {
+      "name": "Nazar Kompanets",
+      "email": "xlie7669@gmail.com",
+      "date": "2026-08-29T16:26:12Z"
+    },
+    "committer": {
+      "name": "Nazar Kompanets",
+      "email": "xlie7669@gmail.com",
+      "date": "2026-09-13T20:06:28Z"
+    },
+    "message": "arm64: configs: solve issue with usb hub",
+    "tree": {
+      "sha": "8f76b80c53999248d698235786ba635374221374",
+      "url": "https://api.github.com/repos/Xlie-Electronic-Customs/linux/git/trees/8f76b80c53999248d698235786ba635374221374"
+    },
+    "url": "https://api.github.com/repos/Xlie-Electronic-Customs/linux/git/commits/475e3ec5a9d100da7a8790f59396fee815e12508",
+    "comment_count": 0,
+    "verification": {
+      "verified": false,
+      "reason": "unsigned",
+      "signature": null,
+      "payload": null,
+      "verified_at": null
+    }
+  },
+  "url": "https://api.github.com/repos/Xlie-Electronic-Customs/linux/commits/475e3ec5a9d100da7a8790f59396fee815e12508",
+  "html_url": "https://github.com/Xlie-Electronic-Customs/linux/commit/475e3ec5a9d100da7a8790f59396fee815e12508",
+  "comments_url": "https://api.github.com/repos/Xlie-Electronic-Customs/linux/commits/475e3ec5a9d100da7a8790f59396fee815e12508/comments",
+  "author": {
+    "login": "ZXlieC",
+    "id": 209260556,
+    "node_id": "U_kgDODHkQDA",
+    "avatar_url": "https://avatars.githubusercontent.com/u/209260556?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/ZXlieC",
+    "html_url": "https://github.com/ZXlieC",
+    "followers_url": "https://api.github.com/users/ZXlieC/followers",
+    "following_url": "https://api.github.com/users/ZXlieC/following{/other_user}",
+    "gists_url": "https://api.github.com/users/ZXlieC/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/ZXlieC/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/ZXlieC/subscriptions",
+    "organizations_url": "https://api.github.com/users/ZXlieC/orgs",
+    "repos_url": "https://api.github.com/users/ZXlieC/repos",
+    "events_url": "https://api.github.com/users/ZXlieC/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/ZXlieC/received_events",
+    "type": "User",
+    "user_view_type": "public",
+    "site_admin": false
+  },
+  "committer": {
+    "login": "ZXlieC",
+    "id": 209260556,
+    "node_id": "U_kgDODHkQDA",
+    "avatar_url": "https://avatars.githubusercontent.com/u/209260556?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/ZXlieC",
+    "html_url": "https://github.com/ZXlieC",
+    "followers_url": "https://api.github.com/users/ZXlieC/followers",
+    "following_url": "https://api.github.com/users/ZXlieC/following{/other_user}",
+    "gists_url": "https://api.github.com/users/ZXlieC/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/ZXlieC/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/ZXlieC/subscriptions",
+    "organizations_url": "https://api.github.com/users/ZXlieC/orgs",
+    "repos_url": "https://api.github.com/users/ZXlieC/repos",
+    "events_url": "https://api.github.com/users/ZXlieC/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/ZXlieC/received_events",
+    "type": "User",
+    "user_view_type": "public",
+    "site_admin": false
+  },
+  "parents": [
+    {
+      "sha": "6397b9693a8ab3a423023035a5f4d0e1244860c5",
+      "url": "https://api.github.com/repos/Xlie-Electronic-Customs/linux/commits/6397b9693a8ab3a423023035a5f4d0e1244860c5",
+      "html_url": "https://github.com/Xlie-Electronic-Customs/linux/commit/6397b9693a8ab3a423023035a5f4d0e1244860c5"
+    }
+  ],
+  "stats": {
+    "total": 9,
+    "additions": 0,
+    "deletions": 9
+  },
+  "files": [
+    {
+      "sha": "d59c3c3a9d5abde6f7e30d6c4671d6f0734f69c4",
+      "filename": "arch/arm64/configs/kaanapali.config",
+      "status": "modified",
+      "additions": 0,
+      "deletions": 4,
+      "changes": 4,
+      "blob_url": "https://github.com/Xlie-Electronic-Customs/linux/blob/475e3ec5a9d100da7a8790f59396fee815e12508/arch%2Farm64%2Fconfigs%2Fkaanapali.config",
+      "raw_url": "https://github.com/Xlie-Electronic-Customs/linux/raw/475e3ec5a9d100da7a8790f59396fee815e12508/arch%2Farm64%2Fconfigs%2Fkaanapali.config",
+      "contents_url": "https://api.github.com/repos/Xlie-Electronic-Customs/linux/contents/arch%2Farm64%2Fconfigs%2Fkaanapali.config?ref=475e3ec5a9d100da7a8790f59396fee815e12508",
+      "patch": "@@ -988,7 +988,3 @@ CONFIG_IPQ_GCC_9650=n\n CONFIG_SM_CAMCC_8750=n\n CONFIG_SM_GPUCC_8750=n\n CONFIG_SM_VIDEOCC_8750=n\n-\n-CONFIG_SOC_TI=n\n-CONFIG_RESET_TI_SYSCON=n\n-CONFIG_PHY_NXP_PTN3222=n"
+    },
+    {
+      "sha": "bb31cf31a76d8b34b8fd5a18403b799bd012458a",
+      "filename": "arch/arm64/configs/sm8450.config",
+      "status": "modified",
+      "additions": 0,
+      "deletions": 5,
+      "changes": 5,
+      "blob_url": "https://github.com/Xlie-Electronic-Customs/linux/blob/475e3ec5a9d100da7a8790f59396fee815e12508/arch%2Farm64%2Fconfigs%2Fsm8450.config",
+      "raw_url": "https://github.com/Xlie-Electronic-Customs/linux/raw/475e3ec5a9d100da7a8790f59396fee815e12508/arch%2Farm64%2Fconfigs%2Fsm8450.config",
+      "contents_url": "https://api.github.com/repos/Xlie-Electronic-Customs/linux/contents/arch%2Farm64%2Fconfigs%2Fsm8450.config?ref=475e3ec5a9d100da7a8790f59396fee815e12508",
+      "patch": "@@ -973,7 +973,6 @@ CONFIG_WLAN_VENDOR_QUANTENNA=n\n CONFIG_MWIFIEX_PCIE=n\n CONFIG_ATH11K_AHB=n\n \n-CONFIG_MDIO_BITBANG=n\n CONFIG_CLK_ELIZA_DISPCC=n\n CONFIG_CLK_ELIZA_GCC=n\n CONFIG_CLK_ELIZA_TCSRCC=n\n@@ -989,7 +988,3 @@ CONFIG_IPQ_GCC_9650=n\n CONFIG_SM_CAMCC_8750=n\n CONFIG_SM_GPUCC_8750=n\n CONFIG_SM_VIDEOCC_8750=n\n-\n-CONFIG_SOC_TI=n\n-CONFIG_RESET_TI_SYSCON=n\n-CONFIG_PHY_NXP_PTN3222=n"
+    }
+  ]
+}

@@ -1,0 +1,900 @@
+oneplus@192.168.188.91's  
+[  999.880697] oneplus-negroni sshd-session[3895]: Accepted password for oneplus from 192.168.188.22 port 35724 ssh2
+[  999.898048] oneplus-negroni sshd-session[3895]: pam_unix(sshd:session): session opened for user oneplus(uid=1000) by oneplus(uid=0)
+[  999.944993] oneplus-negroni systemd-logind[2385]: New session '15' of user 'oneplus' with class 'user' and type 'tty'.
+[  999.977813] oneplus-negroni systemd[1]: Started Session 15 of User oneplus.
+[ 1000.323829] oneplus-negroni sudo[3900]:  oneplus : PWD=/home/oneplus ; USER=root ; COMMAND=/usr/bin/bash -c 'date -Ins; cat /proc/uptime; cat /sys/power/suspend_stats/{success,fail}; cat /sys/kernel/debug/dri/0/DSI-1/* 2>/dev/null; cat /sys/module/msm/parameters/*; ls /sys/kernel/debug/dri/0/gpu; journalctl -b -k --since "1 minute ago" --no-pager -o short-monotonic | tail -35'
+[ 1000.324255] oneplus-negroni sudo[3900]: pam_unix(sudo:session): session opened for user root(uid=0) by oneplus(uid=1000)
+[ 1000.344252] oneplus-negroni sudo[3900]: pam_unix(sudo:session): session closed for user root
+[ 1000.347267] oneplus-negroni sshd-session[3899]: Received disconnect from 192.168.188.22 port 35724:11: disconnected by user
+[ 1000.347518] oneplus-negroni sshd-session[3899]: Disconnected from user oneplus 192.168.188.22 port 35724
+[ 1000.349569] oneplus-negroni sshd-session[3895]: pam_unix(sshd:session): session closed for user oneplus
+[ 1000.352112] oneplus-negroni systemd[1]: session-15.scope: Deactivated successfully.
+[ 1000.358221] oneplus-negroni systemd-logind[2385]: Session 15 logged out. Waiting for processes to exit.
+[ 1000.365550] oneplus-negroni systemd-logind[2385]: Removed session 15.
+[ 1031.639469] oneplus-negroni sshd-session[3916]: Accepted password for oneplus from 192.168.188.22 port 54740 ssh2
+[ 1031.658463] oneplus-negroni sshd-session[3916]: pam_unix(sshd:session): session opened for user oneplus(uid=1000) by oneplus(uid=0)
+[ 1031.709261] oneplus-negroni systemd-logind[2385]: New session '16' of user 'oneplus' with class 'user' and type 'tty'.
+[ 1031.733646] oneplus-negroni systemd[1]: Started Session 16 of User oneplus.
+[ 1031.900385] oneplus-negroni sudo[3921]:  oneplus : PWD=/home/oneplus ; USER=root ; COMMAND=/usr/bin/bash -c 'python3 -u -c \'import glob#012import json#012import os#012from pathlib import Path#012import select#012import struct#012import subprocess#012import sys#012import time#012#012paths = {#012    \'"\'"\'dpms\'"\'"\': \'"\'"\'/sys/class/drm/card0-DSI-1/dpms\'"\'"\',#012    \'"\'"\'gpu\'"\'"\': \'"\'"\'/sys/bus/platform/devices/3d00000.gpu/power/runtime_status\'"\'"\',#012    \'"\'"\'gmu\'"\'"\': \'"\'"\'/sys/bus/platform/devices/3d6a000.gmu/power/runtime_status\'"\'"\',#012    \'"\'"\'dpu\'"\'"\': \'"\'"\'/sys/bus/platform/devices/ae01000.display-controller/power/runtime_status\'"\'"\',#012}#012for p in glob.glob(\'"\'"\'/sys/class/backlight/*/actual_brightness\'"\'"\'):#012    paths[\'"\'"\'brightness\'"\'"\'] = p#012kwin = [p.parent for p in Path(\'"\'"\'/proc\'"\'"\').glob(\'"\'"\'[0-9]*/comm\'"\'"\')#012        if p.read_text().strip() == \'"\'"\'kwin_wayland\'"\'"\']#012for p
+[ 1031.900464] oneplus-negroni sudo[3921]:  oneplus : (command continued) in kwin:#012    paths[\'"\'"\'kwin_\'"\'"\' + p.name] = str(p / \'"\'"\'wchan\'"\'"\')#012#012def emit(kind, **fields):#012    print(json.dumps({\'"\'"\'t\'"\'"\': time.monotonic(), \'"\'"\'kind\'"\'"\': kind, **fields}), flush=True)#012#012fd = os.open(\'"\'"\'/dev/input/event0\'"\'"\', os.O_RDONLY | os.O_NONBLOCK)#012last = None#012end = time.monotonic() + 55#012start = time.monotonic()#012schedule = [(3, \'"\'"\'off\'"\'"\'), (15, \'"\'"\'on\'"\'"\'), (27, \'"\'"\'off\'"\'"\'), (39, \'"\'"\'on\'"\'"\')] if \'"\'"\'--cycle\'"\'"\' in sys.argv else []#012env = dict(os.environ, XDG_RUNTIME_DIR=\'"\'"\'/run/user/1000\'"\'"\',#012           DBUS_SESSION_BUS_ADDRESS=\'"\'"\'unix:path=/run/user/1000/bus\'"\'"\', WAYLAND_DISPLAY=\'"\'"\'wayland-0\'"\'"\')#012last_stack = 0#012emit(\'"\'"\'start\'"\'"\')#012while time.monotonic() < end:#012    if schedule and time.monotonic() - start >= schedule[0][0]:#012        _, mode
+[ 1031.900523] oneplus-negroni sudo[3921]:  oneplus : (command continued) = schedule.pop(0)#012        emit(\'"\'"\'request\'"\'"\', mode=mode)#012        subprocess.Popen([\'"\'"\'runuser\'"\'"\', \'"\'"\'-u\'"\'"\', \'"\'"\'oneplus\'"\'"\', \'"\'"\'--\'"\'"\', \'"\'"\'env\'"\'"\',#012                          \'"\'"\'XDG_RUNTIME_DIR=\'"\'"\' + env[\'"\'"\'XDG_RUNTIME_DIR\'"\'"\'],#012                          \'"\'"\'DBUS_SESSION_BUS_ADDRESS=\'"\'"\' + env[\'"\'"\'DBUS_SESSION_BUS_ADDRESS\'"\'"\'],#012                          \'"\'"\'WAYLAND_DISPLAY=wayland-0\'"\'"\', \'"\'"\'kscreen-doctor\'"\'"\', \'"\'"\'--dpms\'"\'"\', mode],#012                         stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)#012    if select.select([fd], [], [], 0)[0]:#012        data = os.read(fd, 24 * 64)#012        for off in range(0, len(data), 24):#012            sec, usec, typ, code, val = struct.unpack(\'"\'"\'llHHi\'"\'"\', data[off:off+24])#012            emit(\'"\'"\'input\'"\'"\',
+[ 1031.900570] oneplus-negroni sudo[3921]:  oneplus : (command continued) type=typ, code=code, value=val, event_time=sec+usec/1e6)#012    state = {}#012    for key, path in paths.items():#012        try:#012            state[key] = Path(path).read_text().strip()#012        except OSError as e:#012            state[key] = str(e)#012    if state != last:#012        emit(\'"\'"\'state\'"\'"\', **state)#012        last = state#012    if time.monotonic() - last_stack >= 1:#012        last_stack = time.monotonic()#012        for p in kwin:#012            for thread in (p / \'"\'"\'task\'"\'"\').glob(\'"\'"\'*\'"\'"\'):#012                try:#012                    if \'"\'"\') D\'"\'"\' in (thread / \'"\'"\'stat\'"\'"\').read_text():#012                        emit(\'"\'"\'blocked\'"\'"\', tid=thread.name, stack=(thread / \'"\'"\'stack\'"\'"\').read_text())#012                except OSError:#012                    pass#012    time.sleep(0.05)#012emit(\'"\'"\'end\'"\'"\')#012\' --cycle'
+[ 1031.902352] oneplus-negroni sudo[3921]: pam_unix(sudo:session): session opened for user root(uid=0) by oneplus(uid=1000)
+[ 1032.104423] oneplus-negroni kernel: dsi_err_worker: 22 callbacks suppressed
+[ 1032.104569] oneplus-negroni kernel: dsi_err_worker: status=5
+[ 1032.160590] oneplus-negroni kernel: dsi_err_worker: status=4
+[ 1032.216538] oneplus-negroni kernel: dsi_err_worker: status=4
+[ 1032.268429] oneplus-negroni kernel: dsi_err_worker: status=4
+[ 1032.324448] oneplus-negroni kernel: dsi_err_worker: status=4
+[ 1032.384584] oneplus-negroni kernel: dsi_err_worker: status=4
+[ 1032.444438] oneplus-negroni kernel: dsi_err_worker: status=4
+[ 1032.500539] oneplus-negroni kernel: dsi_err_worker: status=4
+[ 1032.560474] oneplus-negroni kernel: dsi_err_worker: status=4
+[ 1032.616409] oneplus-negroni kernel: dsi_err_worker: status=4
+[ 1035.155674] oneplus-negroni runuser[3926]: pam_unix(runuser:session): session opened for user oneplus(uid=1000) by oneplus(uid=0)
+[ 1035.266838] oneplus-negroni runuser[3926]: pam_unix(runuser:session): session closed for user oneplus
+[ 1035.676631] oneplus-negroni kernel: Turning OFF PHY while PLL is on
+[ 1035.855950] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x6, data0=0x52, len=4, ret=-110
+[ 1035.856149] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Read cmd Tx failed, -110
+[ 1035.856190] oneplus-negroni kernel: ------------[ cut here ]------------
+[ 1035.856226] oneplus-negroni kernel: disp_cc_mdss_pclk0_clk status stuck at 'on'
+[ 1035.856258] oneplus-negroni kernel: WARNING: drivers/clk/qcom/clk-branch.c:87 at clk_branch_toggle+0x170/0x190, CPU#2: python3/3925
+[ 1035.856290] oneplus-negroni kernel: Modules linked in: cdc_ether usbnet r8152 mii hid_generic usbhid rfcomm q6prm_clocks q6apm_dai q6apm_lpass_dais snd_q6dsp_common q6prm qrtr_mhi algif_hash algif_skcipher af_alg bnep snd_q6apm ath11k_pci ath11k mac80211 qcom_camss fastrpc qcom_pd_mapper rpmsg_ctrl videobuf2_dma_sg libarc4 videobuf2_memops s5kjn1 videobuf2_v4l2 hci_uart snd_soc_wcd938x snd_soc_wcd938x_sdw videobuf2_common btqca nxp_nci_i2c cfg80211 v4l2_cci regmap_sdw btbcm nxp_nci snd_soc_wcd_common snd_soc_sc8280xp v4l2_fwnode mhi v4l2_async snd_soc_tfa9872 bluetooth videodev nci snd_soc_lpass_rx_macro snd_soc_lpass_tx_macro snd_soc_lpass_va_macro snd_soc_qcom_sdw snd_soc_wcd_classh rtc_pm8xxx snd_soc_qcom_common pwrseq_qcom_wcn soundwire_qcom snd_soc_wcd_mbhc snd_soc_hdmi_codec ecdh_generic snd_soc_lpass_macro_common nfc ecc snd_soc_core nvmem_qcom_spmi_sdam qcom_q6v5_pas qcom_stats mc i2c_qcom_cci qcom_pil_info qcom_q6v5 ipa coresight_stm snd_compress qcom_sysmon snd_pcm qcom_common stm_p_basic stm_core pci_pwrctrl_pwrseq qcom_rng
+[ 1035.856425] oneplus-negroni kernel:  coresight_cti snd_timer coresight_tmc coresight_replicator coresight_funnel snd qcom_battmgr qcomtee coresight soundcore soundwire_bus rfkill joydev fuse phy_qcom_qmp_ufs
+[ 1035.856458] oneplus-negroni kernel: CPU: 2 UID: 0 PID: 3925 Comm: python3 Tainted: G S                  7.3.0-rc2-sm8450+ #1 PREEMPT 
+[ 1035.856490] oneplus-negroni kernel: Tainted: [S]=CPU_OUT_OF_SPEC
+[ 1035.856520] oneplus-negroni kernel: Hardware name: OnePlus 10 Pro 5G (DT)
+[ 1035.856550] oneplus-negroni kernel: pstate: 614000c5 (nZCv daIF +PAN -UAO -TCO +DIT -SSBS BTYPE=--)
+[ 1035.856580] oneplus-negroni kernel: pc : clk_branch_toggle+0x170/0x190
+[ 1035.856610] oneplus-negroni kernel: lr : clk_branch_toggle+0x170/0x190
+[ 1035.856640] oneplus-negroni kernel: sp : ffff80008a28b9c0
+[ 1035.856669] oneplus-negroni kernel: x29: ffff80008a28b9d0 x28: ffff000792221f80 x27: 0000000000000000
+[ 1035.856699] oneplus-negroni kernel: x26: ffff80008a28bd30 x25: ffffd1b6ff877de8 x24: 0000000000000000
+[ 1035.856728] oneplus-negroni kernel: x23: 0000000000000000 x22: ffffd1b6febcc440 x21: 0000000000000000
+[ 1035.856757] oneplus-negroni kernel: x20: ffffd1b6ffc68998 x19: 0000000000000000 x18: 0000000000000038
+[ 1035.856785] oneplus-negroni kernel: x17: 2c343d6e656c202c x16: 323578303d306174 x15: ffffffffffff9bf8
+[ 1035.856815] oneplus-negroni kernel: x14: 0000000000000000 x13: ffffd1b6ffb7f640 x12: 000000000000055e
+[ 1035.856844] oneplus-negroni kernel: x11: ffffffffffff9bf8 x10: ffffffffffff9bc0 x9 : ffffd1b6ffb7f640
+[ 1035.856873] oneplus-negroni kernel: x8 : 3fffffffffffefff x7 : ffffd1b6ffbd7640 x6 : 0000000000000001
+[ 1035.856902] oneplus-negroni kernel: x5 : ffff0009fe912848 x4 : ffff2e52fee71000 x3 : ffff000792221f80
+[ 1035.856931] oneplus-negroni kernel: x2 : 0000000000000000 x1 : 0000000000000000 x0 : ffff000792221f80
+[ 1035.856961] oneplus-negroni kernel: Call trace:
+[ 1035.856990] oneplus-negroni kernel:  clk_branch_toggle+0x170/0x190 (P)
+[ 1035.857019] oneplus-negroni kernel:  clk_branch2_disable+0x1c/0x30
+[ 1035.857048] oneplus-negroni kernel:  clk_core_disable+0x5c/0xb0
+[ 1035.857076] oneplus-negroni kernel:  clk_disable+0x38/0x54
+[ 1035.857105] oneplus-negroni kernel:  dsi_link_clk_disable_6g+0x34/0x74
+[ 1035.857134] oneplus-negroni kernel:  msm_dsi_host_xfer_restore+0x54/0xb4
+[ 1035.857164] oneplus-negroni kernel:  msm_dsi_manager_cmd_xfer+0xc4/0x1bc
+[ 1035.857194] oneplus-negroni kernel:  dsi_host_transfer+0x40/0x78
+[ 1035.857224] oneplus-negroni kernel:  mipi_dsi_device_transfer+0x44/0x58
+[ 1035.857254] oneplus-negroni kernel:  mipi_dsi_dcs_get_display_brightness_large+0x70/0xc4
+[ 1035.857284] oneplus-negroni kernel:  panel_samsung_amb670yf07_1440_3216_dsc_bl_get_brightness+0x44/0x88
+[ 1035.857314] oneplus-negroni kernel:  actual_brightness_show+0x40/0xa4
+[ 1035.857344] oneplus-negroni kernel:  dev_attr_show+0x20/0x70
+[ 1035.857375] oneplus-negroni kernel:  sysfs_kf_seq_show+0xa4/0x12c
+[ 1035.857404] oneplus-negroni kernel:  kernfs_seq_show+0x2c/0x40
+[ 1035.857434] oneplus-negroni kernel:  seq_read_iter+0x100/0x470
+[ 1035.857464] oneplus-negroni kernel:  kernfs_fop_read_iter+0x14c/0x1c0
+[ 1035.857494] oneplus-negroni kernel:  vfs_read+0x244/0x33c
+[ 1035.857524] oneplus-negroni kernel:  ksys_read+0x64/0x100
+[ 1035.857553] oneplus-negroni kernel:  __arm64_sys_read+0x18/0x24
+[ 1035.857582] oneplus-negroni kernel:  invoke_syscall.constprop.0+0x40/0x108
+[ 1035.857612] oneplus-negroni kernel:  el0_svc_common.constprop.0+0x38/0xd8
+[ 1035.857641] oneplus-negroni kernel:  do_el0_svc+0x1c/0x28
+[ 1035.857671] oneplus-negroni kernel:  el0_svc+0x38/0x1d0
+[ 1035.857701] oneplus-negroni kernel:  el0t_64_sync_handler+0xa0/0xe4
+[ 1035.857731] oneplus-negroni kernel:  el0t_64_sync+0x198/0x19c
+[ 1035.857761] oneplus-negroni kernel: ---[ end trace 0000000000000000 ]---
+[ 1035.857791] oneplus-negroni kernel: ------------[ cut here ]------------
+[ 1035.857819] oneplus-negroni kernel: disp_cc_mdss_byte0_intf_clk status stuck at 'on'
+[ 1035.857851] oneplus-negroni kernel: WARNING: drivers/clk/qcom/clk-branch.c:87 at clk_branch_toggle+0x170/0x190, CPU#2: python3/3925
+[ 1035.857882] oneplus-negroni kernel: Modules linked in: cdc_ether usbnet r8152 mii hid_generic usbhid rfcomm q6prm_clocks q6apm_dai q6apm_lpass_dais snd_q6dsp_common q6prm qrtr_mhi algif_hash algif_skcipher af_alg bnep snd_q6apm ath11k_pci ath11k mac80211 qcom_camss fastrpc qcom_pd_mapper rpmsg_ctrl videobuf2_dma_sg libarc4 videobuf2_memops s5kjn1 videobuf2_v4l2 hci_uart snd_soc_wcd938x snd_soc_wcd938x_sdw videobuf2_common btqca nxp_nci_i2c cfg80211 v4l2_cci regmap_sdw btbcm nxp_nci snd_soc_wcd_common snd_soc_sc8280xp v4l2_fwnode mhi v4l2_async snd_soc_tfa9872 bluetooth videodev nci snd_soc_lpass_rx_macro snd_soc_lpass_tx_macro snd_soc_lpass_va_macro snd_soc_qcom_sdw snd_soc_wcd_classh rtc_pm8xxx snd_soc_qcom_common pwrseq_qcom_wcn soundwire_qcom snd_soc_wcd_mbhc snd_soc_hdmi_codec ecdh_generic snd_soc_lpass_macro_common nfc ecc snd_soc_core nvmem_qcom_spmi_sdam qcom_q6v5_pas qcom_stats mc i2c_qcom_cci qcom_pil_info qcom_q6v5 ipa coresight_stm snd_compress qcom_sysmon snd_pcm qcom_common stm_p_basic stm_core pci_pwrctrl_pwrseq qcom_rng
+[ 1035.857965] oneplus-negroni kernel:  coresight_cti snd_timer coresight_tmc coresight_replicator coresight_funnel snd qcom_battmgr qcomtee coresight soundcore soundwire_bus rfkill joydev fuse phy_qcom_qmp_ufs
+[ 1035.857996] oneplus-negroni kernel: CPU: 2 UID: 0 PID: 3925 Comm: python3 Tainted: G S      W           7.3.0-rc2-sm8450+ #1 PREEMPT 
+[ 1035.858027] oneplus-negroni kernel: Tainted: [S]=CPU_OUT_OF_SPEC, [W]=WARN
+[ 1035.858056] oneplus-negroni kernel: Hardware name: OnePlus 10 Pro 5G (DT)
+[ 1035.858085] oneplus-negroni kernel: pstate: 614000c5 (nZCv daIF +PAN -UAO -TCO +DIT -SSBS BTYPE=--)
+[ 1035.858116] oneplus-negroni kernel: pc : clk_branch_toggle+0x170/0x190
+[ 1035.858147] oneplus-negroni kernel: lr : clk_branch_toggle+0x170/0x190
+[ 1035.858175] oneplus-negroni kernel: sp : ffff80008a28b9c0
+[ 1035.858203] oneplus-negroni kernel: x29: ffff80008a28b9d0 x28: ffff000792221f80 x27: 0000000000000000
+[ 1035.858232] oneplus-negroni kernel: x26: ffff80008a28bd30 x25: ffffd1b6ff878258 x24: 0000000000000000
+[ 1035.858264] oneplus-negroni kernel: x23: 0000000000000000 x22: ffffd1b6febcc440 x21: 0000000000000000
+[ 1035.858292] oneplus-negroni kernel: x20: ffffd1b6ffc69b18 x19: 0000000000000000 x18: 0000000000000040
+[ 1035.858323] oneplus-negroni kernel: x17: 2c343d6e656c202c x16: 323578303d306174 x15: ffffffffffffab10
+[ 1035.858353] oneplus-negroni kernel: x14: 0000000000000000 x13: ffffd1b6ffb7f640 x12: 0000000000000590
+[ 1035.858384] oneplus-negroni kernel: x11: ffffffffffffab10 x10: ffffffffffffaad0 x9 : ffffd1b6ffb7f640
+[ 1035.858414] oneplus-negroni kernel: x8 : 3fffffffffffefff x7 : ffffd1b6ffbd7640 x6 : 0000000000000001
+[ 1035.858444] oneplus-negroni kernel: x5 : ffff0009fe912848 x4 : ffff2e52fee71000 x3 : ffff000792221f80
+[ 1035.858473] oneplus-negroni kernel: x2 : 0000000000000000 x1 : 0000000000000000 x0 : ffff000792221f80
+[ 1035.858501] oneplus-negroni kernel: Call trace:
+[ 1035.858531] oneplus-negroni kernel:  clk_branch_toggle+0x170/0x190 (P)
+[ 1035.858559] oneplus-negroni kernel:  clk_branch2_disable+0x1c/0x30
+[ 1035.858588] oneplus-negroni kernel:  clk_core_disable+0x5c/0xb0
+[ 1035.860542] oneplus-negroni kernel:  clk_disable+0x38/0x54
+[ 1035.860677] oneplus-negroni kernel:  dsi_link_clk_disable_6g+0x48/0x74
+[ 1035.860715] oneplus-negroni kernel:  msm_dsi_host_xfer_restore+0x54/0xb4
+[ 1035.860745] oneplus-negroni kernel:  msm_dsi_manager_cmd_xfer+0xc4/0x1bc
+[ 1035.860774] oneplus-negroni kernel:  dsi_host_transfer+0x40/0x78
+[ 1035.860803] oneplus-negroni kernel:  mipi_dsi_device_transfer+0x44/0x58
+[ 1035.860833] oneplus-negroni kernel:  mipi_dsi_dcs_get_display_brightness_large+0x70/0xc4
+[ 1035.860865] oneplus-negroni kernel:  panel_samsung_amb670yf07_1440_3216_dsc_bl_get_brightness+0x44/0x88
+[ 1035.860896] oneplus-negroni kernel:  actual_brightness_show+0x40/0xa4
+[ 1035.860925] oneplus-negroni kernel:  dev_attr_show+0x20/0x70
+[ 1035.860954] oneplus-negroni kernel:  sysfs_kf_seq_show+0xa4/0x12c
+[ 1035.860983] oneplus-negroni kernel:  kernfs_seq_show+0x2c/0x40
+[ 1035.861011] oneplus-negroni kernel:  seq_read_iter+0x100/0x470
+[ 1035.861041] oneplus-negroni kernel:  kernfs_fop_read_iter+0x14c/0x1c0
+[ 1035.861070] oneplus-negroni kernel:  vfs_read+0x244/0x33c
+[ 1035.861100] oneplus-negroni kernel:  ksys_read+0x64/0x100
+[ 1035.861129] oneplus-negroni kernel:  __arm64_sys_read+0x18/0x24
+[ 1035.861159] oneplus-negroni kernel:  invoke_syscall.constprop.0+0x40/0x108
+[ 1035.861189] oneplus-negroni kernel:  el0_svc_common.constprop.0+0x38/0xd8
+[ 1035.861219] oneplus-negroni kernel:  do_el0_svc+0x1c/0x28
+[ 1035.861248] oneplus-negroni kernel:  el0_svc+0x38/0x1d0
+[ 1035.861278] oneplus-negroni kernel:  el0t_64_sync_handler+0xa0/0xe4
+[ 1035.861308] oneplus-negroni kernel:  el0t_64_sync+0x198/0x19c
+[ 1035.861338] oneplus-negroni kernel: ---[ end trace 0000000000000000 ]---
+[ 1035.861367] oneplus-negroni kernel: ------------[ cut here ]------------
+[ 1035.861397] oneplus-negroni kernel: disp_cc_mdss_byte0_clk status stuck at 'on'
+[ 1035.861428] oneplus-negroni kernel: WARNING: drivers/clk/qcom/clk-branch.c:87 at clk_branch_toggle+0x170/0x190, CPU#2: python3/3925
+[ 1035.865089] oneplus-negroni kernel: Modules linked in: cdc_ether usbnet r8152 mii hid_generic usbhid rfcomm q6prm_clocks q6apm_dai q6apm_lpass_dais snd_q6dsp_common q6prm qrtr_mhi algif_hash algif_skcipher af_alg bnep snd_q6apm ath11k_pci ath11k mac80211 qcom_camss fastrpc qcom_pd_mapper rpmsg_ctrl videobuf2_dma_sg libarc4 videobuf2_memops s5kjn1 videobuf2_v4l2 hci_uart snd_soc_wcd938x snd_soc_wcd938x_sdw videobuf2_common btqca nxp_nci_i2c cfg80211 v4l2_cci regmap_sdw btbcm nxp_nci snd_soc_wcd_common snd_soc_sc8280xp v4l2_fwnode mhi v4l2_async snd_soc_tfa9872 bluetooth videodev nci snd_soc_lpass_rx_macro snd_soc_lpass_tx_macro snd_soc_lpass_va_macro snd_soc_qcom_sdw snd_soc_wcd_classh rtc_pm8xxx snd_soc_qcom_common pwrseq_qcom_wcn soundwire_qcom snd_soc_wcd_mbhc snd_soc_hdmi_codec ecdh_generic snd_soc_lpass_macro_common nfc ecc snd_soc_core nvmem_qcom_spmi_sdam qcom_q6v5_pas qcom_stats mc i2c_qcom_cci qcom_pil_info qcom_q6v5 ipa coresight_stm snd_compress qcom_sysmon snd_pcm qcom_common stm_p_basic stm_core pci_pwrctrl_pwrseq qcom_rng
+[ 1035.865285] oneplus-negroni kernel:  coresight_cti snd_timer coresight_tmc coresight_replicator coresight_funnel snd qcom_battmgr qcomtee coresight soundcore soundwire_bus rfkill joydev fuse phy_qcom_qmp_ufs
+[ 1035.865325] oneplus-negroni kernel: CPU: 2 UID: 0 PID: 3925 Comm: python3 Tainted: G S      W           7.3.0-rc2-sm8450+ #1 PREEMPT 
+[ 1035.865359] oneplus-negroni kernel: Tainted: [S]=CPU_OUT_OF_SPEC, [W]=WARN
+[ 1035.865388] oneplus-negroni kernel: Hardware name: OnePlus 10 Pro 5G (DT)
+[ 1035.865417] oneplus-negroni kernel: pstate: 614000c5 (nZCv daIF +PAN -UAO -TCO +DIT -SSBS BTYPE=--)
+[ 1035.865446] oneplus-negroni kernel: pc : clk_branch_toggle+0x170/0x190
+[ 1035.865474] oneplus-negroni kernel: lr : clk_branch_toggle+0x170/0x190
+[ 1035.865502] oneplus-negroni kernel: sp : ffff80008a28b9c0
+[ 1035.865530] oneplus-negroni kernel: x29: ffff80008a28b9d0 x28: ffff000792221f80 x27: 0000000000000000
+[ 1035.865558] oneplus-negroni kernel: x26: ffff80008a28bd30 x25: ffffd1b6ff878278 x24: 0000000000000000
+[ 1035.865588] oneplus-negroni kernel: x23: 0000000000000000 x22: ffffd1b6febcc440 x21: 0000000000000000
+[ 1035.865616] oneplus-negroni kernel: x20: ffffd1b6ffc69b98 x19: 0000000000000000 x18: 0000000000000038
+[ 1035.865646] oneplus-negroni kernel: x17: 2c343d6e656c202c x16: 323578303d306174 x15: ffffffffffffba28
+[ 1035.865674] oneplus-negroni kernel: x14: 0000000000000000 x13: ffffd1b6ffb7f640 x12: 00000000000005c2
+[ 1035.865703] oneplus-negroni kernel: x11: ffffffffffffba28 x10: ffffffffffffb9f0 x9 : ffffd1b6ffb7f640
+[ 1035.865734] oneplus-negroni kernel: x8 : 3fffffffffffefff x7 : ffffd1b6ffbd7640 x6 : 0000000000000001
+[ 1035.865763] oneplus-negroni kernel: x5 : ffff0009fe912848 x4 : ffff2e52fee71000 x3 : ffff000792221f80
+[ 1035.865791] oneplus-negroni kernel: x2 : 0000000000000000 x1 : 0000000000000000 x0 : ffff000792221f80
+[ 1035.865819] oneplus-negroni kernel: Call trace:
+[ 1035.865847] oneplus-negroni kernel:  clk_branch_toggle+0x170/0x190 (P)
+[ 1035.865875] oneplus-negroni kernel:  clk_branch2_disable+0x1c/0x30
+[ 1035.865902] oneplus-negroni kernel:  clk_core_disable+0x5c/0xb0
+[ 1035.865930] oneplus-negroni kernel:  clk_disable+0x38/0x54
+[ 1035.865958] oneplus-negroni kernel:  dsi_link_clk_disable_6g+0x5c/0x74
+[ 1035.865987] oneplus-negroni kernel:  msm_dsi_host_xfer_restore+0x54/0xb4
+[ 1035.866015] oneplus-negroni kernel:  msm_dsi_manager_cmd_xfer+0xc4/0x1bc
+[ 1035.866044] oneplus-negroni kernel:  dsi_host_transfer+0x40/0x78
+[ 1035.866071] oneplus-negroni kernel:  mipi_dsi_device_transfer+0x44/0x58
+[ 1035.866100] oneplus-negroni kernel:  mipi_dsi_dcs_get_display_brightness_large+0x70/0xc4
+[ 1035.866128] oneplus-negroni kernel:  panel_samsung_amb670yf07_1440_3216_dsc_bl_get_brightness+0x44/0x88
+[ 1035.866156] oneplus-negroni kernel:  actual_brightness_show+0x40/0xa4
+[ 1035.866184] oneplus-negroni kernel:  dev_attr_show+0x20/0x70
+[ 1035.866211] oneplus-negroni kernel:  sysfs_kf_seq_show+0xa4/0x12c
+[ 1035.866239] oneplus-negroni kernel:  kernfs_seq_show+0x2c/0x40
+[ 1035.866267] oneplus-negroni kernel:  seq_read_iter+0x100/0x470
+[ 1035.866296] oneplus-negroni kernel:  kernfs_fop_read_iter+0x14c/0x1c0
+[ 1035.866324] oneplus-negroni kernel:  vfs_read+0x244/0x33c
+[ 1035.866352] oneplus-negroni kernel:  ksys_read+0x64/0x100
+[ 1035.866380] oneplus-negroni kernel:  __arm64_sys_read+0x18/0x24
+[ 1035.866407] oneplus-negroni kernel:  invoke_syscall.constprop.0+0x40/0x108
+[ 1035.866435] oneplus-negroni kernel:  el0_svc_common.constprop.0+0x38/0xd8
+[ 1035.866463] oneplus-negroni kernel:  do_el0_svc+0x1c/0x28
+[ 1035.866491] oneplus-negroni kernel:  el0_svc+0x38/0x1d0
+[ 1035.866519] oneplus-negroni kernel:  el0t_64_sync_handler+0xa0/0xe4
+[ 1035.866547] oneplus-negroni kernel:  el0t_64_sync+0x198/0x19c
+[ 1035.866575] oneplus-negroni kernel: ---[ end trace 0000000000000000 ]---
+[ 1035.866603] oneplus-negroni kernel: msm_dsi_phy ae94400.phy: [drm:dsi_pll_disable_pll_bias] *ERROR* bug: imbalance in disabling PLL bias
+[ 1047.128969] oneplus-negroni runuser[3937]: pam_unix(runuser:session): session opened for user oneplus(uid=1000) by oneplus(uid=0)
+[ 1047.193828] oneplus-negroni systemd[1]: Started dbus-:1.2-org.kde.powerdevil.backlighthelper@5.service.
+[ 1047.201915] oneplus-negroni runuser[3937]: pam_unix(runuser:session): session closed for user oneplus
+[ 1047.416971] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x6, data0=0x52, len=4, ret=-110
+[ 1047.417123] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Read cmd Tx failed, -110
+[ 1047.620639] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1047.824760] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x9e, len=96, ret=-110
+[ 1047.824893] oneplus-negroni kernel: panel-samsung-amb670yf07-1440-3216-dsc ae94000.dsi.0: sending dcs data 9e 12 00 00 ab 30 80 09 6c 04 38 00 24 02 1c 02 1c 02 00 02 3b 00 20 03 35 00 07 00 0e 03 34 02 d4 18 00 10 f0 07 10 20 00 06 0f 0f 33 0e 1c 2a 38 46 54 62 69 70 77 79 7b 7d 7e 02 02 22 00 2a failed: -110
+[ 1047.825749] oneplus-negroni kernel: panel-samsung-amb670yf07-1440-3216-dsc ae94000.dsi.0: Failed to initialize panel: -110
+[ 1048.030279] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1048.031320] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1048.232783] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1048.233216] oneplus-negroni kernel: panel-samsung-amb670yf07-1440-3216-dsc ae94000.dsi.0: [drm:drm_panel_enable] failed to enable backlight: -110
+[ 1048.280141] oneplus-negroni kernel: [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1048.336846] oneplus-negroni kernel: [drm:_dpu_encoder_phys_cmd_wait_for_idle] *ERROR* id:35 pp:0 kickoff timeout 0 cnt 1 koff_cnt 1
+[ 1048.337149] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1048.384825] oneplus-negroni kernel: [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1048.428376] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1048.436043] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1048.436110] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1048.476938] oneplus-negroni kernel: [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1048.520926] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1048.566361] oneplus-negroni kernel: [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1048.612447] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1048.640561] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1048.660857] oneplus-negroni kernel: [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1048.704152] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1048.752118] oneplus-negroni kernel: [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1048.845013] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1048.845296] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1049.048098] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1049.252065] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1049.252205] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1049.528073] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1049.528087] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1049.614980] oneplus-negroni kwin_wayland[2990]: The main thread was hanging temporarily!
+[ 1049.618261] oneplus-negroni kernel: platform 3d6a000.gmu: [drm:a6xx_hfi_wait_for_msg_interrupt] *ERROR* Message HFI_H2F_MSG_GX_BW_PERF_VOTE id 281 timed out waiting for response
+[ 1049.618770] oneplus-negroni kernel: platform 3d6a000.gmu: [drm:a6xx_hfi_send_msg.constprop.0] *ERROR* Unexpected message id 281 on the response queue
+[ 1049.712035] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1049.760880] oneplus-negroni kernel: [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1049.788676] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1049.788773] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1049.804194] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1049.852271] oneplus-negroni kernel: [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1049.900753] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1049.946698] oneplus-negroni kernel: [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1049.992550] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1049.992766] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1050.045133] oneplus-negroni kernel: [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1050.088340] oneplus-negroni kernel: [drm:_dpu_encoder_phys_cmd_wait_for_idle] *ERROR* id:35 pp:0 kickoff timeout 0 cnt 10 koff_cnt 1
+[ 1050.088409] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1050.088446] oneplus-negroni kernel: [drm:dpu_crtc_frame_event_work:692] [dpu error]crtc94 ts:1050084058769 received panel dead event
+[ 1050.176062] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1050.198435] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1050.198719] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1050.268061] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1050.360786] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1050.400629] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1050.452086] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1050.544020] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1050.604893] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1050.605204] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1050.636399] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1050.728049] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1050.808865] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1050.820093] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1050.912904] oneplus-negroni kwin_wayland[2990]: atomic commit failed: Device or resource busy
+[ 1050.916067] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1051.012043] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1051.012114] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1051.012160] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1051.104749] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1051.196684] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1051.216777] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1051.288032] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1051.384803] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1051.420170] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1051.420492] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1051.481161] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1051.568775] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1051.624147] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1051.664152] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1051.752241] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1051.828824] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1051.829191] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1051.844144] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1051.936036] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1052.028311] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1052.028680] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1052.120166] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1052.212769] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1052.236190] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1052.236513] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1052.305064] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1052.396640] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1052.440058] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1052.488338] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1052.580467] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1052.645073] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1052.645220] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1052.668422] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1052.764318] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1052.849002] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1052.849106] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1052.944050] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1053.036041] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1053.052921] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1053.053215] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1053.128298] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1053.220041] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1053.256193] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1053.316706] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1053.364764] oneplus-negroni kernel: dpu_encoder_frame_done_timeout: 35 callbacks suppressed
+[ 1053.365073] oneplus-negroni kernel: [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1053.408848] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1053.456946] oneplus-negroni kernel: [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1053.457241] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1053.457439] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1053.496114] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1053.542377] oneplus-negroni kernel: [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1053.592051] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1053.637954] oneplus-negroni kernel: [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1053.664410] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1053.688022] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1053.736753] oneplus-negroni kernel: [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1053.780131] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1053.828907] oneplus-negroni kernel: [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1053.868051] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1053.868451] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1053.868658] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1053.917492] oneplus-negroni kernel: [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1053.960777] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1054.008770] oneplus-negroni kernel: [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1054.052809] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1054.072788] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1054.104093] oneplus-negroni kernel: [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1054.148167] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1054.196492] oneplus-negroni kernel: [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1054.236431] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1054.276244] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1054.276615] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1054.328415] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1054.420592] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1054.485132] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1054.512129] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1054.604027] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1054.688154] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1054.688566] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1054.696483] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1054.789130] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1054.880897] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1054.892766] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1054.968084] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1055.061094] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1055.096970] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1055.097111] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1055.152299] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1055.244403] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1055.300512] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1055.336413] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1055.428327] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1055.504953] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1055.505096] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1055.520300] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1055.612351] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1055.704030] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1055.708531] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1055.800028] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1055.888478] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1055.912953] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1055.913086] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1055.976375] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1056.068479] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1056.116617] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1056.160106] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1056.252292] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1056.320958] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1056.321159] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1056.344424] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1056.436366] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1056.524549] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1056.524648] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1056.620022] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1056.712454] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1056.728945] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1056.729247] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1056.804492] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1056.896912] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1056.932790] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1056.992407] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1057.084767] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1057.136199] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1057.136623] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1057.176192] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1057.268176] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1057.340728] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1057.360155] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1057.452050] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1057.544364] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1057.544715] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1057.544915] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1057.636077] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1057.728124] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1057.748822] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1057.820460] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1057.912056] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1057.952760] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1057.953058] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1058.004917] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1058.096416] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1058.156832] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1058.188035] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1058.276578] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1058.361059] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1058.361415] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1058.368753] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1058.416855] oneplus-negroni kernel: dpu_encoder_frame_done_timeout: 45 callbacks suppressed
+[ 1058.417258] oneplus-negroni kernel: [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1058.460768] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1058.505069] oneplus-negroni kernel: [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1058.552421] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1058.568778] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1058.600125] oneplus-negroni kernel: [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1058.644231] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1058.693023] oneplus-negroni kernel: [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1058.736138] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1058.772902] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1058.773208] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1058.782537] oneplus-negroni kernel: [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1058.828180] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1058.874216] oneplus-negroni kernel: [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1058.920060] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1058.965173] oneplus-negroni kernel: [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1058.976757] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1059.012158] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1059.060781] oneplus-negroni kernel: [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1059.104034] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1059.149117] oneplus-negroni kernel: [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1059.181120] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1059.181480] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1059.196037] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1059.244999] oneplus-negroni kernel: [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1059.269537] oneplus-negroni runuser[4014]: pam_unix(runuser:session): session opened for user oneplus(uid=1000) by oneplus(uid=0)
+[ 1059.288021] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1059.339786] oneplus-negroni runuser[4014]: pam_unix(runuser:session): session closed for user oneplus
+[ 1059.381052] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1059.381360] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1059.469006] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1059.560058] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1059.588756] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1059.589060] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1059.652983] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1059.792629] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1059.996688] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1059.996915] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1060.200561] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1060.200726] oneplus-negroni kernel: panel-samsung-amb670yf07-1440-3216-dsc ae94000.dsi.0: [drm:drm_panel_disable] failed to disable backlight: -110
+[ 1060.288474] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_wait_for_tx_complete] *ERROR* failed wait_for_idle: id:35 ret:-110 intf:1
+[ 1060.288712] oneplus-negroni kernel: panel-samsung-amb670yf07-1440-3216-dsc ae94000.dsi.0: Skipping unprepare of already unprepared panel
+[ 1060.312014] oneplus-negroni kernel: Turning OFF PHY while PLL is on
+[ 1060.406966] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1060.407094] oneplus-negroni kernel: ------------[ cut here ]------------
+[ 1060.407123] oneplus-negroni kernel: disp_cc_mdss_pclk0_clk status stuck at 'on'
+[ 1060.407147] oneplus-negroni kernel: WARNING: drivers/clk/qcom/clk-branch.c:87 at clk_branch_toggle+0x170/0x190, CPU#2: backlighthelper/3943
+[ 1060.407172] oneplus-negroni kernel: Modules linked in: cdc_ether usbnet r8152 mii hid_generic usbhid rfcomm q6prm_clocks q6apm_dai q6apm_lpass_dais snd_q6dsp_common q6prm qrtr_mhi algif_hash algif_skcipher af_alg bnep snd_q6apm ath11k_pci ath11k mac80211 qcom_camss fastrpc qcom_pd_mapper rpmsg_ctrl videobuf2_dma_sg libarc4 videobuf2_memops s5kjn1 videobuf2_v4l2 hci_uart snd_soc_wcd938x snd_soc_wcd938x_sdw videobuf2_common btqca nxp_nci_i2c cfg80211 v4l2_cci regmap_sdw btbcm nxp_nci snd_soc_wcd_common snd_soc_sc8280xp v4l2_fwnode mhi v4l2_async snd_soc_tfa9872 bluetooth videodev nci snd_soc_lpass_rx_macro snd_soc_lpass_tx_macro snd_soc_lpass_va_macro snd_soc_qcom_sdw snd_soc_wcd_classh rtc_pm8xxx snd_soc_qcom_common pwrseq_qcom_wcn soundwire_qcom snd_soc_wcd_mbhc snd_soc_hdmi_codec ecdh_generic snd_soc_lpass_macro_common nfc ecc snd_soc_core nvmem_qcom_spmi_sdam qcom_q6v5_pas qcom_stats mc i2c_qcom_cci qcom_pil_info qcom_q6v5 ipa coresight_stm snd_compress qcom_sysmon snd_pcm qcom_common stm_p_basic stm_core pci_pwrctrl_pwrseq qcom_rng
+[ 1060.407246] oneplus-negroni kernel:  coresight_cti snd_timer coresight_tmc coresight_replicator coresight_funnel snd qcom_battmgr qcomtee coresight soundcore soundwire_bus rfkill joydev fuse phy_qcom_qmp_ufs
+[ 1060.407272] oneplus-negroni kernel: CPU: 2 UID: 0 PID: 3943 Comm: backlighthelper Tainted: G S      W           7.3.0-rc2-sm8450+ #1 PREEMPT 
+[ 1060.407296] oneplus-negroni kernel: Tainted: [S]=CPU_OUT_OF_SPEC, [W]=WARN
+[ 1060.407317] oneplus-negroni kernel: Hardware name: OnePlus 10 Pro 5G (DT)
+[ 1060.407338] oneplus-negroni kernel: pstate: 614000c5 (nZCv daIF +PAN -UAO -TCO +DIT -SSBS BTYPE=--)
+[ 1060.407360] oneplus-negroni kernel: pc : clk_branch_toggle+0x170/0x190
+[ 1060.407381] oneplus-negroni kernel: lr : clk_branch_toggle+0x170/0x190
+[ 1060.407404] oneplus-negroni kernel: sp : ffff80008a2d3a30
+[ 1060.407426] oneplus-negroni kernel: x29: ffff80008a2d3a40 x28: ffff0007b2afaf40 x27: 0000000000000000
+[ 1060.407449] oneplus-negroni kernel: x26: 0000000000000000 x25: ffffd1b6ff877de8 x24: 0000000000000000
+[ 1060.407470] oneplus-negroni kernel: x23: 0000000000000000 x22: ffffd1b6febcc440 x21: 0000000000000000
+[ 1060.407493] oneplus-negroni kernel: x20: ffffd1b6ffc68998 x19: 0000000000000000 x18: 0000000000000038
+[ 1060.407517] oneplus-negroni kernel: x17: 383d6e656c202c31 x16: 3578303d30617461 x15: 0000000000002b88
+[ 1060.407540] oneplus-negroni kernel: x14: 0000000000000000 x13: ffffd1b6ffb7f640 x12: 00000000000006f3
+[ 1060.407563] oneplus-negroni kernel: x11: 0000000000002b88 x10: 0000000000002b50 x9 : ffffd1b6ffb7f640
+[ 1060.407586] oneplus-negroni kernel: x8 : 3fffffffffffefff x7 : ffffd1b6ffbd7640 x6 : 0000000000000001
+[ 1060.407609] oneplus-negroni kernel: x5 : ffff0009fe912848 x4 : ffff2e52fee71000 x3 : ffff0007b2afaf40
+[ 1060.407631] oneplus-negroni kernel: x2 : 0000000000000000 x1 : 0000000000000000 x0 : ffff0007b2afaf40
+[ 1060.407653] oneplus-negroni kernel: Call trace:
+[ 1060.407675] oneplus-negroni kernel:  clk_branch_toggle+0x170/0x190 (P)
+[ 1060.407698] oneplus-negroni kernel:  clk_branch2_disable+0x1c/0x30
+[ 1060.407721] oneplus-negroni kernel:  clk_core_disable+0x5c/0xb0
+[ 1060.407743] oneplus-negroni kernel:  clk_disable+0x38/0x54
+[ 1060.407766] oneplus-negroni kernel:  dsi_link_clk_disable_6g+0x34/0x74
+[ 1060.407788] oneplus-negroni kernel:  msm_dsi_host_xfer_restore+0x54/0xb4
+[ 1060.407810] oneplus-negroni kernel:  msm_dsi_manager_cmd_xfer+0xc4/0x1bc
+[ 1060.407832] oneplus-negroni kernel:  dsi_host_transfer+0x40/0x78
+[ 1060.407854] oneplus-negroni kernel:  mipi_dsi_device_transfer+0x44/0x58
+[ 1060.407877] oneplus-negroni kernel:  mipi_dsi_dcs_set_display_brightness_large+0x64/0x94
+[ 1060.407898] oneplus-negroni kernel:  panel_samsung_amb670yf07_1440_3216_dsc_bl_update_status+0x40/0x78
+[ 1060.407920] oneplus-negroni kernel:  backlight_device_set_brightness+0x78/0x10c
+[ 1060.407943] oneplus-negroni kernel:  brightness_store+0x80/0x94
+[ 1060.407965] oneplus-negroni kernel:  dev_attr_store+0x18/0x2c
+[ 1060.407987] oneplus-negroni kernel:  sysfs_kf_write+0x7c/0xa0
+[ 1060.408035] oneplus-negroni kernel:  kernfs_fop_write_iter+0x12c/0x200
+[ 1060.408058] oneplus-negroni kernel:  vfs_write+0x240/0x380
+[ 1060.408079] oneplus-negroni kernel:  ksys_write+0x64/0x100
+[ 1060.408100] oneplus-negroni kernel:  __arm64_sys_write+0x18/0x24
+[ 1060.408121] oneplus-negroni kernel:  invoke_syscall.constprop.0+0x40/0x108
+[ 1060.408142] oneplus-negroni kernel:  el0_svc_common.constprop.0+0x38/0xd8
+[ 1060.408164] oneplus-negroni kernel:  do_el0_svc+0x1c/0x28
+[ 1060.408185] oneplus-negroni kernel:  el0_svc+0x38/0x1d0
+[ 1060.408208] oneplus-negroni kernel:  el0t_64_sync_handler+0xa0/0xe4
+[ 1060.408229] oneplus-negroni kernel:  el0t_64_sync+0x198/0x19c
+[ 1060.408251] oneplus-negroni kernel: ---[ end trace 0000000000000000 ]---
+[ 1060.408273] oneplus-negroni kernel: ------------[ cut here ]------------
+[ 1060.408293] oneplus-negroni kernel: disp_cc_mdss_byte0_intf_clk status stuck at 'on'
+[ 1060.408315] oneplus-negroni kernel: WARNING: drivers/clk/qcom/clk-branch.c:87 at clk_branch_toggle+0x170/0x190, CPU#2: backlighthelper/3943
+[ 1060.408338] oneplus-negroni kernel: Modules linked in: cdc_ether usbnet r8152 mii hid_generic usbhid rfcomm q6prm_clocks q6apm_dai q6apm_lpass_dais snd_q6dsp_common q6prm qrtr_mhi algif_hash algif_skcipher af_alg bnep snd_q6apm ath11k_pci ath11k mac80211 qcom_camss fastrpc qcom_pd_mapper rpmsg_ctrl videobuf2_dma_sg libarc4 videobuf2_memops s5kjn1 videobuf2_v4l2 hci_uart snd_soc_wcd938x snd_soc_wcd938x_sdw videobuf2_common btqca nxp_nci_i2c cfg80211 v4l2_cci regmap_sdw btbcm nxp_nci snd_soc_wcd_common snd_soc_sc8280xp v4l2_fwnode mhi v4l2_async snd_soc_tfa9872 bluetooth videodev nci snd_soc_lpass_rx_macro snd_soc_lpass_tx_macro snd_soc_lpass_va_macro snd_soc_qcom_sdw snd_soc_wcd_classh rtc_pm8xxx snd_soc_qcom_common pwrseq_qcom_wcn soundwire_qcom snd_soc_wcd_mbhc snd_soc_hdmi_codec ecdh_generic snd_soc_lpass_macro_common nfc ecc snd_soc_core nvmem_qcom_spmi_sdam qcom_q6v5_pas qcom_stats mc i2c_qcom_cci qcom_pil_info qcom_q6v5 ipa coresight_stm snd_compress qcom_sysmon snd_pcm qcom_common stm_p_basic stm_core pci_pwrctrl_pwrseq qcom_rng
+[ 1060.411615] oneplus-negroni kernel:  coresight_cti snd_timer coresight_tmc coresight_replicator coresight_funnel snd qcom_battmgr qcomtee coresight soundcore soundwire_bus rfkill joydev fuse phy_qcom_qmp_ufs
+[ 1060.411741] oneplus-negroni kernel: CPU: 2 UID: 0 PID: 3943 Comm: backlighthelper Tainted: G S      W           7.3.0-rc2-sm8450+ #1 PREEMPT 
+[ 1060.411771] oneplus-negroni kernel: Tainted: [S]=CPU_OUT_OF_SPEC, [W]=WARN
+[ 1060.411794] oneplus-negroni kernel: Hardware name: OnePlus 10 Pro 5G (DT)
+[ 1060.411816] oneplus-negroni kernel: pstate: 614000c5 (nZCv daIF +PAN -UAO -TCO +DIT -SSBS BTYPE=--)
+[ 1060.411840] oneplus-negroni kernel: pc : clk_branch_toggle+0x170/0x190
+[ 1060.411861] oneplus-negroni kernel: lr : clk_branch_toggle+0x170/0x190
+[ 1060.411885] oneplus-negroni kernel: sp : ffff80008a2d3a30
+[ 1060.411909] oneplus-negroni kernel: x29: ffff80008a2d3a40 x28: ffff0007b2afaf40 x27: 0000000000000000
+[ 1060.411932] oneplus-negroni kernel: x26: 0000000000000000 x25: ffffd1b6ff878258 x24: 0000000000000000
+[ 1060.411956] oneplus-negroni kernel: x23: 0000000000000000 x22: ffffd1b6febcc440 x21: 0000000000000000
+[ 1060.411978] oneplus-negroni kernel: x20: ffffd1b6ffc69b18 x19: 0000000000000000 x18: 0000000000000040
+[ 1060.412026] oneplus-negroni kernel: x17: 383d6e656c202c31 x16: 3578303d30617461 x15: 0000000000003a98
+[ 1060.412049] oneplus-negroni kernel: x14: 0000000000000000 x13: ffffd1b6ffb7f640 x12: 0000000000000724
+[ 1060.412072] oneplus-negroni kernel: x11: 0000000000003a98 x10: 0000000000003a58 x9 : ffffd1b6ffb7f640
+[ 1060.412096] oneplus-negroni kernel: x8 : 3fffffffffffefff x7 : ffffd1b6ffbd7640 x6 : 0000000000000001
+[ 1060.412117] oneplus-negroni kernel: x5 : ffff0009fe912848 x4 : ffff2e52fee71000 x3 : ffff0007b2afaf40
+[ 1060.412141] oneplus-negroni kernel: x2 : 0000000000000000 x1 : 0000000000000000 x0 : ffff0007b2afaf40
+[ 1060.412162] oneplus-negroni kernel: Call trace:
+[ 1060.412184] oneplus-negroni kernel:  clk_branch_toggle+0x170/0x190 (P)
+[ 1060.412205] oneplus-negroni kernel:  clk_branch2_disable+0x1c/0x30
+[ 1060.412228] oneplus-negroni kernel:  clk_core_disable+0x5c/0xb0
+[ 1060.412249] oneplus-negroni kernel:  clk_disable+0x38/0x54
+[ 1060.412270] oneplus-negroni kernel:  dsi_link_clk_disable_6g+0x48/0x74
+[ 1060.412291] oneplus-negroni kernel:  msm_dsi_host_xfer_restore+0x54/0xb4
+[ 1060.412314] oneplus-negroni kernel:  msm_dsi_manager_cmd_xfer+0xc4/0x1bc
+[ 1060.412334] oneplus-negroni kernel:  dsi_host_transfer+0x40/0x78
+[ 1060.412355] oneplus-negroni kernel:  mipi_dsi_device_transfer+0x44/0x58
+[ 1060.412376] oneplus-negroni kernel:  mipi_dsi_dcs_set_display_brightness_large+0x64/0x94
+[ 1060.412398] oneplus-negroni kernel:  panel_samsung_amb670yf07_1440_3216_dsc_bl_update_status+0x40/0x78
+[ 1060.412420] oneplus-negroni kernel:  backlight_device_set_brightness+0x78/0x10c
+[ 1060.412442] oneplus-negroni kernel:  brightness_store+0x80/0x94
+[ 1060.412469] oneplus-negroni kernel:  dev_attr_store+0x18/0x2c
+[ 1060.412490] oneplus-negroni kernel:  sysfs_kf_write+0x7c/0xa0
+[ 1060.412511] oneplus-negroni kernel:  kernfs_fop_write_iter+0x12c/0x200
+[ 1060.412532] oneplus-negroni kernel:  vfs_write+0x240/0x380
+[ 1060.412553] oneplus-negroni kernel:  ksys_write+0x64/0x100
+[ 1060.412574] oneplus-negroni kernel:  __arm64_sys_write+0x18/0x24
+[ 1060.412595] oneplus-negroni kernel:  invoke_syscall.constprop.0+0x40/0x108
+[ 1060.412615] oneplus-negroni kernel:  el0_svc_common.constprop.0+0x38/0xd8
+[ 1060.412637] oneplus-negroni kernel:  do_el0_svc+0x1c/0x28
+[ 1060.412659] oneplus-negroni kernel:  el0_svc+0x38/0x1d0
+[ 1060.412680] oneplus-negroni kernel:  el0t_64_sync_handler+0xa0/0xe4
+[ 1060.412703] oneplus-negroni kernel:  el0t_64_sync+0x198/0x19c
+[ 1060.412725] oneplus-negroni kernel: ---[ end trace 0000000000000000 ]---
+[ 1060.412747] oneplus-negroni kernel: ------------[ cut here ]------------
+[ 1060.412769] oneplus-negroni kernel: disp_cc_mdss_byte0_clk status stuck at 'on'
+[ 1060.412791] oneplus-negroni kernel: WARNING: drivers/clk/qcom/clk-branch.c:87 at clk_branch_toggle+0x170/0x190, CPU#2: backlighthelper/3943
+[ 1060.412814] oneplus-negroni kernel: Modules linked in: cdc_ether usbnet r8152 mii hid_generic usbhid rfcomm q6prm_clocks q6apm_dai q6apm_lpass_dais snd_q6dsp_common q6prm qrtr_mhi algif_hash algif_skcipher af_alg bnep snd_q6apm ath11k_pci ath11k mac80211 qcom_camss fastrpc qcom_pd_mapper rpmsg_ctrl videobuf2_dma_sg libarc4 videobuf2_memops s5kjn1 videobuf2_v4l2 hci_uart snd_soc_wcd938x snd_soc_wcd938x_sdw videobuf2_common btqca nxp_nci_i2c cfg80211 v4l2_cci regmap_sdw btbcm nxp_nci snd_soc_wcd_common snd_soc_sc8280xp v4l2_fwnode mhi v4l2_async snd_soc_tfa9872 bluetooth videodev nci snd_soc_lpass_rx_macro snd_soc_lpass_tx_macro snd_soc_lpass_va_macro snd_soc_qcom_sdw snd_soc_wcd_classh rtc_pm8xxx snd_soc_qcom_common pwrseq_qcom_wcn soundwire_qcom snd_soc_wcd_mbhc snd_soc_hdmi_codec ecdh_generic snd_soc_lpass_macro_common nfc ecc snd_soc_core nvmem_qcom_spmi_sdam qcom_q6v5_pas qcom_stats mc i2c_qcom_cci qcom_pil_info qcom_q6v5 ipa coresight_stm snd_compress qcom_sysmon snd_pcm qcom_common stm_p_basic stm_core pci_pwrctrl_pwrseq qcom_rng
+[ 1060.415333] oneplus-negroni kernel:  coresight_cti snd_timer coresight_tmc coresight_replicator coresight_funnel snd qcom_battmgr qcomtee coresight soundcore soundwire_bus rfkill joydev fuse phy_qcom_qmp_ufs
+[ 1060.415357] oneplus-negroni kernel: CPU: 2 UID: 0 PID: 3943 Comm: backlighthelper Tainted: G S      W           7.3.0-rc2-sm8450+ #1 PREEMPT 
+[ 1060.415378] oneplus-negroni kernel: Tainted: [S]=CPU_OUT_OF_SPEC, [W]=WARN
+[ 1060.415399] oneplus-negroni kernel: Hardware name: OnePlus 10 Pro 5G (DT)
+[ 1060.415420] oneplus-negroni kernel: pstate: 614000c5 (nZCv daIF +PAN -UAO -TCO +DIT -SSBS BTYPE=--)
+[ 1060.415441] oneplus-negroni kernel: pc : clk_branch_toggle+0x170/0x190
+[ 1060.415463] oneplus-negroni kernel: lr : clk_branch_toggle+0x170/0x190
+[ 1060.415483] oneplus-negroni kernel: sp : ffff80008a2d3a30
+[ 1060.415503] oneplus-negroni kernel: x29: ffff80008a2d3a40 x28: ffff0007b2afaf40 x27: 0000000000000000
+[ 1060.415524] oneplus-negroni kernel: x26: 0000000000000000 x25: ffffd1b6ff878278 x24: 0000000000000000
+[ 1060.415545] oneplus-negroni kernel: x23: 0000000000000000 x22: ffffd1b6febcc440 x21: 0000000000000000
+[ 1060.415566] oneplus-negroni kernel: x20: ffffd1b6ffc69b98 x19: 0000000000000000 x18: 0000000000000038
+[ 1060.415588] oneplus-negroni kernel: x17: 383d6e656c202c31 x16: 3578303d30617461 x15: 00000000000049a0
+[ 1060.415609] oneplus-negroni kernel: x14: 0000000000000000 x13: ffffd1b6ffb7f640 x12: 0000000000000755
+[ 1060.415631] oneplus-negroni kernel: x11: 00000000000049a0 x10: 0000000000004968 x9 : ffffd1b6ffb7f640
+[ 1060.415652] oneplus-negroni kernel: x8 : 3fffffffffffefff x7 : ffffd1b6ffbd7640 x6 : 0000000000000001
+[ 1060.415673] oneplus-negroni kernel: x5 : ffff0009fe912848 x4 : ffff2e52fee71000 x3 : ffff0007b2afaf40
+[ 1060.415694] oneplus-negroni kernel: x2 : 0000000000000000 x1 : 0000000000000000 x0 : ffff0007b2afaf40
+[ 1060.415713] oneplus-negroni kernel: Call trace:
+[ 1060.415733] oneplus-negroni kernel:  clk_branch_toggle+0x170/0x190 (P)
+[ 1060.415754] oneplus-negroni kernel:  clk_branch2_disable+0x1c/0x30
+[ 1060.415775] oneplus-negroni kernel:  clk_core_disable+0x5c/0xb0
+[ 1060.415796] oneplus-negroni kernel:  clk_disable+0x38/0x54
+[ 1060.415816] oneplus-negroni kernel:  dsi_link_clk_disable_6g+0x5c/0x74
+[ 1060.415837] oneplus-negroni kernel:  msm_dsi_host_xfer_restore+0x54/0xb4
+[ 1060.415858] oneplus-negroni kernel:  msm_dsi_manager_cmd_xfer+0xc4/0x1bc
+[ 1060.415878] oneplus-negroni kernel:  dsi_host_transfer+0x40/0x78
+[ 1060.415898] oneplus-negroni kernel:  mipi_dsi_device_transfer+0x44/0x58
+[ 1060.415918] oneplus-negroni kernel:  mipi_dsi_dcs_set_display_brightness_large+0x64/0x94
+[ 1060.415940] oneplus-negroni kernel:  panel_samsung_amb670yf07_1440_3216_dsc_bl_update_status+0x40/0x78
+[ 1060.415960] oneplus-negroni kernel:  backlight_device_set_brightness+0x78/0x10c
+[ 1060.415980] oneplus-negroni kernel:  brightness_store+0x80/0x94
+[ 1060.416000] oneplus-negroni kernel:  dev_attr_store+0x18/0x2c
+[ 1060.416047] oneplus-negroni kernel:  sysfs_kf_write+0x7c/0xa0
+[ 1060.416067] oneplus-negroni kernel:  kernfs_fop_write_iter+0x12c/0x200
+[ 1060.416087] oneplus-negroni kernel:  vfs_write+0x240/0x380
+[ 1060.416106] oneplus-negroni kernel:  ksys_write+0x64/0x100
+[ 1060.416126] oneplus-negroni kernel:  __arm64_sys_write+0x18/0x24
+[ 1060.416146] oneplus-negroni kernel:  invoke_syscall.constprop.0+0x40/0x108
+[ 1060.416167] oneplus-negroni kernel:  el0_svc_common.constprop.0+0x38/0xd8
+[ 1060.416187] oneplus-negroni kernel:  do_el0_svc+0x1c/0x28
+[ 1060.416208] oneplus-negroni kernel:  el0_svc+0x38/0x1d0
+[ 1060.416229] oneplus-negroni kernel:  el0t_64_sync_handler+0xa0/0xe4
+[ 1060.416249] oneplus-negroni kernel:  el0t_64_sync+0x198/0x19c
+[ 1060.416269] oneplus-negroni kernel: ---[ end trace 0000000000000000 ]---
+[ 1060.416289] oneplus-negroni kernel: msm_dsi_phy ae94400.phy: [drm:dsi_pll_disable_pll_bias] *ERROR* bug: imbalance in disabling PLL bias
+[ 1070.021147] oneplus-negroni systemd[1]: dbus-:1.2-org.kde.powerdevil.backlighthelper@5.service: Deactivated successfully.
+[ 1071.140870] oneplus-negroni runuser[4025]: pam_unix(runuser:session): session opened for user oneplus(uid=1000) by oneplus(uid=0)
+[ 1071.250575] oneplus-negroni systemd[1]: Started dbus-:1.2-org.kde.powerdevil.backlighthelper@6.service.
+[ 1071.258483] oneplus-negroni runuser[4025]: pam_unix(runuser:session): session closed for user oneplus
+[ 1071.473283] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x6, data0=0x52, len=4, ret=-110
+[ 1071.473704] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Read cmd Tx failed, -110
+[ 1071.676593] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x9e, len=96, ret=-110
+[ 1071.676997] oneplus-negroni kernel: panel-samsung-amb670yf07-1440-3216-dsc ae94000.dsi.0: sending dcs data 9e 12 00 00 ab 30 80 09 6c 04 38 00 24 02 1c 02 1c 02 00 02 3b 00 20 03 35 00 07 00 0e 03 34 02 d4 18 00 10 f0 07 10 20 00 06 0f 0f 33 0e 1c 2a 38 46 54 62 69 70 77 79 7b 7d 7e 02 02 22 00 2a failed: -110
+[ 1071.679890] oneplus-negroni kernel: panel-samsung-amb670yf07-1440-3216-dsc ae94000.dsi.0: Failed to initialize panel: -110
+[ 1071.881074] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1072.084447] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1072.084639] oneplus-negroni kernel: panel-samsung-amb670yf07-1440-3216-dsc ae94000.dsi.0: [drm:drm_panel_enable] failed to enable backlight: -110
+[ 1072.132278] oneplus-negroni kernel: dpu_encoder_frame_done_timeout: 5 callbacks suppressed
+[ 1072.132503] oneplus-negroni kernel: [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1072.188856] oneplus-negroni kernel: [drm:_dpu_encoder_phys_cmd_wait_for_idle] *ERROR* id:35 pp:0 kickoff timeout 0 cnt 1 koff_cnt 1
+[ 1072.189147] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1072.236819] oneplus-negroni kernel: [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1072.276109] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1072.293681] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1072.293978] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1072.324149] oneplus-negroni kernel: [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1072.368056] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1072.414964] oneplus-negroni kernel: [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1072.460119] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1072.496065] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1072.508180] oneplus-negroni kernel: [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1072.552261] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1072.600125] oneplus-negroni kernel: [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1072.644042] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1072.689620] oneplus-negroni kernel: [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1072.700158] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1072.700436] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1072.736438] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1072.784906] oneplus-negroni kernel: [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1072.828414] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1072.874283] oneplus-negroni kernel: [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1072.904183] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1072.920021] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1072.968136] oneplus-negroni kernel: [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1073.012029] oneplus-negroni kernel: [drm:_dpu_encoder_phys_cmd_wait_for_idle] *ERROR* id:35 pp:0 kickoff timeout 0 cnt 10 koff_cnt 1
+[ 1073.012118] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1073.012216] oneplus-negroni kernel: [drm:dpu_crtc_frame_event_work:692] [dpu error]crtc94 ts:1073008157179 received panel dead event
+[ 1073.104093] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1073.108790] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1073.109007] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1073.196851] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1073.289352] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1073.312086] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1073.376169] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1073.516770] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1073.517064] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1073.720076] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1073.924739] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1073.925042] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1074.184776] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1074.185305] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1074.290651] oneplus-negroni kwin_wayland[2990]: The main thread was hanging temporarily!
+[ 1074.293453] oneplus-negroni kernel: platform 3d6a000.gmu: [drm:a6xx_hfi_wait_for_msg_interrupt] *ERROR* Message HFI_H2F_MSG_GX_BW_PERF_VOTE id 1388 timed out waiting for response
+[ 1074.294271] oneplus-negroni kernel: platform 3d6a000.gmu: [drm:a6xx_hfi_send_msg.constprop.0] *ERROR* Unexpected message id 1388 on the response queue
+[ 1074.392151] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1074.449082] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1074.449362] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1074.480098] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1074.568474] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1074.652597] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1074.660736] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1074.752245] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1074.844420] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1074.860086] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1074.860161] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1074.936029] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1075.028109] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1075.064204] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1075.124148] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1075.212771] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1075.268649] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1075.269088] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1075.304720] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1075.396413] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1075.472232] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1075.488802] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1075.576654] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1075.668435] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1075.676918] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1075.677274] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1075.760422] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1075.852159] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1075.884773] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1075.944050] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1076.036767] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1076.092626] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1076.092984] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1076.128720] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1076.220432] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1076.296161] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1076.312191] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1076.404380] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1076.496755] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1076.497179] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1076.497381] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1076.588427] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1076.676406] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1076.704049] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1076.772058] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1076.860024] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1076.908989] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1076.909070] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1076.952166] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1077.044064] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1077.112926] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1077.136154] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1077.184133] oneplus-negroni kernel: dpu_encoder_frame_done_timeout: 35 callbacks suppressed
+[ 1077.184423] oneplus-negroni kernel: [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1077.228227] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1077.276794] oneplus-negroni kernel: [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1077.316767] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1077.317097] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1077.317306] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1077.369015] oneplus-negroni kernel: [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1077.412407] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1077.460985] oneplus-negroni kernel: [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1077.504915] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1077.520162] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1077.552813] oneplus-negroni kernel: [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1077.596744] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1077.648718] oneplus-negroni kernel: [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1077.724207] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1077.724621] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1077.928214] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1078.132850] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1078.133247] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1078.393112] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1078.393478] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1078.668817] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1078.669235] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1078.933097] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1078.933463] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1079.193080] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1079.193454] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1079.453125] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1079.453493] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1079.729118] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1079.729486] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1079.989111] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1079.989484] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1080.249122] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1080.249512] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1080.509156] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1080.509525] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1080.785192] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1080.785570] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1081.044433] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1081.044791] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1081.305266] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1081.305637] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1081.488574] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1081.533049] oneplus-negroni kernel: [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1081.565284] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1081.565650] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1081.576765] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1081.622107] oneplus-negroni kernel: [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1081.840980] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1081.841318] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1082.101107] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1082.101478] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1082.361150] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1082.361525] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1082.625163] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1082.625529] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1082.901102] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1082.901475] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1083.161117] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1083.161489] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1083.420820] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1083.421241] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1083.681183] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1083.681542] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1083.956421] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1083.956783] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1084.217113] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1084.217492] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1084.477146] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1084.477520] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1084.737115] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1084.737478] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1085.013061] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1085.013442] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1085.273147] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1085.273536] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1085.533106] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1085.533471] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1085.793152] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1085.793520] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1086.069080] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1086.069448] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1086.329154] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1086.329525] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1086.589358] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1086.589734] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1086.849145] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1086.849508] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1087.129127] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1087.129493] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1087.262388] oneplus-negroni sudo[3921]: pam_unix(sudo:session): session closed for user root
+[ 1087.269368] oneplus-negroni sshd-session[3920]: Received disconnect from 192.168.188.22 port 54740:11: disconnected by user
+[ 1087.270138] oneplus-negroni sshd-session[3920]: Disconnected from user oneplus 192.168.188.22 port 54740
+[ 1087.277454] oneplus-negroni sshd-session[3916]: pam_unix(sshd:session): session closed for user oneplus
+[ 1087.293394] oneplus-negroni systemd[1]: session-16.scope: Deactivated successfully.
+[ 1087.295819] oneplus-negroni systemd[1]: session-16.scope: Consumed 3.679s CPU time over 55.559s wall clock time, 26.2M memory peak.
+[ 1087.304222] oneplus-negroni systemd-logind[2385]: Session 16 logged out. Waiting for processes to exit.
+[ 1087.306824] oneplus-negroni systemd-logind[2385]: Removed session 16.
+[ 1088.017581] oneplus-negroni systemd[1]: dbus-:1.2-org.kde.powerdevil.backlighthelper@6.service: Deactivated successfully.
+[ 1095.194504] oneplus-negroni sshd-session[4076]: Accepted password for oneplus from 192.168.188.22 port 39874 ssh2
+[ 1095.211689] oneplus-negroni sshd-session[4076]: pam_unix(sshd:session): session opened for user oneplus(uid=1000) by oneplus(uid=0)
+[ 1095.265913] oneplus-negroni systemd-logind[2385]: New session '17' of user 'oneplus' with class 'user' and type 'tty'.
+[ 1095.306949] oneplus-negroni systemd[1]: Started Session 17 of User oneplus.
+[ 1095.611484] oneplus-negroni sudo[4081]:  oneplus : PWD=/home/oneplus ; USER=root ; COMMAND=/usr/bin/bash -c 'pacman -Q kwin plasma-mobile powerdevil mesa linux-firmware-oplus-negroni; systemd-inhibit --list --no-pager; ls /etc/xdg/power* /etc/xdg/kwin*; grep -R -n -E "PowerButton|powerButton|powerKey|TurnOffScreen|dpms" /usr/share/plasma/shells/org.kde.plasma.mobileshell/contents /etc/xdg/power* 2>/dev/null | head -45; ls /sys/class/devcoredump; cat /sys/class/drm/card0-DSI-1/dpms; journalctl -b -k --since "90 seconds ago" --no-pager -o short-monotonic | tail -35'
+[ 1095.612034] oneplus-negroni sudo[4081]: pam_unix(sudo:session): session opened for user root(uid=0) by oneplus(uid=1000)
+[ 1095.778594] oneplus-negroni sudo[4081]: pam_unix(sudo:session): session closed for user root
+[ 1095.783711] oneplus-negroni sshd-session[4080]: Received disconnect from 192.168.188.22 port 39874:11: disconnected by user
+[ 1095.783949] oneplus-negroni sshd-session[4080]: Disconnected from user oneplus 192.168.188.22 port 39874
+[ 1095.786286] oneplus-negroni sshd-session[4076]: pam_unix(sshd:session): session closed for user oneplus
+[ 1095.801988] oneplus-negroni systemd[1]: session-17.scope: Deactivated successfully.
+[ 1095.803682] oneplus-negroni systemd-logind[2385]: Session 17 logged out. Waiting for processes to exit.
+[ 1095.806547] oneplus-negroni systemd-logind[2385]: Removed session 17.
+[ 1118.172276] oneplus-negroni sshd-session[4097]: Accepted password for oneplus from 192.168.188.22 port 39660 ssh2
+[ 1118.176862] oneplus-negroni sshd-session[4097]: pam_unix(sshd:session): session opened for user oneplus(uid=1000) by oneplus(uid=0)
+[ 1118.195873] oneplus-negroni systemd-logind[2385]: New session '18' of user 'oneplus' with class 'user' and type 'tty'.
+[ 1118.224622] oneplus-negroni systemd[1]: Started Session 18 of User oneplus.
+[ 1118.389305] oneplus-negroni sshd-session[4096]: Accepted password for oneplus from 192.168.188.22 port 39648 ssh2
+[ 1118.393765] oneplus-negroni sshd-session[4096]: pam_unix(sshd:session): session opened for user oneplus(uid=1000) by oneplus(uid=0)
+[ 1118.412047] oneplus-negroni systemd-logind[2385]: New session '19' of user 'oneplus' with class 'user' and type 'tty'.
+[ 1118.436384] oneplus-negroni systemd[1]: Started Session 19 of User oneplus.
+[ 1118.472372] oneplus-negroni sudo[4104]:  oneplus : PWD=/home/oneplus ; USER=root ; COMMAND=/usr/bin/bash -c 'for f in /sys/class/devcoredump/devcd*/data; do head -c 10000 "$f"; done'
+[ 1118.472564] oneplus-negroni sudo[4104]: pam_unix(sudo:session): session opened for user root(uid=0) by oneplus(uid=1000)
+[ 1118.480131] oneplus-negroni sudo[4104]: pam_unix(sudo:session): session closed for user root
+[ 1118.495097] oneplus-negroni sshd-session[4103]: Received disconnect from 192.168.188.22 port 39660:11: disconnected by user
+[ 1118.495204] oneplus-negroni sshd-session[4103]: Disconnected from user oneplus 192.168.188.22 port 39660
+[ 1118.496176] oneplus-negroni sshd-session[4097]: pam_unix(sshd:session): session closed for user oneplus
+[ 1118.499838] oneplus-negroni systemd[1]: session-18.scope: Deactivated successfully.
+[ 1118.501483] oneplus-negroni systemd-logind[2385]: Session 18 logged out. Waiting for processes to exit.
+[ 1118.502483] oneplus-negroni systemd-logind[2385]: Removed session 18.
+[ 1118.792658] oneplus-negroni sudo[4109]:  oneplus : PWD=/home/oneplus ; USER=root ; COMMAND=/usr/bin/bash -c 'journalctl -b --since "3 minutes ago" --no-pager -o short-monotonic'
+[ 1118.793202] oneplus-negroni sudo[4109]: pam_unix(sudo:session): session opened for user root(uid=0) by oneplus(uid=1000)
+[ 1118.810800] oneplus-negroni sudo[4109]: pam_unix(sudo:session): session closed for user root
+[ 1118.862117] oneplus-negroni sshd-session[4108]: Received disconnect from 192.168.188.22 port 39648:11: disconnected by user
+[ 1118.862893] oneplus-negroni sshd-session[4108]: Disconnected from user oneplus 192.168.188.22 port 39648
+[ 1118.870747] oneplus-negroni sshd-session[4096]: pam_unix(sshd:session): session closed for user oneplus
+[ 1118.886139] oneplus-negroni systemd[1]: session-19.scope: Deactivated successfully.
+[ 1118.889652] oneplus-negroni systemd-logind[2385]: Session 19 logged out. Waiting for processes to exit.
+[ 1118.895045] oneplus-negroni systemd-logind[2385]: Removed session 19.
+[ 1134.513166] oneplus-negroni sshd-session[4120]: Accepted password for oneplus from 192.168.188.22 port 55824 ssh2
+[ 1134.529963] oneplus-negroni sshd-session[4120]: pam_unix(sshd:session): session opened for user oneplus(uid=1000) by oneplus(uid=0)
+[ 1134.572516] oneplus-negroni systemd-logind[2385]: New session '20' of user 'oneplus' with class 'user' and type 'tty'.
+[ 1134.592798] oneplus-negroni systemd[1]: Started Session 20 of User oneplus.
+[ 1134.756641] oneplus-negroni sudo[4125]:  oneplus : PWD=/home/oneplus ; USER=root ; COMMAND=/usr/bin/bash -c 'python3 -u -c \'import glob#012import json#012import os#012from pathlib import Path#012import select#012import struct#012import subprocess#012import sys#012import time#012#012paths = {#012    \'"\'"\'dpms\'"\'"\': \'"\'"\'/sys/class/drm/card0-DSI-1/dpms\'"\'"\',#012    \'"\'"\'gpu\'"\'"\': \'"\'"\'/sys/bus/platform/devices/3d00000.gpu/power/runtime_status\'"\'"\',#012    \'"\'"\'gmu\'"\'"\': \'"\'"\'/sys/bus/platform/devices/3d6a000.gmu/power/runtime_status\'"\'"\',#012    \'"\'"\'dpu\'"\'"\': \'"\'"\'/sys/bus/platform/devices/ae01000.display-controller/power/runtime_status\'"\'"\',#012}#012for p in glob.glob(\'"\'"\'/sys/class/backlight/*/brightness\'"\'"\'):#012    paths[\'"\'"\'brightness\'"\'"\'] = p#012kwin = [p.parent for p in Path(\'"\'"\'/proc\'"\'"\').glob(\'"\'"\'[0-9]*/comm\'"\'"\')#012        if p.read_text().strip() == \'"\'"\'kwin_wayland\'"\'"\']#012for p in
+[ 1134.756648] oneplus-negroni sudo[4125]:  oneplus : (command continued) kwin:#012    paths[\'"\'"\'kwin_\'"\'"\' + p.name] = str(p / \'"\'"\'wchan\'"\'"\')#012#012def emit(kind, **fields):#012    print(json.dumps({\'"\'"\'t\'"\'"\': time.monotonic(), \'"\'"\'kind\'"\'"\': kind, **fields}), flush=True)#012#012fd = os.open(\'"\'"\'/dev/input/event0\'"\'"\', os.O_RDONLY | os.O_NONBLOCK)#012last = None#012end = time.monotonic() + 55#012start = time.monotonic()#012schedule = [(3, \'"\'"\'off\'"\'"\'), (15, \'"\'"\'on\'"\'"\'), (27, \'"\'"\'off\'"\'"\'), (39, \'"\'"\'on\'"\'"\')] if \'"\'"\'--cycle\'"\'"\' in sys.argv else []#012env = dict(os.environ, XDG_RUNTIME_DIR=\'"\'"\'/run/user/1000\'"\'"\',#012           DBUS_SESSION_BUS_ADDRESS=\'"\'"\'unix:path=/run/user/1000/bus\'"\'"\', WAYLAND_DISPLAY=\'"\'"\'wayland-0\'"\'"\')#012last_stack = 0#012emit(\'"\'"\'start\'"\'"\')#012while time.monotonic() < end:#012    if schedule and time.monotonic() - start >= schedule[0][0]:#012        _, mode =
+[ 1134.756652] oneplus-negroni sudo[4125]:  oneplus : (command continued) schedule.pop(0)#012        emit(\'"\'"\'request\'"\'"\', mode=mode)#012        subprocess.Popen([\'"\'"\'runuser\'"\'"\', \'"\'"\'-u\'"\'"\', \'"\'"\'oneplus\'"\'"\', \'"\'"\'--\'"\'"\', \'"\'"\'env\'"\'"\',#012                          \'"\'"\'XDG_RUNTIME_DIR=\'"\'"\' + env[\'"\'"\'XDG_RUNTIME_DIR\'"\'"\'],#012                          \'"\'"\'DBUS_SESSION_BUS_ADDRESS=\'"\'"\' + env[\'"\'"\'DBUS_SESSION_BUS_ADDRESS\'"\'"\'],#012                          \'"\'"\'WAYLAND_DISPLAY=wayland-0\'"\'"\', \'"\'"\'kscreen-doctor\'"\'"\', \'"\'"\'--dpms\'"\'"\', mode],#012                         stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)#012    if select.select([fd], [], [], 0)[0]:#012        data = os.read(fd, 24 * 64)#012        for off in range(0, len(data), 24):#012            sec, usec, typ, code, val = struct.unpack(\'"\'"\'llHHi\'"\'"\', data[off:off+24])#012            emit(\'"\'"\'input\'"\'"\', type=typ,
+[ 1134.756656] oneplus-negroni sudo[4125]:  oneplus : (command continued) code=code, value=val, event_time=sec+usec/1e6)#012    state = {}#012    for key, path in paths.items():#012        try:#012            state[key] = Path(path).read_text().strip()#012        except OSError as e:#012            state[key] = str(e)#012    if state != last:#012        emit(\'"\'"\'state\'"\'"\', **state)#012        last = state#012    if time.monotonic() - last_stack >= 1:#012        last_stack = time.monotonic()#012        for p in kwin:#012            for thread in (p / \'"\'"\'task\'"\'"\').glob(\'"\'"\'*\'"\'"\'):#012                try:#012                    if \'"\'"\') D\'"\'"\' in (thread / \'"\'"\'stat\'"\'"\').read_text():#012                        emit(\'"\'"\'blocked\'"\'"\', tid=thread.name, stack=(thread / \'"\'"\'stack\'"\'"\').read_text())#012                except OSError:#012                    pass#012    time.sleep(0.05)#012emit(\'"\'"\'end\'"\'"\')#012\' --cycle'
+[ 1134.756901] oneplus-negroni sudo[4125]: pam_unix(sudo:session): session opened for user root(uid=0) by oneplus(uid=1000)
+[ 1137.829266] oneplus-negroni runuser[4130]: pam_unix(runuser:session): session opened for user oneplus(uid=1000) by oneplus(uid=0)
+[ 1137.921599] oneplus-negroni runuser[4130]: pam_unix(runuser:session): session closed for user oneplus
+[ 1138.020391] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1138.068875] oneplus-negroni kernel: [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1138.112673] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1138.158653] oneplus-negroni kernel: [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1138.204135] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1138.252149] oneplus-negroni kernel: [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1138.296859] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1138.344873] oneplus-negroni kernel: [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1138.500848] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1138.501267] oneplus-negroni kernel: panel-samsung-amb670yf07-1440-3216-dsc ae94000.dsi.0: [drm:drm_panel_disable] failed to disable backlight: -110
+[ 1138.588952] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_wait_for_tx_complete] *ERROR* failed wait_for_idle: id:35 ret:-110 intf:1
+[ 1138.589342] oneplus-negroni kernel: panel-samsung-amb670yf07-1440-3216-dsc ae94000.dsi.0: Skipping unprepare of already unprepared panel
+[ 1149.859123] oneplus-negroni runuser[4142]: pam_unix(runuser:session): session opened for user oneplus(uid=1000) by oneplus(uid=0)
+[ 1149.911663] oneplus-negroni runuser[4142]: pam_unix(runuser:session): session closed for user oneplus
+[ 1155.453470] oneplus-negroni sshd-session[4147]: Accepted password for oneplus from 192.168.188.22 port 47376 ssh2
+[ 1155.468079] oneplus-negroni sshd-session[4147]: pam_unix(sshd:session): session opened for user oneplus(uid=1000) by oneplus(uid=0)
+[ 1155.496637] oneplus-negroni systemd-logind[2385]: New session '21' of user 'oneplus' with class 'user' and type 'tty'.
+[ 1155.516277] oneplus-negroni systemd[1]: Started Session 21 of User oneplus.
+[ 1155.721705] oneplus-negroni sudo[4152]:  oneplus : PWD=/home/oneplus ; USER=root ; COMMAND=/usr/bin/bash -c 'date -Ins; cat /proc/uptime; cat /sys/class/drm/card0-DSI-1/dpms; cat /sys/power/suspend_stats/{success,fail}; journalctl -b -k --since "40 seconds ago" --no-pager -o short-monotonic | tail -25'
+[ 1155.722168] oneplus-negroni sudo[4152]: pam_unix(sudo:session): session opened for user root(uid=0) by oneplus(uid=1000)
+[ 1155.751306] oneplus-negroni sudo[4152]: pam_unix(sudo:session): session closed for user root
+[ 1155.756307] oneplus-negroni sshd-session[4151]: Received disconnect from 192.168.188.22 port 47376:11: disconnected by user
+[ 1155.756532] oneplus-negroni sshd-session[4151]: Disconnected from user oneplus 192.168.188.22 port 47376
+[ 1155.758219] oneplus-negroni sshd-session[4147]: pam_unix(sshd:session): session closed for user oneplus
+[ 1155.765232] oneplus-negroni systemd[1]: session-21.scope: Deactivated successfully.
+[ 1155.766718] oneplus-negroni systemd-logind[2385]: Session 21 logged out. Waiting for processes to exit.
+[ 1155.768650] oneplus-negroni systemd-logind[2385]: Removed session 21.
+[ 1161.836263] oneplus-negroni runuser[4164]: pam_unix(runuser:session): session opened for user oneplus(uid=1000) by oneplus(uid=0)
+[ 1161.915654] oneplus-negroni runuser[4164]: pam_unix(runuser:session): session closed for user oneplus
+[ 1173.859656] oneplus-negroni runuser[4171]: pam_unix(runuser:session): session opened for user oneplus(uid=1000) by oneplus(uid=0)
+[ 1173.927184] oneplus-negroni runuser[4171]: pam_unix(runuser:session): session closed for user oneplus
+[ 1175.188386] oneplus-negroni kernel: platform 3d6a000.gmu: [drm:a6xx_hfi_wait_for_msg_interrupt] *ERROR* Message HFI_H2F_MSG_GX_BW_PERF_VOTE id 1806 timed out waiting for response
+[ 1175.189080] oneplus-negroni kernel: platform 3d6a000.gmu: [drm:a6xx_hfi_send_msg.constprop.0] *ERROR* Unexpected message id 1806 on the response queue
+[ 1179.268295] oneplus-negroni sshd-session[4190]: Accepted password for oneplus from 192.168.188.22 port 47080 ssh2
+[ 1179.277779] oneplus-negroni sshd-session[4190]: pam_unix(sshd:session): session opened for user oneplus(uid=1000) by oneplus(uid=0)
+[ 1179.328201] oneplus-negroni systemd-logind[2385]: New session '22' of user 'oneplus' with class 'user' and type 'tty'.
+[ 1179.355281] oneplus-negroni systemd[1]: Started Session 22 of User oneplus.
+[ 1179.750527] oneplus-negroni sudo[4195]:  oneplus : PWD=/home/oneplus ; USER=root ; COMMAND=/usr/bin/bash -c 'journalctl -b --since "3 minutes ago" --no-pager -o short-monotonic'
+[ 1179.750912] oneplus-negroni sudo[4195]: pam_unix(sudo:session): session opened for user root(uid=0) by oneplus(uid=1000)

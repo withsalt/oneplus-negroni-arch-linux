@@ -1,0 +1,22 @@
+ 
+7.3.0-rc2-sm8450+
+active
+active
+[    2.110132] archlinux kernel: ramoops: using 0x100000@0xa1f00000, ecc: 0
+[   13.660124] oneplus-negroni kernel: qcom_battmgr.pmic_glink_power_supply pmic_glink.power-supply.0: oplus gauge init: sending BATT property_id=38 value=1 via opcode 0x31
+[   13.660641] oneplus-negroni kernel: qcom_battmgr.pmic_glink_power_supply pmic_glink.power-supply.0: oplus gauge init: SUCCESS
+[   13.660890] oneplus-negroni kernel: qcom_battmgr.pmic_glink_power_supply pmic_glink.power-supply.0: oplus voocphy enable: sending USB property_id=13 value=1 via opcode 0x33
+[   13.661001] oneplus-negroni kernel: qcom_battmgr.pmic_glink_power_supply pmic_glink.power-supply.0: oplus voocphy enable: SUCCESS
+[   13.661106] oneplus-negroni kernel: qcom_battmgr.pmic_glink_power_supply pmic_glink.power-supply.0: oplus gauge: sending BATT_RTC_SOC (id=31) via opcode 0x31
+[   13.661235] oneplus-negroni kernel: qcom_battmgr.pmic_glink_power_supply pmic_glink.power-supply.0: oplus gauge: sending BATT_UPDATE_SOC_SMOOTH_PARAM (id=39) via opcode 0x31
+[   14.324080] oneplus-negroni kernel: qcom_battmgr.pmic_glink_power_supply pmic_glink.power-supply.0: oplus: SDP/unknown adapter (type=0), using defaults
+[   14.324820] oneplus-negroni kernel: qcom_battmgr.pmic_glink_power_supply pmic_glink.power-supply.0: oplus: setting ICL to 0.500A
+[   14.404020] oneplus-negroni kernel: qcom_battmgr.pmic_glink_power_supply pmic_glink.power-supply.0: oplus: setting FCC to 0.500A
+[   14.408025] oneplus-negroni kernel: qcom_battmgr.pmic_glink_power_supply pmic_glink.power-supply.0: oplus gauge init sequence complete
+[   19.577144] oneplus-negroni kernel: qcom_battmgr.pmic_glink_power_supply pmic_glink.power-supply.0: voocphy recheck: PD adapter (type=6), requesting 9V/3A
+[   85.803253] oneplus-negroni kernel: qcom_battmgr.pmic_glink_power_supply pmic_glink.power-supply.0: unknown notification: 0x53
+[   15.735565] oneplus-negroni systemd[1]: Starting Daemon for power management...
+[   33.918593] oneplus-negroni upowerd[2613]: did not recognize type Wireless, please report
+[   40.605046] oneplus-negroni systemd[1]: Started Daemon for power management.
+88936815a1d73307096e91f1a34157e55570e733bceb2ca7807ca2568301cd84  /usr/lib/modules/7.3.0-rc2-sm8450+/kernel/drivers/power/supply/qcom_battmgr.ko
+87ab0c2939924c9152ef9dc5aa35658c74486fdf42092c5be636e4e5e1f23acf  /var/backups/negroni-charging-20260915/qcom_battmgr.ko

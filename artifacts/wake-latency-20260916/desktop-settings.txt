@@ -1,0 +1,55 @@
+oneplus@192.168.188.91's  
+kwin 6.7.5-1
+plasma-mobile 6.7.5-1
+powerdevil 6.7.5-1
+mesa 1:26.2.2-1
+linux-firmware-oplus-negroni 20260407-1
+WHO            UID  USER    PID  COMM            WHAT                                                                       WHY                                       MODE
+ModemManager   0    root    2652 ModemManager    sleep                                                                      ModemManager needs to reset devices       delay
+NetworkManager 0    root    2399 NetworkManager  sleep                                                                      NetworkManager needs to turn off networks delay
+UPower         0    root    2668 upowerd         sleep                                                                      Pause device polling                      delay
+PowerDevil     1000 oneplus 3173 org_kde_powerde handle-power-key:handle-suspend-key:handle-hibernate-key:handle-lid-switch KDE handles power events                  block
+
+4 inhibitors listed.
+ls: cannot access '/etc/xdg/power*': No such file or directory
+ls: cannot access '/etc/xdg/kwin*': No such file or directory
+/usr/share/plasma/shells/org.kde.plasma.mobileshell/contents/lockscreen/LockScreen.qml:13:import org.kde.plasma.private.mobileshell.dpmsplugin as DPMS
+/usr/share/plasma/shells/org.kde.plasma.mobileshell/contents/lockscreen/LockScreen.qml:90:        id: dpms
+devcd2
+disabled
+On
+[ 1082.625529] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1082.901102] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1082.901475] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1083.161117] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1083.161489] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1083.420820] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1083.421241] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1083.681183] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1083.681542] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1083.956421] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1083.956783] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1084.217113] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1084.217492] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1084.477146] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1084.477520] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1084.737115] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1084.737478] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1085.013061] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1085.013442] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1085.273147] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1085.273536] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1085.533106] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1085.533471] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1085.793152] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1085.793520] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1086.069080] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1086.069448] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1086.329154] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1086.329525] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1086.589358] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1086.589734] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1086.849145] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1086.849508] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1087.129127] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1087.129493] oneplus-negroni kernel: msm_dsi_host_cmd_rx: Set max pkt size failed, -110

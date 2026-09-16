@@ -1,0 +1,42 @@
+{
+  "date": "2026-09-16",
+  "oneplus_branch_head": "877203a7cf9b79973d44a9db716490f95d820110",
+  "upstream_latest_file_commit": "37689bcbc41b3850781b6c84f90cb4bd632bfbf0",
+  "sources": [
+    {
+      "file": "sources/oplus_charger.c",
+      "source": "https://raw.githubusercontent.com/OnePlusOSS/android_kernel_modules_and_devicetree_oneplus_sm8450/oneplus/sm8450_v_15.0.0_oneplus_10_pro/vendor/oplus/kernel/charger/oplus_charger.c",
+      "sha256": "cba908de0bc3efc21ad268fc593d4bcdffa6eeb1120687ce64d5575884f33ccd"
+    },
+    {
+      "file": "sources/upstream-qcom_battmgr.c",
+      "source": "https://raw.githubusercontent.com/torvalds/linux/master/drivers/power/supply/qcom_battmgr.c",
+      "sha256": "9591a420f5af384d37bf96dfe95b6a92a2e983dec15fe79ecb9731272ab69ea8"
+    },
+    {
+      "file": "sources/local-qcom_battmgr.c",
+      "source": "local kernel commit 593ad628e5b838457d6a316cc08ba5dcc924a01f",
+      "sha256": "03b47da6afecab1aaf118c0ac64007b73b341132616fa243b809cabb85b256e7"
+    },
+    {
+      "file": "sources/oplus_battery_sm8450.c",
+      "source": "previously retrieved official OnePlus SM8450 15.0.0 source; see usb2-diagnosis-20260916-030952/README.md",
+      "sha256": "97388451e459b24b9a7f5521db399185f9aa4243ea0e904a0dd31de26db77a62"
+    },
+    {
+      "file": "sources/oplus_battery_sm8450.h",
+      "source": "previously retrieved official OnePlus SM8450 15.0.0 source; see usb2-diagnosis-20260916-030952/README.md",
+      "sha256": "a8e304ff1935aac02393c3e16cf948b7acce30ff65241907587fa45773213c8e"
+    },
+    {
+      "file": "sources/sysfs-class-power.txt",
+      "source": "local kernel commit 593ad628e5b838457d6a316cc08ba5dcc924a01f",
+      "sha256": "5cc68dadde22d30c57ff853bbd6bbc0c759c271ee78ba28b4af7ad78cdb345ae"
+    },
+    {
+      "file": "sources/oplus_voocphy.c",
+      "source": "https://raw.githubusercontent.com/OnePlusOSS/android_kernel_modules_and_devicetree_oneplus_sm8450/877203a7cf9b79973d44a9db716490f95d820110/vendor/oplus/kernel/charger/voocphy/oplus_voocphy.c",
+      "sha256": "2003f0fdbb70ebd79b894862fdcc730e617ae01889a6e3e1b7577b5820e8fe9e"
+    }
+  ]
+}

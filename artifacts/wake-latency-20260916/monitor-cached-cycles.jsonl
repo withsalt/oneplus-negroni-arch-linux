@@ -1,0 +1,42 @@
+oneplus@192.168.188.91's  
+{"t": 1134.79952076, "kind": "start"}
+{"t": 1134.799738619, "kind": "state", "dpms": "On", "gpu": "suspended", "gmu": "suspended", "dpu": "active", "brightness": "121", "kwin_2990": "do_sys_poll"}
+{"t": 1137.804516387, "kind": "request", "mode": "off"}
+{"t": 1137.908552107, "kind": "state", "dpms": "On", "gpu": "suspended", "gmu": "suspended", "dpu": "active", "brightness": "121", "kwin_2990": "__futex_wait"}
+{"t": 1137.959628183, "kind": "state", "dpms": "On", "gpu": "active", "gmu": "active", "dpu": "active", "brightness": "121", "kwin_2990": "do_sys_poll"}
+{"t": 1138.010699466, "kind": "state", "dpms": "On", "gpu": "suspended", "gmu": "suspended", "dpu": "active", "brightness": "121", "kwin_2990": "do_sys_poll"}
+{"t": 1138.061864832, "kind": "state", "dpms": "On", "gpu": "active", "gmu": "active", "dpu": "active", "brightness": "121", "kwin_2990": "do_sys_poll"}
+{"t": 1138.112522905, "kind": "state", "dpms": "On", "gpu": "resuming", "gmu": "active", "dpu": "active", "brightness": "121", "kwin_2990": "a6xx_gmu_resume"}
+{"t": 1138.164872578, "kind": "state", "dpms": "On", "gpu": "active", "gmu": "active", "dpu": "active", "brightness": "121", "kwin_2990": "do_sys_poll"}
+{"t": 1138.268206643, "kind": "state", "dpms": "On", "gpu": "suspended", "gmu": "suspended", "dpu": "active", "brightness": "121", "kwin_2990": "do_sys_poll"}
+{"t": 1138.319529749, "kind": "state", "dpms": "On", "gpu": "suspended", "gmu": "suspended", "dpu": "active", "brightness": "121", "kwin_2990": "dsi_cmds2buf_tx"}
+{"t": 1138.525638307, "kind": "state", "dpms": "On", "gpu": "suspended", "gmu": "suspended", "dpu": "active", "brightness": "121", "kwin_2990": "dpu_encoder_helper_wait_for_irq"}
+{"t": 1138.62870868, "kind": "state", "dpms": "Off", "gpu": "suspended", "gmu": "suspended", "dpu": "suspended", "brightness": "121", "kwin_2990": "do_sys_poll"}
+{"t": 1141.431485151, "kind": "state", "dpms": "Off", "gpu": "active", "gmu": "active", "dpu": "suspended", "brightness": "121", "kwin_2990": "do_sys_poll"}
+{"t": 1141.4824277, "kind": "state", "dpms": "Off", "gpu": "suspended", "gmu": "suspended", "dpu": "suspended", "brightness": "121", "kwin_2990": "do_sys_poll"}
+{"t": 1149.832349285, "kind": "request", "mode": "on"}
+{"t": 1149.93588314, "kind": "state", "dpms": "On", "gpu": "active", "gmu": "active", "dpu": "active", "brightness": "121", "kwin_2990": "panel_samsung_amb670yf07_1440_3216_dsc_prepare"}
+{"t": 1149.986661757, "kind": "state", "dpms": "On", "gpu": "suspended", "gmu": "suspended", "dpu": "active", "brightness": "121", "kwin_2990": "msleep"}
+{"t": 1150.19221611, "kind": "state", "dpms": "On", "gpu": "active", "gmu": "active", "dpu": "active", "brightness": "121", "kwin_2990": "do_sys_poll"}
+{"t": 1150.502186714, "kind": "state", "dpms": "On", "gpu": "suspended", "gmu": "suspended", "dpu": "active", "brightness": "121", "kwin_2990": "do_sys_poll"}
+{"t": 1161.036709766, "kind": "state", "dpms": "On", "gpu": "active", "gmu": "active", "dpu": "active", "brightness": "121", "kwin_2990": "do_sys_poll"}
+{"t": 1161.139223565, "kind": "state", "dpms": "On", "gpu": "suspended", "gmu": "suspended", "dpu": "active", "brightness": "121", "kwin_2990": "do_sys_poll"}
+{"t": 1161.810291368, "kind": "request", "mode": "off"}
+{"t": 1161.913488056, "kind": "state", "dpms": "On", "gpu": "active", "gmu": "active", "dpu": "active", "brightness": "121", "kwin_2990": "do_sys_poll"}
+{"t": 1162.168703197, "kind": "state", "dpms": "On", "gpu": "active", "gmu": "active", "dpu": "active", "brightness": "121", "kwin_2990": "msleep"}
+{"t": 1162.220441774, "kind": "state", "dpms": "On", "gpu": "suspended", "gmu": "suspended", "dpu": "active", "brightness": "121", "kwin_2990": "msleep"}
+{"t": 1162.325096998, "kind": "state", "dpms": "On", "gpu": "suspended", "gmu": "suspended", "dpu": "active", "brightness": "121", "kwin_2990": "kthread_flush_worker"}
+{"t": 1162.377116561, "kind": "state", "dpms": "Off", "gpu": "suspended", "gmu": "suspended", "dpu": "suspended", "brightness": "121", "kwin_2990": "do_sys_poll"}
+{"t": 1167.028741388, "kind": "state", "dpms": "Off", "gpu": "active", "gmu": "active", "dpu": "suspended", "brightness": "121", "kwin_2990": "do_sys_poll"}
+{"t": 1167.132316506, "kind": "state", "dpms": "Off", "gpu": "suspended", "gmu": "suspended", "dpu": "suspended", "brightness": "121", "kwin_2990": "do_sys_poll"}
+{"t": 1173.840719479, "kind": "request", "mode": "on"}
+{"t": 1173.943603767, "kind": "state", "dpms": "On", "gpu": "active", "gmu": "active", "dpu": "active", "brightness": "121", "kwin_2990": "msleep"}
+{"t": 1173.994335351, "kind": "state", "dpms": "On", "gpu": "suspended", "gmu": "suspended", "dpu": "active", "brightness": "121", "kwin_2990": "dsi_cmds2buf_tx"}
+{"t": 1174.046555463, "kind": "state", "dpms": "On", "gpu": "suspended", "gmu": "suspended", "dpu": "active", "brightness": "121", "kwin_2990": "msleep"}
+{"t": 1174.201367471, "kind": "state", "dpms": "On", "gpu": "resuming", "gmu": "active", "dpu": "active", "brightness": "121", "kwin_2990": "a6xx_hfi_wait_for_msg_interrupt"}
+{"t": 1174.252564288, "kind": "blocked", "tid": "2990", "stack": "[<0>] a6xx_hfi_wait_for_msg_interrupt+0x64/0x124\n[<0>] a6xx_hfi_send_msg.constprop.0+0x150/0x40c\n[<0>] a6xx_hfi_set_freq+0x3c/0x68\n[<0>] a6xx_gmu_set_freq+0x258/0x2a0\n[<0>] a6xx_gmu_resume+0x9ec/0x1238\n[<0>] a6xx_gmu_pm_resume+0x2c/0x164\n[<0>] adreno_runtime_resume+0x30/0x60\n[<0>] pm_generic_runtime_resume+0x2c/0x44\n[<0>] __rpm_callback+0x48/0x210\n[<0>] rpm_callback+0x60/0x70\n[<0>] rpm_resume+0x3cc/0x6a0\n[<0>] __pm_runtime_resume+0x4c/0x98\n[<0>] adreno_get_param+0x128/0x3a4\n[<0>] msm_ioctl_get_param+0x4c/0x68\n[<0>] drm_ioctl_kernel+0xc0/0x130\n[<0>] drm_ioctl+0x354/0x4c0\n[<0>] __arm64_sys_ioctl+0xa4/0xf4\n[<0>] invoke_syscall.constprop.0+0x40/0x108\n[<0>] el0_svc_common.constprop.0+0x38/0xd8\n[<0>] do_el0_svc+0x1c/0x28\n[<0>] el0_svc+0x38/0x1d0\n[<0>] el0t_64_sync_handler+0xa0/0xe4\n[<0>] el0t_64_sync+0x198/0x19c\n"}
+{"t": 1174.712136071, "kind": "state", "dpms": "On", "gpu": "resuming", "gmu": "active", "dpu": "active", "brightness": "121", "kwin_2990": "0"}
+{"t": 1174.763055415, "kind": "state", "dpms": "On", "gpu": "resuming", "gmu": "active", "dpu": "active", "brightness": "121", "kwin_2990": "a6xx_hfi_wait_for_msg_interrupt"}
+{"t": 1175.220906318, "kind": "state", "dpms": "On", "gpu": "active", "gmu": "active", "dpu": "active", "brightness": "121", "kwin_2990": "do_sys_poll"}
+{"t": 1175.529332251, "kind": "state", "dpms": "On", "gpu": "suspended", "gmu": "suspended", "dpu": "active", "brightness": "121", "kwin_2990": "do_sys_poll"}
+{"t": 1189.801680251, "kind": "end"}

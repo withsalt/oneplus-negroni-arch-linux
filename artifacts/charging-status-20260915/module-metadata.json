@@ -1,0 +1,14 @@
+{
+  "qcom_battmgr.original.ko": {
+    "sha256": "87ab0c2939924c9152ef9dc5aa35658c74486fdf42092c5be636e4e5e1f23acf",
+    "vermagic": "7.3.0-rc2-sm8450+ SMP preempt mod_unload aarch64",
+    "build_note_sha256": "ef48689f71450834b4580998a52d16a6d55b362274b6f5348ada49e2650c4841",
+    "build_id": "5c9cea50847f9de1bc3ce5afe2a6301bc5667795"
+  },
+  "qcom_battmgr.ko": {
+    "sha256": "88936815a1d73307096e91f1a34157e55570e733bceb2ca7807ca2568301cd84",
+    "vermagic": "7.3.0-rc2-sm8450+ SMP preempt mod_unload aarch64",
+    "build_note_sha256": "95aea53772dcf05c55c49a69450018cb9a32e3886f8a5b09765cc62a1d3f7eb9",
+    "build_id": "dca16ca73b9444715a5441d7b5e19cf8327505f8"
+  }
+}

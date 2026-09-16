@@ -1,0 +1,18 @@
+oneplus@192.168.188.91's  
+2026-09-16T00:14:14,358249972+08:00
+1155.73 9110.36
+On
+0
+0
+[ 1138.020391] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1138.068875] oneplus-negroni kernel: [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1138.112673] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1138.158653] oneplus-negroni kernel: [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1138.204135] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1138.252149] oneplus-negroni kernel: [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1138.296859] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1138.344873] oneplus-negroni kernel: [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1138.500848] oneplus-negroni kernel: dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1138.501267] oneplus-negroni kernel: panel-samsung-amb670yf07-1440-3216-dsc ae94000.dsi.0: [drm:drm_panel_disable] failed to disable backlight: -110
+[ 1138.588952] oneplus-negroni kernel: [drm:dpu_encoder_phys_cmd_wait_for_tx_complete] *ERROR* failed wait_for_idle: id:35 ret:-110 intf:1
+[ 1138.589342] oneplus-negroni kernel: panel-samsung-amb670yf07-1440-3216-dsc ae94000.dsi.0: Skipping unprepare of already unprepared panel

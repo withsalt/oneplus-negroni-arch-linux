@@ -1,0 +1,137 @@
+#!/usr/bin/python3
+"""Apply the opt-in Negroni policy and restore normal charging on exit."""
+import argparse
+import os
+from pathlib import Path
+import re
+import signal
+import socket
+import sys
+import threading
+import time
+
+BATTERY = Path("/sys/class/power_supply/qcom-battmgr-bat")
+CONFIG = Path("/etc/negroni-charge-limit.conf")
+
+
+def read_config(path):
+    values = {"START_THRESHOLD": 75, "END_THRESHOLD": 80}
+    seen = set()
+    for number, line in enumerate(path.read_text().splitlines(), 1):
+        line = line.split("#", 1)[0].strip()
+        if not line:
+            continue
+        match = re.fullmatch(r"(START_THRESHOLD|END_THRESHOLD)\s*=\s*([0-9]{1,3})", line)
+        if not match or match[1] in seen:
+            raise ValueError(f"{path}:{number}: invalid or duplicate setting")
+        seen.add(match[1])
+        values[match[1]] = int(match[2], 10)
+    start, end = values["START_THRESHOLD"], values["END_THRESHOLD"]
+    if not 0 <= start < end <= 100:
+        raise ValueError("thresholds must satisfy 0 <= START_THRESHOLD < END_THRESHOLD <= 100")
+    return start, end
+
+
+def read(battery, name):
+    return (battery / name).read_text().strip()
+
+
+def write(battery, name, value):
+    # r+ prevents accidentally creating a fake sysfs control on an old kernel.
+    with (battery / name).open("r+") as stream:
+        stream.write(f"{value}\n")
+        stream.flush()
+
+
+def apply(battery, start, end):
+    current_start = int(read(battery, "charge_control_start_threshold"))
+    current_end = int(read(battery, "charge_control_end_threshold"))
+    settings = [("charge_control_start_threshold", start, current_start),
+                ("charge_control_end_threshold", end, current_end)]
+    if start >= current_end:
+        settings.reverse()
+    for name, value, old in settings:
+        if value != old:
+            write(battery, name, value)
+    if read(battery, "charge_limit_enable") != "1":
+        write(battery, "charge_limit_enable", 1)
+    actual = (int(read(battery, "charge_control_start_threshold")),
+              int(read(battery, "charge_control_end_threshold")),
+              read(battery, "charge_limit_enable"))
+    if actual != (start, end, "1"):
+        raise OSError(f"policy readback mismatch: {actual}")
+    state = read(battery, "charge_limit_status")
+    if "error=0" not in state.split() or "state=pending" in state.split():
+        raise OSError(f"driver has not applied policy: {state}")
+    return state
+
+
+def disable(battery):
+    try:
+        write(battery, "charge_limit_enable", 0)
+    except FileNotFoundError:
+        # No device means no policy instance; reprobe defaults to disabled.
+        return
+    if read(battery, "charge_limit_enable") != "0":
+        raise OSError("driver did not disable the policy")
+
+
+def notify(message):
+    address = os.environ.get("NOTIFY_SOCKET")
+    if not address:
+        return
+    if address.startswith("@"):
+        address = "\0" + address[1:]
+    with socket.socket(socket.AF_UNIX, socket.SOCK_DGRAM) as sock:
+        sock.sendto(message.encode(), address)
+
+
+def run(battery, config, stop, interval=5, startup_timeout=60):
+    ready = False
+    previous = None
+    deadline = time.monotonic() + startup_timeout
+    try:
+        start, end = read_config(config)
+        while not stop.is_set():
+            try:
+                state = apply(battery, start, end)
+                message = f"Start {start}%, stop {end}%: {state}"
+                if not ready:
+                    notify("READY=1")
+                    ready = True
+            except (OSError, ValueError) as exc:
+                message = f"Waiting for charge control: {exc}"
+                if not ready and time.monotonic() >= deadline:
+                    raise RuntimeError(message) from exc
+            if message != previous:
+                print(message, flush=True)
+                previous = message
+            notify(f"STATUS={message}\nWATCHDOG=1")
+            stop.wait(interval)
+    finally:
+        disable(battery)
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("action", choices=("run", "disable", "status"))
+    args = parser.parse_args()
+    if args.action == "disable":
+        disable(BATTERY)
+    elif args.action == "status":
+        print(read(BATTERY, "charge_limit_status"))
+        print("Start:", read(BATTERY, "charge_control_start_threshold") + "%")
+        print("Stop:", read(BATTERY, "charge_control_end_threshold") + "%")
+    else:
+        stop = threading.Event()
+        signal.signal(signal.SIGTERM, lambda *_: stop.set())
+        signal.signal(signal.SIGINT, lambda *_: stop.set())
+        run(BATTERY, CONFIG, stop)
+
+
+if __name__ == "__main__":
+    try:
+        main()
+    except (OSError, ValueError, RuntimeError) as exc:
+        print(f"negroni-charge-limit: {exc}", file=sys.stderr)
+        sys.exit(1)

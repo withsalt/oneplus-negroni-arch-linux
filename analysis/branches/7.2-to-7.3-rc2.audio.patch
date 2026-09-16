@@ -1,0 +1,1044 @@
+diff --git a/sound/soc/qcom/common.c b/sound/soc/qcom/common.c
+index edc461169..d9f256d51 100644
+--- a/sound/soc/qcom/common.c
++++ b/sound/soc/qcom/common.c
+@@ -23,6 +23,161 @@ static const struct snd_soc_dapm_widget qcom_jack_snd_widgets[] = {
+ 	SND_SOC_DAPM_SPK("DP7 Jack", NULL),
+ };
+ 
++static struct device_node *qcom_snd_get_link_node(struct snd_soc_pcm_runtime *rtd)
++{
++	struct snd_soc_dai *cpu_dai = snd_soc_rtd_to_cpu(rtd, 0);
++	struct snd_soc_card *card = rtd->card;
++	struct of_phandle_args args;
++	int ret;
++
++	if (!card->dev || !card->dev->of_node)
++		return NULL;
++
++	for_each_available_child_of_node_scoped(card->dev->of_node, np) {
++		struct device_node *cpu_np __free(device_node) =
++			of_get_child_by_name(np, "cpu");
++
++		if (!cpu_np)
++			continue;
++
++		ret = of_parse_phandle_with_args(cpu_np, "sound-dai", "#sound-dai-cells", 0,
++						 &args);
++		if (ret)
++			continue;
++
++		if (args.np == rtd->dai_link->cpus[0].of_node &&
++		    args.args_count == 1 && args.args[0] == cpu_dai->id) {
++			of_node_put(args.np);
++			return of_node_get(np);
++		}
++
++		of_node_put(args.np);
++	}
++
++	return NULL;
++}
++
++static int qcom_snd_parse_tdm_slot(struct device_node *np,
++				   struct qcom_snd_tdm_slot_cfg *cfg)
++{
++	memset(cfg, 0, sizeof(*cfg));
++
++	return snd_soc_of_parse_tdm_slot(np, &cfg->tx_mask, &cfg->rx_mask,
++					 &cfg->slots, &cfg->slot_width);
++}
++
++static int qcom_snd_normalize_tdm_slots(struct qcom_snd_tdm_slot_cfg *cpu_cfg,
++					struct qcom_snd_tdm_slot_cfg *codec_cfg)
++{
++	unsigned int slots;
++	unsigned int slot_width;
++
++	if (cpu_cfg->slots && codec_cfg->slots && cpu_cfg->slots != codec_cfg->slots)
++		return -EINVAL;
++
++	if (cpu_cfg->slot_width && codec_cfg->slot_width &&
++	    cpu_cfg->slot_width != codec_cfg->slot_width)
++		return -EINVAL;
++
++	slots = cpu_cfg->slots ?: codec_cfg->slots;
++	if (!slots)
++		return 0;
++
++	slot_width = cpu_cfg->slot_width ?: codec_cfg->slot_width;
++	if (!slot_width)
++		return -EINVAL;
++
++	cpu_cfg->slots = slots;
++	codec_cfg->slots = slots;
++	cpu_cfg->slot_width = slot_width;
++	codec_cfg->slot_width = slot_width;
++
++	return 0;
++}
++
++static int qcom_snd_parse_dai_tdm_slots(struct snd_soc_pcm_runtime *rtd,
++					struct qcom_snd_tdm_slot_cfg *cpu_cfg,
++					struct qcom_snd_tdm_slot_cfg *codec_cfg)
++{
++	struct device_node *link_np __free(device_node) = qcom_snd_get_link_node(rtd);
++	int ret;
++
++	if (!link_np)
++		return -ENOENT;
++
++	struct device_node *cpu_np __free(device_node) =
++		of_get_child_by_name(link_np, "cpu");
++	struct device_node *codec_np __free(device_node) =
++		of_get_child_by_name(link_np, "codec");
++	if (!cpu_np || !codec_np)
++		return -ENOENT;
++
++	ret = qcom_snd_parse_tdm_slot(cpu_np, cpu_cfg);
++	if (ret)
++		return ret;
++
++	return qcom_snd_parse_tdm_slot(codec_np, codec_cfg);
++}
++
++int qcom_snd_get_dai_tdm_slots(struct snd_soc_pcm_runtime *rtd,
++			       struct qcom_snd_tdm_slot_cfg *cpu_cfg,
++			       struct qcom_snd_tdm_slot_cfg *codec_cfg)
++{
++	int ret;
++
++	ret = qcom_snd_parse_dai_tdm_slots(rtd, cpu_cfg, codec_cfg);
++	if (ret)
++		return ret;
++
++	return qcom_snd_normalize_tdm_slots(cpu_cfg, codec_cfg);
++}
++EXPORT_SYMBOL_GPL(qcom_snd_get_dai_tdm_slots);
++
++int qcom_snd_apply_dai_tdm_slots_cfg(struct snd_soc_pcm_runtime *rtd,
++				     const struct qcom_snd_tdm_slot_cfg *cpu_cfg,
++				     const struct qcom_snd_tdm_slot_cfg *codec_cfg)
++{
++	struct snd_soc_dai *cpu_dai = snd_soc_rtd_to_cpu(rtd, 0);
++	struct snd_soc_dai *codec_dai;
++	int i;
++	int ret;
++
++	if (!cpu_cfg->slots)
++		return 0;
++
++	ret = snd_soc_dai_set_tdm_slot(cpu_dai, cpu_cfg->tx_mask, cpu_cfg->rx_mask,
++				       cpu_cfg->slots, cpu_cfg->slot_width);
++	if (ret)
++		return ret;
++
++	for_each_rtd_codec_dais(rtd, i, codec_dai) {
++		ret = snd_soc_dai_set_tdm_slot(codec_dai,
++					       codec_cfg->tx_mask,
++					       codec_cfg->rx_mask,
++					       codec_cfg->slots,
++					       codec_cfg->slot_width);
++		if (ret)
++			return ret;
++	}
++
++	return 0;
++}
++EXPORT_SYMBOL_GPL(qcom_snd_apply_dai_tdm_slots_cfg);
++
++int qcom_snd_apply_dai_tdm_slots(struct snd_soc_pcm_runtime *rtd)
++{
++	struct qcom_snd_tdm_slot_cfg cpu_cfg;
++	struct qcom_snd_tdm_slot_cfg codec_cfg;
++	int ret;
++
++	ret = qcom_snd_get_dai_tdm_slots(rtd, &cpu_cfg, &codec_cfg);
++	if (ret)
++		return ret == -ENOENT ? 0 : ret;
++
++	return qcom_snd_apply_dai_tdm_slots_cfg(rtd, &cpu_cfg, &codec_cfg);
++}
++EXPORT_SYMBOL_GPL(qcom_snd_apply_dai_tdm_slots);
++
+ int qcom_snd_parse_of(struct snd_soc_card *card)
+ {
+ 	struct device *dev = card->dev;
+@@ -91,7 +246,7 @@ int qcom_snd_parse_of(struct snd_soc_card *card)
+ 
+ 		ret = of_property_read_string(np, "link-name", &link->name);
+ 		if (ret) {
+-			dev_err(card->dev, "error getting codec dai_link name\n");
++			dev_err(dev, "error getting codec dai_link name\n");
+ 			return ret;
+ 		}
+ 
+@@ -109,7 +264,7 @@ int qcom_snd_parse_of(struct snd_soc_card *card)
+ 
+ 		ret = snd_soc_of_get_dlc(cpu, &args, link->cpus, 0);
+ 		if (ret) {
+-			dev_err_probe(card->dev, ret,
++			dev_err_probe(dev, ret,
+ 				      "%s: error getting cpu dai name\n", link->name);
+ 			return ret;
+ 		}
+@@ -126,7 +281,7 @@ int qcom_snd_parse_of(struct snd_soc_card *card)
+ 					"sound-dai",
+ 					0);
+ 			if (!link->platforms->of_node) {
+-				dev_err(card->dev, "%s: platform dai not found\n", link->name);
++				dev_err(dev, "%s: platform dai not found\n", link->name);
+ 				return -EINVAL;
+ 			}
+ 		} else {
+@@ -136,7 +291,7 @@ int qcom_snd_parse_of(struct snd_soc_card *card)
+ 		if (codec) {
+ 			ret = snd_soc_of_get_dai_link_codecs(dev, codec, link);
+ 			if (ret < 0) {
+-				dev_err_probe(card->dev, ret,
++				dev_err_probe(dev, ret,
+ 					      "%s: codec dai not found\n", link->name);
+ 				return ret;
+ 			}
+@@ -215,6 +370,7 @@ int qcom_snd_wcd_jack_setup(struct snd_soc_pcm_runtime *rtd,
+ 	}
+ 
+ 	switch (cpu_dai->id) {
++	case LPI_MI2S_RX_0:
+ 	case TX_CODEC_DMA_TX_0:
+ 	case TX_CODEC_DMA_TX_1:
+ 	case TX_CODEC_DMA_TX_2:
+diff --git a/sound/soc/qcom/qdsp6/q6apm-lpass-dais.c b/sound/soc/qcom/qdsp6/q6apm-lpass-dais.c
+index 006b28348..e204fd59e 100644
+--- a/sound/soc/qcom/qdsp6/q6apm-lpass-dais.c
++++ b/sound/soc/qcom/qdsp6/q6apm-lpass-dais.c
+@@ -2,10 +2,12 @@
+ // Copyright (c) 2021, Linaro Limited
+ 
+ #include <dt-bindings/sound/qcom,q6dsp-lpass-ports.h>
++#include <linux/clk.h>
+ #include <linux/err.h>
+ #include <linux/init.h>
+ #include <linux/module.h>
+ #include <linux/device.h>
++#include <linux/of.h>
+ #include <linux/platform_device.h>
+ #include <linux/slab.h>
+ #include <sound/pcm.h>
+@@ -15,15 +17,54 @@
+ #include "q6dsp-common.h"
+ #include "audioreach.h"
+ #include "q6apm.h"
++#include "q6prm.h"
+ 
+ #define AUDIOREACH_BE_PCM_BASE	16
+ 
++struct q6apm_dai_priv_data {
++	struct clk *mclk;
++	struct clk *bclk;
++	bool mclk_enabled, bclk_enabled;
++};
++
+ struct q6apm_lpass_dai_data {
+ 	struct q6apm_graph *graph[APM_PORT_MAX];
+ 	bool is_port_started[APM_PORT_MAX];
+ 	struct audioreach_module_config module_config[APM_PORT_MAX];
++	struct q6apm_dai_priv_data priv[APM_PORT_MAX];
+ };
+ 
++static void q6apm_lpass_dai_disable_clocks(struct q6apm_lpass_dai_data *dai_data, int id)
++{
++	if (dai_data->priv[id].mclk_enabled) {
++		clk_disable_unprepare(dai_data->priv[id].mclk);
++		dai_data->priv[id].mclk_enabled = false;
++	}
++
++	if (dai_data->priv[id].bclk_enabled) {
++		clk_disable_unprepare(dai_data->priv[id].bclk);
++		dai_data->priv[id].bclk_enabled = false;
++	}
++}
++
++static void q6apm_lpass_dai_put_clocks(struct q6apm_lpass_dai_data *dai_data)
++{
++	int i;
++
++	for (i = 0; i < APM_PORT_MAX; i++) {
++		q6apm_lpass_dai_disable_clocks(dai_data, i);
++
++		if (dai_data->priv[i].mclk) {
++			clk_put(dai_data->priv[i].mclk);
++			dai_data->priv[i].mclk = NULL;
++		}
++		if (dai_data->priv[i].bclk) {
++			clk_put(dai_data->priv[i].bclk);
++			dai_data->priv[i].bclk = NULL;
++		}
++	}
++}
++
+ static int q6dma_set_channel_map(struct snd_soc_dai *dai,
+ 				 unsigned int tx_num,
+ 				 const unsigned int *tx_ch_mask,
+@@ -251,6 +292,62 @@ static int q6apm_lpass_dai_startup(struct snd_pcm_substream *substream, struct s
+ 	return 0;
+ }
+ 
++static int q6i2s_dai_startup(struct snd_pcm_substream *substream, struct snd_soc_dai *dai)
++{
++	return q6apm_lpass_dai_startup(substream, dai);
++}
++
++static void q6i2s_lpass_dai_shutdown(struct snd_pcm_substream *substream, struct snd_soc_dai *dai)
++{
++	struct q6apm_lpass_dai_data *dai_data = dev_get_drvdata(dai->dev);
++
++	q6apm_lpass_dai_shutdown(substream, dai);
++	q6apm_lpass_dai_disable_clocks(dai_data, dai->id);
++}
++
++static int q6i2s_set_sysclk(struct snd_soc_dai *dai, int clk_id, unsigned int freq, int dir)
++{
++	struct q6apm_lpass_dai_data *dai_data = dev_get_drvdata(dai->dev);
++	struct clk *sysclk = NULL;
++	bool *enabled = NULL;
++	int ret = 0;
++
++	switch (clk_id) {
++	case LPAIF_MI2S_MCLK:
++		sysclk = dai_data->priv[dai->id].mclk;
++		enabled = &dai_data->priv[dai->id].mclk_enabled;
++		break;
++	case LPAIF_MI2S_BCLK:
++		sysclk = dai_data->priv[dai->id].bclk;
++		enabled = &dai_data->priv[dai->id].bclk_enabled;
++		break;
++	default:
++		return -EINVAL;
++	}
++
++	if (sysclk) {
++		ret = clk_set_rate(sysclk, freq);
++		if (ret) {
++			dev_err(dai->dev, "Error, Unable to set rate (%d) for sysclk %d\n",
++				freq, clk_id);
++			return ret;
++		}
++
++		if (*enabled)
++			return 0;
++
++		ret = clk_prepare_enable(sysclk);
++		if (ret) {
++			dev_err(dai->dev, "Error, Unable to prepare (%d) sysclk\n", clk_id);
++			return ret;
++		}
++
++		*enabled = true;
++	}
++
++	return ret;
++}
++
+ static int q6i2s_set_fmt(struct snd_soc_dai *dai, unsigned int fmt)
+ {
+ 	struct q6apm_lpass_dai_data *dai_data = dev_get_drvdata(dai->dev);
+@@ -261,6 +358,53 @@ static int q6i2s_set_fmt(struct snd_soc_dai *dai, unsigned int fmt)
+ 	return 0;
+ }
+ 
++static int q6tdm_set_tdm_slot(struct snd_soc_dai *dai,
++			      unsigned int tx_mask,
++			      unsigned int rx_mask,
++			      int slots, int slot_width)
++{
++	struct q6apm_lpass_dai_data *dai_data = dev_get_drvdata(dai->dev);
++	struct audioreach_module_config *cfg = &dai_data->module_config[dai->id];
++	unsigned int cap_mask, slot_mask;
++
++	if (slot_width != 16 && slot_width != 32) {
++		dev_err(dai->dev, "%s: invalid slot_width %d\n", __func__, slot_width);
++		return -EINVAL;
++	}
++
++	switch (slots) {
++	case 2:
++	case 4:
++	case 8:
++	case 16:
++		cap_mask = GENMASK(slots - 1, 0);
++		break;
++	default:
++		dev_err(dai->dev, "%s: invalid slots %d\n", __func__, slots);
++		return -EINVAL;
++	}
++
++	switch (dai->id) {
++	case PRIMARY_TDM_RX_0 ... QUINARY_TDM_TX_7:
++		slot_mask = (dai->id & 0x1) ? tx_mask : rx_mask;
++		if (slot_mask & ~cap_mask) {
++			dev_err(dai->dev, "%s: invalid slot mask 0x%x for %d slots\n",
++				__func__, slot_mask, slots);
++			return -EINVAL;
++		}
++
++		cfg->nslots_per_frame = slots;
++		cfg->slot_width = slot_width;
++		cfg->slot_mask = slot_mask;
++		break;
++	default:
++		dev_err(dai->dev, "%s: invalid dai id 0x%x\n", __func__, dai->id);
++		return -EINVAL;
++	}
++
++	return 0;
++}
++
+ static const struct snd_soc_dai_ops q6dma_ops = {
+ 	.prepare	= q6apm_lpass_dai_prepare,
+ 	.startup	= q6apm_lpass_dai_startup,
+@@ -272,11 +416,12 @@ static const struct snd_soc_dai_ops q6dma_ops = {
+ 
+ static const struct snd_soc_dai_ops q6i2s_ops = {
+ 	.prepare	= q6apm_lpass_dai_prepare,
+-	.startup	= q6apm_lpass_dai_startup,
+-	.shutdown	= q6apm_lpass_dai_shutdown,
++	.startup	= q6i2s_dai_startup,
++	.shutdown	= q6i2s_lpass_dai_shutdown,
+ 	.set_channel_map  = q6dma_set_channel_map,
+ 	.hw_params        = q6dma_hw_params,
+ 	.set_fmt	= q6i2s_set_fmt,
++	.set_sysclk	= q6i2s_set_sysclk,
+ 	.trigger	= q6apm_lpass_dai_trigger,
+ };
+ 
+@@ -289,6 +434,17 @@ static const struct snd_soc_dai_ops q6hdmi_ops = {
+ 	.trigger	= q6apm_lpass_dai_trigger,
+ };
+ 
++static const struct snd_soc_dai_ops q6tdm_ops = {
++	.prepare	= q6apm_lpass_dai_prepare,
++	.startup	= q6apm_lpass_dai_startup,
++	.shutdown	= q6i2s_lpass_dai_shutdown,
++	.set_tdm_slot	= q6tdm_set_tdm_slot,
++	.hw_params	= q6dma_hw_params,
++	.set_fmt	= q6i2s_set_fmt,
++	.set_sysclk	= q6i2s_set_sysclk,
++	.trigger	= q6apm_lpass_dai_trigger,
++};
++
+ static const struct snd_soc_component_driver q6apm_lpass_dai_component = {
+ 	.name = "q6apm-be-dai-component",
+ 	.of_xlate_dai_name = q6dsp_audio_ports_of_xlate_dai_name,
+@@ -297,6 +453,65 @@ static const struct snd_soc_component_driver q6apm_lpass_dai_component = {
+ 	.remove_order   = SND_SOC_COMP_ORDER_FIRST,
+ };
+ 
++static int of_q6apm_parse_dai_data(struct device *dev,
++				   struct q6apm_lpass_dai_data *data)
++{
++	int ret;
++
++	for_each_child_of_node_scoped(dev->of_node, node) {
++		struct q6apm_dai_priv_data *priv;
++		int id;
++
++		ret = of_property_read_u32(node, "reg", &id);
++		if (ret || id < 0 || id >= APM_PORT_MAX) {
++			dev_err(dev, "valid dai id not found:%d\n", ret);
++			continue;
++		}
++
++		switch (id) {
++		/* MI2S specific properties */
++		case PRIMARY_MI2S_RX ... QUATERNARY_MI2S_TX:
++		case QUINARY_MI2S_RX ... QUINARY_MI2S_TX:
++		case SENARY_MI2S_RX ... SENARY_MI2S_TX:
++		case PRIMARY_TDM_RX_0 ... QUINARY_TDM_TX_7:
++			priv = &data->priv[id];
++			priv->mclk = of_clk_get_by_name(node, "mclk");
++			if (IS_ERR(priv->mclk)) {
++				int err = PTR_ERR(priv->mclk);
++
++				priv->mclk = NULL;
++				if (err == -EPROBE_DEFER) {
++					q6apm_lpass_dai_put_clocks(data);
++					return dev_err_probe(dev, err,
++							     "unable to get mi2s mclk\n");
++				}
++			}
++
++			priv->bclk = of_clk_get_by_name(node, "bclk");
++			if (IS_ERR(priv->bclk)) {
++				int err = PTR_ERR(priv->bclk);
++
++				priv->bclk = NULL;
++				if (err == -EPROBE_DEFER) {
++					q6apm_lpass_dai_put_clocks(data);
++					return dev_err_probe(dev, err,
++							     "unable to get mi2s bclk\n");
++				}
++			}
++			break;
++		default:
++			break;
++		}
++	}
++
++	return 0;
++}
++
++static void q6apm_lpass_dai_clocks_action(void *data)
++{
++	q6apm_lpass_dai_put_clocks(data);
++}
++
+ static int q6apm_lpass_dai_dev_probe(struct platform_device *pdev)
+ {
+ 	struct q6dsp_audio_port_dai_driver_config cfg;
+@@ -304,17 +519,26 @@ static int q6apm_lpass_dai_dev_probe(struct platform_device *pdev)
+ 	struct snd_soc_dai_driver *dais;
+ 	struct device *dev = &pdev->dev;
+ 	int num_dais;
++	int ret;
+ 
+ 	dai_data = devm_kzalloc(dev, sizeof(*dai_data), GFP_KERNEL);
+ 	if (!dai_data)
+ 		return -ENOMEM;
+ 
+ 	dev_set_drvdata(dev, dai_data);
++	ret = of_q6apm_parse_dai_data(dev, dai_data);
++	if (ret)
++		return ret;
++
++	ret = devm_add_action_or_reset(dev, q6apm_lpass_dai_clocks_action, dai_data);
++	if (ret)
++		return ret;
+ 
+ 	memset(&cfg, 0, sizeof(cfg));
+ 	cfg.q6i2s_ops = &q6i2s_ops;
+ 	cfg.q6dma_ops = &q6dma_ops;
+ 	cfg.q6hdmi_ops = &q6hdmi_ops;
++	cfg.q6tdm_ops = &q6tdm_ops;
+ 	dais = q6dsp_audio_ports_set_config(dev, &cfg, &num_dais);
+ 
+ 	return devm_snd_soc_register_component(dev, &q6apm_lpass_dai_component, dais, num_dais);
+diff --git a/sound/soc/qcom/sc8280xp.c b/sound/soc/qcom/sc8280xp.c
+index 98b15a527..4d48e1012 100644
+--- a/sound/soc/qcom/sc8280xp.c
++++ b/sound/soc/qcom/sc8280xp.c
+@@ -12,17 +12,166 @@
+ #include <sound/jack.h>
+ #include <linux/input-event-codes.h>
+ #include "qdsp6/q6afe.h"
++#include "qdsp6/q6apm.h"
++#include "qdsp6/q6prm.h"
++#include "qdsp6/q6dsp-common.h"
+ #include "common.h"
+ #include "sdw.h"
+ 
++#define I2S_MCLKFS 256
++
++#define I2S_MCLK_RATE(rate) \
++	((rate) * (I2S_MCLKFS))
++#define I2S_BIT_RATE(rate, channels, format) \
++	((rate) * (channels) * (format))
++
++static struct snd_soc_dapm_widget sc8280xp_dapm_widgets[] = {
++	SND_SOC_DAPM_HP("Headphone Jack", NULL),
++	SND_SOC_DAPM_MIC("Mic Jack", NULL),
++	SND_SOC_DAPM_SPK("DP0 Jack", NULL),
++	SND_SOC_DAPM_SPK("DP1 Jack", NULL),
++	SND_SOC_DAPM_SPK("DP2 Jack", NULL),
++	SND_SOC_DAPM_SPK("DP3 Jack", NULL),
++	SND_SOC_DAPM_SPK("DP4 Jack", NULL),
++	SND_SOC_DAPM_SPK("DP5 Jack", NULL),
++	SND_SOC_DAPM_SPK("DP6 Jack", NULL),
++	SND_SOC_DAPM_SPK("DP7 Jack", NULL),
++};
++
++static const struct snd_kcontrol_new max98090_controls[] = {
++	SOC_DAPM_PIN_SWITCH("Headset Mic12"),
++	SOC_DAPM_PIN_SWITCH("Headphone"),
++	SOC_DAPM_PIN_SWITCH("Headset Mic56"),
++	SOC_DAPM_PIN_SWITCH("Speaker"),
++	SOC_DAPM_PIN_SWITCH("Receiver"),
++	SOC_DAPM_PIN_SWITCH("Int Mic"),
++};
++
++static const struct snd_soc_dapm_widget max98090_dapm_widgets[] = {
++	SND_SOC_DAPM_HP("Headphone Jack", NULL),
++	SND_SOC_DAPM_MIC("Mic Jack", NULL),
++	SND_SOC_DAPM_HP("Headphone", NULL),
++	SND_SOC_DAPM_MIC("Headset Mic12", NULL),
++	SND_SOC_DAPM_MIC("Headset Mic56", NULL),
++	SND_SOC_DAPM_MIC("Int Mic", NULL),
++	SND_SOC_DAPM_SPK("Receiver", NULL),
++	SND_SOC_DAPM_SPK("Speaker", NULL),
++};
++
++struct qcom_snd_soc_common {
++	const char *driver_name;
++	const struct snd_soc_dapm_widget *dapm_widgets;
++	int num_dapm_widgets;
++	const struct snd_soc_dapm_route *dapm_routes;
++	int num_dapm_routes;
++	const struct snd_kcontrol_new *controls;
++	int num_controls;
++	unsigned int codec_dai_fmt;
++	bool codec_sysclk_set;
++	bool mi2s_mclk_enable;
++	bool mi2s_bclk_enable;
++	bool wcd_jack;
++	int (*snd_prepare)(struct snd_pcm_substream *substream);
++};
++
+ struct sc8280xp_snd_data {
+ 	bool stream_prepared[AFE_PORT_MAX];
+ 	struct snd_soc_card *card;
+ 	struct snd_soc_jack jack;
+ 	struct snd_soc_jack dp_jack[8];
++	const struct qcom_snd_soc_common *priv;
+ 	bool jack_setup;
+ };
+ 
++static inline int sc8280xp_get_mclk_freq(struct snd_pcm_hw_params *params)
++{
++	int rate = params_rate(params);
++
++	switch (rate) {
++	case 11025:
++	case 44100:
++	case 88200:
++		return I2S_MCLK_RATE(44100);
++	default:
++		break;
++	}
++
++	return I2S_MCLK_RATE(rate);
++}
++
++static inline int sc8280xp_get_bclk_freq(struct snd_pcm_hw_params *params)
++{
++	return I2S_BIT_RATE(params_rate(params),
++			    params_channels(params),
++			    snd_pcm_format_width(params_format(params)));
++}
++
++static int sc8280xp_tdm_hw_params(struct snd_pcm_substream *substream,
++				  struct snd_pcm_hw_params *params)
++{
++	struct snd_soc_pcm_runtime *rtd = snd_soc_substream_to_rtd(substream);
++	struct sc8280xp_snd_data *data = snd_soc_card_get_drvdata(rtd->card);
++	struct snd_soc_dai *cpu_dai = snd_soc_rtd_to_cpu(rtd, 0);
++	struct snd_soc_dai *codec_dai;
++	struct qcom_snd_tdm_slot_cfg cpu_cfg;
++	struct qcom_snd_tdm_slot_cfg codec_cfg;
++	int bclk_freq;
++	int ret;
++	int i;
++
++	ret = qcom_snd_get_dai_tdm_slots(rtd, &cpu_cfg, &codec_cfg);
++	if (ret)
++		return ret == -ENOENT ? 0 : ret;
++
++	if (!cpu_cfg.slots)
++		return 0;
++
++	ret = snd_soc_dai_set_fmt(cpu_dai, SND_SOC_DAIFMT_BP_FP);
++	if (ret && ret != -ENOTSUPP)
++		return ret;
++
++	if (data->priv->codec_dai_fmt) {
++		for_each_rtd_codec_dais(rtd, i, codec_dai) {
++			ret = snd_soc_dai_set_fmt(codec_dai,
++						  data->priv->codec_dai_fmt);
++			if (ret && ret != -ENOTSUPP)
++				return ret;
++		}
++	}
++
++	ret = qcom_snd_apply_dai_tdm_slots_cfg(rtd, &cpu_cfg, &codec_cfg);
++	if (ret)
++		return ret;
++
++	bclk_freq = snd_soc_tdm_params_to_bclk(params, cpu_cfg.slot_width, cpu_cfg.slots, 1);
++	if (bclk_freq <= 0)
++		return -EINVAL;
++
++	if (data->priv->mi2s_bclk_enable) {
++		ret = snd_soc_dai_set_sysclk(cpu_dai, LPAIF_MI2S_BCLK, bclk_freq,
++					     SND_SOC_CLOCK_IN);
++		if (ret && ret != -ENOTSUPP) {
++			dev_err(rtd->dev, "%s: failed to set cpu sysclk: %d\n",
++				__func__, ret);
++			return ret;
++		}
++	}
++
++	if (data->priv->codec_sysclk_set) {
++		for_each_rtd_codec_dais(rtd, i, codec_dai) {
++			ret = snd_soc_dai_set_sysclk(codec_dai, 0, bclk_freq,
++						     SND_SOC_CLOCK_IN);
++			if (ret && ret != -ENOTSUPP) {
++				dev_err(rtd->dev, "%s: failed to set codec sysclk on %s: %d\n",
++					__func__, codec_dai->name, ret);
++				return ret;
++			}
++		}
++	}
++
++	return 0;
++}
++
+ static int sc8280xp_snd_init(struct snd_soc_pcm_runtime *rtd)
+ {
+ 	struct sc8280xp_snd_data *data = snd_soc_card_get_drvdata(rtd->card);
+@@ -32,10 +181,6 @@ static int sc8280xp_snd_init(struct snd_soc_pcm_runtime *rtd)
+ 	int dp_pcm_id = 0;
+ 
+ 	switch (cpu_dai->id) {
+-	case PRIMARY_MI2S_RX...QUATERNARY_MI2S_TX:
+-	case QUINARY_MI2S_RX...QUINARY_MI2S_TX:
+-		snd_soc_dai_set_fmt(cpu_dai, SND_SOC_DAIFMT_BP_FP);
+-		break;
+ 	case WSA_CODEC_DMA_RX_0:
+ 	case WSA_CODEC_DMA_RX_1:
+ 		/*
+@@ -64,7 +209,10 @@ static int sc8280xp_snd_init(struct snd_soc_pcm_runtime *rtd)
+ 	if (dp_jack)
+ 		return qcom_snd_dp_jack_setup(rtd, dp_jack, dp_pcm_id);
+ 
+-	return qcom_snd_wcd_jack_setup(rtd, &data->jack, &data->jack_setup);
++	if (data->priv->wcd_jack)
++		return qcom_snd_wcd_jack_setup(rtd, &data->jack, &data->jack_setup);
++
++	return 0;
+ }
+ 
+ static int sc8280xp_be_hw_params_fixup(struct snd_soc_pcm_runtime *rtd,
+@@ -96,12 +244,118 @@ static int sc8280xp_be_hw_params_fixup(struct snd_soc_pcm_runtime *rtd,
+ 	return 0;
+ }
+ 
++static int sc8280xp_snd_hw_params(struct snd_pcm_substream *substream,
++				  struct snd_pcm_hw_params *params)
++{
++	struct snd_soc_pcm_runtime *rtd = snd_soc_substream_to_rtd(substream);
++	struct snd_soc_dai *codec_dai = snd_soc_rtd_to_codec(rtd, 0);
++	struct snd_soc_dai *cpu_dai = snd_soc_rtd_to_cpu(rtd, 0);
++	struct sc8280xp_snd_data *data = snd_soc_card_get_drvdata(rtd->card);
++	int mclk_freq = sc8280xp_get_mclk_freq(params);
++	int bclk_freq = sc8280xp_get_bclk_freq(params);
++	int ret;
++
++	switch (cpu_dai->id) {
++	case PRIMARY_MI2S_RX ... QUATERNARY_MI2S_TX:
++	case QUINARY_MI2S_RX ... QUINARY_MI2S_TX:
++	case SENARY_MI2S_RX ... SENARY_MI2S_TX:
++	case LPI_MI2S_RX_0 ... LPI_MI2S_TX_4:
++		ret = snd_soc_dai_set_fmt(cpu_dai, SND_SOC_DAIFMT_BP_FP);
++		if (ret && ret != -ENOTSUPP)
++			return ret;
++
++		if (data->priv->codec_dai_fmt) {
++			ret = snd_soc_dai_set_fmt(codec_dai,
++						  data->priv->codec_dai_fmt);
++			if (ret && ret != -ENOTSUPP)
++				return ret;
++		}
++
++		if (data->priv->mi2s_mclk_enable) {
++			ret = snd_soc_dai_set_sysclk(cpu_dai,
++						     LPAIF_MI2S_MCLK, mclk_freq,
++						     SND_SOC_CLOCK_OUT);
++			if (ret)
++				return ret;
++		}
++
++		if (data->priv->mi2s_bclk_enable) {
++			ret = snd_soc_dai_set_sysclk(cpu_dai,
++						     LPAIF_MI2S_BCLK, bclk_freq,
++						     SND_SOC_CLOCK_OUT);
++			if (ret)
++				return ret;
++		}
++
++		if (data->priv->codec_sysclk_set) {
++			ret = snd_soc_dai_set_sysclk(codec_dai,
++						     0, mclk_freq,
++						     SND_SOC_CLOCK_IN);
++			if (ret && ret != -ENOTSUPP)
++				return ret;
++		}
++		break;
++	case PRIMARY_TDM_RX_0 ... QUINARY_TDM_TX_7:
++		return sc8280xp_tdm_hw_params(substream, params);
++	default:
++		break;
++	}
++
++	return 0;
++}
++
++/*
++ * WSA and WSA2 are handled as a single interface with the
++ * following channels mask:
++ *  __________________________________________________
++ *  | Bits  |     3    |     2    |   1     |     0   |
++ *  ---------------------------------------------------
++ *  | Line  | WSA2 Ch2 | WSA2 Ch1 | WSA Ch2 | WSA Ch1 |
++ *  ---------------------------------------------------
++ *
++ * The Ayaneo Pocket S2 speakers are connected only to
++ * the WSA2 interface and the WSA interface is not enabled.
++ *
++ * Set the channel mapping on the WSA2 channels only.
++ */
++static const unsigned int ayaneo_ps2_channels_mapping[] = {
++	0,			/* WSA Ch1 */
++	0,			/* WSA Ch2 */
++	PCM_CHANNEL_FL,		/* WSA2 Ch1 */
++	PCM_CHANNEL_FR		/* WSA2 Ch2 */
++};
++
++static int ayaneo_ps2_snd_prepare(struct snd_pcm_substream *substream)
++{
++	struct snd_soc_pcm_runtime *rtd = snd_soc_substream_to_rtd(substream);
++	struct snd_soc_dai *cpu_dai = snd_soc_rtd_to_cpu(rtd, 0);
++	unsigned int channels = substream->runtime->channels;
++
++	if (cpu_dai->id != WSA_CODEC_DMA_RX_0)
++		return 0;
++
++	if (channels != 2)
++		return -EINVAL;
++
++	return snd_soc_dai_set_channel_map(cpu_dai, 0, NULL,
++					   ARRAY_SIZE(ayaneo_ps2_channels_mapping),
++					   ayaneo_ps2_channels_mapping);
++}
++
+ static int sc8280xp_snd_prepare(struct snd_pcm_substream *substream)
+ {
+ 	struct snd_soc_pcm_runtime *rtd = snd_soc_substream_to_rtd(substream);
+ 	struct snd_soc_dai *cpu_dai = snd_soc_rtd_to_cpu(rtd, 0);
+ 	struct sc8280xp_snd_data *data = snd_soc_card_get_drvdata(rtd->card);
+ 
++	if (data->priv->snd_prepare) {
++		int ret;
++
++		ret = data->priv->snd_prepare(substream);
++		if (ret)
++			return ret;
++	}
++
+ 	return qcom_snd_sdw_prepare(substream, &data->stream_prepared[cpu_dai->id]);
+ }
+ 
+@@ -117,6 +371,7 @@ static int sc8280xp_snd_hw_free(struct snd_pcm_substream *substream)
+ static const struct snd_soc_ops sc8280xp_be_ops = {
+ 	.startup = qcom_snd_sdw_startup,
+ 	.shutdown = qcom_snd_sdw_shutdown,
++	.hw_params = sc8280xp_snd_hw_params,
+ 	.hw_free = sc8280xp_snd_hw_free,
+ 	.prepare = sc8280xp_snd_prepare,
+ };
+@@ -145,38 +400,182 @@ static int sc8280xp_platform_probe(struct platform_device *pdev)
+ 	card = devm_kzalloc(dev, sizeof(*card), GFP_KERNEL);
+ 	if (!card)
+ 		return -ENOMEM;
+-	card->owner = THIS_MODULE;
++
+ 	/* Allocate the private data */
+ 	data = devm_kzalloc(dev, sizeof(*data), GFP_KERNEL);
+ 	if (!data)
+ 		return -ENOMEM;
+ 
++	data->priv = of_device_get_match_data(dev);
++	if (!data->priv)
++		return -ENODEV;
++
++	card->owner = THIS_MODULE;
+ 	card->dev = dev;
+ 	dev_set_drvdata(dev, card);
+ 	snd_soc_card_set_drvdata(card, data);
++	card->dapm_widgets = data->priv->dapm_widgets;
++	card->num_dapm_widgets = data->priv->num_dapm_widgets;
++	card->dapm_routes = data->priv->dapm_routes;
++	card->num_dapm_routes = data->priv->num_dapm_routes;
++	card->controls = data->priv->controls;
++	card->num_controls = data->priv->num_controls;
++
+ 	ret = qcom_snd_parse_of(card);
+ 	if (ret)
+ 		return ret;
+ 
+-	card->driver_name = of_device_get_match_data(dev);
++	card->driver_name = data->priv->driver_name;
+ 	sc8280xp_add_be_ops(card);
+ 	return devm_snd_soc_register_card(dev, card);
+ }
+ 
++static struct qcom_snd_soc_common ayaneo_ps2_priv_data = {
++	.driver_name = "ayaneo-ps2",
++	.dapm_widgets = sc8280xp_dapm_widgets,
++	.num_dapm_widgets = ARRAY_SIZE(sc8280xp_dapm_widgets),
++	.snd_prepare = ayaneo_ps2_snd_prepare,
++	.wcd_jack = true,
++};
++
++static const struct qcom_snd_soc_common eliza_priv_data = {
++	.driver_name = "eliza",
++	.dapm_widgets = sc8280xp_dapm_widgets,
++	.num_dapm_widgets = ARRAY_SIZE(sc8280xp_dapm_widgets),
++	.wcd_jack = true,
++};
++
++static const struct qcom_snd_soc_common hawi_priv_data = {
++	.driver_name = "hawi",
++	.dapm_widgets = sc8280xp_dapm_widgets,
++	.num_dapm_widgets = ARRAY_SIZE(sc8280xp_dapm_widgets),
++	.codec_sysclk_set = true,
++	.mi2s_bclk_enable = true,
++	.wcd_jack = true,
++};
++
++static const struct qcom_snd_soc_common kaanapali_priv_data = {
++	.driver_name = "kaanapali",
++	.dapm_widgets = sc8280xp_dapm_widgets,
++	.num_dapm_widgets = ARRAY_SIZE(sc8280xp_dapm_widgets),
++	.wcd_jack = true,
++};
++
++static const struct qcom_snd_soc_common qcs9100_priv_data = {
++	.driver_name = "sa8775p",
++	.dapm_widgets = sc8280xp_dapm_widgets,
++	.num_dapm_widgets = ARRAY_SIZE(sc8280xp_dapm_widgets),
++};
++
++static const struct qcom_snd_soc_common qcs615_priv_data = {
++	.driver_name = "qcs615",
++	.dapm_widgets = sc8280xp_dapm_widgets,
++	.num_dapm_widgets = ARRAY_SIZE(sc8280xp_dapm_widgets),
++	.codec_sysclk_set = true,
++};
++
++static const struct qcom_snd_soc_common qcm6490_priv_data = {
++	.driver_name = "qcm6490",
++	.dapm_widgets = sc8280xp_dapm_widgets,
++	.num_dapm_widgets = ARRAY_SIZE(sc8280xp_dapm_widgets),
++	.wcd_jack = true,
++};
++
++static const struct qcom_snd_soc_common qcs6490_priv_data = {
++	.driver_name = "qcs6490",
++	.dapm_widgets = sc8280xp_dapm_widgets,
++	.num_dapm_widgets = ARRAY_SIZE(sc8280xp_dapm_widgets),
++	.wcd_jack = true,
++};
++
++static const struct qcom_snd_soc_common qcs8275_priv_data = {
++	.driver_name = "qcs8300",
++	.dapm_widgets = max98090_dapm_widgets,
++	.num_dapm_widgets = ARRAY_SIZE(max98090_dapm_widgets),
++	.controls = max98090_controls,
++	.num_controls = ARRAY_SIZE(max98090_controls),
++	.codec_sysclk_set = true,
++	.codec_dai_fmt = SND_SOC_DAIFMT_NB_NF | SND_SOC_DAIFMT_I2S | SND_SOC_DAIFMT_BC_FC,
++};
++
++static const struct qcom_snd_soc_common sc8280xp_priv_data = {
++	.driver_name = "sc8280xp",
++	.dapm_widgets = sc8280xp_dapm_widgets,
++	.num_dapm_widgets = ARRAY_SIZE(sc8280xp_dapm_widgets),
++	.wcd_jack = true,
++};
++
++static const struct qcom_snd_soc_common sm8450_priv_data = {
++	.driver_name = "sm8450",
++	.dapm_widgets = sc8280xp_dapm_widgets,
++	.num_dapm_widgets = ARRAY_SIZE(sc8280xp_dapm_widgets),
++	.wcd_jack = true,
++	/* I2S Connected to HDMI */
++	.mi2s_mclk_enable = true,
++	.mi2s_bclk_enable = true,
++	.codec_dai_fmt = SND_SOC_DAIFMT_BC_FC |
++			 SND_SOC_DAIFMT_NB_NF |
++			 SND_SOC_DAIFMT_I2S,
++};
++
++static const struct qcom_snd_soc_common sm8475_priv_data = {
++	.driver_name = "sm8475",
++	.dapm_widgets = sc8280xp_dapm_widgets,
++	.num_dapm_widgets = ARRAY_SIZE(sc8280xp_dapm_widgets),
++	.wcd_jack = true,
++};
++
++static const struct qcom_snd_soc_common sm8550_priv_data = {
++	.driver_name = "sm8550",
++	.dapm_widgets = sc8280xp_dapm_widgets,
++	.num_dapm_widgets = ARRAY_SIZE(sc8280xp_dapm_widgets),
++	.wcd_jack = true,
++	/* I2S Connected to HDMI */
++	.mi2s_mclk_enable = true,
++	.mi2s_bclk_enable = true,
++	.codec_dai_fmt = SND_SOC_DAIFMT_BC_FC |
++			 SND_SOC_DAIFMT_NB_NF |
++			 SND_SOC_DAIFMT_I2S,
++};
++
++static const struct qcom_snd_soc_common sm8650_priv_data = {
++	.driver_name = "sm8650",
++	.dapm_widgets = sc8280xp_dapm_widgets,
++	.num_dapm_widgets = ARRAY_SIZE(sc8280xp_dapm_widgets),
++	.wcd_jack = true,
++	/* I2S Connected to HDMI */
++	.mi2s_mclk_enable = true,
++	.mi2s_bclk_enable = true,
++	.codec_dai_fmt = SND_SOC_DAIFMT_BC_FC |
++			 SND_SOC_DAIFMT_NB_NF |
++			 SND_SOC_DAIFMT_I2S,
++};
++
++static const struct qcom_snd_soc_common sm8750_priv_data = {
++	.driver_name = "sm8750",
++	.dapm_widgets = sc8280xp_dapm_widgets,
++	.num_dapm_widgets = ARRAY_SIZE(sc8280xp_dapm_widgets),
++	.wcd_jack = true,
++};
++
+ static const struct of_device_id snd_sc8280xp_dt_match[] = {
+-	{.compatible = "qcom,eliza-sndcard", "eliza"},
+-	{.compatible = "qcom,kaanapali-sndcard", "kaanapali"},
+-	{.compatible = "qcom,qcm6490-idp-sndcard", "qcm6490"},
+-	{.compatible = "qcom,qcs615-sndcard", "qcs615"},
+-	{.compatible = "qcom,qcs6490-rb3gen2-sndcard", "qcs6490"},
+-	{.compatible = "qcom,qcs8275-sndcard", "qcs8300"},
+-	{.compatible = "qcom,qcs9075-sndcard", "sa8775p"},
+-	{.compatible = "qcom,qcs9100-sndcard", "sa8775p"},
+-	{.compatible = "qcom,sc8280xp-sndcard", "sc8280xp"},
+-	{.compatible = "qcom,sm8450-sndcard", "sm8450"},
+-	{.compatible = "qcom,sm8550-sndcard", "sm8550"},
+-	{.compatible = "qcom,sm8650-sndcard", "sm8650"},
+-	{.compatible = "qcom,sm8750-sndcard", "sm8750"},
++	{ .compatible = "ayaneo,pocket-s2-sndcard", .data = &ayaneo_ps2_priv_data },
++	{ .compatible = "qcom,eliza-sndcard", .data = &eliza_priv_data },
++	{ .compatible = "qcom,hawi-sndcard", .data = &hawi_priv_data },
++	{ .compatible = "qcom,kaanapali-sndcard", .data = &kaanapali_priv_data },
++	{ .compatible = "qcom,maili-sndcard", .data = &hawi_priv_data },
++	{ .compatible = "qcom,qcm6490-idp-sndcard", .data = &qcm6490_priv_data },
++	{ .compatible = "qcom,qcs615-sndcard", .data = &qcs615_priv_data },
++	{ .compatible = "qcom,qcs6490-rb3gen2-sndcard", .data = &qcs6490_priv_data },
++	{ .compatible = "qcom,qcs8275-sndcard", .data = &qcs8275_priv_data },
++	{ .compatible = "qcom,qcs9075-sndcard", .data = &qcs9100_priv_data },
++	{ .compatible = "qcom,qcs9100-sndcard", .data = &qcs9100_priv_data },
++	{ .compatible = "qcom,sc8280xp-sndcard", .data = &sc8280xp_priv_data },
++	{ .compatible = "qcom,sm8450-sndcard", .data = &sm8450_priv_data },
++	{ .compatible = "qcom,sm8475-sndcard", .data = &sm8475_priv_data },
++	{ .compatible = "qcom,sm8550-sndcard", .data = &sm8550_priv_data },
++	{ .compatible = "qcom,sm8650-sndcard", .data = &sm8650_priv_data },
++	{ .compatible = "qcom,sm8750-sndcard", .data = &sm8750_priv_data },
+ 	{}
+ };
+ 

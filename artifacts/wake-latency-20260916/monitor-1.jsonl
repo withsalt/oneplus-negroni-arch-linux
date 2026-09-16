@@ -1,0 +1,46 @@
+oneplus@192.168.188.91's  
+{"t": 915.276059652, "kind": "start"}
+{"t": 915.279743983, "kind": "state", "dpms": "On", "gpu": "suspended", "gmu": "suspended", "dpu": "active", "brightness": "400", "kwin_2990": "do_sys_poll"}
+{"t": 927.026043977, "kind": "state", "dpms": "On", "gpu": "suspended", "gmu": "suspended", "dpu": "active", "brightness": "400", "kwin_2990": "__futex_wait"}
+{"t": 927.077829526, "kind": "state", "dpms": "On", "gpu": "active", "gmu": "active", "dpu": "active", "brightness": "400", "kwin_2990": "do_sys_poll"}
+{"t": 927.194478415, "kind": "state", "dpms": "On", "gpu": "active", "gmu": "active", "dpu": "active", "brightness": "398", "kwin_2990": "do_sys_poll"}
+{"t": 927.24670614, "kind": "state", "dpms": "On", "gpu": "active", "gmu": "active", "dpu": "active", "brightness": "368", "kwin_2990": "do_sys_poll"}
+{"t": 927.299086466, "kind": "state", "dpms": "On", "gpu": "active", "gmu": "active", "dpu": "active", "brightness": "0", "kwin_2990": "msleep"}
+{"t": 927.412382628, "kind": "state", "dpms": "On", "gpu": "suspended", "gmu": "suspended", "dpu": "active", "brightness": "0", "kwin_2990": "msleep"}
+{"t": 927.469090918, "kind": "state", "dpms": "Off", "gpu": "suspended", "gmu": "suspended", "dpu": "suspended", "brightness": "[Errno 22] Invalid argument", "kwin_2990": "do_sys_poll"}
+{"t": 937.212999644, "kind": "state", "dpms": "Off", "gpu": "suspended", "gmu": "suspended", "dpu": "suspended", "brightness": "[Errno 22] Invalid argument", "kwin_2990": "0"}
+{"t": 937.264752808, "kind": "state", "dpms": "Off", "gpu": "suspended", "gmu": "suspended", "dpu": "suspended", "brightness": "[Errno 22] Invalid argument", "kwin_2990": "do_sys_poll"}
+{"t": 961.412160555, "kind": "state", "dpms": "Off", "gpu": "active", "gmu": "active", "dpu": "suspended", "brightness": "[Errno 22] Invalid argument", "kwin_2990": "do_sys_poll"}
+{"t": 961.526093214, "kind": "state", "dpms": "Off", "gpu": "suspended", "gmu": "suspended", "dpu": "suspended", "brightness": "[Errno 22] Invalid argument", "kwin_2990": "do_sys_poll"}
+{"t": 963.292392657, "kind": "state", "dpms": "Off", "gpu": "resuming", "gmu": "active", "dpu": "suspended", "brightness": "[Errno 22] Invalid argument", "kwin_2990": "a6xx_gmu_resume"}
+{"t": 963.344448068, "kind": "state", "dpms": "On", "gpu": "active", "gmu": "active", "dpu": "active", "brightness": "0", "kwin_2990": "panel_samsung_amb670yf07_1440_3216_dsc_prepare"}
+{"t": 963.396643372, "kind": "state", "dpms": "On", "gpu": "suspended", "gmu": "suspended", "dpu": "active", "brightness": "0", "kwin_2990": "msleep"}
+{"t": 963.557354651, "kind": "state", "dpms": "On", "gpu": "active", "gmu": "active", "dpu": "active", "brightness": "353", "kwin_2990": "do_sys_poll"}
+{"t": 963.614910758, "kind": "state", "dpms": "On", "gpu": "active", "gmu": "active", "dpu": "active", "brightness": "352", "kwin_2990": "do_sys_poll"}
+{"t": 963.672208746, "kind": "state", "dpms": "On", "gpu": "active", "gmu": "active", "dpu": "active", "brightness": "335", "kwin_2990": "0"}
+{"t": 963.730391348, "kind": "state", "dpms": "On", "gpu": "active", "gmu": "active", "dpu": "active", "brightness": "325", "kwin_2990": "do_sys_poll"}
+{"t": 963.788637282, "kind": "state", "dpms": "On", "gpu": "active", "gmu": "active", "dpu": "active", "brightness": "319", "kwin_2990": "do_sys_poll"}
+{"t": 963.846881341, "kind": "state", "dpms": "On", "gpu": "active", "gmu": "active", "dpu": "active", "brightness": "300", "kwin_2990": "do_sys_poll"}
+{"t": 963.90504988, "kind": "state", "dpms": "On", "gpu": "active", "gmu": "active", "dpu": "active", "brightness": "292", "kwin_2990": "0"}
+{"t": 963.963438311, "kind": "state", "dpms": "On", "gpu": "active", "gmu": "active", "dpu": "active", "brightness": "277", "kwin_2990": "do_sys_poll"}
+{"t": 964.02196632, "kind": "state", "dpms": "On", "gpu": "active", "gmu": "active", "dpu": "active", "brightness": "267", "kwin_2990": "do_sys_poll"}
+{"t": 964.079631904, "kind": "state", "dpms": "On", "gpu": "active", "gmu": "active", "dpu": "active", "brightness": "254", "kwin_2990": "0"}
+{"t": 964.130274383, "kind": "state", "dpms": "On", "gpu": "active", "gmu": "active", "dpu": "active", "brightness": "240", "kwin_2990": "do_sys_poll"}
+{"t": 964.187942206, "kind": "state", "dpms": "On", "gpu": "active", "gmu": "active", "dpu": "active", "brightness": "229", "kwin_2990": "0"}
+{"t": 964.246218503, "kind": "state", "dpms": "On", "gpu": "active", "gmu": "active", "dpu": "active", "brightness": "217", "kwin_2990": "0"}
+{"t": 964.304625475, "kind": "state", "dpms": "On", "gpu": "active", "gmu": "active", "dpu": "active", "brightness": "205", "kwin_2990": "do_sys_poll"}
+{"t": 964.362863596, "kind": "state", "dpms": "On", "gpu": "active", "gmu": "active", "dpu": "active", "brightness": "201", "kwin_2990": "do_sys_poll"}
+{"t": 964.421038334, "kind": "state", "dpms": "On", "gpu": "active", "gmu": "active", "dpu": "active", "brightness": "184", "kwin_2990": "do_sys_poll"}
+{"t": 964.479442753, "kind": "state", "dpms": "On", "gpu": "active", "gmu": "active", "dpu": "active", "brightness": "176", "kwin_2990": "do_sys_poll"}
+{"t": 964.537713374, "kind": "state", "dpms": "On", "gpu": "active", "gmu": "active", "dpu": "active", "brightness": "166", "kwin_2990": "do_sys_poll"}
+{"t": 964.595742231, "kind": "state", "dpms": "On", "gpu": "active", "gmu": "active", "dpu": "active", "brightness": "156", "kwin_2990": "0"}
+{"t": 964.654007227, "kind": "state", "dpms": "On", "gpu": "active", "gmu": "active", "dpu": "active", "brightness": "139", "kwin_2990": "0"}
+{"t": 964.71231217, "kind": "state", "dpms": "On", "gpu": "active", "gmu": "active", "dpu": "active", "brightness": "127", "kwin_2990": "do_sys_poll"}
+{"t": 964.765960407, "kind": "state", "dpms": "On", "gpu": "active", "gmu": "active", "dpu": "active", "brightness": "121", "kwin_2990": "do_sys_poll"}
+{"t": 964.823186731, "kind": "state", "dpms": "On", "gpu": "suspended", "gmu": "suspended", "dpu": "active", "brightness": "121", "kwin_2990": "do_sys_poll"}
+{"t": 970.012194506, "kind": "state", "dpms": "On", "gpu": "active", "gmu": "active", "dpu": "active", "brightness": "121", "kwin_2990": "do_sys_poll"}
+{"t": 970.064194556, "kind": "state", "dpms": "On", "gpu": "active", "gmu": "active", "dpu": "active", "brightness": "131", "kwin_2990": "do_sys_poll"}
+{"t": 970.116076902, "kind": "state", "dpms": "On", "gpu": "active", "gmu": "active", "dpu": "active", "brightness": "230", "kwin_2990": "do_sys_poll"}
+{"t": 970.16945296, "kind": "state", "dpms": "On", "gpu": "active", "gmu": "active", "dpu": "active", "brightness": "310", "kwin_2990": "0"}
+{"t": 970.227723739, "kind": "state", "dpms": "On", "gpu": "active", "gmu": "active", "dpu": "active", "brightness": "390", "kwin_2990": "0"}
+{"t": 970.278144038, "kind": "end"}

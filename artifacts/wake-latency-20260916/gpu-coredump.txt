@@ -1,0 +1,2 @@
+oneplus@192.168.188.91's  
+head: cannot open '/sys/class/devcoredump/devcd*/data' for reading: No such file or directory

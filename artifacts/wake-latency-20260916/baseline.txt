@@ -1,0 +1,300 @@
+oneplus@192.168.188.91's  
+2026-09-16T00:08:44,872415904+08:00
+Linux oneplus-negroni 7.3.0-rc2-sm8450+ #1 SMP PREEMPT Tue Sep 15 21:06:10 CST 2026 aarch64 GNU/Linux
+ 00:08:44 up 13 min,  3 users,  load average: 0.20, 0.27, 0.19
+earlycon clk_ignore_unused pd_ignore_unused  console=tty0 root=/dev/sda14 rootwait rw bootconfig lk_version=V1.0 oplusboot.startupmode=hard_reset oplusboot.mode=normal  short_c_feature_sw_status=0 phx_rus_conf.main_on=1 phx_rus_conf.recovery_method=2 phx_rus_conf.kernel_time=240 phx_rus_conf.android_time=250 smooth_soc_switch=0 backcover_type= simcardnum.simcardnum=1 oplusboot.prjname=20846 oplus.avbkeysha256=2544763afe29a6da3a4a7a41ab88b1fd28a29e38bbd2debea4602b20cd838545 esim.status=0 device_info.ddr_info=1|12 oplusboot.rpmb_enabled=1 oplusboot.verifiedbootstate=orange oplusboot.serialno=e2d3522f msm_drm.dsi_display0=qcom,mdss_dsi_panel_samsung_amb670yf07_1440_3216_dsc_cmd: oplus_bsp_tp_custom.dsi_display0=qcom,mdss_dsi_panel_samsung_amb670yf07_1440_3216_dsc_cmd:synaptics-s3908
+SESSION  UID USER    SEAT  LEADER CLASS   TTY   IDLE SINCE
+      2 1000 oneplus -     2788   user    pts/0 no   -
+      3 1000 oneplus -     2794   manager -     no   -
+      4 1000 oneplus seat0 2929   user    tty2  no   -
+      5 1000 oneplus -     3522   user    -     no   -
+
+4 sessions listed.
+  UNIT                            LOAD   ACTIVE SUB    DESCRIPTION
+● msm-modem-uim-selection.service loaded failed failed MSM Modem UIM Selection
+
+Legend: LOAD   → Reflects whether the unit definition was properly loaded.
+        ACTIVE → The high-level unit activation state, i.e. generalization of SUB.
+        SUB    → The low-level unit activation state, values depend on unit type.
+
+1 loaded units listed.
+s2idle [deep]
+freeze mem
+0
+0
+0
+0
+0
+0
+0
+0
+0
+
+0
+
+0
+    PID USER     STAT %CPU %MEM COMMAND
+   3522 root     Ss    5.8  0.1 sshd-session
+   3150 oneplus  Ssl   3.8  4.3 plasmashell
+   3527 root     Ss    2.4  0.1 sudo
+   2990 oneplus  Sl    1.7  2.3 kwin_wayland
+      1 root     Ss    1.0  0.1 systemd
+   2998 root     Ssl   0.5  0.3 udisksd
+    229 root     I     0.4  0.0 kworker/u32:9-ufs_clkscaling_0
+   2794 oneplus  Ss    0.3  0.1 systemd
+   3038 oneplus  Sl    0.3  1.9 plasma-keyboard
+   3106 oneplus  Ssl   0.3  0.6 ksmserver
+     89 root     I     0.3  0.0 kworker/u32:5-async
+   3105 oneplus  Ssl   0.2  1.1 kded6
+   3380 oneplus  Ssl   0.2  0.6 ksecretd
+   3170 oneplus  Ssl   0.2  0.6 gmenudbusmenupr
+   3173 oneplus  Ssl   0.1  0.7 org_kde_powerde
+   3171 oneplus  Ssl   0.1  0.6 kaccess
+   2971 oneplus  Sl+   0.1  0.5 startplasma-way
+   2378 root     Ss    0.1  0.1 systemd-udevd
+    119 root     I     0.1  0.0 kworker/u32:6-async
+   2384 polkitd  Ssl   0.1  0.2 polkitd
+   3369 oneplus  Ssl   0.1  0.6 xdg-desktop-por
+   3027 oneplus  Ssl   0.1  0.3 wireplumber
+   2498 root     Ss    0.1  0.4 rmtfs
+   2970 oneplus  S     0.1  0.0 dbus-broker
+[   15.233837] oneplus-negroni kernel: qcom,apr 3000000.remoteproc:glink-edge.adsp_apps.-1.-1: Adding APR/GPR dev: gprsvc:service:2:1
+[   15.233888] oneplus-negroni kernel: qcom,apr 3000000.remoteproc:glink-edge.adsp_apps.-1.-1: Adding APR/GPR dev: gprsvc:service:2:2
+[   15.236523] oneplus-negroni kernel: platform 2400000.remoteproc:glink-edge:fastrpc:compute-cb@1: Adding to iommu group 16
+[   15.244090] oneplus-negroni kernel: qcom-camss acb7000.camss: probe with driver qcom-camss failed with error -61
+[   15.264035] oneplus-negroni kernel: platform 2400000.remoteproc:glink-edge:fastrpc:compute-cb@2: Adding to iommu group 17
+[   15.268019] oneplus-negroni kernel: platform 2400000.remoteproc:glink-edge:fastrpc:compute-cb@3: Adding to iommu group 18
+[   15.270511] oneplus-negroni kernel: qcom,fastrpc 32300000.remoteproc:glink-edge.fastrpcglink-apps-dsp.-1.-1: no reserved DMA memory for FASTRPC
+[   15.272022] oneplus-negroni kernel: platform 32300000.remoteproc:glink-edge:fastrpc:compute-cb@1: Adding to iommu group 19
+[   15.276401] oneplus-negroni kernel: ath11k_pci 0000:01:00.0: BAR 0 [mem 0x60400000-0x605fffff 64bit]: assigned
+[   15.280372] oneplus-negroni kernel: ath11k_pci 0000:01:00.0: enabling device (0000 -> 0002)
+[   15.280498] oneplus-negroni kernel: platform 32300000.remoteproc:glink-edge:fastrpc:compute-cb@2: Adding to iommu group 20
+[   15.280537] oneplus-negroni kernel: platform 32300000.remoteproc:glink-edge:fastrpc:compute-cb@3: Adding to iommu group 21
+[   15.284059] oneplus-negroni kernel: Bluetooth: hci0: QCA Product ID   :0x00000013
+[   15.284128] oneplus-negroni kernel: Bluetooth: hci0: QCA SOC Version  :0x400c1211
+[   15.284173] oneplus-negroni kernel: Bluetooth: hci0: QCA ROM Version  :0x00000201
+[   15.284213] oneplus-negroni kernel: Bluetooth: hci0: QCA Patch Version:0x000038e6
+[   15.284287] oneplus-negroni kernel: platform 32300000.remoteproc:glink-edge:fastrpc:compute-cb@4: Adding to iommu group 22
+[   15.288854] oneplus-negroni kernel: ath11k_pci 0000:01:00.0: MSI vectors: 32
+[   15.289533] oneplus-negroni kernel: platform 32300000.remoteproc:glink-edge:fastrpc:compute-cb@5: Adding to iommu group 23
+[   15.292329] oneplus-negroni kernel: ath11k_pci 0000:01:00.0: wcn6855 hw2.1
+[   15.292969] oneplus-negroni kernel: platform 32300000.remoteproc:glink-edge:fastrpc:compute-cb@6: Adding to iommu group 24
+[   15.293152] oneplus-negroni kernel: Bluetooth: hci0: QCA controller version 0x12110201
+[   15.293311] oneplus-negroni kernel: Bluetooth: hci0: QCA Downloading qca/wcnhpbtfw21.tlv
+[   15.293398] oneplus-negroni kernel: bluetooth hci0: Direct firmware load for qca/wcnhpbtfw21.tlv failed with error -2
+[   15.294008] oneplus-negroni kernel: platform 32300000.remoteproc:glink-edge:fastrpc:compute-cb@7: Adding to iommu group 25
+[   15.296034] oneplus-negroni kernel: Bluetooth: hci0: QCA Failed to request file: qca/wcnhpbtfw21.tlv (-2)
+[   15.300321] oneplus-negroni kernel: platform 32300000.remoteproc:glink-edge:fastrpc:compute-cb@8: Adding to iommu group 26
+[   15.300407] oneplus-negroni kernel: Bluetooth: hci0: QCA Downloading qca/hpbtfw21.tlv
+[   15.300419] oneplus-negroni kernel: qcom,fastrpc 3000000.remoteproc:glink-edge.fastrpcglink-apps-dsp.-1.-1: no reserved DMA memory for FASTRPC
+[   15.300475] oneplus-negroni kernel: bluetooth hci0: Direct firmware load for qca/hpbtfw21.tlv failed with error -2
+[   15.300655] oneplus-negroni kernel: platform 3000000.remoteproc:glink-edge:fastrpc:compute-cb@3: Adding to iommu group 27
+[   15.300702] oneplus-negroni kernel: Bluetooth: hci0: QCA Failed to request file: qca/hpbtfw21.tlv (-2)
+[   15.304019] oneplus-negroni kernel: platform 3000000.remoteproc:glink-edge:fastrpc:compute-cb@4: Adding to iommu group 28
+[   15.304097] oneplus-negroni kernel: Bluetooth: hci0: QCA Failed to request file: qca/hpbtfw21.tlv (-2)
+[   15.304108] oneplus-negroni kernel: platform 3000000.remoteproc:glink-edge:fastrpc:compute-cb@5: Adding to iommu group 29
+[   15.304146] oneplus-negroni kernel: Bluetooth: hci0: HFP non-HCI data transport is supported
+[   15.370504] oneplus-negroni kernel: Bluetooth: BNEP (Ethernet Emulation) ver 1.3
+[   15.370538] oneplus-negroni kernel: Bluetooth: BNEP filters: protocol multicast
+[   15.370548] oneplus-negroni kernel: Bluetooth: BNEP socket layer initialized
+[   15.376014] oneplus-negroni kernel: Bluetooth: MGMT ver 1.23
+[   15.380012] oneplus-negroni kernel: NET: Registered PF_ALG protocol family
+[   15.456021] oneplus-negroni kernel: mhi mhi0: Requested to power ON
+[   15.456951] oneplus-negroni kernel: mhi mhi0: Power on setup success
+[   15.548023] oneplus-negroni kernel: mhi mhi0: Wait for device to enter SBL or Mission mode
+[   16.104079] oneplus-negroni kernel: ipa 3f40000.ipa: received modem running event
+[   16.104764] oneplus-negroni kernel: remoteproc remoteproc3: remote processor modem is now up
+[   16.236042] oneplus-negroni kernel: ath11k_pci 0000:01:00.0: chip_id 0x12 chip_family 0xb board_id 0xff soc_id 0x400c1211
+[   16.236874] oneplus-negroni kernel: ath11k_pci 0000:01:00.0: fw_version 0x200104cd fw_build_timestamp 2023-03-02 07:20 fw_build_id WLAN.HSP.2.0-01229-QCAHSPSWPL_V1_V2_SILICONZ-1.3857.47.26365.3
+[   16.620025] oneplus-negroni kernel: ath11k_pci 0000:01:00.0 wlp1s0: renamed from wlan0
+[   16.864933] oneplus-negroni kernel: qcom_battmgr.pmic_glink_power_supply pmic_glink.power-supply.0: oplus gauge init: sending BATT property_id=38 value=1 via opcode 0x31
+[   16.865385] oneplus-negroni kernel: qcom_battmgr.pmic_glink_power_supply pmic_glink.power-supply.0: oplus gauge init: SUCCESS
+[   16.865665] oneplus-negroni kernel: qcom_battmgr.pmic_glink_power_supply pmic_glink.power-supply.0: oplus voocphy enable: sending USB property_id=13 value=1 via opcode 0x33
+[   16.865922] oneplus-negroni kernel: qcom_battmgr.pmic_glink_power_supply pmic_glink.power-supply.0: oplus voocphy enable: SUCCESS
+[   16.873699] oneplus-negroni kernel: qcom_battmgr.pmic_glink_power_supply pmic_glink.power-supply.0: oplus gauge: sending BATT_RTC_SOC (id=31) via opcode 0x31
+[   16.874044] oneplus-negroni kernel: qcom_battmgr.pmic_glink_power_supply pmic_glink.power-supply.0: oplus gauge: sending BATT_UPDATE_SOC_SMOOTH_PARAM (id=39) via opcode 0x31
+[   16.998021] oneplus-negroni kernel: qcom_battmgr.pmic_glink_power_supply pmic_glink.power-supply.0: oplus: SDP/unknown adapter (type=0), using defaults
+[   16.998518] oneplus-negroni kernel: qcom_battmgr.pmic_glink_power_supply pmic_glink.power-supply.0: oplus: setting ICL to 0.500A
+[   17.052034] oneplus-negroni kernel: qcom_battmgr.pmic_glink_power_supply pmic_glink.power-supply.0: oplus: setting FCC to 0.500A
+[   17.080037] oneplus-negroni kernel: qcom_battmgr.pmic_glink_power_supply pmic_glink.power-supply.0: oplus gauge init sequence complete
+[   20.452972] oneplus-negroni kernel: qcom-apm gprsvc:service:2:1: CMD timeout for [1001021] opcode
+[   20.453716] oneplus-negroni kernel: platform 3000000.remoteproc:glink-edge:gpr:service@1:dais: Adding to iommu group 30
+[   20.479615] oneplus-negroni kernel: rx_macro 3200000.codec: Driver needs fixing: Unsorted reg_defaults, sorting the copy
+[   20.480407] oneplus-negroni kernel: qcom-soundwire 3210000.soundwire: din-ports (0) mismatch with controller (1)
+[   20.484769] oneplus-negroni kernel: wcd938x_codec audio-codec: bound sdw:2:0:0217:010d:00:4 (ops wcd_sdw_component_ops [snd_soc_wcd_common])
+[   20.485407] oneplus-negroni kernel: wcd938x_codec audio-codec: bound sdw:3:0:0217:010d:00:3 (ops wcd_sdw_component_ops [snd_soc_wcd_common])
+[   20.524297] oneplus-negroni kernel: qcom-apm gprsvc:service:2:1: Direct firmware load for qcom/sm8450/OnePlus-10-Pro-tplg.bin failed with error -2
+[   20.524968] oneplus-negroni kernel: qcom-apm gprsvc:service:2:1: tplg firmware loading qcom/sm8450/OnePlus-10-Pro-tplg.bin failed -2
+[   20.525454] oneplus-negroni kernel: qcom-apm gprsvc:service:2:1: ASoC error (-2): at snd_soc_component_probe() on gprsvc:service:2:1
+[   20.525914] oneplus-negroni kernel: snd-sc8280xp sound: ASoC: failed to instantiate card -2
+[   20.529113] oneplus-negroni kernel: snd-sc8280xp sound: probe with driver snd-sc8280xp failed with error -2
+[   21.920206] oneplus-negroni kernel: msm_dpu ae01000.display-controller: [drm:adreno_request_fw] loaded qcom/a730_sqe.fw from new location
+[   21.921297] oneplus-negroni kernel: msm_dpu ae01000.display-controller: [drm:adreno_request_fw] loaded qcom/gmu_gen70000.bin from new location
+[   21.921881] oneplus-negroni kernel: [drm] Loaded GMU firmware v4.0.7
+[   22.460020] oneplus-negroni kernel: DSI: pic_width 1440 has to be multiple of slice 540
+[   22.460052] oneplus-negroni kernel: DSI: pic_width 1440 has to be multiple of slice 540
+[   22.460064] oneplus-negroni kernel: DSI: pic_width 1440 has to be multiple of slice 540
+[   23.276028] oneplus-negroni kernel: Bluetooth: RFCOMM TTY layer initialized
+[   23.276101] oneplus-negroni kernel: Bluetooth: RFCOMM socket layer initialized
+[   23.276116] oneplus-negroni kernel: Bluetooth: RFCOMM ver 1.11
+[   25.236315] oneplus-negroni kernel: wlp1s0: authenticate with 68:77:da:4c:6e:a5 (local address=00:03:7f:12:34:56)
+[   25.236408] oneplus-negroni kernel: wlp1s0: send auth to 68:77:da:4c:6e:a5 (try 1/3)
+[   25.244043] oneplus-negroni kernel: wlp1s0: authenticated
+[   25.244113] oneplus-negroni kernel: wlp1s0: associate with 68:77:da:4c:6e:a5 (try 1/3)
+[   25.268030] oneplus-negroni kernel: wlp1s0: RX AssocResp from 68:77:da:4c:6e:a5 (capab=0x1511 status=0 aid=4)
+[   25.312074] oneplus-negroni kernel: wlp1s0: associated
+[   25.312128] oneplus-negroni kernel: wlp1s0: Limiting TX power to 30 (30 - 0) dBm as advertised by 68:77:da:4c:6e:a5
+[   31.524037] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: xHCI Host Controller
+[   31.524308] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: new USB bus registered, assigned bus number 1
+[   31.524436] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: hcc params 0x0110ffc5 hci version 0x110 quirks 0x0000808000000010
+[   31.524549] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: irq 196, io mem 0x0a600000
+[   31.524654] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: xHCI Host Controller
+[   31.524820] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: new USB bus registered, assigned bus number 2
+[   31.524944] oneplus-negroni kernel: xhci-hcd xhci-hcd.2.auto: Host supports USB 3.1 Enhanced SuperSpeed
+[   31.525055] oneplus-negroni kernel: usb usb1: New USB device found, idVendor=1d6b, idProduct=0002, bcdDevice= 7.03
+[   31.525195] oneplus-negroni kernel: usb usb1: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+[   31.525302] oneplus-negroni kernel: usb usb1: Product: xHCI Host Controller
+[   31.527454] oneplus-negroni kernel: usb usb1: Manufacturer: Linux 7.3.0-rc2-sm8450+ xhci-hcd
+[   31.527574] oneplus-negroni kernel: usb usb1: SerialNumber: xhci-hcd.2.auto
+[   31.527682] oneplus-negroni kernel: hub 1-0:1.0: USB hub found
+[   31.527847] oneplus-negroni kernel: hub 1-0:1.0: 1 port detected
+[   31.527979] oneplus-negroni kernel: usb usb2: We don't know the algorithms for LPM for this host, disabling LPM.
+[   31.528035] oneplus-negroni kernel: usb usb2: New USB device found, idVendor=1d6b, idProduct=0003, bcdDevice= 7.03
+[   31.528092] oneplus-negroni kernel: usb usb2: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+[   31.528120] oneplus-negroni kernel: usb usb2: Product: xHCI Host Controller
+[   31.528143] oneplus-negroni kernel: usb usb2: Manufacturer: Linux 7.3.0-rc2-sm8450+ xhci-hcd
+[   31.528165] oneplus-negroni kernel: usb usb2: SerialNumber: xhci-hcd.2.auto
+[   31.532015] oneplus-negroni kernel: hub 2-0:1.0: USB hub found
+[   31.532221] oneplus-negroni kernel: hub 2-0:1.0: 1 port detected
+[   32.289060] oneplus-negroni kernel: usb 1-1: new high-speed USB device number 2 using xhci-hcd
+[   32.428468] oneplus-negroni kernel: usb 1-1: New USB device found, idVendor=0bda, idProduct=5423, bcdDevice= 1.90
+[   32.429118] oneplus-negroni kernel: usb 1-1: New USB device strings: Mfr=1, Product=2, SerialNumber=0
+[   32.429392] oneplus-negroni kernel: usb 1-1: Product: 4-Port USB 2.0 Hub
+[   32.429677] oneplus-negroni kernel: usb 1-1: Manufacturer: Generic
+[   32.488886] oneplus-negroni kernel: hub 1-1:1.0: USB hub found
+[   32.489481] oneplus-negroni kernel: hub 1-1:1.0: 4 ports detected
+[   32.557114] oneplus-negroni kernel: usb 2-1: new SuperSpeed USB device number 2 using xhci-hcd
+[   32.576067] oneplus-negroni kernel: usb 2-1: New USB device found, idVendor=0bda, idProduct=0423, bcdDevice= 1.90
+[   32.576586] oneplus-negroni kernel: usb 2-1: New USB device strings: Mfr=1, Product=2, SerialNumber=0
+[   32.576856] oneplus-negroni kernel: usb 2-1: Product: 4-Port USB 3.0 Hub
+[   32.577101] oneplus-negroni kernel: usb 2-1: Manufacturer: Generic
+[   32.605205] oneplus-negroni kernel: hub 2-1:1.0: USB hub found
+[   32.605831] oneplus-negroni kernel: hub 2-1:1.0: 4 ports detected
+[   32.844614] oneplus-negroni kernel: usb 1-1.4: new full-speed USB device number 3 using xhci-hcd
+[   32.936432] oneplus-negroni kernel: usb 1-1.4: New USB device found, idVendor=046d, idProduct=c52b, bcdDevice=24.11
+[   32.937096] oneplus-negroni kernel: usb 1-1.4: New USB device strings: Mfr=1, Product=2, SerialNumber=0
+[   32.937400] oneplus-negroni kernel: usb 1-1.4: Product: USB Receiver
+[   32.937656] oneplus-negroni kernel: usb 1-1.4: Manufacturer: Logitech
+[   33.168119] oneplus-negroni kernel: usbcore: registered new interface driver usbhid
+[   33.168202] oneplus-negroni kernel: usbhid: USB HID core driver
+[   33.212088] oneplus-negroni kernel: input: Logitech USB Receiver as /devices/platform/soc@0/a600000.usb/xhci-hcd.2.auto/usb1/1-1/1-1.4/1-1.4:1.0/0003:046D:C52B.0001/input/input5
+[   33.316736] oneplus-negroni kernel: hid-generic 0003:046D:C52B.0001: input,hidraw0: USB HID v1.11 Keyboard [Logitech USB Receiver] on usb-xhci-hcd.2.auto-1.4/input0
+[   33.319994] oneplus-negroni kernel: input: Logitech USB Receiver Mouse as /devices/platform/soc@0/a600000.usb/xhci-hcd.2.auto/usb1/1-1/1-1.4/1-1.4:1.1/0003:046D:C52B.0002/input/input6
+[   33.320370] oneplus-negroni kernel: input: Logitech USB Receiver Consumer Control as /devices/platform/soc@0/a600000.usb/xhci-hcd.2.auto/usb1/1-1/1-1.4/1-1.4:1.1/0003:046D:C52B.0002/input/input7
+[   33.376648] oneplus-negroni kernel: input: Logitech USB Receiver System Control as /devices/platform/soc@0/a600000.usb/xhci-hcd.2.auto/usb1/1-1/1-1.4/1-1.4:1.1/0003:046D:C52B.0002/input/input8
+[   33.377044] oneplus-negroni kernel: hid-generic 0003:046D:C52B.0002: input,hidraw1: USB HID v1.11 Mouse [Logitech USB Receiver] on usb-xhci-hcd.2.auto-1.4/input1
+[   33.380296] oneplus-negroni kernel: hid-generic 0003:046D:C52B.0003: hidraw2: USB HID v1.11 Device [Logitech USB Receiver] on usb-xhci-hcd.2.auto-1.4/input2
+[   37.164066] oneplus-negroni kernel: usb 1-1: USB disconnect, device number 2
+[   37.164995] oneplus-negroni kernel: usb 1-1.4: USB disconnect, device number 3
+[   64.341121] oneplus-negroni kernel: usb 2-1.1: new SuperSpeed USB device number 3 using xhci-hcd
+[   64.369138] oneplus-negroni kernel: usb 2-1.1: New USB device found, idVendor=045e, idProduct=0955, bcdDevice= 1.41
+[   64.380992] oneplus-negroni kernel: usb 2-1.1: New USB device strings: Mfr=1, Product=2, SerialNumber=0
+[   64.382080] oneplus-negroni kernel: usb 2-1.1: Product: 4-Port USB 3.0 Hub
+[   64.382366] oneplus-negroni kernel: usb 2-1.1: Manufacturer: Generic
+[   64.412991] oneplus-negroni kernel: hub 2-1.1:1.0: USB hub found
+[   64.416276] oneplus-negroni kernel: hub 2-1.1:1.0: 2 ports detected
+[   64.717045] oneplus-negroni kernel: usb 2-1.1.1: new SuperSpeed USB device number 4 using xhci-hcd
+[   64.740936] oneplus-negroni kernel: usb 2-1.1.1: New USB device found, idVendor=045e, idProduct=0927, bcdDevice=31.00
+[   64.741210] oneplus-negroni kernel: usb 2-1.1.1: Int endpoint with wBytesPerInterval of 8 in config 2 interface 0 altsetting 0 ep 0x83: setting to 16
+[   64.744266] oneplus-negroni kernel: usb 2-1.1.1: New USB device strings: Mfr=1, Product=2, SerialNumber=6
+[   64.747340] oneplus-negroni kernel: usb 2-1.1.1: Product: Ethernet Adapter
+[   64.750381] oneplus-negroni kernel: usb 2-1.1.1: Manufacturer: Microsoft
+[   64.750900] oneplus-negroni kernel: usb 2-1.1.1: SerialNumber: 0013D9F5C
+[   64.872474] oneplus-negroni kernel: usbcore: registered new device driver r8152-cfgselector
+[   65.016136] oneplus-negroni kernel: r8152-cfgselector 2-1.1.1: reset SuperSpeed USB device number 4 using xhci-hcd
+[   65.072892] oneplus-negroni kernel: r8152 2-1.1.1:1.0: Direct firmware load for rtl_nic/rtl8153b-2.fw failed with error -2
+[   65.076261] oneplus-negroni kernel: r8152 2-1.1.1:1.0: unable to load firmware patch rtl_nic/rtl8153b-2.fw (-2)
+[   65.117233] oneplus-negroni kernel: usbcore: registered new interface driver r8152
+[   65.136151] oneplus-negroni kernel: usbcore: registered new interface driver cdc_ether
+[   65.380546] oneplus-negroni kernel: r8152 2-1.1.1:1.0 enu1u1u1: renamed from eth0
+[   68.544065] oneplus-negroni kernel: gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[   68.548500] oneplus-negroni kernel: geni_i2c 990000.i2c: prep_slave_sg failed
+[   68.550112] oneplus-negroni kernel: geni_i2c 990000.i2c: GPI transfer failed: -5
+[   72.816504] oneplus-negroni kernel: gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[   72.820418] oneplus-negroni kernel: geni_i2c 990000.i2c: prep_slave_sg failed
+[   72.823024] oneplus-negroni kernel: geni_i2c 990000.i2c: GPI transfer failed: -5
+[  127.516775] oneplus-negroni kernel: platform 3d6a000.gmu: [drm:a6xx_hfi_wait_for_msg_interrupt] *ERROR* Message HFI_H2F_MSG_GX_BW_PERF_VOTE id 1784 timed out waiting for response
+[  127.518762] oneplus-negroni kernel: platform 3d6a000.gmu: [drm:a6xx_hfi_send_msg.constprop.0] *ERROR* Unexpected message id 1784 on the response queue
+[  214.525230] oneplus-negroni kernel: platform 3d6a000.gmu: [drm:a6xx_gmu_set_oob] *ERROR* Timeout waiting for GMU OOB set GPU_SET: 0x0
+[  224.733949] oneplus-negroni kernel: msm_dpu ae01000.display-controller: 07030001: preemption timed out
+[  224.737710] oneplus-negroni kernel: msm_dpu ae01000.display-controller: [drm:recover_worker] *ERROR* 07030001: hangcheck recover!
+[  616.124980] oneplus-negroni kernel: platform 3d6a000.gmu: [drm:a6xx_gmu_set_oob] *ERROR* Timeout waiting for GMU OOB set GPU_SET: 0x0
+[  617.108995] oneplus-negroni kernel: gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[  617.109834] oneplus-negroni kernel: geni_i2c 990000.i2c: prep_slave_sg failed
+[  617.110325] oneplus-negroni kernel: geni_i2c 990000.i2c: GPI transfer failed: -5
+[  618.160057] oneplus-negroni kernel: platform 3d6a000.gmu: [drm:a6xx_gmu_set_oob] *ERROR* Timeout waiting for GMU OOB set GPU_SET: 0x0
+[  618.168033] oneplus-negroni kernel: platform 3d6a000.gmu: [drm:a6xx_gmu_set_oob] *ERROR* Timeout waiting for GMU OOB set GPU_SET: 0x0
+[  618.180435] oneplus-negroni kernel: platform 3d6a000.gmu: [drm:a6xx_gmu_set_oob] *ERROR* Timeout waiting for GMU OOB set GPU_SET: 0x0
+[  618.188299] oneplus-negroni kernel: platform 3d6a000.gmu: [drm:a6xx_gmu_set_oob] *ERROR* Timeout waiting for GMU OOB set GPU_SET: 0x0
+[  618.200525] oneplus-negroni kernel: platform 3d6a000.gmu: [drm:a6xx_gmu_set_oob] *ERROR* Timeout waiting for GMU OOB set GPU_SET: 0x0
+[  618.341086] oneplus-negroni kernel: gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[  618.341929] oneplus-negroni kernel: geni_i2c 990000.i2c: prep_slave_sg failed
+[  618.342413] oneplus-negroni kernel: geni_i2c 990000.i2c: GPI transfer failed: -5
+[  620.208539] oneplus-negroni kernel: gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[  620.209389] oneplus-negroni kernel: geni_i2c 990000.i2c: prep_slave_sg failed
+[  620.209879] oneplus-negroni kernel: geni_i2c 990000.i2c: GPI transfer failed: -5
+[  621.821557] oneplus-negroni kernel: msm_dpu ae01000.display-controller: [drm:hangcheck_handler] *ERROR* 07030001: hangcheck detected gpu lockup rb 0!
+[  621.821940] oneplus-negroni kernel: msm_dpu ae01000.display-controller: [drm:hangcheck_handler] *ERROR* 07030001:     completed fence: 782
+[  621.822082] oneplus-negroni kernel: msm_dpu ae01000.display-controller: [drm:hangcheck_handler] *ERROR* 07030001:     submitted fence: 786
+[  621.822211] oneplus-negroni kernel: msm_dpu ae01000.display-controller: [drm:recover_worker] *ERROR* 07030001: hangcheck recover!
+[  621.822337] oneplus-negroni kernel: msm_dpu ae01000.display-controller: [drm:recover_worker] *ERROR* 07030001: offending task: kwin_wayland (/usr/bin/kwin_wayland --drm --no-lockscreen --no-global-shortcuts --locale1 --inputmethod /usr/bin/plasma-keyboard)
+[  621.888373] oneplus-negroni kernel: revision: 0 (07030001)
+[  621.888447] oneplus-negroni kernel: rb 0: fence:    783/786
+[  621.888459] oneplus-negroni kernel: rptr:     0
+[  621.888468] oneplus-negroni kernel: rb wptr:  573
+[  621.888478] oneplus-negroni kernel: rb 1: fence:    -256/-256
+[  621.888487] oneplus-negroni kernel: rptr:     0
+[  621.888495] oneplus-negroni kernel: rb wptr:  0
+[  621.888504] oneplus-negroni kernel: rb 2: fence:    295/298
+[  621.888513] oneplus-negroni kernel: rptr:     0
+[  621.888522] oneplus-negroni kernel: rb wptr:  522
+[  621.888532] oneplus-negroni kernel: rb 3: fence:    -256/-256
+[  621.888540] oneplus-negroni kernel: rptr:     0
+[  621.888549] oneplus-negroni kernel: rb wptr:  0
+[  621.900412] oneplus-negroni kernel: platform 3d6a000.gmu: [drm:a6xx_gmu_set_oob] *ERROR* Timeout waiting for GMU OOB set GPU_SET: 0x0
+[  622.008033] oneplus-negroni kernel: gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[  622.008380] oneplus-negroni kernel: geni_i2c 990000.i2c: prep_slave_sg failed
+[  622.008532] oneplus-negroni kernel: geni_i2c 990000.i2c: GPI transfer failed: -5
+[  623.808525] oneplus-negroni kernel: gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[  623.809578] oneplus-negroni kernel: geni_i2c 990000.i2c: prep_slave_sg failed
+[  623.810084] oneplus-negroni kernel: geni_i2c 990000.i2c: GPI transfer failed: -5
+[  631.376349] oneplus-negroni kernel: gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[  631.376734] oneplus-negroni kernel: geni_i2c 990000.i2c: prep_slave_sg failed
+[  631.377111] oneplus-negroni kernel: geni_i2c 990000.i2c: GPI transfer failed: -5
+[  634.125031] oneplus-negroni kernel: gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[  634.125926] oneplus-negroni kernel: geni_i2c 990000.i2c: prep_slave_sg failed
+[  634.126420] oneplus-negroni kernel: geni_i2c 990000.i2c: GPI transfer failed: -5
+[  635.540976] oneplus-negroni kernel: gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[  635.541901] oneplus-negroni kernel: geni_i2c 990000.i2c: prep_slave_sg failed
+[  635.542392] oneplus-negroni kernel: geni_i2c 990000.i2c: GPI transfer failed: -5
+[  636.256960] oneplus-negroni kernel: gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[  636.258162] oneplus-negroni kernel: geni_i2c 990000.i2c: prep_slave_sg failed
+[  636.258663] oneplus-negroni kernel: geni_i2c 990000.i2c: GPI transfer failed: -5
+[  637.053035] oneplus-negroni kernel: gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[  637.053912] oneplus-negroni kernel: geni_i2c 990000.i2c: prep_slave_sg failed
+[  637.054396] oneplus-negroni kernel: geni_i2c 990000.i2c: GPI transfer failed: -5
+[  640.744149] oneplus-negroni kernel: DSI: pic_width 1440 has to be multiple of slice 540
+[  640.744186] oneplus-negroni kernel: DSI: pic_width 1440 has to be multiple of slice 540
+[  640.744202] oneplus-negroni kernel: DSI: pic_width 1440 has to be multiple of slice 540
+[  651.924048] oneplus-negroni kernel: gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[  651.924998] oneplus-negroni kernel: geni_i2c 990000.i2c: prep_slave_sg failed
+[  651.925504] oneplus-negroni kernel: geni_i2c 990000.i2c: GPI transfer failed: -5
+[  655.040660] oneplus-negroni kernel: gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[  655.044164] oneplus-negroni kernel: geni_i2c 990000.i2c: prep_slave_sg failed
+[  655.046650] oneplus-negroni kernel: geni_i2c 990000.i2c: GPI transfer failed: -5
+[  656.352425] oneplus-negroni kernel: gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[  656.353189] oneplus-negroni kernel: geni_i2c 990000.i2c: prep_slave_sg failed
+[  656.353704] oneplus-negroni kernel: geni_i2c 990000.i2c: GPI transfer failed: -5
+[  657.180519] oneplus-negroni kernel: gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[  657.181304] oneplus-negroni kernel: geni_i2c 990000.i2c: prep_slave_sg failed
+[  657.181782] oneplus-negroni kernel: geni_i2c 990000.i2c: GPI transfer failed: -5

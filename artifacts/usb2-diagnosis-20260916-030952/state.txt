@@ -1,0 +1,2001 @@
+2026-09-16T03:10:32+08:00
+Linux oneplus-negroni 7.3.0-rc2-sm8450+ #1 SMP PREEMPT Tue Sep 15 21:06:10 CST 2026 aarch64 GNU/Linux
+earlycon clk_ignore_unused pd_ignore_unused  console=tty0 root=/dev/sda14 rootwait rw bootconfig lk_version=V1.0 oplusboot.startupmode=hard_reset oplusboot.mode=normal  short_c_feature_sw_status=0 phx_rus_conf.main_on=1 phx_rus_conf.recovery_method=2 phx_rus_conf.kernel_time=240 phx_rus_conf.android_time=250 smooth_soc_switch=0 backcover_type= simcardnum.simcardnum=1 oplusboot.prjname=20846 oplus.avbkeysha256=2544763afe29a6da3a4a7a41ab88b1fd28a29e38bbd2debea4602b20cd838545 esim.status=0 device_info.ddr_info=1|12 oplusboot.rpmb_enabled=1 oplusboot.verifiedbootstate=orange oplusboot.serialno=e2d3522f msm_drm.dsi_display0=qcom,mdss_dsi_panel_samsung_amb670yf07_1440_3216_dsc_cmd: oplus_bsp_tp_custom.dsi_display0=qcom,mdss_dsi_panel_samsung_amb670yf07_1440_3216_dsc_cmd:synaptics-s3908
+
+== USB device tree via sysfs ==
+DEVICE /sys/bus/usb/devices/usb1
+idVendor=1d6b
+idProduct=0002
+product=xHCI Host Controller
+manufacturer=Linux 7.3.0-rc2-sm8450+ xhci-hcd
+speed=480
+bDeviceClass=09
+authorized=1
+bConfigurationValue=1
+bMaxPower=0mA
+power/control=auto
+power/runtime_status=suspended
+DEVICE /sys/bus/usb/devices/usb2
+idVendor=1d6b
+idProduct=0003
+product=xHCI Host Controller
+manufacturer=Linux 7.3.0-rc2-sm8450+ xhci-hcd
+speed=10000
+bDeviceClass=09
+authorized=1
+bConfigurationValue=1
+bMaxPower=0mA
+power/control=auto
+power/runtime_status=suspended
+
+== Type-C and USB roles ==
+DEVICE /sys/class/typec/port0
+data_role=host [device]
+power_role=source [sink]
+orientation=normal
+power_operation_mode=usb_power_delivery
+usb_power_delivery_revision=3.0
+uevent=DEVTYPE=typec_port
+TYPEC_PORT=port0
+DEVICE /sys/class/typec/port0-partner
+accessory_mode=none
+supports_usb_power_delivery=yes
+usb_power_delivery_revision=0.0
+uevent=DEVTYPE=typec_partner
+DEVICE /sys/class/usb_role/a600000.usb-role-switch
+role=host
+uevent=DEVTYPE=usb_role_switch
+USB_ROLE_SWITCH=a600000.usb-role-switch
+
+== PHY and DWC3 runtime state ==
+DEVICE /sys/bus/platform/devices/88e3000.phy
+uevent=DRIVER=qcom-snps-hs-femto-v2-phy
+OF_NAME=phy
+OF_FULLNAME=/soc@0/phy@88e3000
+OF_COMPATIBLE_0=qcom,sm8450-usb-hs-phy
+OF_COMPATIBLE_1=qcom,usb-snps-hs-7nm-phy
+OF_COMPATIBLE_N=2
+MODALIAS=of:NphyT(null)Cqcom,sm8450-usb-hs-phyCqcom,usb-snps-hs-7nm-phy
+power/control=on
+power/runtime_status=active
+power/runtime_active_time=11733479
+power/runtime_suspended_time=0
+DEVICE /sys/bus/platform/devices/a600000.usb
+uevent=DRIVER=dwc3-qcom
+OF_NAME=usb
+OF_FULLNAME=/soc@0/usb@a600000
+OF_COMPATIBLE_0=qcom,sm8450-dwc3
+OF_COMPATIBLE_1=qcom,snps-dwc3
+OF_COMPATIBLE_N=2
+MODALIAS=of:NusbT(null)Cqcom,sm8450-dwc3Cqcom,snps-dwc3
+power/control=on
+power/runtime_status=active
+power/runtime_active_time=11733092
+power/runtime_suspended_time=0
+DEVICE /sys/class/phy/phy-1c06000.phy.2
+uevent=OF_NAME=phy
+OF_FULLNAME=/soc@0/phy@1c06000
+OF_COMPATIBLE_0=qcom,sm8450-qmp-gen3x1-pcie-phy
+OF_COMPATIBLE_N=1
+power/control=auto
+power/runtime_status=unsupported
+power/runtime_active_time=0
+power/runtime_suspended_time=0
+DEVICE /sys/class/phy/phy-1d87000.phy.4
+uevent=OF_NAME=phy
+OF_FULLNAME=/soc@0/phy@1d87000
+OF_COMPATIBLE_0=qcom,sm8450-qmp-ufs-phy
+OF_COMPATIBLE_N=1
+power/control=auto
+power/runtime_status=unsupported
+power/runtime_active_time=0
+power/runtime_suspended_time=0
+DEVICE /sys/class/phy/phy-88e3000.phy.3
+uevent=OF_NAME=phy
+OF_FULLNAME=/soc@0/phy@88e3000
+OF_COMPATIBLE_0=qcom,sm8450-usb-hs-phy
+OF_COMPATIBLE_1=qcom,usb-snps-hs-7nm-phy
+OF_COMPATIBLE_N=2
+DEVICE /sys/class/phy/phy-88e8000.phy.0
+uevent=OF_NAME=phy
+OF_FULLNAME=/soc@0/phy@88e8000
+OF_COMPATIBLE_0=qcom,sm8450-qmp-usb3-dp-phy
+OF_COMPATIBLE_N=1
+DEVICE /sys/class/phy/phy-88e8000.phy.1
+uevent=OF_NAME=phy
+OF_FULLNAME=/soc@0/phy@88e8000
+OF_COMPATIBLE_0=qcom,sm8450-qmp-usb3-dp-phy
+OF_COMPATIBLE_N=1
+
+== Input devices ==
+I: Bus=0000 Vendor=0000 Product=0000 Version=0000
+N: Name="pmic_pwrkey"
+P: Phys=pmic_pwrkey/input0
+S: Sysfs=/devices/platform/soc@0/c400000.spmi/spmi-0/0-00/c400000.spmi:pmic@0:pon@1300/c400000.spmi:pmic@0:pon@1300:pwrkey/input/input0
+U: Uniq=
+H: Handlers=kbd event0 
+B: PROP=0
+B: EV=3
+B: KEY=10000000000000 0
+
+I: Bus=0000 Vendor=0000 Product=0000 Version=0000
+N: Name="pmic_resin"
+P: Phys=pmic_resin/input0
+S: Sysfs=/devices/platform/soc@0/c400000.spmi/spmi-0/0-00/c400000.spmi:pmic@0:pon@1300/c400000.spmi:pmic@0:pon@1300:resin/input/input1
+U: Uniq=
+H: Handlers=kbd event1 
+B: PROP=0
+B: EV=3
+B: KEY=8000000000000 0
+
+I: Bus=0018 Vendor=0901 Product=0902 Version=0000
+N: Name="synaptics_common"
+P: Phys=
+S: Sysfs=/devices/platform/soc@0/9c0000.geniqup/990000.i2c/i2c-0/0-004b/input/input2
+U: Uniq=
+H: Handlers=event2 
+B: PROP=2
+B: EV=b
+B: KEY=420 0 0 0 0 0
+B: ABS=2e1800200000000
+
+I: Bus=0000 Vendor=0000 Product=0000 Version=0000
+N: Name="synaptics_common_kpd"
+P: Phys=
+S: Sysfs=/devices/platform/soc@0/9c0000.geniqup/990000.i2c/i2c-0/0-004b/input/input3
+U: Uniq=
+H: Handlers=event3 
+B: PROP=0
+B: EV=3
+B: KEY=0
+
+I: Bus=0019 Vendor=0001 Product=0001 Version=0100
+N: Name="gpio-keys"
+P: Phys=gpio-keys/input0
+S: Sysfs=/devices/platform/gpio-keys/input/input4
+U: Uniq=
+H: Handlers=kbd event4 
+B: PROP=0
+B: EV=3
+B: KEY=4000000000000 0
+
+
+== Kernel configuration ==
+CONFIG_INPUT_EVDEV=y
+CONFIG_HID_GENERIC=m
+# CONFIG_HID_LOGITECH is not set
+# CONFIG_HID_MICROSOFT is not set
+CONFIG_USB_HID=m
+# CONFIG_USB_HIDDEV is not set
+CONFIG_USB_XHCI_HCD=y
+# CONFIG_USB_XHCI_DBGCAP is not set
+CONFIG_USB_XHCI_PCI=y
+# CONFIG_USB_XHCI_PCI_RENESAS is not set
+CONFIG_USB_XHCI_PLATFORM=y
+CONFIG_USB_XHCI_SIDEBAND=y
+CONFIG_USB_DWC3=y
+# CONFIG_USB_DWC3_ULPI is not set
+# CONFIG_USB_DWC3_HOST is not set
+# CONFIG_USB_DWC3_GADGET is not set
+CONFIG_USB_DWC3_DUAL_ROLE=y
+CONFIG_USB_DWC3_HAPS=y
+CONFIG_USB_DWC3_OF_SIMPLE=y
+CONFIG_USB_DWC3_QCOM=y
+CONFIG_USB_DWC3_GENERIC_PLAT=y
+# CONFIG_USB_DWC3_GOOGLE is not set
+CONFIG_TYPEC=y
+CONFIG_TYPEC_TCPM=y
+CONFIG_TYPEC_TCPCI=m
+CONFIG_TYPEC_RT1711H=m
+CONFIG_TYPEC_TCPCI_MAXIM=m
+# CONFIG_TYPEC_FUSB302 is not set
+CONFIG_TYPEC_QCOM_PMIC=y
+CONFIG_TYPEC_UCSI=y
+CONFIG_TYPEC_TPS6598X=m
+# CONFIG_TYPEC_ANX7411 is not set
+# CONFIG_TYPEC_RT1719 is not set
+# CONFIG_TYPEC_HD3SS3220 is not set
+# CONFIG_TYPEC_STUSB160X is not set
+# CONFIG_TYPEC_WUSB3801 is not set
+CONFIG_TYPEC_MUX_FSA4480=y
+CONFIG_TYPEC_MUX_GPIO_SBU=y
+# CONFIG_TYPEC_MUX_PI3USB30532 is not set
+CONFIG_TYPEC_MUX_IT5205=m
+CONFIG_TYPEC_MUX_NB7VPQ904M=y
+CONFIG_TYPEC_MUX_PS883X=m
+CONFIG_TYPEC_MUX_PTN36502=m
+# CONFIG_TYPEC_MUX_TUSB1046 is not set
+CONFIG_TYPEC_MUX_WCD939X_USBSS=m
+CONFIG_TYPEC_DP_ALTMODE=y
+# CONFIG_TYPEC_NVIDIA_ALTMODE is not set
+# CONFIG_TYPEC_TBT_ALTMODE is not set
+# CONFIG_PHY_QCOM_APQ8064_SATA is not set
+CONFIG_PHY_QCOM_EDP=m
+# CONFIG_PHY_QCOM_IPQ4019_USB is not set
+# CONFIG_PHY_QCOM_IPQ806X_SATA is not set
+CONFIG_PHY_QCOM_PCIE2=y
+CONFIG_PHY_QCOM_QMP=y
+CONFIG_PHY_QCOM_QMP_COMBO=y
+CONFIG_PHY_QCOM_QMP_PCIE=y
+# CONFIG_PHY_QCOM_QMP_PCIE_MULTIPHY is not set
+CONFIG_PHY_QCOM_QMP_PCIE_8996=y
+CONFIG_PHY_QCOM_QMP_UFS=m
+CONFIG_PHY_QCOM_QMP_USB=y
+# CONFIG_PHY_QCOM_QMP_USB_LEGACY is not set
+CONFIG_PHY_QCOM_QUSB2=y
+CONFIG_PHY_QCOM_EUSB2_REPEATER=y
+CONFIG_PHY_QCOM_M31_USB=m
+# CONFIG_PHY_QCOM_UNIPHY_PCIE_28LP is not set
+CONFIG_PHY_QCOM_M31_EUSB=m
+CONFIG_PHY_QCOM_USB_HS=y
+CONFIG_PHY_QCOM_USB_SNPS_FEMTO_V2=y
+CONFIG_PHY_QCOM_USB_HSIC=y
+CONFIG_PHY_QCOM_USB_HS_28NM=y
+CONFIG_PHY_QCOM_USB_SS=y
+# CONFIG_PHY_QCOM_IPQ806X_USB is not set
+CONFIG_PHY_QCOM_SGMII_ETH=m
+
+== USB/HID modules ==
+cdc_ether
+hub
+r8152
+r8152-cfgselector
+usb
+usb-storage
+usbfs
+usbhid
+usbnet                 40960  1 cdc_ether
+mii                    16384  2 usbnet,r8152
+hid_generic            12288  0
+usbhid                 28672  0
+qcom_battmgr           28672  0
+
+== Debugfs USB files ==
+/sys/kernel/debug/usb/a600000.usb/link_state
+/sys/kernel/debug/usb/a600000.usb/testmode
+/sys/kernel/debug/usb/a600000.usb/mode
+/sys/kernel/debug/usb/a600000.usb/lsp_dump
+/sys/kernel/debug/usb/a600000.usb/regdump
+/sys/kernel/debug/usb/ucsi/pmic_glink.ucsi.0/message_out
+/sys/kernel/debug/usb/ucsi/pmic_glink.ucsi.0/vbus_voltage
+/sys/kernel/debug/usb/ucsi/pmic_glink.ucsi.0/avg_current
+/sys/kernel/debug/usb/ucsi/pmic_glink.ucsi.0/peak_current
+/sys/kernel/debug/usb/ucsi/pmic_glink.ucsi.0/response
+/sys/kernel/debug/usb/ucsi/pmic_glink.ucsi.0/command
+/sys/kernel/debug/usb/xhci/xhci-hcd.2.auto/port_bandwidth/FS_BW
+/sys/kernel/debug/usb/xhci/xhci-hcd.2.auto/port_bandwidth/HS_BW
+/sys/kernel/debug/usb/xhci/xhci-hcd.2.auto/port_bandwidth/SS_BW
+/sys/kernel/debug/usb/xhci/xhci-hcd.2.auto/event-ring/trbs
+/sys/kernel/debug/usb/xhci/xhci-hcd.2.auto/event-ring/cycle
+/sys/kernel/debug/usb/xhci/xhci-hcd.2.auto/event-ring/dequeue
+/sys/kernel/debug/usb/xhci/xhci-hcd.2.auto/event-ring/enqueue
+/sys/kernel/debug/usb/xhci/xhci-hcd.2.auto/command-ring/trbs
+/sys/kernel/debug/usb/xhci/xhci-hcd.2.auto/command-ring/cycle
+/sys/kernel/debug/usb/xhci/xhci-hcd.2.auto/command-ring/dequeue
+/sys/kernel/debug/usb/xhci/xhci-hcd.2.auto/command-ring/enqueue
+/sys/kernel/debug/usb/xhci/xhci-hcd.2.auto/reg-ext-protocol:01
+/sys/kernel/debug/usb/xhci/xhci-hcd.2.auto/reg-ext-protocol:00
+/sys/kernel/debug/usb/xhci/xhci-hcd.2.auto/reg-ext-legsup:00
+/sys/kernel/debug/usb/xhci/xhci-hcd.2.auto/reg-runtime
+/sys/kernel/debug/usb/xhci/xhci-hcd.2.auto/reg-op
+/sys/kernel/debug/usb/xhci/xhci-hcd.2.auto/reg-cap
+/sys/kernel/debug/usb/devices
+
+== Full kernel log ==
+[  617.093168] geni_i2c 990000.i2c: prep_slave_sg failed
+[  617.093178] geni_i2c 990000.i2c: GPI transfer failed: -5
+[  618.143439] platform 3d6a000.gmu: [drm:a6xx_gmu_set_oob] *ERROR* Timeout waiting for GMU OOB set GPU_SET: 0x0
+[  618.153558] platform 3d6a000.gmu: [drm:a6xx_gmu_set_oob] *ERROR* Timeout waiting for GMU OOB set GPU_SET: 0x0
+[  618.163664] platform 3d6a000.gmu: [drm:a6xx_gmu_set_oob] *ERROR* Timeout waiting for GMU OOB set GPU_SET: 0x0
+[  618.173803] platform 3d6a000.gmu: [drm:a6xx_gmu_set_oob] *ERROR* Timeout waiting for GMU OOB set GPU_SET: 0x0
+[  618.184420] platform 3d6a000.gmu: [drm:a6xx_gmu_set_oob] *ERROR* Timeout waiting for GMU OOB set GPU_SET: 0x0
+[  618.326597] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[  618.326631] geni_i2c 990000.i2c: prep_slave_sg failed
+[  618.326641] geni_i2c 990000.i2c: GPI transfer failed: -5
+[  620.194779] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[  620.194811] geni_i2c 990000.i2c: prep_slave_sg failed
+[  620.194821] geni_i2c 990000.i2c: GPI transfer failed: -5
+[  621.807559] msm_dpu ae01000.display-controller: [drm:hangcheck_handler] *ERROR* 07030001: hangcheck detected gpu lockup rb 0!
+[  621.807618] msm_dpu ae01000.display-controller: [drm:hangcheck_handler] *ERROR* 07030001:     completed fence: 782
+[  621.807635] msm_dpu ae01000.display-controller: [drm:hangcheck_handler] *ERROR* 07030001:     submitted fence: 786
+[  621.808468] msm_dpu ae01000.display-controller: [drm:recover_worker] *ERROR* 07030001: hangcheck recover!
+[  621.808525] msm_dpu ae01000.display-controller: [drm:recover_worker] *ERROR* 07030001: offending task: kwin_wayland (/usr/bin/kwin_wayland --drm --no-lockscreen --no-global-shortcuts --locale1 --inputmethod /usr/bin/plasma-keyboard)
+[  621.874678] revision: 0 (07030001)
+[  621.874682] rb 0: fence:    783/786
+[  621.874685] rptr:     0
+[  621.874687] rb wptr:  573
+[  621.874689] rb 1: fence:    -256/-256
+[  621.874691] rptr:     0
+[  621.874693] rb wptr:  0
+[  621.874695] rb 2: fence:    295/298
+[  621.874697] rptr:     0
+[  621.874699] rb wptr:  522
+[  621.874701] rb 3: fence:    -256/-256
+[  621.874703] rptr:     0
+[  621.874705] rb wptr:  0
+[  621.884803] platform 3d6a000.gmu: [drm:a6xx_gmu_set_oob] *ERROR* Timeout waiting for GMU OOB set GPU_SET: 0x0
+[  621.994955] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[  621.994983] geni_i2c 990000.i2c: prep_slave_sg failed
+[  621.994993] geni_i2c 990000.i2c: GPI transfer failed: -5
+[  623.792978] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[  623.793010] geni_i2c 990000.i2c: prep_slave_sg failed
+[  623.793019] geni_i2c 990000.i2c: GPI transfer failed: -5
+[  631.360579] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[  631.360614] geni_i2c 990000.i2c: prep_slave_sg failed
+[  631.360624] geni_i2c 990000.i2c: GPI transfer failed: -5
+[  634.108929] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[  634.108963] geni_i2c 990000.i2c: prep_slave_sg failed
+[  634.108973] geni_i2c 990000.i2c: GPI transfer failed: -5
+[  635.526178] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[  635.526209] geni_i2c 990000.i2c: prep_slave_sg failed
+[  635.526218] geni_i2c 990000.i2c: GPI transfer failed: -5
+[  636.238882] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[  636.238913] geni_i2c 990000.i2c: prep_slave_sg failed
+[  636.238923] geni_i2c 990000.i2c: GPI transfer failed: -5
+[  637.034942] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[  637.034974] geni_i2c 990000.i2c: prep_slave_sg failed
+[  637.034984] geni_i2c 990000.i2c: GPI transfer failed: -5
+[  640.729615] DSI: pic_width 1440 has to be multiple of slice 540
+[  640.729655] DSI: pic_width 1440 has to be multiple of slice 540
+[  640.729680] DSI: pic_width 1440 has to be multiple of slice 540
+[  651.909153] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[  651.909184] geni_i2c 990000.i2c: prep_slave_sg failed
+[  651.909193] geni_i2c 990000.i2c: GPI transfer failed: -5
+[  655.024490] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[  655.024524] geni_i2c 990000.i2c: prep_slave_sg failed
+[  655.024535] geni_i2c 990000.i2c: GPI transfer failed: -5
+[  656.334332] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[  656.334363] geni_i2c 990000.i2c: prep_slave_sg failed
+[  656.334372] geni_i2c 990000.i2c: GPI transfer failed: -5
+[  657.165270] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[  657.165305] geni_i2c 990000.i2c: prep_slave_sg failed
+[  657.165313] geni_i2c 990000.i2c: GPI transfer failed: -5
+[  850.451808] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[  850.451851] geni_i2c 990000.i2c: prep_slave_sg failed
+[  850.451866] geni_i2c 990000.i2c: GPI transfer failed: -5
+[  850.711142] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[  850.711173] geni_i2c 990000.i2c: prep_slave_sg failed
+[  850.711181] geni_i2c 990000.i2c: GPI transfer failed: -5
+[  852.772635] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[  852.772669] geni_i2c 990000.i2c: prep_slave_sg failed
+[  852.772680] geni_i2c 990000.i2c: GPI transfer failed: -5
+[  853.040204] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[  853.040237] geni_i2c 990000.i2c: prep_slave_sg failed
+[  853.040248] geni_i2c 990000.i2c: GPI transfer failed: -5
+[  853.299543] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[  853.299575] geni_i2c 990000.i2c: prep_slave_sg failed
+[  853.299587] geni_i2c 990000.i2c: GPI transfer failed: -5
+[  853.565117] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[  853.565148] geni_i2c 990000.i2c: prep_slave_sg failed
+[  853.565158] geni_i2c 990000.i2c: GPI transfer failed: -5
+[  853.824132] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[  853.824164] geni_i2c 990000.i2c: prep_slave_sg failed
+[  853.824174] geni_i2c 990000.i2c: GPI transfer failed: -5
+[  854.083384] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[  854.083411] geni_i2c 990000.i2c: prep_slave_sg failed
+[  854.083423] geni_i2c 990000.i2c: GPI transfer failed: -5
+[  854.342885] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[  854.342916] geni_i2c 990000.i2c: prep_slave_sg failed
+[  854.342926] geni_i2c 990000.i2c: GPI transfer failed: -5
+[  854.601580] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[  854.601618] geni_i2c 990000.i2c: prep_slave_sg failed
+[  854.601629] geni_i2c 990000.i2c: GPI transfer failed: -5
+[  854.860828] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[  854.860857] geni_i2c 990000.i2c: prep_slave_sg failed
+[  854.860867] geni_i2c 990000.i2c: GPI transfer failed: -5
+[  855.316150] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[  855.316183] geni_i2c 990000.i2c: prep_slave_sg failed
+[  855.316193] geni_i2c 990000.i2c: GPI transfer failed: -5
+[  915.286572] dsi_err_worker: status=5
+[  915.342517] dsi_err_worker: status=4
+[  915.394581] dsi_err_worker: status=4
+[  915.447170] dsi_err_worker: status=4
+[  915.501269] dsi_err_worker: status=4
+[  915.554244] dsi_err_worker: status=4
+[  915.610587] dsi_err_worker: status=4
+[  915.667174] dsi_err_worker: status=4
+[  915.724323] dsi_err_worker: status=4
+[  915.780548] dsi_err_worker: status=4
+[  920.313203] dsi_err_worker: 80 callbacks suppressed
+[  920.313235] dsi_err_worker: status=4
+[  920.369700] dsi_err_worker: status=4
+[  920.422602] dsi_err_worker: status=4
+[  920.477897] dsi_err_worker: status=4
+[  920.531664] dsi_err_worker: status=4
+[  920.585813] dsi_err_worker: status=4
+[  920.638050] dsi_err_worker: status=4
+[  920.692584] dsi_err_worker: status=4
+[  920.746918] dsi_err_worker: status=4
+[  920.800552] dsi_err_worker: status=4
+[  925.363908] dsi_err_worker: 83 callbacks suppressed
+[  925.363916] dsi_err_worker: status=4
+[  925.420496] dsi_err_worker: status=4
+[  925.476196] dsi_err_worker: status=4
+[  925.533327] dsi_err_worker: status=4
+[  925.603913] dsi_err_worker: status=4
+[  925.660893] dsi_err_worker: status=4
+[  925.718893] dsi_err_worker: status=4
+[  925.776373] dsi_err_worker: status=4
+[  925.832727] dsi_err_worker: status=4
+[  925.890088] dsi_err_worker: status=4
+[  963.351659] dsi_err_worker: 27 callbacks suppressed
+[  963.351669] dsi_err_worker: status=4
+[  963.403832] dsi_err_worker: status=4
+[  963.455769] dsi_err_worker: status=4
+[  963.509599] dsi_err_worker: status=4
+[  963.563320] dsi_err_worker: status=5
+[  963.622041] dsi_err_worker: status=5
+[  963.679323] dsi_err_worker: status=5
+[  963.737470] dsi_err_worker: status=5
+[  963.795713] dsi_err_worker: status=5
+[  963.853961] dsi_err_worker: status=5
+[  968.399848] dsi_err_worker: 77 callbacks suppressed
+[  968.399858] dsi_err_worker: status=4
+[  968.459083] dsi_err_worker: status=4
+[  968.516969] dsi_err_worker: status=4
+[  968.574010] dsi_err_worker: status=4
+[  968.633658] dsi_err_worker: status=4
+[  968.692092] dsi_err_worker: status=4
+[  968.766425] dsi_err_worker: status=4
+[  968.826934] dsi_err_worker: status=4
+[  968.887233] dsi_err_worker: status=4
+[  968.945946] dsi_err_worker: status=4
+[  969.991287] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[  969.991357] geni_i2c 990000.i2c: prep_slave_sg failed
+[  969.991423] geni_i2c 990000.i2c: GPI transfer failed: -5
+[  970.258721] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[  970.258748] geni_i2c 990000.i2c: prep_slave_sg failed
+[  970.258757] geni_i2c 990000.i2c: GPI transfer failed: -5
+[  970.510101] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[  970.510196] geni_i2c 990000.i2c: prep_slave_sg failed
+[  970.510238] geni_i2c 990000.i2c: GPI transfer failed: -5
+[  977.481069] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[  977.481102] geni_i2c 990000.i2c: prep_slave_sg failed
+[  977.481112] geni_i2c 990000.i2c: GPI transfer failed: -5
+[  977.749091] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[  977.749123] geni_i2c 990000.i2c: prep_slave_sg failed
+[  977.749133] geni_i2c 990000.i2c: GPI transfer failed: -5
+[  979.416976] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[  979.417008] geni_i2c 990000.i2c: prep_slave_sg failed
+[  979.417018] geni_i2c 990000.i2c: GPI transfer failed: -5
+[  981.192938] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[  981.192969] geni_i2c 990000.i2c: prep_slave_sg failed
+[  981.192979] geni_i2c 990000.i2c: GPI transfer failed: -5
+[  982.953742] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[  982.953774] geni_i2c 990000.i2c: prep_slave_sg failed
+[  982.953784] geni_i2c 990000.i2c: GPI transfer failed: -5
+[  985.137139] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[  985.137173] geni_i2c 990000.i2c: prep_slave_sg failed
+[  985.137183] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 1032.098260] dsi_err_worker: 22 callbacks suppressed
+[ 1032.098271] dsi_err_worker: status=5
+[ 1032.155182] dsi_err_worker: status=4
+[ 1032.208341] dsi_err_worker: status=4
+[ 1032.262120] dsi_err_worker: status=4
+[ 1032.318474] dsi_err_worker: status=4
+[ 1032.376203] dsi_err_worker: status=4
+[ 1032.435998] dsi_err_worker: status=4
+[ 1032.493146] dsi_err_worker: status=4
+[ 1032.552033] dsi_err_worker: status=4
+[ 1032.609803] dsi_err_worker: status=4
+[ 1035.668243] Turning OFF PHY while PLL is on
+[ 1035.843489] dsi_cmds2buf_tx: cmd dma tx failed, type=0x6, data0=0x52, len=4, ret=-110
+[ 1035.843578] msm_dsi_host_cmd_rx: Read cmd Tx failed, -110
+[ 1035.844401] ------------[ cut here ]------------
+[ 1035.844433] disp_cc_mdss_pclk0_clk status stuck at 'on'
+[ 1035.844528] WARNING: drivers/clk/qcom/clk-branch.c:87 at clk_branch_toggle+0x170/0x190, CPU#2: python3/3925
+[ 1035.844646] Modules linked in: cdc_ether usbnet r8152 mii hid_generic usbhid rfcomm q6prm_clocks q6apm_dai q6apm_lpass_dais snd_q6dsp_common q6prm qrtr_mhi algif_hash algif_skcipher af_alg bnep snd_q6apm ath11k_pci ath11k mac80211 qcom_camss fastrpc qcom_pd_mapper rpmsg_ctrl videobuf2_dma_sg libarc4 videobuf2_memops s5kjn1 videobuf2_v4l2 hci_uart snd_soc_wcd938x snd_soc_wcd938x_sdw videobuf2_common btqca nxp_nci_i2c cfg80211 v4l2_cci regmap_sdw btbcm nxp_nci snd_soc_wcd_common snd_soc_sc8280xp v4l2_fwnode mhi v4l2_async snd_soc_tfa9872 bluetooth videodev nci snd_soc_lpass_rx_macro snd_soc_lpass_tx_macro snd_soc_lpass_va_macro snd_soc_qcom_sdw snd_soc_wcd_classh rtc_pm8xxx snd_soc_qcom_common pwrseq_qcom_wcn soundwire_qcom snd_soc_wcd_mbhc snd_soc_hdmi_codec ecdh_generic snd_soc_lpass_macro_common nfc ecc snd_soc_core nvmem_qcom_spmi_sdam qcom_q6v5_pas qcom_stats mc i2c_qcom_cci qcom_pil_info qcom_q6v5 ipa coresight_stm snd_compress qcom_sysmon snd_pcm qcom_common stm_p_basic stm_core pci_pwrctrl_pwrseq qcom_rng
+[ 1035.846444]  coresight_cti snd_timer coresight_tmc coresight_replicator coresight_funnel snd qcom_battmgr qcomtee coresight soundcore soundwire_bus rfkill joydev fuse phy_qcom_qmp_ufs
+[ 1035.846891] CPU: 2 UID: 0 PID: 3925 Comm: python3 Tainted: G S                  7.3.0-rc2-sm8450+ #1 PREEMPT 
+[ 1035.846955] Tainted: [S]=CPU_OUT_OF_SPEC
+[ 1035.846988] Hardware name: OnePlus 10 Pro 5G (DT)
+[ 1035.847023] pstate: 614000c5 (nZCv daIF +PAN -UAO -TCO +DIT -SSBS BTYPE=--)
+[ 1035.847093] pc : clk_branch_toggle+0x170/0x190
+[ 1035.847146] lr : clk_branch_toggle+0x170/0x190
+[ 1035.847197] sp : ffff80008a28b9c0
+[ 1035.847229] x29: ffff80008a28b9d0 x28: ffff000792221f80 x27: 0000000000000000
+[ 1035.847301] x26: ffff80008a28bd30 x25: ffffd1b6ff877de8 x24: 0000000000000000
+[ 1035.847370] x23: 0000000000000000 x22: ffffd1b6febcc440 x21: 0000000000000000
+[ 1035.847449] x20: ffffd1b6ffc68998 x19: 0000000000000000 x18: 0000000000000038
+[ 1035.847522] x17: 2c343d6e656c202c x16: 323578303d306174 x15: ffffffffffff9bf8
+[ 1035.847596] x14: 0000000000000000 x13: ffffd1b6ffb7f640 x12: 000000000000055e
+[ 1035.847671] x11: ffffffffffff9bf8 x10: ffffffffffff9bc0 x9 : ffffd1b6ffb7f640
+[ 1035.847743] x8 : 3fffffffffffefff x7 : ffffd1b6ffbd7640 x6 : 0000000000000001
+[ 1035.847816] x5 : ffff0009fe912848 x4 : ffff2e52fee71000 x3 : ffff000792221f80
+[ 1035.847884] x2 : 0000000000000000 x1 : 0000000000000000 x0 : ffff000792221f80
+[ 1035.847953] Call trace:
+[ 1035.847985]  clk_branch_toggle+0x170/0x190 (P)
+[ 1035.848045]  clk_branch2_disable+0x1c/0x30
+[ 1035.848091]  clk_core_disable+0x5c/0xb0
+[ 1035.848149]  clk_disable+0x38/0x54
+[ 1035.848196]  dsi_link_clk_disable_6g+0x34/0x74
+[ 1035.848266]  msm_dsi_host_xfer_restore+0x54/0xb4
+[ 1035.848339]  msm_dsi_manager_cmd_xfer+0xc4/0x1bc
+[ 1035.848394]  dsi_host_transfer+0x40/0x78
+[ 1035.848445]  mipi_dsi_device_transfer+0x44/0x58
+[ 1035.848501]  mipi_dsi_dcs_get_display_brightness_large+0x70/0xc4
+[ 1035.848559]  panel_samsung_amb670yf07_1440_3216_dsc_bl_get_brightness+0x44/0x88
+[ 1035.848637]  actual_brightness_show+0x40/0xa4
+[ 1035.848690]  dev_attr_show+0x20/0x70
+[ 1035.848739]  sysfs_kf_seq_show+0xa4/0x12c
+[ 1035.848812]  kernfs_seq_show+0x2c/0x40
+[ 1035.848862]  seq_read_iter+0x100/0x470
+[ 1035.848908]  kernfs_fop_read_iter+0x14c/0x1c0
+[ 1035.848962]  vfs_read+0x244/0x33c
+[ 1035.849013]  ksys_read+0x64/0x100
+[ 1035.849059]  __arm64_sys_read+0x18/0x24
+[ 1035.849107]  invoke_syscall.constprop.0+0x40/0x108
+[ 1035.849161]  el0_svc_common.constprop.0+0x38/0xd8
+[ 1035.849210]  do_el0_svc+0x1c/0x28
+[ 1035.849257]  el0_svc+0x38/0x1d0
+[ 1035.849305]  el0t_64_sync_handler+0xa0/0xe4
+[ 1035.849357]  el0t_64_sync+0x198/0x19c
+[ 1035.849404] ---[ end trace 0000000000000000 ]---
+[ 1035.850445] ------------[ cut here ]------------
+[ 1035.850491] disp_cc_mdss_byte0_intf_clk status stuck at 'on'
+[ 1035.850578] WARNING: drivers/clk/qcom/clk-branch.c:87 at clk_branch_toggle+0x170/0x190, CPU#2: python3/3925
+[ 1035.850662] Modules linked in: cdc_ether usbnet r8152 mii hid_generic usbhid rfcomm q6prm_clocks q6apm_dai q6apm_lpass_dais snd_q6dsp_common q6prm qrtr_mhi algif_hash algif_skcipher af_alg bnep snd_q6apm ath11k_pci ath11k mac80211 qcom_camss fastrpc qcom_pd_mapper rpmsg_ctrl videobuf2_dma_sg libarc4 videobuf2_memops s5kjn1 videobuf2_v4l2 hci_uart snd_soc_wcd938x snd_soc_wcd938x_sdw videobuf2_common btqca nxp_nci_i2c cfg80211 v4l2_cci regmap_sdw btbcm nxp_nci snd_soc_wcd_common snd_soc_sc8280xp v4l2_fwnode mhi v4l2_async snd_soc_tfa9872 bluetooth videodev nci snd_soc_lpass_rx_macro snd_soc_lpass_tx_macro snd_soc_lpass_va_macro snd_soc_qcom_sdw snd_soc_wcd_classh rtc_pm8xxx snd_soc_qcom_common pwrseq_qcom_wcn soundwire_qcom snd_soc_wcd_mbhc snd_soc_hdmi_codec ecdh_generic snd_soc_lpass_macro_common nfc ecc snd_soc_core nvmem_qcom_spmi_sdam qcom_q6v5_pas qcom_stats mc i2c_qcom_cci qcom_pil_info qcom_q6v5 ipa coresight_stm snd_compress qcom_sysmon snd_pcm qcom_common stm_p_basic stm_core pci_pwrctrl_pwrseq qcom_rng
+[ 1035.851667]  coresight_cti snd_timer coresight_tmc coresight_replicator coresight_funnel snd qcom_battmgr qcomtee coresight soundcore soundwire_bus rfkill joydev fuse phy_qcom_qmp_ufs
+[ 1035.851904] CPU: 2 UID: 0 PID: 3925 Comm: python3 Tainted: G S      W           7.3.0-rc2-sm8450+ #1 PREEMPT 
+[ 1035.851961] Tainted: [S]=CPU_OUT_OF_SPEC, [W]=WARN
+[ 1035.851991] Hardware name: OnePlus 10 Pro 5G (DT)
+[ 1035.852023] pstate: 614000c5 (nZCv daIF +PAN -UAO -TCO +DIT -SSBS BTYPE=--)
+[ 1035.852066] pc : clk_branch_toggle+0x170/0x190
+[ 1035.852117] lr : clk_branch_toggle+0x170/0x190
+[ 1035.852166] sp : ffff80008a28b9c0
+[ 1035.852197] x29: ffff80008a28b9d0 x28: ffff000792221f80 x27: 0000000000000000
+[ 1035.852267] x26: ffff80008a28bd30 x25: ffffd1b6ff878258 x24: 0000000000000000
+[ 1035.852335] x23: 0000000000000000 x22: ffffd1b6febcc440 x21: 0000000000000000
+[ 1035.852403] x20: ffffd1b6ffc69b18 x19: 0000000000000000 x18: 0000000000000040
+[ 1035.852471] x17: 2c343d6e656c202c x16: 323578303d306174 x15: ffffffffffffab10
+[ 1035.852540] x14: 0000000000000000 x13: ffffd1b6ffb7f640 x12: 0000000000000590
+[ 1035.852608] x11: ffffffffffffab10 x10: ffffffffffffaad0 x9 : ffffd1b6ffb7f640
+[ 1035.852677] x8 : 3fffffffffffefff x7 : ffffd1b6ffbd7640 x6 : 0000000000000001
+[ 1035.852746] x5 : ffff0009fe912848 x4 : ffff2e52fee71000 x3 : ffff000792221f80
+[ 1035.852813] x2 : 0000000000000000 x1 : 0000000000000000 x0 : ffff000792221f80
+[ 1035.852882] Call trace:
+[ 1035.852911]  clk_branch_toggle+0x170/0x190 (P)
+[ 1035.852967]  clk_branch2_disable+0x1c/0x30
+[ 1035.853011]  clk_core_disable+0x5c/0xb0
+[ 1035.853055]  clk_disable+0x38/0x54
+[ 1035.853099]  dsi_link_clk_disable_6g+0x48/0x74
+[ 1035.853151]  msm_dsi_host_xfer_restore+0x54/0xb4
+[ 1035.853203]  msm_dsi_manager_cmd_xfer+0xc4/0x1bc
+[ 1035.853245]  dsi_host_transfer+0x40/0x78
+[ 1035.853300]  mipi_dsi_device_transfer+0x44/0x58
+[ 1035.853365]  mipi_dsi_dcs_get_display_brightness_large+0x70/0xc4
+[ 1035.853420]  panel_samsung_amb670yf07_1440_3216_dsc_bl_get_brightness+0x44/0x88
+[ 1035.853472]  actual_brightness_show+0x40/0xa4
+[ 1035.853520]  dev_attr_show+0x20/0x70
+[ 1035.853567]  sysfs_kf_seq_show+0xa4/0x12c
+[ 1035.853634]  kernfs_seq_show+0x2c/0x40
+[ 1035.853687]  seq_read_iter+0x100/0x470
+[ 1035.853737]  kernfs_fop_read_iter+0x14c/0x1c0
+[ 1035.853790]  vfs_read+0x244/0x33c
+[ 1035.853842]  ksys_read+0x64/0x100
+[ 1035.853900]  __arm64_sys_read+0x18/0x24
+[ 1035.853954]  invoke_syscall.constprop.0+0x40/0x108
+[ 1035.854008]  el0_svc_common.constprop.0+0x38/0xd8
+[ 1035.854063]  do_el0_svc+0x1c/0x28
+[ 1035.854109]  el0_svc+0x38/0x1d0
+[ 1035.854154]  el0t_64_sync_handler+0xa0/0xe4
+[ 1035.854207]  el0t_64_sync+0x198/0x19c
+[ 1035.854251] ---[ end trace 0000000000000000 ]---
+[ 1035.855140] ------------[ cut here ]------------
+[ 1035.855174] disp_cc_mdss_byte0_clk status stuck at 'on'
+[ 1035.855261] WARNING: drivers/clk/qcom/clk-branch.c:87 at clk_branch_toggle+0x170/0x190, CPU#2: python3/3925
+[ 1035.855344] Modules linked in: cdc_ether usbnet r8152 mii hid_generic usbhid rfcomm q6prm_clocks q6apm_dai q6apm_lpass_dais snd_q6dsp_common q6prm qrtr_mhi algif_hash algif_skcipher af_alg bnep snd_q6apm ath11k_pci ath11k mac80211 qcom_camss fastrpc qcom_pd_mapper rpmsg_ctrl videobuf2_dma_sg libarc4 videobuf2_memops s5kjn1 videobuf2_v4l2 hci_uart snd_soc_wcd938x snd_soc_wcd938x_sdw videobuf2_common btqca nxp_nci_i2c cfg80211 v4l2_cci regmap_sdw btbcm nxp_nci snd_soc_wcd_common snd_soc_sc8280xp v4l2_fwnode mhi v4l2_async snd_soc_tfa9872 bluetooth videodev nci snd_soc_lpass_rx_macro snd_soc_lpass_tx_macro snd_soc_lpass_va_macro snd_soc_qcom_sdw snd_soc_wcd_classh rtc_pm8xxx snd_soc_qcom_common pwrseq_qcom_wcn soundwire_qcom snd_soc_wcd_mbhc snd_soc_hdmi_codec ecdh_generic snd_soc_lpass_macro_common nfc ecc snd_soc_core nvmem_qcom_spmi_sdam qcom_q6v5_pas qcom_stats mc i2c_qcom_cci qcom_pil_info qcom_q6v5 ipa coresight_stm snd_compress qcom_sysmon snd_pcm qcom_common stm_p_basic stm_core pci_pwrctrl_pwrseq qcom_rng
+[ 1035.856356]  coresight_cti snd_timer coresight_tmc coresight_replicator coresight_funnel snd qcom_battmgr qcomtee coresight soundcore soundwire_bus rfkill joydev fuse phy_qcom_qmp_ufs
+[ 1035.856615] CPU: 2 UID: 0 PID: 3925 Comm: python3 Tainted: G S      W           7.3.0-rc2-sm8450+ #1 PREEMPT 
+[ 1035.856676] Tainted: [S]=CPU_OUT_OF_SPEC, [W]=WARN
+[ 1035.856707] Hardware name: OnePlus 10 Pro 5G (DT)
+[ 1035.856746] pstate: 614000c5 (nZCv daIF +PAN -UAO -TCO +DIT -SSBS BTYPE=--)
+[ 1035.856788] pc : clk_branch_toggle+0x170/0x190
+[ 1035.856850] lr : clk_branch_toggle+0x170/0x190
+[ 1035.856906] sp : ffff80008a28b9c0
+[ 1035.856936] x29: ffff80008a28b9d0 x28: ffff000792221f80 x27: 0000000000000000
+[ 1035.857009] x26: ffff80008a28bd30 x25: ffffd1b6ff878278 x24: 0000000000000000
+[ 1035.857078] x23: 0000000000000000 x22: ffffd1b6febcc440 x21: 0000000000000000
+[ 1035.857150] x20: ffffd1b6ffc69b98 x19: 0000000000000000 x18: 0000000000000038
+[ 1035.857219] x17: 2c343d6e656c202c x16: 323578303d306174 x15: ffffffffffffba28
+[ 1035.857287] x14: 0000000000000000 x13: ffffd1b6ffb7f640 x12: 00000000000005c2
+[ 1035.857356] x11: ffffffffffffba28 x10: ffffffffffffb9f0 x9 : ffffd1b6ffb7f640
+[ 1035.857427] x8 : 3fffffffffffefff x7 : ffffd1b6ffbd7640 x6 : 0000000000000001
+[ 1035.857495] x5 : ffff0009fe912848 x4 : ffff2e52fee71000 x3 : ffff000792221f80
+[ 1035.857568] x2 : 0000000000000000 x1 : 0000000000000000 x0 : ffff000792221f80
+[ 1035.857643] Call trace:
+[ 1035.857671]  clk_branch_toggle+0x170/0x190 (P)
+[ 1035.857727]  clk_branch2_disable+0x1c/0x30
+[ 1035.857770]  clk_core_disable+0x5c/0xb0
+[ 1035.857825]  clk_disable+0x38/0x54
+[ 1035.857871]  dsi_link_clk_disable_6g+0x5c/0x74
+[ 1035.857924]  msm_dsi_host_xfer_restore+0x54/0xb4
+[ 1035.857995]  msm_dsi_manager_cmd_xfer+0xc4/0x1bc
+[ 1035.858039]  dsi_host_transfer+0x40/0x78
+[ 1035.858096]  mipi_dsi_device_transfer+0x44/0x58
+[ 1035.858149]  mipi_dsi_dcs_get_display_brightness_large+0x70/0xc4
+[ 1035.858215]  panel_samsung_amb670yf07_1440_3216_dsc_bl_get_brightness+0x44/0x88
+[ 1035.858267]  actual_brightness_show+0x40/0xa4
+[ 1035.858331]  dev_attr_show+0x20/0x70
+[ 1035.858378]  sysfs_kf_seq_show+0xa4/0x12c
+[ 1035.858429]  kernfs_seq_show+0x2c/0x40
+[ 1035.858480]  seq_read_iter+0x100/0x470
+[ 1035.858523]  kernfs_fop_read_iter+0x14c/0x1c0
+[ 1035.858579]  vfs_read+0x244/0x33c
+[ 1035.858625]  ksys_read+0x64/0x100
+[ 1035.858676]  __arm64_sys_read+0x18/0x24
+[ 1035.858729]  invoke_syscall.constprop.0+0x40/0x108
+[ 1035.858778]  el0_svc_common.constprop.0+0x38/0xd8
+[ 1035.858832]  do_el0_svc+0x1c/0x28
+[ 1035.858884]  el0_svc+0x38/0x1d0
+[ 1035.858936]  el0t_64_sync_handler+0xa0/0xe4
+[ 1035.858982]  el0t_64_sync+0x198/0x19c
+[ 1035.859025] ---[ end trace 0000000000000000 ]---
+[ 1035.859192] msm_dsi_phy ae94400.phy: [drm:dsi_pll_disable_pll_bias] *ERROR* bug: imbalance in disabling PLL bias
+[ 1047.404931] dsi_cmds2buf_tx: cmd dma tx failed, type=0x6, data0=0x52, len=4, ret=-110
+[ 1047.404987] msm_dsi_host_cmd_rx: Read cmd Tx failed, -110
+[ 1047.610937] dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1047.813988] dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x9e, len=96, ret=-110
+[ 1047.814039] panel-samsung-amb670yf07-1440-3216-dsc ae94000.dsi.0: sending dcs data 9e 12 00 00 ab 30 80 09 6c 04 38 00 24 02 1c 02 1c 02 00 02 3b 00 20 03 35 00 07 00 0e 03 34 02 d4 18 00 10 f0 07 10 20 00 06 0f 0f 33 0e 1c 2a 38 46 54 62 69 70 77 79 7b 7d 7e 02 02 22 00 2a failed: -110
+[ 1047.814047] panel-samsung-amb670yf07-1440-3216-dsc ae94000.dsi.0: Failed to initialize panel: -110
+[ 1048.016763] dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1048.016848] msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1048.222119] dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1048.222167] panel-samsung-amb670yf07-1440-3216-dsc ae94000.dsi.0: [drm:drm_panel_enable] failed to enable backlight: -110
+[ 1048.268219] [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1048.325120] [drm:_dpu_encoder_phys_cmd_wait_for_idle] *ERROR* id:35 pp:0 kickoff timeout 0 cnt 1 koff_cnt 1
+[ 1048.325276] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1048.372238] [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1048.417257] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1048.424550] dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1048.424570] msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1048.464237] [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1048.508790] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1048.557809] [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1048.601297] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1048.628549] dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1048.648272] [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1048.692281] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1048.740189] [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1048.833095] dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1048.833161] msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1049.036534] dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1049.241055] dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1049.241123] msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1049.517009] dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1049.517076] msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1049.606322] platform 3d6a000.gmu: [drm:a6xx_hfi_wait_for_msg_interrupt] *ERROR* Message HFI_H2F_MSG_GX_BW_PERF_VOTE id 281 timed out waiting for response
+[ 1049.608310] platform 3d6a000.gmu: [drm:a6xx_hfi_send_msg.constprop.0] *ERROR* Unexpected message id 281 on the response queue
+[ 1049.700031] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1049.748035] [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1049.778564] dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1049.778644] msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1049.794128] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1049.840054] [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1049.889190] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1049.937781] [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1049.980371] dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1049.984569] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1050.032008] [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1050.075970] [drm:_dpu_encoder_phys_cmd_wait_for_idle] *ERROR* id:35 pp:0 kickoff timeout 0 cnt 10 koff_cnt 1
+[ 1050.076005] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1050.076015] [drm:dpu_crtc_frame_event_work:692] [dpu error]crtc94 ts:1050084058769 received panel dead event
+[ 1050.164926] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1050.184811] dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1050.184879] msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1050.257123] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1050.347974] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1050.388958] dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1050.439927] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1050.532366] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1050.592064] dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1050.592147] msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1050.623923] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1050.715919] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1050.796432] dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1050.808356] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1050.903853] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1051.000024] dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1051.000090] msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1051.000697] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1051.092647] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1051.184933] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1051.204281] dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1051.275951] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1051.371802] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1051.408707] dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1051.408786] msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1051.467797] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1051.556520] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1051.611864] dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1051.651772] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1051.739745] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1051.817716] dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1051.817803] msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1051.832555] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1051.923759] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1052.016152] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1052.020180] dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1052.107833] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1052.200763] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1052.224530] dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1052.224605] msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1052.292438] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1052.383803] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1052.427657] dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1052.475748] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1052.568592] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1052.631776] dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1052.631864] msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1052.658231] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1052.752696] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1052.837589] dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1052.839893] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1052.932393] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1053.024087] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1053.040303] dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1053.040381] msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1053.116180] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1053.208598] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1053.246179] dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1053.303545] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1053.351524] dpu_encoder_frame_done_timeout: 35 callbacks suppressed
+[ 1053.351534] [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1053.395542] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1053.443542] [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1053.448461] dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1053.448532] msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1053.486221] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1053.533090] [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1053.580548] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1053.628547] [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1053.654144] dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1053.676002] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1053.723530] [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1053.767816] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1053.815492] [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1053.856761] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1053.857057] dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1053.857146] msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1053.903444] [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1053.948336] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1053.995461] [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1054.039464] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1054.059834] dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1054.091433] [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1054.135548] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1054.183442] [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1054.223426] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1054.265959] dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1054.266045] msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1054.315458] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1054.409993] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1054.472433] dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1054.499472] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1054.591769] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1054.677324] dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1054.677409] msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1054.684393] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1054.775881] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1054.867355] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1054.880082] dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1054.955315] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1055.047315] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1055.085904] dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1055.085992] msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1055.139346] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1055.231500] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1055.288171] dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1055.323414] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1055.415279] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1055.492509] dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1055.492595] msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1055.507795] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1055.600244] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1055.691696] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1055.695948] dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1055.787237] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1055.876096] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1055.899391] dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1055.899461] msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1055.964055] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1056.056023] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1056.105155] dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1056.147317] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1056.239270] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1056.309050] dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1056.309133] msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1056.331169] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1056.423624] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1056.513128] dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1056.515295] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1056.607145] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1056.700065] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1056.715629] dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1056.715729] msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1056.792062] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1056.884086] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1056.921018] dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1056.979082] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1057.071073] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1057.123858] dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1057.123943] msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1057.165648] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1057.256442] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1057.328973] dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1057.347921] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1057.439815] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1057.531053] dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1057.531079] msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1057.531826] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1057.623797] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1057.715749] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1057.735966] dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1057.807107] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1057.899875] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1057.939721] dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1057.939789] msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1057.992957] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1058.085715] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1058.143521] dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1058.175427] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1058.262995] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1058.348206] dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1058.348301] msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1058.355019] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1058.402995] dpu_encoder_frame_done_timeout: 45 callbacks suppressed
+[ 1058.403025] [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1058.447107] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1058.495066] [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1058.539720] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1058.554893] dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1058.586919] [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1058.631047] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1058.678866] [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1058.723790] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1058.758948] dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1058.759016] msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1058.772656] [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1058.815737] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1058.863889] [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1058.906980] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1058.954839] [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1058.962940] dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1058.999657] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1059.046879] [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1059.090950] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1059.139002] [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1059.167032] dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1059.167115] msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1059.183651] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1059.230809] [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1059.274856] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1059.367280] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1059.370941] dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1059.454806] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1059.547542] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1059.575614] dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1059.575684] msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1059.638790] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1059.780023] dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1059.983556] dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1059.983643] msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1060.187645] dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1060.187696] panel-samsung-amb670yf07-1440-3216-dsc ae94000.dsi.0: [drm:drm_panel_disable] failed to disable backlight: -110
+[ 1060.276941] [drm:dpu_encoder_phys_cmd_wait_for_tx_complete] *ERROR* failed wait_for_idle: id:35 ret:-110 intf:1
+[ 1060.276997] panel-samsung-amb670yf07-1440-3216-dsc ae94000.dsi.0: Skipping unprepare of already unprepared panel
+[ 1060.299154] Turning OFF PHY while PLL is on
+[ 1060.391612] dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1060.392483] ------------[ cut here ]------------
+[ 1060.392518] disp_cc_mdss_pclk0_clk status stuck at 'on'
+[ 1060.392613] WARNING: drivers/clk/qcom/clk-branch.c:87 at clk_branch_toggle+0x170/0x190, CPU#2: backlighthelper/3943
+[ 1060.392717] Modules linked in: cdc_ether usbnet r8152 mii hid_generic usbhid rfcomm q6prm_clocks q6apm_dai q6apm_lpass_dais snd_q6dsp_common q6prm qrtr_mhi algif_hash algif_skcipher af_alg bnep snd_q6apm ath11k_pci ath11k mac80211 qcom_camss fastrpc qcom_pd_mapper rpmsg_ctrl videobuf2_dma_sg libarc4 videobuf2_memops s5kjn1 videobuf2_v4l2 hci_uart snd_soc_wcd938x snd_soc_wcd938x_sdw videobuf2_common btqca nxp_nci_i2c cfg80211 v4l2_cci regmap_sdw btbcm nxp_nci snd_soc_wcd_common snd_soc_sc8280xp v4l2_fwnode mhi v4l2_async snd_soc_tfa9872 bluetooth videodev nci snd_soc_lpass_rx_macro snd_soc_lpass_tx_macro snd_soc_lpass_va_macro snd_soc_qcom_sdw snd_soc_wcd_classh rtc_pm8xxx snd_soc_qcom_common pwrseq_qcom_wcn soundwire_qcom snd_soc_wcd_mbhc snd_soc_hdmi_codec ecdh_generic snd_soc_lpass_macro_common nfc ecc snd_soc_core nvmem_qcom_spmi_sdam qcom_q6v5_pas qcom_stats mc i2c_qcom_cci qcom_pil_info qcom_q6v5 ipa coresight_stm snd_compress qcom_sysmon snd_pcm qcom_common stm_p_basic stm_core pci_pwrctrl_pwrseq qcom_rng
+[ 1060.394018]  coresight_cti snd_timer coresight_tmc coresight_replicator coresight_funnel snd qcom_battmgr qcomtee coresight soundcore soundwire_bus rfkill joydev fuse phy_qcom_qmp_ufs
+[ 1060.394314] CPU: 2 UID: 0 PID: 3943 Comm: backlighthelper Tainted: G S      W           7.3.0-rc2-sm8450+ #1 PREEMPT 
+[ 1060.394376] Tainted: [S]=CPU_OUT_OF_SPEC, [W]=WARN
+[ 1060.394408] Hardware name: OnePlus 10 Pro 5G (DT)
+[ 1060.394443] pstate: 614000c5 (nZCv daIF +PAN -UAO -TCO +DIT -SSBS BTYPE=--)
+[ 1060.394491] pc : clk_branch_toggle+0x170/0x190
+[ 1060.394542] lr : clk_branch_toggle+0x170/0x190
+[ 1060.394593] sp : ffff80008a2d3a30
+[ 1060.394623] x29: ffff80008a2d3a40 x28: ffff0007b2afaf40 x27: 0000000000000000
+[ 1060.394707] x26: 0000000000000000 x25: ffffd1b6ff877de8 x24: 0000000000000000
+[ 1060.394778] x23: 0000000000000000 x22: ffffd1b6febcc440 x21: 0000000000000000
+[ 1060.394847] x20: ffffd1b6ffc68998 x19: 0000000000000000 x18: 0000000000000038
+[ 1060.394916] x17: 383d6e656c202c31 x16: 3578303d30617461 x15: 0000000000002b88
+[ 1060.394985] x14: 0000000000000000 x13: ffffd1b6ffb7f640 x12: 00000000000006f3
+[ 1060.395055] x11: 0000000000002b88 x10: 0000000000002b50 x9 : ffffd1b6ffb7f640
+[ 1060.395124] x8 : 3fffffffffffefff x7 : ffffd1b6ffbd7640 x6 : 0000000000000001
+[ 1060.395193] x5 : ffff0009fe912848 x4 : ffff2e52fee71000 x3 : ffff0007b2afaf40
+[ 1060.395260] x2 : 0000000000000000 x1 : 0000000000000000 x0 : ffff0007b2afaf40
+[ 1060.395331] Call trace:
+[ 1060.395366]  clk_branch_toggle+0x170/0x190 (P)
+[ 1060.395428]  clk_branch2_disable+0x1c/0x30
+[ 1060.395474]  clk_core_disable+0x5c/0xb0
+[ 1060.395523]  clk_disable+0x38/0x54
+[ 1060.395572]  dsi_link_clk_disable_6g+0x34/0x74
+[ 1060.395631]  msm_dsi_host_xfer_restore+0x54/0xb4
+[ 1060.395686]  msm_dsi_manager_cmd_xfer+0xc4/0x1bc
+[ 1060.395731]  dsi_host_transfer+0x40/0x78
+[ 1060.395783]  mipi_dsi_device_transfer+0x44/0x58
+[ 1060.395840]  mipi_dsi_dcs_set_display_brightness_large+0x64/0x94
+[ 1060.395889]  panel_samsung_amb670yf07_1440_3216_dsc_bl_update_status+0x40/0x78
+[ 1060.395943]  backlight_device_set_brightness+0x78/0x10c
+[ 1060.395999]  brightness_store+0x80/0x94
+[ 1060.396049]  dev_attr_store+0x18/0x2c
+[ 1060.396097]  sysfs_kf_write+0x7c/0xa0
+[ 1060.396152]  kernfs_fop_write_iter+0x12c/0x200
+[ 1060.396204]  vfs_write+0x240/0x380
+[ 1060.396255]  ksys_write+0x64/0x100
+[ 1060.396303]  __arm64_sys_write+0x18/0x24
+[ 1060.396351]  invoke_syscall.constprop.0+0x40/0x108
+[ 1060.396405]  el0_svc_common.constprop.0+0x38/0xd8
+[ 1060.396455]  do_el0_svc+0x1c/0x28
+[ 1060.396504]  el0_svc+0x38/0x1d0
+[ 1060.396552]  el0t_64_sync_handler+0xa0/0xe4
+[ 1060.396600]  el0t_64_sync+0x198/0x19c
+[ 1060.396650] ---[ end trace 0000000000000000 ]---
+[ 1060.397608] ------------[ cut here ]------------
+[ 1060.397644] disp_cc_mdss_byte0_intf_clk status stuck at 'on'
+[ 1060.397730] WARNING: drivers/clk/qcom/clk-branch.c:87 at clk_branch_toggle+0x170/0x190, CPU#2: backlighthelper/3943
+[ 1060.397814] Modules linked in: cdc_ether usbnet r8152 mii hid_generic usbhid rfcomm q6prm_clocks q6apm_dai q6apm_lpass_dais snd_q6dsp_common q6prm qrtr_mhi algif_hash algif_skcipher af_alg bnep snd_q6apm ath11k_pci ath11k mac80211 qcom_camss fastrpc qcom_pd_mapper rpmsg_ctrl videobuf2_dma_sg libarc4 videobuf2_memops s5kjn1 videobuf2_v4l2 hci_uart snd_soc_wcd938x snd_soc_wcd938x_sdw videobuf2_common btqca nxp_nci_i2c cfg80211 v4l2_cci regmap_sdw btbcm nxp_nci snd_soc_wcd_common snd_soc_sc8280xp v4l2_fwnode mhi v4l2_async snd_soc_tfa9872 bluetooth videodev nci snd_soc_lpass_rx_macro snd_soc_lpass_tx_macro snd_soc_lpass_va_macro snd_soc_qcom_sdw snd_soc_wcd_classh rtc_pm8xxx snd_soc_qcom_common pwrseq_qcom_wcn soundwire_qcom snd_soc_wcd_mbhc snd_soc_hdmi_codec ecdh_generic snd_soc_lpass_macro_common nfc ecc snd_soc_core nvmem_qcom_spmi_sdam qcom_q6v5_pas qcom_stats mc i2c_qcom_cci qcom_pil_info qcom_q6v5 ipa coresight_stm snd_compress qcom_sysmon snd_pcm qcom_common stm_p_basic stm_core pci_pwrctrl_pwrseq qcom_rng
+[ 1060.398843]  coresight_cti snd_timer coresight_tmc coresight_replicator coresight_funnel snd qcom_battmgr qcomtee coresight soundcore soundwire_bus rfkill joydev fuse phy_qcom_qmp_ufs
+[ 1060.399085] CPU: 2 UID: 0 PID: 3943 Comm: backlighthelper Tainted: G S      W           7.3.0-rc2-sm8450+ #1 PREEMPT 
+[ 1060.399140] Tainted: [S]=CPU_OUT_OF_SPEC, [W]=WARN
+[ 1060.399170] Hardware name: OnePlus 10 Pro 5G (DT)
+[ 1060.399201] pstate: 614000c5 (nZCv daIF +PAN -UAO -TCO +DIT -SSBS BTYPE=--)
+[ 1060.399244] pc : clk_branch_toggle+0x170/0x190
+[ 1060.399294] lr : clk_branch_toggle+0x170/0x190
+[ 1060.399343] sp : ffff80008a2d3a30
+[ 1060.399373] x29: ffff80008a2d3a40 x28: ffff0007b2afaf40 x27: 0000000000000000
+[ 1060.399443] x26: 0000000000000000 x25: ffffd1b6ff878258 x24: 0000000000000000
+[ 1060.399511] x23: 0000000000000000 x22: ffffd1b6febcc440 x21: 0000000000000000
+[ 1060.399579] x20: ffffd1b6ffc69b18 x19: 0000000000000000 x18: 0000000000000040
+[ 1060.399648] x17: 383d6e656c202c31 x16: 3578303d30617461 x15: 0000000000003a98
+[ 1060.399716] x14: 0000000000000000 x13: ffffd1b6ffb7f640 x12: 0000000000000724
+[ 1060.399784] x11: 0000000000003a98 x10: 0000000000003a58 x9 : ffffd1b6ffb7f640
+[ 1060.399853] x8 : 3fffffffffffefff x7 : ffffd1b6ffbd7640 x6 : 0000000000000001
+[ 1060.399922] x5 : ffff0009fe912848 x4 : ffff2e52fee71000 x3 : ffff0007b2afaf40
+[ 1060.399990] x2 : 0000000000000000 x1 : 0000000000000000 x0 : ffff0007b2afaf40
+[ 1060.400058] Call trace:
+[ 1060.400087]  clk_branch_toggle+0x170/0x190 (P)
+[ 1060.400143]  clk_branch2_disable+0x1c/0x30
+[ 1060.400188]  clk_core_disable+0x5c/0xb0
+[ 1060.400233]  clk_disable+0x38/0x54
+[ 1060.400279]  dsi_link_clk_disable_6g+0x48/0x74
+[ 1060.400332]  msm_dsi_host_xfer_restore+0x54/0xb4
+[ 1060.400386]  msm_dsi_manager_cmd_xfer+0xc4/0x1bc
+[ 1060.400430]  dsi_host_transfer+0x40/0x78
+[ 1060.400481]  mipi_dsi_device_transfer+0x44/0x58
+[ 1060.400533]  mipi_dsi_dcs_set_display_brightness_large+0x64/0x94
+[ 1060.400580]  panel_samsung_amb670yf07_1440_3216_dsc_bl_update_status+0x40/0x78
+[ 1060.400631]  backlight_device_set_brightness+0x78/0x10c
+[ 1060.400683]  brightness_store+0x80/0x94
+[ 1060.400732]  dev_attr_store+0x18/0x2c
+[ 1060.400780]  sysfs_kf_write+0x7c/0xa0
+[ 1060.400832]  kernfs_fop_write_iter+0x12c/0x200
+[ 1060.400881]  vfs_write+0x240/0x380
+[ 1060.400929]  ksys_write+0x64/0x100
+[ 1060.400976]  __arm64_sys_write+0x18/0x24
+[ 1060.401025]  invoke_syscall.constprop.0+0x40/0x108
+[ 1060.401076]  el0_svc_common.constprop.0+0x38/0xd8
+[ 1060.401125]  do_el0_svc+0x1c/0x28
+[ 1060.401173]  el0_svc+0x38/0x1d0
+[ 1060.401219]  el0t_64_sync_handler+0xa0/0xe4
+[ 1060.401266]  el0t_64_sync+0x198/0x19c
+[ 1060.401312] ---[ end trace 0000000000000000 ]---
+[ 1060.402193] ------------[ cut here ]------------
+[ 1060.402226] disp_cc_mdss_byte0_clk status stuck at 'on'
+[ 1060.402311] WARNING: drivers/clk/qcom/clk-branch.c:87 at clk_branch_toggle+0x170/0x190, CPU#2: backlighthelper/3943
+[ 1060.402393] Modules linked in: cdc_ether usbnet r8152 mii hid_generic usbhid rfcomm q6prm_clocks q6apm_dai q6apm_lpass_dais snd_q6dsp_common q6prm qrtr_mhi algif_hash algif_skcipher af_alg bnep snd_q6apm ath11k_pci ath11k mac80211 qcom_camss fastrpc qcom_pd_mapper rpmsg_ctrl videobuf2_dma_sg libarc4 videobuf2_memops s5kjn1 videobuf2_v4l2 hci_uart snd_soc_wcd938x snd_soc_wcd938x_sdw videobuf2_common btqca nxp_nci_i2c cfg80211 v4l2_cci regmap_sdw btbcm nxp_nci snd_soc_wcd_common snd_soc_sc8280xp v4l2_fwnode mhi v4l2_async snd_soc_tfa9872 bluetooth videodev nci snd_soc_lpass_rx_macro snd_soc_lpass_tx_macro snd_soc_lpass_va_macro snd_soc_qcom_sdw snd_soc_wcd_classh rtc_pm8xxx snd_soc_qcom_common pwrseq_qcom_wcn soundwire_qcom snd_soc_wcd_mbhc snd_soc_hdmi_codec ecdh_generic snd_soc_lpass_macro_common nfc ecc snd_soc_core nvmem_qcom_spmi_sdam qcom_q6v5_pas qcom_stats mc i2c_qcom_cci qcom_pil_info qcom_q6v5 ipa coresight_stm snd_compress qcom_sysmon snd_pcm qcom_common stm_p_basic stm_core pci_pwrctrl_pwrseq qcom_rng
+[ 1060.403426]  coresight_cti snd_timer coresight_tmc coresight_replicator coresight_funnel snd qcom_battmgr qcomtee coresight soundcore soundwire_bus rfkill joydev fuse phy_qcom_qmp_ufs
+[ 1060.403669] CPU: 2 UID: 0 PID: 3943 Comm: backlighthelper Tainted: G S      W           7.3.0-rc2-sm8450+ #1 PREEMPT 
+[ 1060.403725] Tainted: [S]=CPU_OUT_OF_SPEC, [W]=WARN
+[ 1060.403756] Hardware name: OnePlus 10 Pro 5G (DT)
+[ 1060.403789] pstate: 614000c5 (nZCv daIF +PAN -UAO -TCO +DIT -SSBS BTYPE=--)
+[ 1060.403832] pc : clk_branch_toggle+0x170/0x190
+[ 1060.403882] lr : clk_branch_toggle+0x170/0x190
+[ 1060.403930] sp : ffff80008a2d3a30
+[ 1060.403960] x29: ffff80008a2d3a40 x28: ffff0007b2afaf40 x27: 0000000000000000
+[ 1060.404031] x26: 0000000000000000 x25: ffffd1b6ff878278 x24: 0000000000000000
+[ 1060.404099] x23: 0000000000000000 x22: ffffd1b6febcc440 x21: 0000000000000000
+[ 1060.404168] x20: ffffd1b6ffc69b98 x19: 0000000000000000 x18: 0000000000000038
+[ 1060.404236] x17: 383d6e656c202c31 x16: 3578303d30617461 x15: 00000000000049a0
+[ 1060.404305] x14: 0000000000000000 x13: ffffd1b6ffb7f640 x12: 0000000000000755
+[ 1060.404376] x11: 00000000000049a0 x10: 0000000000004968 x9 : ffffd1b6ffb7f640
+[ 1060.404447] x8 : 3fffffffffffefff x7 : ffffd1b6ffbd7640 x6 : 0000000000000001
+[ 1060.404516] x5 : ffff0009fe912848 x4 : ffff2e52fee71000 x3 : ffff0007b2afaf40
+[ 1060.404585] x2 : 0000000000000000 x1 : 0000000000000000 x0 : ffff0007b2afaf40
+[ 1060.404653] Call trace:
+[ 1060.404683]  clk_branch_toggle+0x170/0x190 (P)
+[ 1060.404739]  clk_branch2_disable+0x1c/0x30
+[ 1060.404786]  clk_core_disable+0x5c/0xb0
+[ 1060.404830]  clk_disable+0x38/0x54
+[ 1060.404876]  dsi_link_clk_disable_6g+0x5c/0x74
+[ 1060.404929]  msm_dsi_host_xfer_restore+0x54/0xb4
+[ 1060.404984]  msm_dsi_manager_cmd_xfer+0xc4/0x1bc
+[ 1060.405028]  dsi_host_transfer+0x40/0x78
+[ 1060.405079]  mipi_dsi_device_transfer+0x44/0x58
+[ 1060.405133]  mipi_dsi_dcs_set_display_brightness_large+0x64/0x94
+[ 1060.405180]  panel_samsung_amb670yf07_1440_3216_dsc_bl_update_status+0x40/0x78
+[ 1060.405232]  backlight_device_set_brightness+0x78/0x10c
+[ 1060.405284]  brightness_store+0x80/0x94
+[ 1060.405333]  dev_attr_store+0x18/0x2c
+[ 1060.405380]  sysfs_kf_write+0x7c/0xa0
+[ 1060.405431]  kernfs_fop_write_iter+0x12c/0x200
+[ 1060.405482]  vfs_write+0x240/0x380
+[ 1060.405530]  ksys_write+0x64/0x100
+[ 1060.405577]  __arm64_sys_write+0x18/0x24
+[ 1060.405626]  invoke_syscall.constprop.0+0x40/0x108
+[ 1060.405675]  el0_svc_common.constprop.0+0x38/0xd8
+[ 1060.405725]  do_el0_svc+0x1c/0x28
+[ 1060.405773]  el0_svc+0x38/0x1d0
+[ 1060.405818]  el0t_64_sync_handler+0xa0/0xe4
+[ 1060.405864]  el0t_64_sync+0x198/0x19c
+[ 1060.405909] ---[ end trace 0000000000000000 ]---
+[ 1060.406053] msm_dsi_phy ae94400.phy: [drm:dsi_pll_disable_pll_bias] *ERROR* bug: imbalance in disabling PLL bias
+[ 1071.458444] dsi_cmds2buf_tx: cmd dma tx failed, type=0x6, data0=0x52, len=4, ret=-110
+[ 1071.458472] msm_dsi_host_cmd_rx: Read cmd Tx failed, -110
+[ 1071.661356] dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x9e, len=96, ret=-110
+[ 1071.661411] panel-samsung-amb670yf07-1440-3216-dsc ae94000.dsi.0: sending dcs data 9e 12 00 00 ab 30 80 09 6c 04 38 00 24 02 1c 02 1c 02 00 02 3b 00 20 03 35 00 07 00 0e 03 34 02 d4 18 00 10 f0 07 10 20 00 06 0f 0f 33 0e 1c 2a 38 46 54 62 69 70 77 79 7b 7d 7e 02 02 22 00 2a failed: -110
+[ 1071.661422] panel-samsung-amb670yf07-1440-3216-dsc ae94000.dsi.0: Failed to initialize panel: -110
+[ 1071.867461] dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1072.071234] dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1072.071282] panel-samsung-amb670yf07-1440-3216-dsc ae94000.dsi.0: [drm:drm_panel_enable] failed to enable backlight: -110
+[ 1072.117023] dpu_encoder_frame_done_timeout: 5 callbacks suppressed
+[ 1072.117027] [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1072.173071] [drm:_dpu_encoder_phys_cmd_wait_for_idle] *ERROR* id:35 pp:0 kickoff timeout 0 cnt 1 koff_cnt 1
+[ 1072.173224] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1072.220989] [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1072.261083] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1072.277038] dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1072.277107] msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1072.308935] [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1072.353091] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1072.402575] [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1072.444992] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1072.481016] dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1072.492830] [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1072.536844] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1072.584721] [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1072.629589] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1072.677666] [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1072.685888] dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1072.685955] msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1072.721110] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1072.768673] [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1072.813109] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1072.862341] [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1072.891151] dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1072.904558] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1072.952496] [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1072.996560] [drm:_dpu_encoder_phys_cmd_wait_for_idle] *ERROR* id:35 pp:0 kickoff timeout 0 cnt 10 koff_cnt 1
+[ 1072.996613] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1072.996630] [drm:dpu_crtc_frame_event_work:692] [dpu error]crtc94 ts:1073008157179 received panel dead event
+[ 1073.088636] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1073.093141] dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1073.093206] msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1073.180403] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1073.272343] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1073.297267] dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1073.360383] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1073.501022] dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1073.501102] msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1073.704889] dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1073.908389] dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1073.908481] msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1074.168624] dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1074.168697] msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1074.276410] platform 3d6a000.gmu: [drm:a6xx_hfi_wait_for_msg_interrupt] *ERROR* Message HFI_H2F_MSG_GX_BW_PERF_VOTE id 1388 timed out waiting for response
+[ 1074.279081] platform 3d6a000.gmu: [drm:a6xx_hfi_send_msg.constprop.0] *ERROR* Unexpected message id 1388 on the response queue
+[ 1074.375730] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1074.431680] dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1074.431743] msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1074.464441] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1074.554252] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1074.636340] dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1074.643549] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1074.735418] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1074.827954] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1074.843436] dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1074.843508] msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1074.919746] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1075.011741] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1075.049840] dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1075.107195] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1075.195880] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1075.251127] dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1075.251155] msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1075.287969] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1075.379931] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1075.455254] dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1075.471813] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1075.559004] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1075.651953] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1075.659324] dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1075.659349] msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1075.743740] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1075.835810] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1075.866848] dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1075.927210] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1076.019086] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1076.074625] dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1076.074651] msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1076.111069] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1076.203116] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1076.279322] dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1076.295175] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1076.386496] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1076.479332] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1076.482383] dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1076.482392] msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1076.571188] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1076.659223] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1076.686258] dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1076.754358] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1076.843094] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1076.890297] dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1076.890366] msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1076.934966] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1077.027083] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1077.095299] dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1077.118158] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1077.166009] dpu_encoder_frame_done_timeout: 35 callbacks suppressed
+[ 1077.166033] [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1077.210038] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1077.257946] [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1077.298752] dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1077.298819] msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1077.301905] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1077.349864] [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1077.394955] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1077.441867] [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1077.486274] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1077.502979] dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1077.533831] [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1077.577766] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1077.629709] [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1077.708499] dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1077.708589] msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1077.909683] dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1078.114444] dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1078.114531] msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1078.374177] dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1078.374264] msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1078.651903] dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1078.651987] msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1078.914970] dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1078.915056] msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1079.173738] dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1079.173826] msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1079.433718] dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1079.433806] msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1079.710316] dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1079.710405] msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1079.970453] dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1079.970541] msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1080.230468] dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1080.230556] msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1080.488281] dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1080.488365] msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1080.765899] dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1080.765979] msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1081.024893] dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1081.024979] msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1081.285639] dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1081.285721] msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1081.468116] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1081.515627] [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1081.546172] dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1081.546259] msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1081.556662] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1081.604534] [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1081.820284] dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1081.820366] msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1082.080300] dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1082.080388] msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1082.341344] dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1082.341428] msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1082.605036] dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1082.605121] msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1082.879882] dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1082.879969] msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1083.138954] dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1083.139037] msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1083.399532] dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1083.399619] msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1083.660713] dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1083.660798] msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1083.935040] dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1083.935127] msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1084.196459] dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1084.196546] msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1084.454300] dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1084.454382] msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1084.716605] dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1084.716686] msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1084.991401] dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1084.991480] msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1085.250749] dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1085.250831] msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1085.510517] dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1085.510604] msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1085.772082] dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1085.772163] msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1086.047104] dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1086.047194] msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1086.306206] dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1086.306286] msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1086.565316] dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1086.565404] msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1086.827597] dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1086.827684] msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1087.106888] dsi_cmds2buf_tx: cmd dma tx failed, type=0x37, data0=0x2, len=4, ret=-110
+[ 1087.106978] msm_dsi_host_cmd_rx: Set max pkt size failed, -110
+[ 1137.981778] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1138.029684] [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1138.075614] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1138.123379] [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1138.165689] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1138.213676] [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1138.258019] [drm:dpu_encoder_phys_cmd_prepare_for_kickoff] *ERROR* failed wait_for_idle: id:35 ret:-110 pp:0
+[ 1138.305643] [drm:dpu_encoder_frame_done_timeout:2732] [dpu error]enc35 frame done timeout
+[ 1138.462044] dsi_cmds2buf_tx: cmd dma tx failed, type=0x39, data0=0x51, len=8, ret=-110
+[ 1138.462086] panel-samsung-amb670yf07-1440-3216-dsc ae94000.dsi.0: [drm:drm_panel_disable] failed to disable backlight: -110
+[ 1138.549606] [drm:dpu_encoder_phys_cmd_wait_for_tx_complete] *ERROR* failed wait_for_idle: id:35 ret:-110 intf:1
+[ 1138.549666] panel-samsung-amb670yf07-1440-3216-dsc ae94000.dsi.0: Skipping unprepare of already unprepared panel
+[ 1175.143251] platform 3d6a000.gmu: [drm:a6xx_hfi_wait_for_msg_interrupt] *ERROR* Message HFI_H2F_MSG_GX_BW_PERF_VOTE id 1806 timed out waiting for response
+[ 1175.144814] platform 3d6a000.gmu: [drm:a6xx_hfi_send_msg.constprop.0] *ERROR* Unexpected message id 1806 on the response queue
+[ 1329.186508] usb 2-1: USB disconnect, device number 2
+[ 1329.186755] usb 2-1.1: USB disconnect, device number 3
+[ 1329.186809] r8152-cfgselector 2-1.1.1: USB disconnect, device number 4
+[ 1329.187917] r8152 2-1.1.1:1.0 enu1u1u1: Stop submitting intr, status -108
+[ 1329.227418] xhci-hcd xhci-hcd.2.auto: remove, state 1
+[ 1329.227458] usb usb2: USB disconnect, device number 1
+[ 1329.294035] xhci-hcd xhci-hcd.2.auto: USB bus 2 deregistered
+[ 1329.294076] xhci-hcd xhci-hcd.2.auto: remove, state 4
+[ 1329.294094] usb usb1: USB disconnect, device number 1
+[ 1329.302126] xhci-hcd xhci-hcd.2.auto: USB bus 1 deregistered
+[ 1337.353804] qcom_battmgr.pmic_glink_power_supply pmic_glink.power-supply.0: unknown notification: 0x53
+[ 1337.858879] xhci-hcd xhci-hcd.2.auto: xHCI Host Controller
+[ 1337.859005] xhci-hcd xhci-hcd.2.auto: new USB bus registered, assigned bus number 1
+[ 1337.861756] xhci-hcd xhci-hcd.2.auto: hcc params 0x0110ffc5 hci version 0x110 quirks 0x0000808000000010
+[ 1337.861936] xhci-hcd xhci-hcd.2.auto: irq 196, io mem 0x0a600000
+[ 1337.862438] xhci-hcd xhci-hcd.2.auto: xHCI Host Controller
+[ 1337.862498] xhci-hcd xhci-hcd.2.auto: new USB bus registered, assigned bus number 2
+[ 1337.862555] xhci-hcd xhci-hcd.2.auto: Host supports USB 3.1 Enhanced SuperSpeed
+[ 1337.862839] usb usb1: New USB device found, idVendor=1d6b, idProduct=0002, bcdDevice= 7.03
+[ 1337.863656] usb usb1: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+[ 1337.863705] usb usb1: Product: xHCI Host Controller
+[ 1337.863745] usb usb1: Manufacturer: Linux 7.3.0-rc2-sm8450+ xhci-hcd
+[ 1337.863783] usb usb1: SerialNumber: xhci-hcd.2.auto
+[ 1337.866676] hub 1-0:1.0: USB hub found
+[ 1337.866846] hub 1-0:1.0: 1 port detected
+[ 1337.868303] usb usb2: We don't know the algorithms for LPM for this host, disabling LPM.
+[ 1337.868352] usb usb2: New USB device found, idVendor=1d6b, idProduct=0003, bcdDevice= 7.03
+[ 1337.868787] usb usb2: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+[ 1337.868832] usb usb2: Product: xHCI Host Controller
+[ 1337.868871] usb usb2: Manufacturer: Linux 7.3.0-rc2-sm8450+ xhci-hcd
+[ 1337.868911] usb usb2: SerialNumber: xhci-hcd.2.auto
+[ 1337.870089] hub 2-0:1.0: USB hub found
+[ 1337.870216] hub 2-0:1.0: 1 port detected
+[ 1338.713026] usb 2-1: new SuperSpeed USB device number 2 using xhci-hcd
+[ 1338.738015] usb 2-1: New USB device found, idVendor=0bda, idProduct=0423, bcdDevice= 1.90
+[ 1338.744344] usb 2-1: New USB device strings: Mfr=1, Product=2, SerialNumber=0
+[ 1338.744419] usb 2-1: Product: 4-Port USB 3.0 Hub
+[ 1338.744465] usb 2-1: Manufacturer: Generic
+[ 1338.781853] hub 2-1:1.0: USB hub found
+[ 1338.783601] hub 2-1:1.0: 4 ports detected
+[ 1339.086183] usb 2-1.1: new SuperSpeed USB device number 3 using xhci-hcd
+[ 1339.113858] usb 2-1.1: New USB device found, idVendor=045e, idProduct=0955, bcdDevice= 1.41
+[ 1339.130606] usb 2-1.1: New USB device strings: Mfr=1, Product=2, SerialNumber=0
+[ 1339.130633] usb 2-1.1: Product: 4-Port USB 3.0 Hub
+[ 1339.130643] usb 2-1.1: Manufacturer: Generic
+[ 1339.168681] hub 2-1.1:1.0: USB hub found
+[ 1339.172118] hub 2-1.1:1.0: 2 ports detected
+[ 1339.466899] usb 2-1.1.1: new SuperSpeed USB device number 4 using xhci-hcd
+[ 1339.483175] usb 2-1.1.1: New USB device found, idVendor=045e, idProduct=0927, bcdDevice=31.00
+[ 1339.483680] usb 2-1.1.1: Int endpoint with wBytesPerInterval of 8 in config 2 interface 0 altsetting 0 ep 0x83: setting to 16
+[ 1339.483947] usb 2-1.1.1: New USB device strings: Mfr=1, Product=2, SerialNumber=6
+[ 1339.483959] usb 2-1.1.1: Product: Ethernet Adapter
+[ 1339.483968] usb 2-1.1.1: Manufacturer: Microsoft
+[ 1339.483976] usb 2-1.1.1: SerialNumber: 0013D9F5C
+[ 1339.592769] r8152-cfgselector 2-1.1.1: reset SuperSpeed USB device number 4 using xhci-hcd
+[ 1339.645574] r8152 2-1.1.1:1.0: Direct firmware load for rtl_nic/rtl8153b-2.fw failed with error -2
+[ 1339.645594] r8152 2-1.1.1:1.0: unable to load firmware patch rtl_nic/rtl8153b-2.fw (-2)
+[ 1339.748051] r8152 2-1.1.1:1.0 enu1u1u1: renamed from eth0
+[ 1348.626536] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 1348.626564] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 1348.626574] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 1350.802312] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 1350.802339] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 1350.802348] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 1364.402457] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 1364.402487] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 1364.402497] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 1495.173365] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 1495.173400] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 1495.173409] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 1495.433498] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 1495.433526] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 1495.433535] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 1495.692255] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 1495.692285] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 1495.692294] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 1497.459675] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 1497.459758] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 1497.459800] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 1499.886991] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 1499.887020] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 1499.887029] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 1501.219141] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 1501.219170] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 1501.219180] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 1501.713920] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 1501.713952] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 1501.713961] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 1503.888556] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 1503.888591] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 1503.888602] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 1507.366433] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 1507.366462] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 1507.366471] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 1517.594168] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 1517.594198] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 1517.594207] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 1570.675503] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 1570.675595] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 1570.675643] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 1570.942835] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 1570.942857] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 1570.942865] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 1572.001025] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 1572.001056] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 1572.001065] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 1574.647585] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 1574.647617] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 1574.647627] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 1574.907218] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 1574.907239] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 1574.907247] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 1576.057689] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 1576.057716] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 1576.057725] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 1588.250861] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 1588.250944] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 1588.250989] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 1591.184535] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 1591.184586] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 1591.184595] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 1597.968446] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 1597.968528] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 1597.968569] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 1611.123230] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 1611.123277] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 1611.123287] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 1611.390554] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 1611.390596] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 1611.390613] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 1614.658455] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 1614.658486] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 1614.658495] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 1617.169656] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 1617.169691] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 1617.169700] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 2185.690860] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 2185.690893] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 2185.690901] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 2185.942074] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 2185.942105] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 2185.942115] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 2186.201431] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 2186.201463] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 2186.201472] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 2186.460141] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 2186.460235] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 2186.460282] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 2187.183567] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 2187.183611] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 2187.183634] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 2191.262076] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 2191.262109] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 2191.262117] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 2640.053571] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 2640.053606] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 2640.053616] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 2640.311200] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 2640.311232] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 2640.311242] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 2640.570343] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 2640.570375] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 2640.570385] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 2640.829254] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 2640.829285] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 2640.829295] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 2642.386471] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 2642.386501] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 2642.386510] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3496.168581] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3496.168614] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3496.168624] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3496.420035] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3496.420069] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3496.420079] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3496.685552] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3496.685585] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3496.685595] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3496.946281] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3496.946359] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3496.946370] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3497.212175] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3497.212206] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3497.212216] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3497.472569] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3497.472599] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3497.472609] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3497.738235] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3497.738269] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3497.738278] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3498.006149] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3498.006181] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3498.006191] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3498.274348] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3498.274382] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3498.274442] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3498.531811] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3498.531843] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3498.531854] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3498.796136] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3498.796211] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3498.796253] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3499.057377] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3499.057410] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3499.057419] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3499.314799] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3499.314828] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3499.314836] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3500.945741] usb 2-1: USB disconnect, device number 2
+[ 3500.945820] usb 2-1.1: USB disconnect, device number 3
+[ 3500.945868] r8152-cfgselector 2-1.1.1: USB disconnect, device number 4
+[ 3500.947248] r8152 2-1.1.1:1.0 enu1u1u1: Stop submitting intr, status -108
+[ 3500.956657] qcom_battmgr.pmic_glink_power_supply pmic_glink.power-supply.0: unknown notification: 0x53
+[ 3500.991682] xhci-hcd xhci-hcd.2.auto: remove, state 1
+[ 3500.991713] usb usb2: USB disconnect, device number 1
+[ 3501.035210] xhci-hcd xhci-hcd.2.auto: USB bus 2 deregistered
+[ 3501.035249] xhci-hcd xhci-hcd.2.auto: remove, state 4
+[ 3501.035261] usb usb1: USB disconnect, device number 1
+[ 3501.045885] xhci-hcd xhci-hcd.2.auto: USB bus 1 deregistered
+[ 3502.492676] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3502.492706] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3502.492716] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3505.098784] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3505.098826] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3505.098836] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3505.846215] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3505.846245] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3505.846254] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3506.494288] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3506.494320] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3506.494342] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3508.374659] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3508.374687] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3508.374696] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3511.232483] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3511.232511] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3511.232520] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3512.004681] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3512.004760] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3512.004800] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3512.991549] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3512.991634] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3512.991679] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3514.523096] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3514.523152] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3514.523177] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3518.513360] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3518.513391] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3518.513400] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3519.282477] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3519.282559] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3519.282602] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3519.824990] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3519.825022] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3519.825031] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3520.570225] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3520.570255] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3520.570265] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3545.107139] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3545.107171] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3545.107179] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3546.199408] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3546.199441] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3546.199451] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3546.465671] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3546.465753] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3546.465794] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3546.732894] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3546.732915] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3546.732923] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3823.797314] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3823.797343] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3823.797352] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3824.064838] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3824.064864] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3824.064872] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3824.331998] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3824.332023] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3824.332032] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3824.593239] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3824.593315] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3824.593399] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3824.860092] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3824.860119] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3824.860128] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3827.269634] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3827.269663] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3827.269672] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3827.537077] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3827.537103] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3827.537112] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3827.807944] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3827.807967] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3827.807976] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3828.069331] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3828.069355] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3828.069364] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3831.179152] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3831.179181] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3831.179189] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3831.439044] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3831.439067] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3831.439076] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3831.699769] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3831.699798] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3831.699807] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3831.959734] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3831.959760] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3831.959769] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3832.223738] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3832.223853] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3832.223899] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3832.483628] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3832.483655] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3832.483664] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3832.743496] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3832.743516] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3832.743524] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3832.771998] qcom_battmgr.pmic_glink_power_supply pmic_glink.power-supply.0: unknown notification: 0x53
+[ 3833.002707] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3833.002730] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3833.002739] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3833.261944] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3833.261980] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3833.261995] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3833.429806] power_supply qcom-battmgr-usb: driver reporting unavailable enum value 17
+[ 3833.466167] xhci-hcd xhci-hcd.2.auto: xHCI Host Controller
+[ 3833.466259] xhci-hcd xhci-hcd.2.auto: new USB bus registered, assigned bus number 1
+[ 3833.469074] xhci-hcd xhci-hcd.2.auto: hcc params 0x0110ffc5 hci version 0x110 quirks 0x0000808000000010
+[ 3833.469221] xhci-hcd xhci-hcd.2.auto: irq 196, io mem 0x0a600000
+[ 3833.469636] xhci-hcd xhci-hcd.2.auto: xHCI Host Controller
+[ 3833.469650] xhci-hcd xhci-hcd.2.auto: new USB bus registered, assigned bus number 2
+[ 3833.469663] xhci-hcd xhci-hcd.2.auto: Host supports USB 3.1 Enhanced SuperSpeed
+[ 3833.469731] usb usb1: New USB device found, idVendor=1d6b, idProduct=0002, bcdDevice= 7.03
+[ 3833.469841] usb usb1: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+[ 3833.469852] usb usb1: Product: xHCI Host Controller
+[ 3833.469860] usb usb1: Manufacturer: Linux 7.3.0-rc2-sm8450+ xhci-hcd
+[ 3833.469868] usb usb1: SerialNumber: xhci-hcd.2.auto
+[ 3833.470219] hub 1-0:1.0: USB hub found
+[ 3833.470271] hub 1-0:1.0: 1 port detected
+[ 3833.470651] usb usb2: We don't know the algorithms for LPM for this host, disabling LPM.
+[ 3833.470690] usb usb2: New USB device found, idVendor=1d6b, idProduct=0003, bcdDevice= 7.03
+[ 3833.471038] usb usb2: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+[ 3833.471077] usb usb2: Product: xHCI Host Controller
+[ 3833.471110] usb usb2: Manufacturer: Linux 7.3.0-rc2-sm8450+ xhci-hcd
+[ 3833.471144] usb usb2: SerialNumber: xhci-hcd.2.auto
+[ 3833.472066] hub 2-0:1.0: USB hub found
+[ 3833.472167] hub 2-0:1.0: 1 port detected
+[ 3833.521212] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3833.521228] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3833.521236] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3833.529625] power_supply qcom-battmgr-usb: driver reporting unavailable enum value 17
+[ 3833.651998] power_supply qcom-battmgr-usb: driver reporting unavailable enum value 17
+[ 3833.707167] power_supply qcom-battmgr-usb: driver reporting unavailable enum value 17
+[ 3833.788535] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3833.788578] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3833.788597] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3833.797658] power_supply qcom-battmgr-usb: driver reporting unavailable enum value 17
+[ 3833.823171] power_supply qcom-battmgr-usb: driver reporting unavailable enum value 17
+[ 3834.012595] power_supply qcom-battmgr-usb: driver reporting unavailable enum value 17
+[ 3834.037875] power_supply qcom-battmgr-usb: driver reporting unavailable enum value 17
+[ 3834.181228] power_supply qcom-battmgr-usb: driver reporting unavailable enum value 17
+[ 3834.212215] power_supply qcom-battmgr-usb: driver reporting unavailable enum value 17
+[ 3834.238144] power_supply qcom-battmgr-usb: driver reporting unavailable enum value 17
+[ 3834.679878] power_supply qcom-battmgr-usb: driver reporting unavailable enum value 17
+[ 3836.487216] power_supply qcom-battmgr-usb: driver reporting unavailable enum value 17
+[ 3836.943121] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3836.943152] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3836.943160] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3838.355572] qcom_battmgr.pmic_glink_power_supply pmic_glink.power-supply.0: voocphy recheck: PD adapter (type=17), requesting 9V/3A
+[ 3838.585599] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3838.585628] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3838.585638] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3838.608624] power_supply qcom-battmgr-usb: driver reporting unavailable enum value 17
+[ 3838.824870] qcom_battmgr.pmic_glink_power_supply pmic_glink.power-supply.0: recheck: failed to set PDO 9000mV: 514
+[ 3840.296954] power_supply qcom-battmgr-usb: driver reporting unavailable enum value 17
+[ 3840.774769] power_supply qcom-battmgr-usb: driver reporting unavailable enum value 17
+[ 3841.717502] power_supply qcom-battmgr-usb: driver reporting unavailable enum value 17
+[ 3843.150261] power_supply qcom-battmgr-usb: driver reporting unavailable enum value 17
+[ 3844.455173] power_supply qcom-battmgr-usb: driver reporting unavailable enum value 17
+[ 3845.392814] power_supply qcom-battmgr-usb: driver reporting unavailable enum value 17
+[ 3847.817989] power_supply qcom-battmgr-usb: driver reporting unavailable enum value 17
+[ 3849.509266] power_supply qcom-battmgr-usb: driver reporting unavailable enum value 17
+[ 3851.185109] power_supply qcom-battmgr-usb: driver reporting unavailable enum value 17
+[ 3852.110283] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3852.110314] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3852.110323] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3852.990598] power_supply qcom-battmgr-usb: driver reporting unavailable enum value 17
+[ 3855.454675] power_supply qcom-battmgr-usb: driver reporting unavailable enum value 17
+[ 3857.397961] power_supply qcom-battmgr-usb: driver reporting unavailable enum value 17
+[ 3859.317062] power_supply qcom-battmgr-usb: driver reporting unavailable enum value 17
+[ 3859.819951] xhci-hcd xhci-hcd.2.auto: remove, state 4
+[ 3859.820054] usb usb2: USB disconnect, device number 1
+[ 3859.823848] xhci-hcd xhci-hcd.2.auto: USB bus 2 deregistered
+[ 3859.823947] xhci-hcd xhci-hcd.2.auto: remove, state 4
+[ 3859.824002] usb usb1: USB disconnect, device number 1
+[ 3859.829785] xhci-hcd xhci-hcd.2.auto: USB bus 1 deregistered
+[ 3860.090688] xhci-hcd xhci-hcd.2.auto: xHCI Host Controller
+[ 3860.090798] xhci-hcd xhci-hcd.2.auto: new USB bus registered, assigned bus number 1
+[ 3860.093514] xhci-hcd xhci-hcd.2.auto: hcc params 0x0110ffc5 hci version 0x110 quirks 0x0000808000000010
+[ 3860.093675] xhci-hcd xhci-hcd.2.auto: irq 196, io mem 0x0a600000
+[ 3860.094191] xhci-hcd xhci-hcd.2.auto: xHCI Host Controller
+[ 3860.094254] xhci-hcd xhci-hcd.2.auto: new USB bus registered, assigned bus number 2
+[ 3860.094315] xhci-hcd xhci-hcd.2.auto: Host supports USB 3.1 Enhanced SuperSpeed
+[ 3860.094467] usb usb1: New USB device found, idVendor=1d6b, idProduct=0002, bcdDevice= 7.03
+[ 3860.095278] usb usb1: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+[ 3860.095334] usb usb1: Product: xHCI Host Controller
+[ 3860.095616] usb usb1: Manufacturer: Linux 7.3.0-rc2-sm8450+ xhci-hcd
+[ 3860.095662] usb usb1: SerialNumber: xhci-hcd.2.auto
+[ 3860.097837] hub 1-0:1.0: USB hub found
+[ 3860.097961] hub 1-0:1.0: 1 port detected
+[ 3860.099155] usb usb2: We don't know the algorithms for LPM for this host, disabling LPM.
+[ 3860.099204] usb usb2: New USB device found, idVendor=1d6b, idProduct=0003, bcdDevice= 7.03
+[ 3860.099766] usb usb2: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+[ 3860.099821] usb usb2: Product: xHCI Host Controller
+[ 3860.099866] usb usb2: Manufacturer: Linux 7.3.0-rc2-sm8450+ xhci-hcd
+[ 3860.099909] usb usb2: SerialNumber: xhci-hcd.2.auto
+[ 3860.101103] hub 2-0:1.0: USB hub found
+[ 3860.101233] hub 2-0:1.0: 1 port detected
+[ 3860.652736] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3860.652769] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3860.652780] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3861.881659] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3861.881692] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3861.881702] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3862.147367] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3862.147411] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3862.147430] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3862.414902] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3862.414956] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3862.414990] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3862.563267] power_supply qcom-battmgr-usb: driver reporting unavailable enum value 17
+[ 3862.674155] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3862.674179] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3862.674188] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3863.218319] power_supply qcom-battmgr-usb: driver reporting unavailable enum value 17
+[ 3863.847736] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3863.847761] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3863.847770] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3865.435252] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3865.435282] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3865.435292] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3865.487790] power_supply qcom-battmgr-usb: driver reporting unavailable enum value 17
+[ 3866.767621] power_supply qcom-battmgr-usb: driver reporting unavailable enum value 17
+[ 3867.316583] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3867.316664] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3867.316709] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3868.340909] power_supply qcom-battmgr-usb: driver reporting unavailable enum value 17
+[ 3869.596933] power_supply qcom-battmgr-usb: driver reporting unavailable enum value 17
+[ 3869.686804] qcom_battmgr.pmic_glink_power_supply pmic_glink.power-supply.0: unknown notification: 0x53
+[ 3869.733412] xhci-hcd xhci-hcd.2.auto: remove, state 4
+[ 3869.733508] usb usb2: USB disconnect, device number 1
+[ 3869.737198] xhci-hcd xhci-hcd.2.auto: USB bus 2 deregistered
+[ 3869.737289] xhci-hcd xhci-hcd.2.auto: remove, state 4
+[ 3869.737345] usb usb1: USB disconnect, device number 1
+[ 3869.743098] xhci-hcd xhci-hcd.2.auto: USB bus 1 deregistered
+[ 3870.468753] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3870.468786] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3870.468797] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3871.786868] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3871.786896] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3871.786904] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3876.785771] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3876.785799] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3876.785808] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3877.053503] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3877.053525] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3877.053533] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3877.320905] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3877.320981] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3877.321026] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3877.591743] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3877.591771] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3877.591779] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3877.851297] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3877.851327] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3877.851335] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3878.111495] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3878.111527] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3878.111535] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3878.370194] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3878.370224] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3878.370233] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3878.455939] qcom_battmgr.pmic_glink_power_supply pmic_glink.power-supply.0: unknown notification: 0x53
+[ 3878.630128] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3878.630146] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3878.630155] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3878.888824] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3878.888860] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3878.888869] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3878.906996] xhci-hcd xhci-hcd.2.auto: xHCI Host Controller
+[ 3878.907091] xhci-hcd xhci-hcd.2.auto: new USB bus registered, assigned bus number 1
+[ 3878.909815] xhci-hcd xhci-hcd.2.auto: hcc params 0x0110ffc5 hci version 0x110 quirks 0x0000808000000010
+[ 3878.909962] xhci-hcd xhci-hcd.2.auto: irq 196, io mem 0x0a600000
+[ 3878.910438] xhci-hcd xhci-hcd.2.auto: xHCI Host Controller
+[ 3878.910497] xhci-hcd xhci-hcd.2.auto: new USB bus registered, assigned bus number 2
+[ 3878.910551] xhci-hcd xhci-hcd.2.auto: Host supports USB 3.1 Enhanced SuperSpeed
+[ 3878.910692] usb usb1: New USB device found, idVendor=1d6b, idProduct=0002, bcdDevice= 7.03
+[ 3878.911490] usb usb1: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+[ 3878.911542] usb usb1: Product: xHCI Host Controller
+[ 3878.911584] usb usb1: Manufacturer: Linux 7.3.0-rc2-sm8450+ xhci-hcd
+[ 3878.911625] usb usb1: SerialNumber: xhci-hcd.2.auto
+[ 3878.913059] hub 1-0:1.0: USB hub found
+[ 3878.913095] hub 1-0:1.0: 1 port detected
+[ 3878.913390] usb usb2: We don't know the algorithms for LPM for this host, disabling LPM.
+[ 3878.913401] usb usb2: New USB device found, idVendor=1d6b, idProduct=0003, bcdDevice= 7.03
+[ 3878.913562] usb usb2: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+[ 3878.913577] usb usb2: Product: xHCI Host Controller
+[ 3878.913585] usb usb2: Manufacturer: Linux 7.3.0-rc2-sm8450+ xhci-hcd
+[ 3878.913593] usb usb2: SerialNumber: xhci-hcd.2.auto
+[ 3878.913981] hub 2-0:1.0: USB hub found
+[ 3878.914104] hub 2-0:1.0: 1 port detected
+[ 3879.156316] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3879.156389] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3879.156432] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3879.423692] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3879.423716] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3879.423725] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3879.685131] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3879.685154] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3879.685163] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3879.944546] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3879.944572] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3879.944580] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3880.204125] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3880.204149] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3880.204157] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3880.470005] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3880.470027] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3880.470036] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3880.729422] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3880.729497] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3880.729539] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3880.989331] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3880.989350] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3880.989359] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3898.859725] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3898.859804] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3898.859846] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3900.757846] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3900.757880] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3900.757889] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3945.333029] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3945.333057] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3945.333065] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3947.944545] qcom_battmgr.pmic_glink_power_supply pmic_glink.power-supply.0: unknown notification: 0x53
+[ 3948.010183] xhci-hcd xhci-hcd.2.auto: remove, state 4
+[ 3948.010273] usb usb2: USB disconnect, device number 1
+[ 3948.014042] xhci-hcd xhci-hcd.2.auto: USB bus 2 deregistered
+[ 3948.014149] xhci-hcd xhci-hcd.2.auto: remove, state 4
+[ 3948.014211] usb usb1: USB disconnect, device number 1
+[ 3948.020810] xhci-hcd xhci-hcd.2.auto: USB bus 1 deregistered
+[ 3950.111507] qcom_battmgr.pmic_glink_power_supply pmic_glink.power-supply.0: unknown notification: 0x53
+[ 3950.332677] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3950.332711] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3950.332720] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3950.601271] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3950.601373] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3950.601416] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3950.636633] xhci-hcd xhci-hcd.2.auto: xHCI Host Controller
+[ 3950.636729] xhci-hcd xhci-hcd.2.auto: new USB bus registered, assigned bus number 1
+[ 3950.639508] xhci-hcd xhci-hcd.2.auto: hcc params 0x0110ffc5 hci version 0x110 quirks 0x0000808000000010
+[ 3950.639673] xhci-hcd xhci-hcd.2.auto: irq 196, io mem 0x0a600000
+[ 3950.640296] xhci-hcd xhci-hcd.2.auto: xHCI Host Controller
+[ 3950.640310] xhci-hcd xhci-hcd.2.auto: new USB bus registered, assigned bus number 2
+[ 3950.640324] xhci-hcd xhci-hcd.2.auto: Host supports USB 3.1 Enhanced SuperSpeed
+[ 3950.640377] usb usb1: New USB device found, idVendor=1d6b, idProduct=0002, bcdDevice= 7.03
+[ 3950.640556] usb usb1: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+[ 3950.640584] usb usb1: Product: xHCI Host Controller
+[ 3950.640596] usb usb1: Manufacturer: Linux 7.3.0-rc2-sm8450+ xhci-hcd
+[ 3950.640606] usb usb1: SerialNumber: xhci-hcd.2.auto
+[ 3950.641495] hub 1-0:1.0: USB hub found
+[ 3950.641526] hub 1-0:1.0: 1 port detected
+[ 3950.642476] usb usb2: We don't know the algorithms for LPM for this host, disabling LPM.
+[ 3950.642528] usb usb2: New USB device found, idVendor=1d6b, idProduct=0003, bcdDevice= 7.03
+[ 3950.642980] usb usb2: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+[ 3950.643031] usb usb2: Product: xHCI Host Controller
+[ 3950.643074] usb usb2: Manufacturer: Linux 7.3.0-rc2-sm8450+ xhci-hcd
+[ 3950.643118] usb usb2: SerialNumber: xhci-hcd.2.auto
+[ 3950.644355] hub 2-0:1.0: USB hub found
+[ 3950.644484] hub 2-0:1.0: 1 port detected
+[ 3951.411096] usb 2-1: new SuperSpeed USB device number 2 using xhci-hcd
+[ 3951.431650] usb 2-1: New USB device found, idVendor=0bda, idProduct=0423, bcdDevice= 1.90
+[ 3951.433604] usb 2-1: New USB device strings: Mfr=1, Product=2, SerialNumber=0
+[ 3951.433659] usb 2-1: Product: 4-Port USB 3.0 Hub
+[ 3951.433703] usb 2-1: Manufacturer: Generic
+[ 3951.460761] hub 2-1:1.0: USB hub found
+[ 3951.461212] hub 2-1:1.0: 4 ports detected
+[ 3951.768392] usb 2-1.1: new SuperSpeed USB device number 3 using xhci-hcd
+[ 3951.801209] usb 2-1.1: New USB device found, idVendor=045e, idProduct=0955, bcdDevice= 1.41
+[ 3951.814533] usb 2-1.1: New USB device strings: Mfr=1, Product=2, SerialNumber=0
+[ 3951.814558] usb 2-1.1: Product: 4-Port USB 3.0 Hub
+[ 3951.814569] usb 2-1.1: Manufacturer: Generic
+[ 3951.848733] hub 2-1.1:1.0: USB hub found
+[ 3951.850901] hub 2-1.1:1.0: 2 ports detected
+[ 3952.159655] usb 2-1.1.1: new SuperSpeed USB device number 4 using xhci-hcd
+[ 3952.180743] usb 2-1.1.1: New USB device found, idVendor=045e, idProduct=0927, bcdDevice=31.00
+[ 3952.183057] usb 2-1.1.1: Int endpoint with wBytesPerInterval of 8 in config 2 interface 0 altsetting 0 ep 0x83: setting to 16
+[ 3952.185349] usb 2-1.1.1: New USB device strings: Mfr=1, Product=2, SerialNumber=6
+[ 3952.185400] usb 2-1.1.1: Product: Ethernet Adapter
+[ 3952.185441] usb 2-1.1.1: Manufacturer: Microsoft
+[ 3952.185480] usb 2-1.1.1: SerialNumber: 0013D9F5C
+[ 3952.306185] r8152-cfgselector 2-1.1.1: reset SuperSpeed USB device number 4 using xhci-hcd
+[ 3952.376991] r8152 2-1.1.1:1.0: Direct firmware load for rtl_nic/rtl8153b-2.fw failed with error -2
+[ 3952.377078] r8152 2-1.1.1:1.0: unable to load firmware patch rtl_nic/rtl8153b-2.fw (-2)
+[ 3953.547783] r8152 2-1.1.1:1.0 enu1u1u1: renamed from eth0
+[ 3954.021315] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3954.021355] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3954.021364] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3955.318595] r8152 2-1.1.1:1.0 enu1u1u1: carrier on
+[ 3958.673277] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3958.673305] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3958.673314] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3962.004787] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3962.004817] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3962.004827] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3962.264116] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3962.264146] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3962.264156] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3962.523726] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3962.523755] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3962.523763] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3963.444233] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3963.444263] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3963.444272] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3964.177059] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3964.177089] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3964.177098] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3970.079184] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3970.079218] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3970.079228] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3979.461316] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3979.461351] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3979.461360] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3979.728417] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3979.728446] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3979.728456] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3979.996227] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3979.996311] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3979.996355] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3980.273195] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3980.273219] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3980.273228] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3983.565884] usb 2-1: USB disconnect, device number 2
+[ 3983.565981] usb 2-1.1: USB disconnect, device number 3
+[ 3983.566031] r8152-cfgselector 2-1.1.1: USB disconnect, device number 4
+[ 3983.576053] qcom_battmgr.pmic_glink_power_supply pmic_glink.power-supply.0: unknown notification: 0x53
+[ 3983.615498] xhci-hcd xhci-hcd.2.auto: remove, state 1
+[ 3983.615550] usb usb2: USB disconnect, device number 1
+[ 3983.665854] xhci-hcd xhci-hcd.2.auto: USB bus 2 deregistered
+[ 3983.665896] xhci-hcd xhci-hcd.2.auto: remove, state 4
+[ 3983.665914] usb usb1: USB disconnect, device number 1
+[ 3983.670011] xhci-hcd xhci-hcd.2.auto: USB bus 1 deregistered
+[ 3989.519456] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3989.519485] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3989.519525] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3989.694316] qcom_battmgr.pmic_glink_power_supply pmic_glink.power-supply.0: unknown notification: 0x53
+[ 3989.770985] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3989.771004] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3989.771013] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3990.037951] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 3990.037977] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 3990.037986] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 3990.104404] xhci-hcd xhci-hcd.2.auto: xHCI Host Controller
+[ 3990.104496] xhci-hcd xhci-hcd.2.auto: new USB bus registered, assigned bus number 1
+[ 3990.107232] xhci-hcd xhci-hcd.2.auto: hcc params 0x0110ffc5 hci version 0x110 quirks 0x0000808000000010
+[ 3990.107394] xhci-hcd xhci-hcd.2.auto: irq 196, io mem 0x0a600000
+[ 3990.107900] xhci-hcd xhci-hcd.2.auto: xHCI Host Controller
+[ 3990.107964] xhci-hcd xhci-hcd.2.auto: new USB bus registered, assigned bus number 2
+[ 3990.108072] xhci-hcd xhci-hcd.2.auto: Host supports USB 3.1 Enhanced SuperSpeed
+[ 3990.108133] usb usb1: New USB device found, idVendor=1d6b, idProduct=0002, bcdDevice= 7.03
+[ 3990.108296] usb usb1: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+[ 3990.108308] usb usb1: Product: xHCI Host Controller
+[ 3990.108317] usb usb1: Manufacturer: Linux 7.3.0-rc2-sm8450+ xhci-hcd
+[ 3990.108325] usb usb1: SerialNumber: xhci-hcd.2.auto
+[ 3990.108633] hub 1-0:1.0: USB hub found
+[ 3990.108666] hub 1-0:1.0: 1 port detected
+[ 3990.108968] usb usb2: We don't know the algorithms for LPM for this host, disabling LPM.
+[ 3990.108980] usb usb2: New USB device found, idVendor=1d6b, idProduct=0003, bcdDevice= 7.03
+[ 3990.109071] usb usb2: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+[ 3990.109082] usb usb2: Product: xHCI Host Controller
+[ 3990.109090] usb usb2: Manufacturer: Linux 7.3.0-rc2-sm8450+ xhci-hcd
+[ 3990.109099] usb usb2: SerialNumber: xhci-hcd.2.auto
+[ 3990.109833] hub 2-0:1.0: USB hub found
+[ 3990.109919] hub 2-0:1.0: 1 port detected
+[ 4004.122444] power_supply qcom-battmgr-usb: driver reporting unavailable enum value 17
+[ 4005.919978] power_supply qcom-battmgr-usb: driver reporting unavailable enum value 17
+[ 4007.244921] power_supply qcom-battmgr-usb: driver reporting unavailable enum value 17
+[ 4007.259448] power_supply qcom-battmgr-usb: driver reporting unavailable enum value 17
+[ 4007.927687] power_supply qcom-battmgr-usb: driver reporting unavailable enum value 17
+[ 4008.139719] power_supply qcom-battmgr-usb: driver reporting unavailable enum value 17
+[ 4008.194721] xhci-hcd xhci-hcd.2.auto: remove, state 4
+[ 4008.194801] usb usb2: USB disconnect, device number 1
+[ 4008.197535] xhci-hcd xhci-hcd.2.auto: USB bus 2 deregistered
+[ 4008.197624] xhci-hcd xhci-hcd.2.auto: remove, state 4
+[ 4008.197678] usb usb1: USB disconnect, device number 1
+[ 4008.205892] xhci-hcd xhci-hcd.2.auto: USB bus 1 deregistered
+[ 4008.500471] xhci-hcd xhci-hcd.2.auto: xHCI Host Controller
+[ 4008.500579] xhci-hcd xhci-hcd.2.auto: new USB bus registered, assigned bus number 1
+[ 4008.503299] xhci-hcd xhci-hcd.2.auto: hcc params 0x0110ffc5 hci version 0x110 quirks 0x0000808000000010
+[ 4008.503480] xhci-hcd xhci-hcd.2.auto: irq 196, io mem 0x0a600000
+[ 4008.503987] xhci-hcd xhci-hcd.2.auto: xHCI Host Controller
+[ 4008.504050] xhci-hcd xhci-hcd.2.auto: new USB bus registered, assigned bus number 2
+[ 4008.504112] xhci-hcd xhci-hcd.2.auto: Host supports USB 3.1 Enhanced SuperSpeed
+[ 4008.504293] usb usb1: New USB device found, idVendor=1d6b, idProduct=0002, bcdDevice= 7.03
+[ 4008.504697] usb usb1: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+[ 4008.504749] usb usb1: Product: xHCI Host Controller
+[ 4008.504795] usb usb1: Manufacturer: Linux 7.3.0-rc2-sm8450+ xhci-hcd
+[ 4008.504840] usb usb1: SerialNumber: xhci-hcd.2.auto
+[ 4008.507193] hub 1-0:1.0: USB hub found
+[ 4008.507232] hub 1-0:1.0: 1 port detected
+[ 4008.507544] usb usb2: We don't know the algorithms for LPM for this host, disabling LPM.
+[ 4008.507557] usb usb2: New USB device found, idVendor=1d6b, idProduct=0003, bcdDevice= 7.03
+[ 4008.507643] usb usb2: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+[ 4008.507656] usb usb2: Product: xHCI Host Controller
+[ 4008.507666] usb usb2: Manufacturer: Linux 7.3.0-rc2-sm8450+ xhci-hcd
+[ 4008.507677] usb usb2: SerialNumber: xhci-hcd.2.auto
+[ 4008.507981] hub 2-0:1.0: USB hub found
+[ 4008.508011] hub 2-0:1.0: 1 port detected
+[ 4014.786654] qcom_battmgr.pmic_glink_power_supply pmic_glink.power-supply.0: unknown notification: 0x53
+[ 4014.907010] xhci-hcd xhci-hcd.2.auto: remove, state 4
+[ 4014.907099] usb usb2: USB disconnect, device number 1
+[ 4014.910554] xhci-hcd xhci-hcd.2.auto: USB bus 2 deregistered
+[ 4014.910645] xhci-hcd xhci-hcd.2.auto: remove, state 4
+[ 4014.910810] usb usb1: USB disconnect, device number 1
+[ 4014.917545] xhci-hcd xhci-hcd.2.auto: USB bus 1 deregistered
+[ 4018.368823] qcom_battmgr.pmic_glink_power_supply pmic_glink.power-supply.0: unknown notification: 0x53
+[ 4023.797417] gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[ 4023.797451] geni_i2c 990000.i2c: prep_slave_sg failed
+[ 4023.797461] geni_i2c 990000.i2c: GPI transfer failed: -5
+[ 4024.616471] qcom_battmgr.pmic_glink_power_supply pmic_glink.power-supply.0: voocphy recheck: PD adapter (type=6), requesting 9V/3A
+[ 7691.045388] xhci-hcd xhci-hcd.2.auto: xHCI Host Controller
+[ 7691.045501] xhci-hcd xhci-hcd.2.auto: new USB bus registered, assigned bus number 1
+[ 7691.048242] xhci-hcd xhci-hcd.2.auto: hcc params 0x0110ffc5 hci version 0x110 quirks 0x0000808000000010
+[ 7691.048419] xhci-hcd xhci-hcd.2.auto: irq 196, io mem 0x0a600000
+[ 7691.048955] xhci-hcd xhci-hcd.2.auto: xHCI Host Controller
+[ 7691.049021] xhci-hcd xhci-hcd.2.auto: new USB bus registered, assigned bus number 2
+[ 7691.049083] xhci-hcd xhci-hcd.2.auto: Host supports USB 3.1 Enhanced SuperSpeed
+[ 7691.049263] usb usb1: New USB device found, idVendor=1d6b, idProduct=0002, bcdDevice= 7.03
+[ 7691.049788] usb usb1: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+[ 7691.049845] usb usb1: Product: xHCI Host Controller
+[ 7691.049892] usb usb1: Manufacturer: Linux 7.3.0-rc2-sm8450+ xhci-hcd
+[ 7691.049938] usb usb1: SerialNumber: xhci-hcd.2.auto
+[ 7691.051814] hub 1-0:1.0: USB hub found
+[ 7691.051960] hub 1-0:1.0: 1 port detected
+[ 7691.053312] usb usb2: We don't know the algorithms for LPM for this host, disabling LPM.
+[ 7691.053364] usb usb2: New USB device found, idVendor=1d6b, idProduct=0003, bcdDevice= 7.03
+[ 7691.053859] usb usb2: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+[ 7691.053913] usb usb2: Product: xHCI Host Controller
+[ 7691.053959] usb usb2: Manufacturer: Linux 7.3.0-rc2-sm8450+ xhci-hcd
+[ 7691.054004] usb usb2: SerialNumber: xhci-hcd.2.auto
+[ 7691.055527] hub 2-0:1.0: USB hub found
+[ 7691.055666] hub 2-0:1.0: 1 port detected

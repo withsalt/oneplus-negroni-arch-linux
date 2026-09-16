@@ -1,0 +1,5 @@
+sudo: a password is required
+bash: line 1: lsusb: command not found
+bash: line 1: lsusb: command not found
+cat: /sys/class/typec/port0/port_type: No such file or directory
+sudo: a password is required

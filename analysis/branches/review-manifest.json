@@ -1,0 +1,63 @@
+{
+  "review_date": "2026-09-15",
+  "timezone": "Asia/Shanghai",
+  "repository": "https://github.com/Xlie-Electronic-Customs/linux",
+  "refs": {
+    "7.2": "99e0c83637f903af7f77cffb8b2f0db7abef18dd",
+    "7.3-rc2": "e8291a2765b80f94c047d28ca514465c7716c374",
+    "master": "94ab11292128c98bf80d6f3a0b22e4045e0f28aa"
+  },
+  "rc2_vs_master_changed_paths_in_selected_scopes": {
+    "arch/arm64/configs": [],
+    "arch/arm64/boot/dts/qcom": [],
+    "drivers/gpu/drm/msm": [],
+    "drivers/gpu/drm/panel/panel-samsung-s6e3hc3.c": [],
+    "drivers/power/supply": [],
+    "drivers/input": [],
+    "drivers/net/wireless/ath": [],
+    "drivers/net/ipa": [],
+    "drivers/remoteproc": [],
+    "drivers/soc/qcom": [],
+    "drivers/dma/qcom": [],
+    "drivers/i2c/busses": [],
+    "drivers/phy/qualcomm": [],
+    "drivers/usb": [],
+    "drivers/media/platform/qcom": [],
+    "sound/soc/qcom": []
+  },
+  "validation": {
+    "rc2": {
+      "source_ref": "e8291a2765b80f94c047d28ca514465c7716c374",
+      "config_targets": [
+        "defconfig",
+        "sm8450.config"
+      ],
+      "dtb_target": "qcom/sm8450-oneplus-negroni.dtb",
+      "dtb_bytes": 173881,
+      "dtb_sha256": "4797091fe0d7d6719b5c85f69ae1aa95a62a6767eb46a8efff82333057e03ad3",
+      "config_sha256": "413a919c0a208d8b7df2b569414be67fb823fdef7b4761e73c881b05b7d6bbfd",
+      "model": "OnePlus 10 Pro 5G",
+      "compatible": "oplus,negroni qcom,sm8450",
+      "build_log_errors_or_warnings": false
+    },
+    "master": {
+      "source_ref": "94ab11292128c98bf80d6f3a0b22e4045e0f28aa",
+      "config_targets": [
+        "defconfig",
+        "sm8450.config"
+      ],
+      "dtb_target": "qcom/sm8450-oneplus-negroni.dtb",
+      "dtb_bytes": 173881,
+      "dtb_sha256": "4797091fe0d7d6719b5c85f69ae1aa95a62a6767eb46a8efff82333057e03ad3",
+      "config_sha256": "413a919c0a208d8b7df2b569414be67fb823fdef7b4761e73c881b05b7d6bbfd",
+      "model": "OnePlus 10 Pro 5G",
+      "compatible": "oplus,negroni qcom,sm8450",
+      "build_log_errors_or_warnings": false
+    }
+  },
+  "limitations": [
+    "Kernel configuration and target DTB only; no full new kernel or module build.",
+    "No DT schema validation; DTS uses 5 DMA cells while binding specifies 3.",
+    "No boot, charging, graphics or performance measurements on NE2210."
+  ]
+}

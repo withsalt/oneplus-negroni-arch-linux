@@ -1,0 +1,59 @@
+oneplus@192.168.188.91's  
+2026-09-16T00:11:38,960423191+08:00
+1000.33 7881.82
+0
+0
+unspecified
+Maximum: 0
+Min: 0
+Max: 0
+0
+N
+N
+Y
+-1
+Y
+N
+Y
+8
+N
+N
+N
+N
+0
+/sys/kernel/debug/dri/0/gpu
+[  968.512853] oneplus-negroni kernel: dsi_err_worker: status=4
+[  968.569036] oneplus-negroni kernel: dsi_err_worker: status=4
+[  968.628991] oneplus-negroni kernel: dsi_err_worker: status=4
+[  968.688920] oneplus-negroni kernel: dsi_err_worker: status=4
+[  968.760832] oneplus-negroni kernel: dsi_err_worker: status=4
+[  968.820891] oneplus-negroni kernel: dsi_err_worker: status=4
+[  968.880901] oneplus-negroni kernel: dsi_err_worker: status=4
+[  968.941035] oneplus-negroni kernel: dsi_err_worker: status=4
+[  969.984344] oneplus-negroni kernel: gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[  969.987621] oneplus-negroni kernel: geni_i2c 990000.i2c: prep_slave_sg failed
+[  969.988379] oneplus-negroni kernel: geni_i2c 990000.i2c: GPI transfer failed: -5
+[  970.252168] oneplus-negroni kernel: gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[  970.253116] oneplus-negroni kernel: geni_i2c 990000.i2c: prep_slave_sg failed
+[  970.253807] oneplus-negroni kernel: geni_i2c 990000.i2c: GPI transfer failed: -5
+[  970.504459] oneplus-negroni kernel: gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[  970.507290] oneplus-negroni kernel: geni_i2c 990000.i2c: prep_slave_sg failed
+[  970.510246] oneplus-negroni kernel: geni_i2c 990000.i2c: GPI transfer failed: -5
+[  977.476910] oneplus-negroni kernel: gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[  977.480493] oneplus-negroni kernel: geni_i2c 990000.i2c: prep_slave_sg failed
+[  977.483004] oneplus-negroni kernel: geni_i2c 990000.i2c: GPI transfer failed: -5
+[  977.744849] oneplus-negroni kernel: gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[  977.748189] oneplus-negroni kernel: geni_i2c 990000.i2c: prep_slave_sg failed
+[  977.750693] oneplus-negroni kernel: geni_i2c 990000.i2c: GPI transfer failed: -5
+[  979.412848] oneplus-negroni kernel: gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[  979.416260] oneplus-negroni kernel: geni_i2c 990000.i2c: prep_slave_sg failed
+[  979.418776] oneplus-negroni kernel: geni_i2c 990000.i2c: GPI transfer failed: -5
+[  981.188050] oneplus-negroni kernel: gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[  981.190739] oneplus-negroni kernel: geni_i2c 990000.i2c: prep_slave_sg failed
+[  981.192766] oneplus-negroni kernel: geni_i2c 990000.i2c: GPI transfer failed: -5
+[  982.948429] oneplus-negroni kernel: gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[  982.949255] oneplus-negroni kernel: geni_i2c 990000.i2c: prep_slave_sg failed
+[  982.949415] oneplus-negroni kernel: geni_i2c 990000.i2c: GPI transfer failed: -5
+[  985.132545] oneplus-negroni kernel: gpi 900000.dma-controller: not enough space in ring, avail:1 required:3
+[  985.136826] oneplus-negroni kernel: geni_i2c 990000.i2c: prep_slave_sg failed
+[  985.139346] oneplus-negroni kernel: geni_i2c 990000.i2c: GPI transfer failed: -5

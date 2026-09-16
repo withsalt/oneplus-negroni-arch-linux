@@ -1,0 +1,725 @@
+From 2c092365fd5c72efcedc29a578601b0a41ce45c4 Mon Sep 17 00:00:00 2001
+From: ZXlieC <xlie7669@gmail.com>
+Date: Wed, 16 Sep 2026 14:24:46 +0800
+Subject: [PATCH] power: supply: qcom_battmgr: add opt-in Negroni charge limits
+
+Add configurable 75/80 percent hysteresis with charge limiting disabled by default. Stop battery charging through the Oplus protocol while retaining USB input, and guard initialization, reconnect and VOOC retry paths against re-enabling charging during a hold.
+
+Expose policy enable and acknowledged status through sysfs, retry transport failures and block system suspend while host-side enforcement is active. Keep these controls specific to Negroni.
+---
+ drivers/power/supply/qcom_battmgr.c           | 427 +++++++++++++++++-
+ .../power/supply/qcom_battmgr_charge_limit.h  |  31 ++
+ 2 files changed, 447 insertions(+), 11 deletions(-)
+ create mode 100644 drivers/power/supply/qcom_battmgr_charge_limit.h
+
+diff --git a/drivers/power/supply/qcom_battmgr.c b/drivers/power/supply/qcom_battmgr.c
+index 7edfd3521718..10505952846b 100644
+--- a/drivers/power/supply/qcom_battmgr.c
++++ b/drivers/power/supply/qcom_battmgr.c
+@@ -12,6 +12,9 @@
+ #include <linux/module.h>
+ #include <linux/mutex.h>
+ #include <linux/nvmem-consumer.h>
++#include <linux/pm.h>
++
++#include "qcom_battmgr_charge_limit.h"
+ #include <linux/of.h>
+ #include <linux/of_device.h>
+ #include <linux/power_supply.h>
+@@ -190,6 +193,8 @@ enum oplus_power_supply_usb_type {
+ #define CHARGE_CTRL_END_THR_MIN		55
+ #define CHARGE_CTRL_END_THR_MAX		100
+ #define CHARGE_CTRL_DELTA_SOC		5
++#define CHARGE_CTRL_DEFAULT_START	75
++#define CHARGE_CTRL_DEFAULT_END		80
+ 
+ /* Oplus OEM read buffer opcode and layout */
+ #define OEM_OPCODE_READ_BUFFER         0x10000
+@@ -484,6 +489,8 @@ struct qcom_battmgr {
+ 
+ 	int error;
+ 	struct completion ack;
++	unsigned int pending_opcode;
++	unsigned int pending_property;
+ 
+ 	bool service_up;
+ 
+@@ -518,7 +525,20 @@ struct qcom_battmgr {
+         unsigned int usb_offline_count; /* consecutive USB_ONLINE=0 readings */
+ 
+         /* ADSP told AP to suspend charging (notification 0x61) */
+-        bool adsp_suspended_chg;
++	bool adsp_suspended_chg;
++
++	/* Host-side charge limit.  Disabled until userspace enables the service. */
++	bool charge_limit_supported;
++	struct qcom_battmgr_charge_limit charge_limit; /* protected by lock */
++	bool charge_limit_applied;
++	bool charge_limit_applied_valid;
++	bool charge_limit_vooc_disabled;
++	int charge_limit_error;
++	unsigned int charge_limit_soc_raw; /* standard GET result, never OEM cache */
++	unsigned int service_generation; /* updated by PDR callback */
++	unsigned int charge_limit_generation;
++	struct delayed_work charge_limit_work;
++	bool stopping;
+ 
+ 	bool otg_enabled;
+ 
+@@ -550,9 +570,14 @@ struct qcom_battmgr {
+ 
+ static int qcom_battmgr_request(struct qcom_battmgr *battmgr, void *data, size_t len)
+ {
++	const struct pmic_glink_hdr *hdr = data;
+ 	unsigned long left;
+ 	int ret;
+ 
++	lockdep_assert_held(&battmgr->lock);
++	if (READ_ONCE(battmgr->stopping) || !READ_ONCE(battmgr->service_up))
++		return -EAGAIN;
++	WRITE_ONCE(battmgr->pending_opcode, le32_to_cpu(hdr->opcode));
+ 	reinit_completion(&battmgr->ack);
+ 
+ 	battmgr->error = 0;
+@@ -565,6 +590,12 @@ static int qcom_battmgr_request(struct qcom_battmgr *battmgr, void *data, size_t
+ 	if (!left)
+ 		return -ETIMEDOUT;
+ 
++	/* Oplus firmware errors such as 514 are positive, not Linux errnos. */
++	if (battmgr->error > 0) {
++		dev_warn_ratelimited(battmgr->dev, "ADSP request %#x failed: %d\n",
++				     le32_to_cpu(hdr->opcode), battmgr->error);
++		return -EREMOTEIO;
++	}
+ 	return battmgr->error;
+ }
+ 
+@@ -580,6 +611,23 @@ static int qcom_battmgr_request_property(struct qcom_battmgr *battmgr, int opcod
+ 		.value = cpu_to_le32(value),
+ 	};
+ 
++	lockdep_assert_held(&battmgr->lock);
++	if (battmgr->charge_limit_supported && value) {
++		bool blocked = battmgr->charge_limit.enabled &&
++			       (battmgr->charge_limit.cutoff ||
++				battmgr->charge_limit_generation !=
++				READ_ONCE(battmgr->service_generation));
++
++		/* This also covers initialization, hotplug and fast-charge retry. */
++		if (opcode == BATTMGR_BAT_PROPERTY_SET &&
++		    (property == BATT_OPLUS_CHG_EN || property == BATT_OPLUS_SEND_CHG_STATUS) &&
++		    (blocked || READ_ONCE(battmgr->adsp_suspended_chg)))
++			request.value = 0;
++		if (opcode == BATTMGR_USB_PROPERTY_SET &&
++		    property == USB_OPLUS_VOOCPHY_ENABLE && blocked)
++			return 0;
++	}
++	WRITE_ONCE(battmgr->pending_property, property);
+ 	return qcom_battmgr_request(battmgr, &request, sizeof(request));
+ }
+ 
+@@ -747,6 +795,16 @@ static int qcom_battmgr_bat_get_property(struct power_supply *psy,
+ 	enum qcom_battmgr_unit unit = battmgr->unit;
+ 	int ret;
+ 
++	if (battmgr->charge_limit_supported &&
++	    (psp == POWER_SUPPLY_PROP_CHARGE_CONTROL_START_THRESHOLD ||
++	     psp == POWER_SUPPLY_PROP_CHARGE_CONTROL_END_THRESHOLD)) {
++		mutex_lock(&battmgr->lock);
++		val->intval = psp == POWER_SUPPLY_PROP_CHARGE_CONTROL_START_THRESHOLD ?
++			battmgr->charge_limit.start : battmgr->charge_limit.end;
++		mutex_unlock(&battmgr->lock);
++		return 0;
++	}
++
+ 	if (!battmgr->service_up)
+ 		return -EAGAIN;
+ 
+@@ -787,6 +845,14 @@ static int qcom_battmgr_bat_get_property(struct power_supply *psy,
+                 if ((battmgr->usb.online || battmgr->wireless.online) &&
+                     val->intval == POWER_SUPPLY_STATUS_DISCHARGING)
+ 			val->intval = POWER_SUPPLY_STATUS_CHARGING;
++		if (battmgr->charge_limit_supported) {
++			mutex_lock(&battmgr->lock);
++			if ((battmgr->usb.online || battmgr->wireless.online) &&
++			    battmgr->charge_limit_applied_valid && battmgr->charge_limit_applied &&
++			    battmgr->charge_limit_generation == READ_ONCE(battmgr->service_generation))
++				val->intval = POWER_SUPPLY_STATUS_NOT_CHARGING;
++			mutex_unlock(&battmgr->lock);
++		}
+ 		break;
+ 	case POWER_SUPPLY_PROP_CHARGE_TYPE:
+ 		val->intval = battmgr->info.charge_type;
+@@ -933,6 +999,218 @@ static int qcom_battmgr_set_charge_control(struct qcom_battmgr *battmgr,
+ 	return qcom_battmgr_request(battmgr, &request, sizeof(request));
+ }
+ 
++/* All policy evaluation and command writes run under battmgr->lock. */
++static int qcom_battmgr_apply_negroni_charge_limit(struct qcom_battmgr *battmgr)
++{
++	bool cutoff = battmgr->charge_limit.enabled && battmgr->charge_limit.cutoff;
++	unsigned int generation = READ_ONCE(battmgr->service_generation);
++	int ret;
++
++	lockdep_assert_held(&battmgr->lock);
++	if (!battmgr->service_up || !battmgr->gauge_init_done)
++		return -EAGAIN;
++
++	if (battmgr->charge_limit_generation != generation)
++		battmgr->charge_limit_applied_valid = false;
++	if (battmgr->charge_limit_applied_valid &&
++	    battmgr->charge_limit_applied == cutoff)
++		return 0;
++	/* A timeout can mean the hardware changed without an ACK. */
++	battmgr->charge_limit_applied_valid = false;
++
++	/* Stock Oplus also exits the independent VOOC fast-charge path. */
++	if (cutoff) {
++		ret = qcom_battmgr_request_property(battmgr, BATTMGR_USB_PROPERTY_GET,
++						    USB_ADAP_TYPE, 0);
++		if (ret)
++			return ret;
++		if (battmgr->usb.adap_type == POWER_SUPPLY_USB_TYPE_DCP) {
++			/* Remember even a timeout: the command might have reached ADSP. */
++			battmgr->charge_limit_vooc_disabled = true;
++			ret = qcom_battmgr_request_property(battmgr, BATTMGR_USB_PROPERTY_SET,
++							    USB_OPLUS_VOOCPHY_ENABLE, 0);
++			if (ret)
++				return ret;
++		}
++	}
++
++	/* Do not suspend USB input, change PDO, or force battery discharge. */
++	ret = qcom_battmgr_request_property(battmgr, BATTMGR_BAT_PROPERTY_SET,
++					    BATT_OPLUS_CHG_EN, !cutoff);
++	if (ret)
++		return ret;
++	if (!cutoff && battmgr->charge_limit_vooc_disabled &&
++	    !READ_ONCE(battmgr->adsp_suspended_chg)) {
++		ret = qcom_battmgr_request_property(battmgr, BATTMGR_USB_PROPERTY_SET,
++						    USB_OPLUS_VOOCPHY_ENABLE, 1);
++		if (ret)
++			return ret;
++		battmgr->charge_limit_vooc_disabled = false;
++	}
++	if (generation != READ_ONCE(battmgr->service_generation) || !battmgr->service_up)
++		return -EAGAIN;
++
++	battmgr->charge_limit_applied = cutoff;
++	battmgr->charge_limit_applied_valid = true;
++	battmgr->charge_limit_generation = generation;
++	dev_info(battmgr->dev, "charge limit: %s, thresholds %u/%u%%; USB input retained\n",
++		 cutoff ? "holding" : "released", battmgr->charge_limit.start,
++		 battmgr->charge_limit.end);
++	power_supply_changed(battmgr->bat_psy);
++	return 0;
++}
++
++static int qcom_battmgr_refresh_negroni_charge_limit(struct qcom_battmgr *battmgr)
++{
++	unsigned int generation = READ_ONCE(battmgr->service_generation);
++	int ret = 0, sample_ret = 0;
++
++	lockdep_assert_held(&battmgr->lock);
++	if (!battmgr->service_up || !battmgr->gauge_init_done)
++		return -EAGAIN;
++
++	if (battmgr->charge_limit.enabled) {
++		if (battmgr->charge_limit_generation != generation)
++			battmgr->charge_limit_applied_valid = false;
++		battmgr->charge_limit_soc_raw = ~0U;
++		sample_ret = qcom_battmgr_request_property(battmgr, BATTMGR_BAT_PROPERTY_GET,
++							   BATT_CAPACITY, 0);
++		if (!sample_ret && battmgr->charge_limit_soc_raw > 10000)
++			sample_ret = -ENODATA;
++		if (!sample_ret && generation != READ_ONCE(battmgr->service_generation))
++			sample_ret = -EAGAIN;
++		qcom_battmgr_charge_limit_sample(&battmgr->charge_limit,
++			battmgr->charge_limit_soc_raw / 100,
++			!sample_ret && battmgr->charge_limit_soc_raw <= 10000 &&
++			generation == READ_ONCE(battmgr->service_generation));
++		if (!sample_ret)
++			battmgr->charge_limit_generation = generation;
++	} else {
++		battmgr->charge_limit.cutoff = false;
++	}
++	ret = qcom_battmgr_apply_negroni_charge_limit(battmgr);
++	return ret ? ret : sample_ret;
++}
++
++static void qcom_battmgr_charge_limit_worker(struct work_struct *work)
++{
++	struct qcom_battmgr *battmgr = container_of(to_delayed_work(work),
++					struct qcom_battmgr, charge_limit_work);
++	bool retry;
++
++	mutex_lock(&battmgr->lock);
++	if (READ_ONCE(battmgr->stopping)) {
++		mutex_unlock(&battmgr->lock);
++		return;
++	}
++	battmgr->charge_limit_error = qcom_battmgr_refresh_negroni_charge_limit(battmgr);
++	retry = battmgr->charge_limit.enabled || battmgr->charge_limit_error;
++	if (battmgr->charge_limit_error && battmgr->charge_limit_error != -EAGAIN)
++		dev_warn_ratelimited(battmgr->dev, "charge limit: update failed: %d\n",
++				     battmgr->charge_limit_error);
++	if (retry)
++		mod_delayed_work(system_wq, &battmgr->charge_limit_work,
++				 msecs_to_jiffies(5000));
++	mutex_unlock(&battmgr->lock);
++}
++
++static ssize_t charge_limit_enable_show(struct device *dev,
++				       struct device_attribute *attr, char *buf)
++{
++	struct qcom_battmgr *battmgr = power_supply_get_drvdata(dev_get_drvdata(dev));
++	ssize_t ret;
++
++	mutex_lock(&battmgr->lock);
++	ret = sysfs_emit(buf, "%u\n", battmgr->charge_limit.enabled);
++	mutex_unlock(&battmgr->lock);
++	return ret;
++}
++
++static ssize_t charge_limit_enable_store(struct device *dev,
++					struct device_attribute *attr,
++					const char *buf, size_t count)
++{
++	struct qcom_battmgr *battmgr = power_supply_get_drvdata(dev_get_drvdata(dev));
++	bool enable;
++	int ret;
++
++	ret = kstrtobool(buf, &enable);
++	if (ret)
++		return ret;
++	mutex_lock(&battmgr->lock);
++	if (READ_ONCE(battmgr->stopping)) {
++		mutex_unlock(&battmgr->lock);
++		return -ENODEV;
++	}
++	/* A new policy starts holding in the hysteresis band, until <= start. */
++	if (enable && !battmgr->charge_limit.enabled)
++		battmgr->charge_limit.cutoff = true;
++	battmgr->charge_limit.enabled = enable;
++	if (!enable)
++		battmgr->charge_limit.cutoff = false;
++	battmgr->charge_limit_applied_valid = false;
++	ret = qcom_battmgr_refresh_negroni_charge_limit(battmgr);
++	battmgr->charge_limit_error = ret;
++	mod_delayed_work(system_wq, &battmgr->charge_limit_work, msecs_to_jiffies(5000));
++	mutex_unlock(&battmgr->lock);
++	/* Disabling is accepted even while ADSP is down; restoration is retried. */
++	return ret && enable ? ret : count;
++}
++
++static ssize_t charge_limit_status_show(struct device *dev,
++				       struct device_attribute *attr, char *buf)
++{
++	struct qcom_battmgr *battmgr = power_supply_get_drvdata(dev_get_drvdata(dev));
++	const char *state;
++	ssize_t ret;
++
++	mutex_lock(&battmgr->lock);
++	if (battmgr->charge_limit_error || !battmgr->charge_limit_applied_valid ||
++	    battmgr->charge_limit_generation != READ_ONCE(battmgr->service_generation))
++		state = "pending";
++	else
++		state = battmgr->charge_limit_applied ? "holding" : "released";
++	ret = sysfs_emit(buf, "enabled=%u state=%s error=%d\n",
++			 battmgr->charge_limit.enabled, state, battmgr->charge_limit_error);
++	mutex_unlock(&battmgr->lock);
++	return ret;
++}
++
++static DEVICE_ATTR_RW(charge_limit_enable);
++static DEVICE_ATTR_RO(charge_limit_status);
++static struct attribute *qcom_battmgr_negroni_attrs[] = {
++	&dev_attr_charge_limit_enable.attr,
++	&dev_attr_charge_limit_status.attr,
++	NULL,
++};
++ATTRIBUTE_GROUPS(qcom_battmgr_negroni);
++
++static int qcom_battmgr_negroni_set_threshold(struct qcom_battmgr *battmgr,
++					    enum power_supply_property psp, int value)
++{
++	unsigned int start, end;
++	int ret = 0;
++
++	mutex_lock(&battmgr->lock);
++	start = battmgr->charge_limit.start;
++	end = battmgr->charge_limit.end;
++	if (psp == POWER_SUPPLY_PROP_CHARGE_CONTROL_START_THRESHOLD)
++		start = value;
++	else
++		end = value;
++	if (!qcom_battmgr_charge_limit_valid(start, end)) {
++		ret = -EINVAL;
++		goto out;
++	}
++	battmgr->charge_limit.start = start;
++	battmgr->charge_limit.end = end;
++	if (battmgr->charge_limit.enabled)
++		mod_delayed_work(system_wq, &battmgr->charge_limit_work, 0);
++out:
++	mutex_unlock(&battmgr->lock);
++	return ret;
++}
++
+ static int qcom_battmgr_set_charge_start_threshold(struct qcom_battmgr *battmgr, int start_soc)
+ {
+ 	u32 target_soc, delta_soc;
+@@ -1036,6 +1314,11 @@ static int qcom_battmgr_bat_set_property(struct power_supply *psy,
+ {
+ 	struct qcom_battmgr *battmgr = power_supply_get_drvdata(psy);
+ 
++	if (battmgr->charge_limit_supported &&
++	    (psp == POWER_SUPPLY_PROP_CHARGE_CONTROL_START_THRESHOLD ||
++	     psp == POWER_SUPPLY_PROP_CHARGE_CONTROL_END_THRESHOLD))
++		return qcom_battmgr_negroni_set_threshold(battmgr, psp, pval->intval);
++
+ 	if (!battmgr->service_up)
+ 		return -EAGAIN;
+ 
+@@ -1190,6 +1473,42 @@ static const struct power_supply_desc sm8550_bat_psy_desc = {
+ 	.property_is_writeable = qcom_battmgr_bat_is_writeable,
+ };
+ 
++static const enum power_supply_property negroni_bat_props[] = {
++	POWER_SUPPLY_PROP_STATUS,
++	POWER_SUPPLY_PROP_HEALTH,
++	POWER_SUPPLY_PROP_PRESENT,
++	POWER_SUPPLY_PROP_CHARGE_TYPE,
++	POWER_SUPPLY_PROP_CAPACITY,
++	POWER_SUPPLY_PROP_VOLTAGE_OCV,
++	POWER_SUPPLY_PROP_VOLTAGE_NOW,
++	POWER_SUPPLY_PROP_VOLTAGE_MAX,
++	POWER_SUPPLY_PROP_CURRENT_NOW,
++	POWER_SUPPLY_PROP_TEMP,
++	POWER_SUPPLY_PROP_TECHNOLOGY,
++	POWER_SUPPLY_PROP_CHARGE_COUNTER,
++	POWER_SUPPLY_PROP_CYCLE_COUNT,
++	POWER_SUPPLY_PROP_CHARGE_FULL_DESIGN,
++	POWER_SUPPLY_PROP_CHARGE_FULL,
++	POWER_SUPPLY_PROP_MODEL_NAME,
++	POWER_SUPPLY_PROP_TIME_TO_FULL_AVG,
++	POWER_SUPPLY_PROP_TIME_TO_EMPTY_AVG,
++	POWER_SUPPLY_PROP_INTERNAL_RESISTANCE,
++	POWER_SUPPLY_PROP_STATE_OF_HEALTH,
++	POWER_SUPPLY_PROP_POWER_NOW,
++	POWER_SUPPLY_PROP_CHARGE_CONTROL_START_THRESHOLD,
++	POWER_SUPPLY_PROP_CHARGE_CONTROL_END_THRESHOLD,
++};
++
++static const struct power_supply_desc negroni_bat_psy_desc = {
++	.name = "qcom-battmgr-bat",
++	.type = POWER_SUPPLY_TYPE_BATTERY,
++	.properties = negroni_bat_props,
++	.num_properties = ARRAY_SIZE(negroni_bat_props),
++	.get_property = qcom_battmgr_bat_get_property,
++	.set_property = qcom_battmgr_bat_set_property,
++	.property_is_writeable = qcom_battmgr_bat_is_writeable,
++};
++
+ static int qcom_battmgr_ac_get_property(struct power_supply *psy,
+ 					enum power_supply_property psp,
+ 					union power_supply_propval *val)
+@@ -1503,7 +1822,7 @@ static void qcom_battmgr_oem_read_response(struct qcom_battmgr *battmgr,
+         const struct qcom_battmgr_oem_read_resp *resp = data;
+         u32 buf_len;
+ 
+-        if (len > sizeof(*resp)) {
++        if (len != sizeof(*resp)) {
+                 dev_warn(battmgr->dev, "oem read: incorrect length %zu\n", len);
+                 return;
+         }
+@@ -1650,6 +1969,12 @@ static void qcom_battmgr_notification(struct qcom_battmgr *battmgr,
+ 
+ 	notification = le32_to_cpu(msg->notification);
+ 	notification &= 0xff;
++	if (battmgr->charge_limit_supported && READ_ONCE(battmgr->charge_limit.enabled) &&
++	    (notification == NOTIF_PLUGIN_IRQ || notification == NOTIF_TYPEC_STATE_CHANGE ||
++	     notification == NOTIF_VOOC_VBUS_ADC_ENABLE || notification == NOTIF_CHG_STATUS_SET)) {
++		WRITE_ONCE(battmgr->service_generation, battmgr->service_generation + 1);
++		mod_delayed_work(system_wq, &battmgr->charge_limit_work, msecs_to_jiffies(500));
++	}
+ 	switch (notification) {
+ 	case NOTIF_BAT_INFO:
+ 		battmgr->info.valid = false;
+@@ -1894,6 +2219,14 @@ static void qcom_battmgr_sm8350_callback(struct qcom_battmgr *battmgr,
+ 		return;
+ 	}
+ 
++	if (opcode != READ_ONCE(battmgr->pending_opcode))
++		return;
++	if ((opcode == BATTMGR_BAT_PROPERTY_GET || opcode == BATTMGR_USB_PROPERTY_GET ||
++	     opcode == BATTMGR_WLS_PROPERTY_GET || opcode == BATTMGR_BAT_PROPERTY_SET ||
++	     opcode == BATTMGR_USB_PROPERTY_SET) &&
++	    le32_to_cpu(resp->intval.property) != READ_ONCE(battmgr->pending_property))
++		return;
++
+ 	switch (opcode) {
+ 	case BATTMGR_BAT_PROPERTY_GET:
+ 		property = le32_to_cpu(resp->intval.property);
+@@ -1933,6 +2266,7 @@ static void qcom_battmgr_sm8350_callback(struct qcom_battmgr *battmgr,
+ 			battmgr->info.charge_type = le32_to_cpu(resp->intval.value);
+ 			break;
+ 		case BATT_CAPACITY:
++			battmgr->charge_limit_soc_raw = le32_to_cpu(resp->intval.value);
+ 			battmgr->status.percent = le32_to_cpu(resp->intval.value) / 100;
+ 			break;
+ 		case BATT_SOH:
+@@ -2090,6 +2424,10 @@ static void qcom_battmgr_sm8350_callback(struct qcom_battmgr *battmgr,
+ 		break;
+         case BATTMGR_BAT_PROPERTY_SET:
+         case BATTMGR_USB_PROPERTY_SET:
++		if (payload_len != sizeof(resp->intval)) {
++			battmgr->error = -ENODATA;
++			goto out_complete;
++		}
+                 /* Response to property write (e.g. Oplus gauge init, voocphy enable) */
+                 dev_dbg(battmgr->dev, "property set response: opcode=0x%x prop=%u result=%u\n",
+                         opcode, le32_to_cpu(resp->intval.property),
+@@ -2109,8 +2447,13 @@ static void qcom_battmgr_callback(const void *data, size_t len, void *priv)
+ {
+ 	const struct pmic_glink_hdr *hdr = data;
+ 	struct qcom_battmgr *battmgr = priv;
+-	unsigned int opcode = le32_to_cpu(hdr->opcode);
++	unsigned int opcode;
+ 
++	if (len < sizeof(*hdr))
++		return;
++	opcode = le32_to_cpu(hdr->opcode);
++	if (READ_ONCE(battmgr->stopping) && opcode == BATTMGR_NOTIFICATION)
++		return;
+ 	if (opcode == BATTMGR_NOTIFICATION)
+ 		qcom_battmgr_notification(battmgr, data, len);
+ 	else if (opcode == OEM_OPCODE_READ_BUFFER)
+@@ -2440,13 +2783,14 @@ static void qcom_battmgr_chg_status_reply_work(struct work_struct *work)
+ {
+         struct qcom_battmgr *battmgr = container_of(work,
+                         struct qcom_battmgr, chg_status_reply_work);
+-        int status = !battmgr->adsp_suspended_chg;
++        int status;
+         int ret;
+ 
+         if (!battmgr->service_up)
+                 return;
+ 
+         mutex_lock(&battmgr->lock);
++        status = !READ_ONCE(battmgr->adsp_suspended_chg);
+         ret = qcom_battmgr_request_property(battmgr,
+                         BATTMGR_BAT_PROPERTY_SET,
+                         BATT_OPLUS_SEND_CHG_STATUS, status);
+@@ -2639,6 +2983,8 @@ static void qcom_battmgr_voocphy_recheck(struct work_struct *work)
+         }
+ 
+ reschedule:
++        if (READ_ONCE(battmgr->stopping))
++                return;
+         schedule_delayed_work(&battmgr->voocphy_recheck_work,
+                               msecs_to_jiffies(5000));
+ }
+@@ -2654,7 +3000,17 @@ static void qcom_battmgr_enable_worker(struct work_struct *work)
+ 	};
+ 	int ret;
+ 
++	mutex_lock(&battmgr->lock);
++	if (battmgr->charge_limit_supported) {
++		battmgr->gauge_init_done = false;
++		battmgr->vooc_limits_set = false;
++		battmgr->last_configured_adap_type = -1;
++		battmgr->charge_limit_applied_valid = false;
++		if (battmgr->charge_limit.enabled)
++			battmgr->charge_limit.cutoff = true;
++	}
+ 	ret = qcom_battmgr_request(battmgr, &req, sizeof(req));
++	mutex_unlock(&battmgr->lock);
+         if (ret) {
+                 dev_err(battmgr->dev, "failed to request power notifications\n");
+                 return;
+@@ -2667,6 +3023,8 @@ static void qcom_battmgr_enable_worker(struct work_struct *work)
+          * pmic_glink_register_client().
+          */
+         qcom_battmgr_oplus_gauge_init(battmgr);
++	if (battmgr->charge_limit_supported && !READ_ONCE(battmgr->stopping))
++		mod_delayed_work(system_wq, &battmgr->charge_limit_work, 0);
+ 	schedule_delayed_work(&battmgr->otg_init_work, round_jiffies_relative(msecs_to_jiffies(3500)));
+ }
+ 
+@@ -2674,11 +3032,14 @@ static void qcom_battmgr_pdr_notify(void *priv, int state)
+ {
+ 	struct qcom_battmgr *battmgr = priv;
+ 
++	if (READ_ONCE(battmgr->stopping))
++		return;
+ 	if (state == SERVREG_SERVICE_STATE_UP) {
+ 		battmgr->service_up = true;
+ 		schedule_work(&battmgr->enable_work);
+ 	} else {
+-		battmgr->service_up = false;
++		WRITE_ONCE(battmgr->service_up, false);
++		WRITE_ONCE(battmgr->service_generation, battmgr->service_generation + 1);
+ 	}
+ }
+ 
+@@ -2704,7 +3065,9 @@ static void oplus_otg_init_status_func(struct work_struct *work)
+ 		msleep(500);
+ 
+ 
++	mutex_lock(&battmgr->lock);
+ 	qcom_battmgr_request_property(battmgr, BATTMGR_USB_PROPERTY_SET, USB_OTG_AP_ENABLE, true);
++	mutex_unlock(&battmgr->lock);
+ 
+ 	// oplus_get_otg_online_status_with_cid_scheme(battmgr);
+ 	// if (battmgr->cid_status != 0) {
+@@ -2713,6 +3076,38 @@ static void oplus_otg_init_status_func(struct work_struct *work)
+ 	// }
+ }
+ 
++static void qcom_battmgr_stop_workers(void *data)
++{
++	struct qcom_battmgr *battmgr = data;
++
++	/* The GLINK client remains registered until all ACK waiters finish. */
++	WRITE_ONCE(battmgr->stopping, true);
++	cancel_work_sync(&battmgr->enable_work);
++	cancel_delayed_work_sync(&battmgr->voocphy_recheck_work);
++	cancel_delayed_work_sync(&battmgr->charge_limit_work);
++	cancel_delayed_work_sync(&battmgr->otg_init_work);
++	cancel_work_sync(&battmgr->voocphy_status_work);
++	cancel_work_sync(&battmgr->chg_status_reply_work);
++}
++
++static int qcom_battmgr_prepare(struct device *dev)
++{
++	struct qcom_battmgr *battmgr = dev_get_drvdata(dev);
++
++	/*
++	 * The ADSP has no verified autonomous SOC threshold. Do not silently
++	 * lose host enforcement during system suspend. Screen blanking and
++	 * CPU idle remain available; stopping the service releases this veto.
++	 */
++	if (battmgr->charge_limit_supported && READ_ONCE(battmgr->charge_limit.enabled))
++		return -EBUSY;
++	return 0;
++}
++
++static const struct dev_pm_ops qcom_battmgr_pm_ops = {
++	.prepare = qcom_battmgr_prepare,
++};
++
+ static int qcom_battmgr_probe(struct auxiliary_device *adev,
+ 			      const struct auxiliary_device_id *id)
+ {
+@@ -2731,6 +3126,12 @@ static int qcom_battmgr_probe(struct auxiliary_device *adev,
+ 	battmgr->dev = dev;
+ 	/* Apply to both standard property and OEM buffer readings. */
+ 	battmgr->invert_current = of_machine_is_compatible("oplus,negroni");
++	battmgr->charge_limit_supported = battmgr->invert_current;
++	battmgr->charge_limit.start = CHARGE_CTRL_DEFAULT_START;
++	battmgr->charge_limit.end = CHARGE_CTRL_DEFAULT_END;
++	battmgr->charge_limit_soc_raw = ~0U;
++	battmgr->charge_limit_applied_valid = true;
++	dev_set_drvdata(dev, battmgr);
+ 
+ 	psy_cfg.drv_data = battmgr;
+ 	psy_cfg.fwnode = dev_fwnode(&adev->dev);
+@@ -2740,6 +3141,7 @@ static int qcom_battmgr_probe(struct auxiliary_device *adev,
+ 	psy_cfg_supply.supplied_to = qcom_battmgr_battery;
+ 	psy_cfg_supply.num_supplicants = 1;
+ 
++	INIT_DELAYED_WORK(&battmgr->charge_limit_work, qcom_battmgr_charge_limit_worker);
+ 	INIT_WORK(&battmgr->enable_work, qcom_battmgr_enable_worker);
+         INIT_DELAYED_WORK(&battmgr->voocphy_recheck_work,
+                           qcom_battmgr_voocphy_recheck);
+@@ -2762,6 +3164,8 @@ static int qcom_battmgr_probe(struct auxiliary_device *adev,
+ 		battmgr->variant = (unsigned long)match->data;
+ 	else
+ 		battmgr->variant = QCOM_BATTMGR_SM8350;
++	if (battmgr->charge_limit_supported)
++		psy_cfg.attr_grp = qcom_battmgr_negroni_groups;
+ 
+ 	ret = qcom_battmgr_charge_control_thresholds_init(battmgr);
+ 	if (ret < 0)
+@@ -2795,7 +3199,9 @@ static int qcom_battmgr_probe(struct auxiliary_device *adev,
+ 			return dev_err_probe(dev, PTR_ERR(battmgr->wls_psy),
+ 					     "failed to register wireless charing power supply\n");
+ 	} else {
+-		if (battmgr->variant == QCOM_BATTMGR_SM8550)
++		if (battmgr->charge_limit_supported)
++			psy_desc = &negroni_bat_psy_desc;
++		else if (battmgr->variant == QCOM_BATTMGR_SM8550)
+ 			psy_desc = &sm8550_bat_psy_desc;
+ 		else
+ 			psy_desc = &sm8350_bat_psy_desc;
+@@ -2816,11 +3222,6 @@ static int qcom_battmgr_probe(struct auxiliary_device *adev,
+ 					     "failed to register wireless charing power supply\n");
+ 	}
+ 
+-	ret = devm_work_autocancel(dev, &battmgr->enable_work,
+-				   qcom_battmgr_enable_worker);
+-	if (ret)
+-		return ret;
+-
+ 	battmgr->client = devm_pmic_glink_client_alloc(dev, PMIC_GLINK_OWNER_BATTMGR,
+ 						       qcom_battmgr_callback,
+ 						       qcom_battmgr_pdr_notify,
+@@ -2828,6 +3229,9 @@ static int qcom_battmgr_probe(struct auxiliary_device *adev,
+ 	if (IS_ERR(battmgr->client))
+ 		return PTR_ERR(battmgr->client);
+ 
++	ret = devm_add_action_or_reset(dev, qcom_battmgr_stop_workers, battmgr);
++	if (ret)
++		return ret;
+ 	pmic_glink_client_register(battmgr->client);
+ 
+ 	return 0;
+@@ -2843,6 +3247,7 @@ static struct auxiliary_driver qcom_battmgr_driver = {
+ 	.name = "pmic_glink_power_supply",
+ 	.probe = qcom_battmgr_probe,
+ 	.id_table = qcom_battmgr_id_table,
++	.driver.pm = &qcom_battmgr_pm_ops,
+ };
+ 
+ module_auxiliary_driver(qcom_battmgr_driver);
+diff --git a/drivers/power/supply/qcom_battmgr_charge_limit.h b/drivers/power/supply/qcom_battmgr_charge_limit.h
+new file mode 100644
+index 000000000000..21079b7a7b1e
+--- /dev/null
++++ b/drivers/power/supply/qcom_battmgr_charge_limit.h
+@@ -0,0 +1,31 @@
++/* SPDX-License-Identifier: GPL-2.0-only */
++#ifndef _QCOM_BATTMGR_CHARGE_LIMIT_H
++#define _QCOM_BATTMGR_CHARGE_LIMIT_H
++
++struct qcom_battmgr_charge_limit {
++	unsigned int start;
++	unsigned int end;
++	bool enabled;
++	bool cutoff;
++};
++
++/* Thresholds are inclusive: resume at start, stop at end. */
++static inline bool qcom_battmgr_charge_limit_valid(unsigned int start,
++						 unsigned int end)
++{
++	return start < end && end <= 100;
++}
++
++/* Invalid readings must never release an enabled charge limit. */
++static inline void qcom_battmgr_charge_limit_sample(struct qcom_battmgr_charge_limit *limit,
++						   unsigned int soc, bool valid)
++{
++	if (!limit->enabled)
++		limit->cutoff = false;
++	else if (!valid || soc > 100 || soc >= limit->end)
++		limit->cutoff = true;
++	else if (soc <= limit->start)
++		limit->cutoff = false;
++}
++
++#endif
+-- 
+2.53.0
+

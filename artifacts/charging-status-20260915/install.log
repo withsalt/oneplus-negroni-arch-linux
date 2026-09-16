@@ -1,0 +1,9 @@
+ 
+/home/oneplus/qcom_battmgr.charging-fix.ko: OK
+/usr/lib/modules/7.3.0-rc2-sm8450+/kernel/drivers/power/supply/qcom_battmgr.ko: OK
+/var/backups/negroni-charging-20260915/qcom_battmgr.ko: OK
+/usr/lib/modules/7.3.0-rc2-sm8450+/kernel/drivers/power/supply/qcom_battmgr.ko: OK
+88936815a1d73307096e91f1a34157e55570e733bceb2ca7807ca2568301cd84  /usr/lib/modules/7.3.0-rc2-sm8450+/kernel/drivers/power/supply/qcom_battmgr.ko
+87ab0c2939924c9152ef9dc5aa35658c74486fdf42092c5be636e4e5e1f23acf  /var/backups/negroni-charging-20260915/qcom_battmgr.ko
+7.3.0-rc2-sm8450+ SMP preempt mod_unload aarch64
+3f698769-586b-4462-83b0-a200f8774528

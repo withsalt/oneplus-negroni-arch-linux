@@ -1,0 +1,360 @@
+diff --git a/drivers/net/wireless/ath/ath11k/ahb.c b/drivers/net/wireless/ath/ath11k/ahb.c
+index 1e1dea485..ec5bf5c9f 100644
+--- a/drivers/net/wireless/ath/ath11k/ahb.c
++++ b/drivers/net/wireless/ath/ath11k/ahb.c
+@@ -431,36 +431,44 @@ static void ath11k_ahb_init_qmi_ce_config(struct ath11k_base *ab)
+ 	ab->qmi.service_ins_id = ab->hw_params.qmi_service_ins_id;
+ }
+ 
+-static void ath11k_ahb_free_ext_irq(struct ath11k_base *ab)
++static void ath11k_ahb_free_ext_irq_grp(struct ath11k_base *ab,
++					struct ath11k_ext_irq_grp *irq_grp)
+ {
+-	int i, j;
+-
+-	for (i = 0; i < ATH11K_EXT_IRQ_GRP_NUM_MAX; i++) {
+-		struct ath11k_ext_irq_grp *irq_grp = &ab->ext_irq_grp[i];
++	int j;
+ 
+-		for (j = 0; j < irq_grp->num_irq; j++)
+-			free_irq(ab->irq_num[irq_grp->irqs[j]], irq_grp);
++	for (j = 0; j < irq_grp->num_irq; j++)
++		free_irq(ab->irq_num[irq_grp->irqs[j]], irq_grp);
+ 
+-		netif_napi_del(&irq_grp->napi);
+-		free_netdev(irq_grp->napi_ndev);
+-	}
++	netif_napi_del(&irq_grp->napi);
++	free_netdev(irq_grp->napi_ndev);
+ }
+ 
+-static void ath11k_ahb_free_irq(struct ath11k_base *ab)
++static void ath11k_ahb_free_ext_irq(struct ath11k_base *ab)
+ {
+-	int irq_idx;
+ 	int i;
+ 
+-	if (ab->hw_params.hybrid_bus_type)
+-		return ath11k_pcic_free_irq(ab);
++	for (i = 0; i < ATH11K_EXT_IRQ_GRP_NUM_MAX; i++)
++		ath11k_ahb_free_ext_irq_grp(ab, &ab->ext_irq_grp[i]);
++}
+ 
+-	for (i = 0; i < ab->hw_params.ce_count; i++) {
++static void ath11k_ahb_free_ce_irqs(struct ath11k_base *ab, int max_idx)
++{
++	int irq_idx, i;
++
++	for (i = 0; i < max_idx; i++) {
+ 		if (ath11k_ce_get_attr_flags(ab, i) & CE_ATTR_DIS_INTR)
+ 			continue;
+ 		irq_idx = ATH11K_IRQ_CE0_OFFSET + i;
+ 		free_irq(ab->irq_num[irq_idx], &ab->ce.ce_pipe[i]);
+ 	}
++}
++
++static void ath11k_ahb_free_irq(struct ath11k_base *ab)
++{
++	if (ab->hw_params.hybrid_bus_type)
++		return ath11k_pcic_free_irq(ab);
+ 
++	ath11k_ahb_free_ce_irqs(ab, ab->hw_params.ce_count);
+ 	ath11k_ahb_free_ext_irq(ab);
+ }
+ 
+@@ -524,20 +532,25 @@ static irqreturn_t ath11k_ahb_ext_interrupt_handler(int irq, void *arg)
+ static int ath11k_ahb_config_ext_irq(struct ath11k_base *ab)
+ {
+ 	struct ath11k_hw_params *hw = &ab->hw_params;
++	struct ath11k_ext_irq_grp *irq_grp;
+ 	int i, j;
+ 	int irq;
+ 	int ret;
+ 
+ 	for (i = 0; i < ATH11K_EXT_IRQ_GRP_NUM_MAX; i++) {
+-		struct ath11k_ext_irq_grp *irq_grp = &ab->ext_irq_grp[i];
+ 		u32 num_irq = 0;
+ 
++		irq_grp = &ab->ext_irq_grp[i];
++
+ 		irq_grp->ab = ab;
+ 		irq_grp->grp_id = i;
+ 
+ 		irq_grp->napi_ndev = alloc_netdev_dummy(0);
+-		if (!irq_grp->napi_ndev)
+-			return -ENOMEM;
++		if (!irq_grp->napi_ndev) {
++			ret = -ENOMEM;
++			irq_grp->num_irq = 0;
++			goto err_request_irq;
++		}
+ 
+ 		netif_napi_add(irq_grp->napi_ndev, &irq_grp->napi,
+ 			       ath11k_ahb_ext_grp_napi_poll);
+@@ -585,14 +598,11 @@ static int ath11k_ahb_config_ext_irq(struct ath11k_base *ab)
+ 				}
+ 			}
+ 		}
+-		irq_grp->num_irq = num_irq;
+-
+-		for (j = 0; j < irq_grp->num_irq; j++) {
++		for (j = 0; j < num_irq; j++) {
+ 			int irq_idx = irq_grp->irqs[j];
+ 
+ 			irq = platform_get_irq_byname(ab->pdev,
+ 						      irq_name[irq_idx]);
+-			ab->irq_num[irq_idx] = irq;
+ 			irq_set_status_flags(irq, IRQ_NOAUTOEN | IRQ_DISABLE_UNLAZY);
+ 			ret = request_irq(irq, ath11k_ahb_ext_interrupt_handler,
+ 					  IRQF_TRIGGER_RISING,
+@@ -600,11 +610,24 @@ static int ath11k_ahb_config_ext_irq(struct ath11k_base *ab)
+ 			if (ret) {
+ 				ath11k_err(ab, "failed request_irq for %d\n",
+ 					   irq);
++				irq_grp->num_irq = j;
++				ath11k_ahb_free_ext_irq_grp(ab, irq_grp);
++				goto err_request_irq;
+ 			}
++			ab->irq_num[irq_idx] = irq;
+ 		}
++
++		irq_grp->num_irq = num_irq;
+ 	}
+ 
+ 	return 0;
++
++err_request_irq:
++	for (i--; i >= 0; i--) {
++		irq_grp = &ab->ext_irq_grp[i];
++		ath11k_ahb_free_ext_irq_grp(ab, irq_grp);
++	}
++	return ret;
+ }
+ 
+ static int ath11k_ahb_config_irq(struct ath11k_base *ab)
+@@ -629,16 +652,24 @@ static int ath11k_ahb_config_irq(struct ath11k_base *ab)
+ 		ret = request_irq(irq, ath11k_ahb_ce_interrupt_handler,
+ 				  IRQF_TRIGGER_RISING, irq_name[irq_idx],
+ 				  ce_pipe);
+-		if (ret)
++		if (ret) {
++			ath11k_err(ab, "failed request_irq for %d\n", irq);
++			ath11k_ahb_free_ce_irqs(ab, i);
+ 			return ret;
++		}
+ 
+ 		ab->irq_num[irq_idx] = irq;
+ 	}
+ 
+ 	/* Configure external interrupts */
+ 	ret = ath11k_ahb_config_ext_irq(ab);
++	if (ret) {
++		ath11k_err(ab, "failed to configure ext irq: %d\n", ret);
++		ath11k_ahb_free_ce_irqs(ab, ab->hw_params.ce_count);
++		return ret;
++	}
+ 
+-	return ret;
++	return 0;
+ }
+ 
+ static int ath11k_ahb_map_service_to_pipe(struct ath11k_base *ab, u16 service_id,
+diff --git a/drivers/net/wireless/ath/ath11k/core.c b/drivers/net/wireless/ath/ath11k/core.c
+index 8dacc878c..8039124e7 100644
+--- a/drivers/net/wireless/ath/ath11k/core.c
++++ b/drivers/net/wireless/ath/ath11k/core.c
+@@ -1049,9 +1049,11 @@ static const struct __ath11k_core_usecase_firmware_table {
+ 	const char *compatible;
+ 	const char *firmware_name;
+ } ath11k_core_usecase_firmware_table[] = {
++	{ ATH11K_HW_WCN6855_HW21, "qcom,hamoa-iot-evk", "nfa765"},
+ 	{ ATH11K_HW_WCN6855_HW21, "qcom,lemans-evk", "nfa765"},
+ 	{ ATH11K_HW_WCN6855_HW21, "qcom,monaco-evk", "nfa765"},
+-	{ ATH11K_HW_WCN6855_HW21, "qcom,hamoa-iot-evk", "nfa765"},
++	{ ATH11K_HW_WCN6855_HW21, "qcom,purwa-iot-evk", "nfa765"},
++	{ ATH11K_HW_WCN6855_HW21, "qcom,qcs6490-rb3gen2", "nfa765"},
+ 	{ /* Sentinel */ }
+ };
+ 
+diff --git a/drivers/net/wireless/ath/ath11k/dp_rx.c b/drivers/net/wireless/ath/ath11k/dp_rx.c
+index 8e2abc7b8..33425707c 100644
+--- a/drivers/net/wireless/ath/ath11k/dp_rx.c
++++ b/drivers/net/wireless/ath/ath11k/dp_rx.c
+@@ -2334,10 +2334,10 @@ static void ath11k_dp_rx_h_rate(struct ath11k *ar, struct hal_rx_desc *rx_desc,
+ 	case RX_MSDU_START_PKT_TYPE_11N:
+ 		rx_status->encoding = RX_ENC_HT;
+ 		if (rate_mcs > ATH11K_HT_MCS_MAX) {
+-			ath11k_warn(ar->ab,
+-				    "Received with invalid mcs in HT mode %d\n",
+-				     rate_mcs);
+-			break;
++			ath11k_dbg(ar->ab, ATH11K_DBG_DP_RX,
++				   "Received HT frame with out-of-range mcs %d, capping to %d\n",
++				   rate_mcs, ATH11K_HT_MCS_MAX);
++			rate_mcs = ATH11K_HT_MCS_MAX;
+ 		}
+ 		rx_status->rate_idx = rate_mcs + (8 * (nss - 1));
+ 		if (sgi)
+@@ -2346,13 +2346,13 @@ static void ath11k_dp_rx_h_rate(struct ath11k *ar, struct hal_rx_desc *rx_desc,
+ 		break;
+ 	case RX_MSDU_START_PKT_TYPE_11AC:
+ 		rx_status->encoding = RX_ENC_VHT;
+-		rx_status->rate_idx = rate_mcs;
+ 		if (rate_mcs > ATH11K_VHT_MCS_MAX) {
+-			ath11k_warn(ar->ab,
+-				    "Received with invalid mcs in VHT mode %d\n",
+-				     rate_mcs);
+-			break;
++			ath11k_dbg(ar->ab, ATH11K_DBG_DP_RX,
++				   "Received VHT frame with out-of-range mcs %d, capping to %d\n",
++				   rate_mcs, ATH11K_VHT_MCS_MAX);
++			rate_mcs = ATH11K_VHT_MCS_MAX;
+ 		}
++		rx_status->rate_idx = rate_mcs;
+ 		rx_status->nss = nss;
+ 		if (sgi)
+ 			rx_status->enc_flags |= RX_ENC_FLAG_SHORT_GI;
+@@ -2362,14 +2362,14 @@ static void ath11k_dp_rx_h_rate(struct ath11k *ar, struct hal_rx_desc *rx_desc,
+ 			rx_status->enc_flags |= RX_ENC_FLAG_LDPC;
+ 		break;
+ 	case RX_MSDU_START_PKT_TYPE_11AX:
+-		rx_status->rate_idx = rate_mcs;
++		rx_status->encoding = RX_ENC_HE;
+ 		if (rate_mcs > ATH11K_HE_MCS_MAX) {
+-			ath11k_warn(ar->ab,
+-				    "Received with invalid mcs in HE mode %d\n",
+-				    rate_mcs);
+-			break;
++			ath11k_dbg(ar->ab, ATH11K_DBG_DP_RX,
++				   "Received HE frame with out-of-range mcs %d, capping to %d\n",
++				   rate_mcs, ATH11K_HE_MCS_MAX);
++			rate_mcs = ATH11K_HE_MCS_MAX;
+ 		}
+-		rx_status->encoding = RX_ENC_HE;
++		rx_status->rate_idx = rate_mcs;
+ 		rx_status->nss = nss;
+ 		rx_status->he_gi = ath11k_mac_he_gi_to_nl80211_he_gi(sgi);
+ 		rx_status->bw = ath11k_mac_bw_to_mac80211_bw(bw);
+diff --git a/drivers/net/wireless/ath/ath11k/wmi.c b/drivers/net/wireless/ath/ath11k/wmi.c
+index dca6e011c..bbca275a8 100644
+--- a/drivers/net/wireless/ath/ath11k/wmi.c
++++ b/drivers/net/wireless/ath/ath11k/wmi.c
+@@ -159,6 +159,8 @@ static const struct wmi_tlv_policy wmi_tlv_policies[] = {
+ 		.min_len = sizeof(struct ath11k_wmi_p2p_noa_info) },
+ 	[WMI_TAG_P2P_NOA_EVENT] = {
+ 		.min_len = sizeof(struct wmi_p2p_noa_event) },
++	[WMI_TAG_PDEV_CSA_SWITCH_COUNT_STATUS_EVENT] = {
++		.min_len = sizeof(struct wmi_pdev_csa_switch_ev) },
+ };
+ 
+ #define PRIMAP(_hw_mode_) \
+@@ -262,6 +264,13 @@ const void **ath11k_wmi_tlv_parse_alloc(struct ath11k_base *ab,
+ 	return tb;
+ }
+ 
++static u32 ath11k_wmi_tlv_data_len(const void *data)
++{
++	const struct wmi_tlv *tlv = (const struct wmi_tlv *)data - 1;
++
++	return FIELD_GET(WMI_TLV_LEN, tlv->header);
++}
++
+ static int ath11k_wmi_cmd_send_nowait(struct ath11k_pdev_wmi *wmi, struct sk_buff *skb,
+ 				      u32 cmd_id)
+ {
+@@ -2423,8 +2432,8 @@ int ath11k_wmi_send_scan_start_cmd(struct ath11k *ar,
+ 		for (i = 0; i < params->num_hint_bssid; ++i) {
+ 			hint_bssid->freq_flags =
+ 				params->hint_bssid[i].freq_flags;
+-			ether_addr_copy(&params->hint_bssid[i].bssid.addr[0],
+-					&hint_bssid->bssid.addr[0]);
++			ether_addr_copy(&hint_bssid->bssid.addr[0],
++					&params->hint_bssid[i].bssid.addr[0]);
+ 			hint_bssid++;
+ 		}
+ 	}
+@@ -4800,14 +4809,16 @@ static int ath11k_wmi_tlv_mac_phy_caps_parse(struct ath11k_base *soc,
+ 	if (svc_rdy_ext->n_mac_phy_caps >= svc_rdy_ext->tot_phy_id)
+ 		return -ENOBUFS;
+ 
+-	len = min_t(u16, len, sizeof(struct wmi_mac_phy_capabilities));
+ 	if (!svc_rdy_ext->n_mac_phy_caps) {
+-		svc_rdy_ext->mac_phy_caps = kcalloc(svc_rdy_ext->tot_phy_id,
+-						    len, GFP_ATOMIC);
++		svc_rdy_ext->mac_phy_caps =
++			kzalloc_objs(*svc_rdy_ext->mac_phy_caps,
++				     svc_rdy_ext->tot_phy_id,
++				     GFP_ATOMIC);
+ 		if (!svc_rdy_ext->mac_phy_caps)
+ 			return -ENOMEM;
+ 	}
+ 
++	len = min_t(u16, len, sizeof(struct wmi_mac_phy_capabilities));
+ 	memcpy(svc_rdy_ext->mac_phy_caps + svc_rdy_ext->n_mac_phy_caps, ptr, len);
+ 	svc_rdy_ext->n_mac_phy_caps++;
+ 	return 0;
+@@ -4858,6 +4869,12 @@ static int ath11k_wmi_tlv_ext_hal_reg_caps(struct ath11k_base *soc,
+ 			return ret;
+ 		}
+ 
++		if (reg_cap.phy_id >= ARRAY_SIZE(soc->hal_reg_cap)) {
++			ath11k_warn(soc, "invalid reg cap phy_id %u\n",
++				    reg_cap.phy_id);
++			return -EINVAL;
++		}
++
+ 		memcpy(&soc->hal_reg_cap[reg_cap.phy_id],
+ 		       &reg_cap, sizeof(reg_cap));
+ 	}
+@@ -5118,6 +5135,7 @@ static int ath11k_service_ready_ext_event(struct ath11k_base *ab,
+ 	return 0;
+ 
+ err:
++	kfree(svc_rdy_ext.mac_phy_caps);
+ 	ath11k_wmi_free_dbring_caps(ab);
+ 	return ret;
+ }
+@@ -8353,15 +8371,23 @@ ath11k_wmi_process_csa_switch_count_event(struct ath11k_base *ab,
+ 					  const struct wmi_pdev_csa_switch_ev *ev,
+ 					  const u32 *vdev_ids)
+ {
+-	int i;
++	u32 vdev_ids_len = ath11k_wmi_tlv_data_len(vdev_ids);
++	u32 num_vdevs = ev->num_vdevs;
+ 	struct ath11k_vif *arvif;
++	int i;
+ 
+ 	/* Finish CSA once the switch count becomes NULL */
+ 	if (ev->current_switch_count)
+ 		return;
+ 
++	if (num_vdevs > vdev_ids_len / sizeof(*vdev_ids)) {
++		ath11k_warn(ab, "csa switch count num_vdevs %u exceeds tlv array length %u\n",
++			    num_vdevs, vdev_ids_len);
++		return;
++	}
++
+ 	rcu_read_lock();
+-	for (i = 0; i < ev->num_vdevs; i++) {
++	for (i = 0; i < num_vdevs; i++) {
+ 		arvif = ath11k_mac_get_arvif_by_vdev_id(ab, vdev_ids[i]);
+ 
+ 		if (!arvif) {
+@@ -8895,13 +8921,15 @@ static void ath11k_wmi_tlv_op_rx(struct ath11k_base *ab, struct sk_buff *skb)
+ 	struct wmi_cmd_hdr *cmd_hdr;
+ 	enum wmi_tlv_event_id id;
+ 
++	if (skb->len < sizeof(*cmd_hdr))
++		goto out;
++
+ 	cmd_hdr = (struct wmi_cmd_hdr *)skb->data;
+ 	id = FIELD_GET(WMI_CMD_HDR_CMD_ID, (cmd_hdr->cmd_id));
+ 
+ 	trace_ath11k_wmi_event(ab, id, skb->data, skb->len);
+ 
+-	if (skb_pull(skb, sizeof(struct wmi_cmd_hdr)) == NULL)
+-		goto out;
++	skb_pull(skb, sizeof(*cmd_hdr));
+ 
+ 	switch (id) {
+ 		/* Process all the WMI events here */

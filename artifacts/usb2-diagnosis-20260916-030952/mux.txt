@@ -1,0 +1,68 @@
+2026-09-16T03:12:33+08:00
+
+== FSA4480 registers ==
+
+== xHCI port status ==
+/sys/kernel/debug/usb/xhci/xhci-hcd.2.auto/ports/port01/portsc
+0x0a0002a0 Speed=0 Link=RxDetect PP WCE WOE 
+/sys/kernel/debug/usb/xhci/xhci-hcd.2.auto/ports/port02/portsc
+0x0a0002a0 Speed=0 Link=RxDetect PP WCE WOE 
+
+== Receiver driver availability ==
+modinfo: ERROR: Module hid_logitech_dj not found.
+modinfo: ERROR: Module hid_logitech_hidpp not found.
+hid_generic
+
+== Journal HID events ==
+[    1.950796] archlinux kernel: hid: raw HID events driver (C) Jiri Kosina
+[   32.289060] oneplus-negroni kernel: usb 1-1: new high-speed USB device number 2 using xhci-hcd
+[   32.428468] oneplus-negroni kernel: usb 1-1: New USB device found, idVendor=0bda, idProduct=5423, bcdDevice= 1.90
+[   32.429118] oneplus-negroni kernel: usb 1-1: New USB device strings: Mfr=1, Product=2, SerialNumber=0
+[   32.429392] oneplus-negroni kernel: usb 1-1: Product: 4-Port USB 2.0 Hub
+[   32.429677] oneplus-negroni kernel: usb 1-1: Manufacturer: Generic
+[   32.844614] oneplus-negroni kernel: usb 1-1.4: new full-speed USB device number 3 using xhci-hcd
+[   32.936432] oneplus-negroni kernel: usb 1-1.4: New USB device found, idVendor=046d, idProduct=c52b, bcdDevice=24.11
+[   32.937096] oneplus-negroni kernel: usb 1-1.4: New USB device strings: Mfr=1, Product=2, SerialNumber=0
+[   32.937400] oneplus-negroni kernel: usb 1-1.4: Product: USB Receiver
+[   32.937656] oneplus-negroni kernel: usb 1-1.4: Manufacturer: Logitech
+[   33.168119] oneplus-negroni kernel: usbcore: registered new interface driver usbhid
+[   33.168202] oneplus-negroni kernel: usbhid: USB HID core driver
+[   33.212088] oneplus-negroni kernel: input: Logitech USB Receiver as /devices/platform/soc@0/a600000.usb/xhci-hcd.2.auto/usb1/1-1/1-1.4/1-1.4:1.0/0003:046D:C52B.0001/input/input5
+[   33.316736] oneplus-negroni kernel: hid-generic 0003:046D:C52B.0001: input,hidraw0: USB HID v1.11 Keyboard [Logitech USB Receiver] on usb-xhci-hcd.2.auto-1.4/input0
+[   33.319994] oneplus-negroni kernel: input: Logitech USB Receiver Mouse as /devices/platform/soc@0/a600000.usb/xhci-hcd.2.auto/usb1/1-1/1-1.4/1-1.4:1.1/0003:046D:C52B.0002/input/input6
+[   33.320370] oneplus-negroni kernel: input: Logitech USB Receiver Consumer Control as /devices/platform/soc@0/a600000.usb/xhci-hcd.2.auto/usb1/1-1/1-1.4/1-1.4:1.1/0003:046D:C52B.0002/input/input7
+[   33.376648] oneplus-negroni kernel: input: Logitech USB Receiver System Control as /devices/platform/soc@0/a600000.usb/xhci-hcd.2.auto/usb1/1-1/1-1.4/1-1.4:1.1/0003:046D:C52B.0002/input/input8
+[   33.377044] oneplus-negroni kernel: hid-generic 0003:046D:C52B.0002: input,hidraw1: USB HID v1.11 Mouse [Logitech USB Receiver] on usb-xhci-hcd.2.auto-1.4/input1
+[   33.380296] oneplus-negroni kernel: hid-generic 0003:046D:C52B.0003: hidraw2: USB HID v1.11 Device [Logitech USB Receiver] on usb-xhci-hcd.2.auto-1.4/input2
+[   37.164066] oneplus-negroni kernel: usb 1-1: USB disconnect, device number 2
+[   37.164995] oneplus-negroni kernel: usb 1-1.4: USB disconnect, device number 3
+[ 1035.856290] oneplus-negroni kernel: Modules linked in: cdc_ether usbnet r8152 mii hid_generic usbhid rfcomm q6prm_clocks q6apm_dai q6apm_lpass_dais snd_q6dsp_common q6prm qrtr_mhi algif_hash algif_skcipher af_alg bnep snd_q6apm ath11k_pci ath11k mac80211 qcom_camss fastrpc qcom_pd_mapper rpmsg_ctrl videobuf2_dma_sg libarc4 videobuf2_memops s5kjn1 videobuf2_v4l2 hci_uart snd_soc_wcd938x snd_soc_wcd938x_sdw videobuf2_common btqca nxp_nci_i2c cfg80211 v4l2_cci regmap_sdw btbcm nxp_nci snd_soc_wcd_common snd_soc_sc8280xp v4l2_fwnode mhi v4l2_async snd_soc_tfa9872 bluetooth videodev nci snd_soc_lpass_rx_macro snd_soc_lpass_tx_macro snd_soc_lpass_va_macro snd_soc_qcom_sdw snd_soc_wcd_classh rtc_pm8xxx snd_soc_qcom_common pwrseq_qcom_wcn soundwire_qcom snd_soc_wcd_mbhc snd_soc_hdmi_codec ecdh_generic snd_soc_lpass_macro_common nfc ecc snd_soc_core nvmem_qcom_spmi_sdam qcom_q6v5_pas qcom_stats mc i2c_qcom_cci qcom_pil_info qcom_q6v5 ipa coresight_stm snd_compress qcom_sysmon snd_pcm qcom_common stm_p_basic stm_core pci_pwrctrl_pwrseq qcom_rng
+[ 1035.857882] oneplus-negroni kernel: Modules linked in: cdc_ether usbnet r8152 mii hid_generic usbhid rfcomm q6prm_clocks q6apm_dai q6apm_lpass_dais snd_q6dsp_common q6prm qrtr_mhi algif_hash algif_skcipher af_alg bnep snd_q6apm ath11k_pci ath11k mac80211 qcom_camss fastrpc qcom_pd_mapper rpmsg_ctrl videobuf2_dma_sg libarc4 videobuf2_memops s5kjn1 videobuf2_v4l2 hci_uart snd_soc_wcd938x snd_soc_wcd938x_sdw videobuf2_common btqca nxp_nci_i2c cfg80211 v4l2_cci regmap_sdw btbcm nxp_nci snd_soc_wcd_common snd_soc_sc8280xp v4l2_fwnode mhi v4l2_async snd_soc_tfa9872 bluetooth videodev nci snd_soc_lpass_rx_macro snd_soc_lpass_tx_macro snd_soc_lpass_va_macro snd_soc_qcom_sdw snd_soc_wcd_classh rtc_pm8xxx snd_soc_qcom_common pwrseq_qcom_wcn soundwire_qcom snd_soc_wcd_mbhc snd_soc_hdmi_codec ecdh_generic snd_soc_lpass_macro_common nfc ecc snd_soc_core nvmem_qcom_spmi_sdam qcom_q6v5_pas qcom_stats mc i2c_qcom_cci qcom_pil_info qcom_q6v5 ipa coresight_stm snd_compress qcom_sysmon snd_pcm qcom_common stm_p_basic stm_core pci_pwrctrl_pwrseq qcom_rng
+[ 1035.865089] oneplus-negroni kernel: Modules linked in: cdc_ether usbnet r8152 mii hid_generic usbhid rfcomm q6prm_clocks q6apm_dai q6apm_lpass_dais snd_q6dsp_common q6prm qrtr_mhi algif_hash algif_skcipher af_alg bnep snd_q6apm ath11k_pci ath11k mac80211 qcom_camss fastrpc qcom_pd_mapper rpmsg_ctrl videobuf2_dma_sg libarc4 videobuf2_memops s5kjn1 videobuf2_v4l2 hci_uart snd_soc_wcd938x snd_soc_wcd938x_sdw videobuf2_common btqca nxp_nci_i2c cfg80211 v4l2_cci regmap_sdw btbcm nxp_nci snd_soc_wcd_common snd_soc_sc8280xp v4l2_fwnode mhi v4l2_async snd_soc_tfa9872 bluetooth videodev nci snd_soc_lpass_rx_macro snd_soc_lpass_tx_macro snd_soc_lpass_va_macro snd_soc_qcom_sdw snd_soc_wcd_classh rtc_pm8xxx snd_soc_qcom_common pwrseq_qcom_wcn soundwire_qcom snd_soc_wcd_mbhc snd_soc_hdmi_codec ecdh_generic snd_soc_lpass_macro_common nfc ecc snd_soc_core nvmem_qcom_spmi_sdam qcom_q6v5_pas qcom_stats mc i2c_qcom_cci qcom_pil_info qcom_q6v5 ipa coresight_stm snd_compress qcom_sysmon snd_pcm qcom_common stm_p_basic stm_core pci_pwrctrl_pwrseq qcom_rng
+[ 1060.407172] oneplus-negroni kernel: Modules linked in: cdc_ether usbnet r8152 mii hid_generic usbhid rfcomm q6prm_clocks q6apm_dai q6apm_lpass_dais snd_q6dsp_common q6prm qrtr_mhi algif_hash algif_skcipher af_alg bnep snd_q6apm ath11k_pci ath11k mac80211 qcom_camss fastrpc qcom_pd_mapper rpmsg_ctrl videobuf2_dma_sg libarc4 videobuf2_memops s5kjn1 videobuf2_v4l2 hci_uart snd_soc_wcd938x snd_soc_wcd938x_sdw videobuf2_common btqca nxp_nci_i2c cfg80211 v4l2_cci regmap_sdw btbcm nxp_nci snd_soc_wcd_common snd_soc_sc8280xp v4l2_fwnode mhi v4l2_async snd_soc_tfa9872 bluetooth videodev nci snd_soc_lpass_rx_macro snd_soc_lpass_tx_macro snd_soc_lpass_va_macro snd_soc_qcom_sdw snd_soc_wcd_classh rtc_pm8xxx snd_soc_qcom_common pwrseq_qcom_wcn soundwire_qcom snd_soc_wcd_mbhc snd_soc_hdmi_codec ecdh_generic snd_soc_lpass_macro_common nfc ecc snd_soc_core nvmem_qcom_spmi_sdam qcom_q6v5_pas qcom_stats mc i2c_qcom_cci qcom_pil_info qcom_q6v5 ipa coresight_stm snd_compress qcom_sysmon snd_pcm qcom_common stm_p_basic stm_core pci_pwrctrl_pwrseq qcom_rng
+[ 1060.408338] oneplus-negroni kernel: Modules linked in: cdc_ether usbnet r8152 mii hid_generic usbhid rfcomm q6prm_clocks q6apm_dai q6apm_lpass_dais snd_q6dsp_common q6prm qrtr_mhi algif_hash algif_skcipher af_alg bnep snd_q6apm ath11k_pci ath11k mac80211 qcom_camss fastrpc qcom_pd_mapper rpmsg_ctrl videobuf2_dma_sg libarc4 videobuf2_memops s5kjn1 videobuf2_v4l2 hci_uart snd_soc_wcd938x snd_soc_wcd938x_sdw videobuf2_common btqca nxp_nci_i2c cfg80211 v4l2_cci regmap_sdw btbcm nxp_nci snd_soc_wcd_common snd_soc_sc8280xp v4l2_fwnode mhi v4l2_async snd_soc_tfa9872 bluetooth videodev nci snd_soc_lpass_rx_macro snd_soc_lpass_tx_macro snd_soc_lpass_va_macro snd_soc_qcom_sdw snd_soc_wcd_classh rtc_pm8xxx snd_soc_qcom_common pwrseq_qcom_wcn soundwire_qcom snd_soc_wcd_mbhc snd_soc_hdmi_codec ecdh_generic snd_soc_lpass_macro_common nfc ecc snd_soc_core nvmem_qcom_spmi_sdam qcom_q6v5_pas qcom_stats mc i2c_qcom_cci qcom_pil_info qcom_q6v5 ipa coresight_stm snd_compress qcom_sysmon snd_pcm qcom_common stm_p_basic stm_core pci_pwrctrl_pwrseq qcom_rng
+[ 1060.412814] oneplus-negroni kernel: Modules linked in: cdc_ether usbnet r8152 mii hid_generic usbhid rfcomm q6prm_clocks q6apm_dai q6apm_lpass_dais snd_q6dsp_common q6prm qrtr_mhi algif_hash algif_skcipher af_alg bnep snd_q6apm ath11k_pci ath11k mac80211 qcom_camss fastrpc qcom_pd_mapper rpmsg_ctrl videobuf2_dma_sg libarc4 videobuf2_memops s5kjn1 videobuf2_v4l2 hci_uart snd_soc_wcd938x snd_soc_wcd938x_sdw videobuf2_common btqca nxp_nci_i2c cfg80211 v4l2_cci regmap_sdw btbcm nxp_nci snd_soc_wcd_common snd_soc_sc8280xp v4l2_fwnode mhi v4l2_async snd_soc_tfa9872 bluetooth videodev nci snd_soc_lpass_rx_macro snd_soc_lpass_tx_macro snd_soc_lpass_va_macro snd_soc_qcom_sdw snd_soc_wcd_classh rtc_pm8xxx snd_soc_qcom_common pwrseq_qcom_wcn soundwire_qcom snd_soc_wcd_mbhc snd_soc_hdmi_codec ecdh_generic snd_soc_lpass_macro_common nfc ecc snd_soc_core nvmem_qcom_spmi_sdam qcom_q6v5_pas qcom_stats mc i2c_qcom_cci qcom_pil_info qcom_q6v5 ipa coresight_stm snd_compress qcom_sysmon snd_pcm qcom_common stm_p_basic stm_core pci_pwrctrl_pwrseq qcom_rng
+
+== Current devices ==
+
+T:  Bus=01 Lev=00 Prnt=00 Port=00 Cnt=00 Dev#=  1 Spd=480  MxCh= 1
+B:  Alloc=  0/800 us ( 0%), #Int=  0, #Iso=  0
+D:  Ver= 2.00 Cls=09(hub  ) Sub=00 Prot=01 MxPS=64 #Cfgs=  1
+P:  Vendor=1d6b ProdID=0002 Rev= 7.03
+S:  Manufacturer=Linux 7.3.0-rc2-sm8450+ xhci-hcd
+S:  Product=xHCI Host Controller
+S:  SerialNumber=xhci-hcd.2.auto
+C:* #Ifs= 1 Cfg#= 1 Atr=e0 MxPwr=  0mA
+I:* If#= 0 Alt= 0 #EPs= 1 Cls=09(hub  ) Sub=00 Prot=00 Driver=hub
+E:  Ad=81(I) Atr=03(Int.) MxPS=   4 Ivl=256ms
+
+T:  Bus=02 Lev=00 Prnt=00 Port=00 Cnt=00 Dev#=  1 Spd=10000 MxCh= 1
+B:  Alloc=  0/800 us ( 0%), #Int=  0, #Iso=  0
+D:  Ver= 3.10 Cls=09(hub  ) Sub=00 Prot=03 MxPS= 9 #Cfgs=  1
+P:  Vendor=1d6b ProdID=0003 Rev= 7.03
+S:  Manufacturer=Linux 7.3.0-rc2-sm8450+ xhci-hcd
+S:  Product=xHCI Host Controller
+S:  SerialNumber=xhci-hcd.2.auto
+C:* #Ifs= 1 Cfg#= 1 Atr=e0 MxPwr=  0mA
+I:* If#= 0 Alt= 0 #EPs= 1 Cls=09(hub  ) Sub=00 Prot=00 Driver=hub
+E:  Ad=81(I) Atr=03(Int.) MxPS=   2 Ivl=256ms

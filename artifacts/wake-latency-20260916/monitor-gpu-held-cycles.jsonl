@@ -1,0 +1,52 @@
+oneplus@192.168.188.91's  
+{"t": 1273.036502179, "kind": "start"}
+{"t": 1273.036715487, "kind": "state", "dpms": "On", "gpu": "active", "gmu": "active", "dpu": "active", "brightness": "400", "kwin_2990": "do_sys_poll"}
+{"t": 1276.040621646, "kind": "request", "mode": "off"}
+{"t": 1276.398328584, "kind": "state", "dpms": "On", "gpu": "active", "gmu": "active", "dpu": "active", "brightness": "400", "kwin_2990": "msleep"}
+{"t": 1276.552765417, "kind": "state", "dpms": "Off", "gpu": "active", "gmu": "active", "dpu": "suspended", "brightness": "400", "kwin_2990": "do_sys_poll"}
+{"t": 1288.065451904, "kind": "request", "mode": "on"}
+{"t": 1288.168745297, "kind": "state", "dpms": "Off", "gpu": "active", "gmu": "active", "dpu": "suspended", "brightness": "400", "kwin_2990": "0"}
+{"t": 1288.219833913, "kind": "state", "dpms": "On", "gpu": "active", "gmu": "active", "dpu": "active", "brightness": "400", "kwin_2990": "panel_samsung_amb670yf07_1440_3216_dsc_prepare"}
+{"t": 1288.271286822, "kind": "state", "dpms": "On", "gpu": "active", "gmu": "active", "dpu": "active", "brightness": "400", "kwin_2990": "msleep"}
+{"t": 1288.477766386, "kind": "state", "dpms": "On", "gpu": "active", "gmu": "active", "dpu": "active", "brightness": "400", "kwin_2990": "do_sys_poll"}
+{"t": 1295.043373361, "kind": "state", "dpms": "On", "gpu": "active", "gmu": "active", "dpu": "active", "brightness": "400", "kwin_2990": "__futex_wait"}
+{"t": 1295.145743795, "kind": "state", "dpms": "On", "gpu": "active", "gmu": "active", "dpu": "active", "brightness": "400", "kwin_2990": "do_sys_poll"}
+{"t": 1295.298642325, "kind": "state", "dpms": "On", "gpu": "active", "gmu": "active", "dpu": "active", "brightness": "365", "kwin_2990": "msleep"}
+{"t": 1295.349597478, "kind": "state", "dpms": "On", "gpu": "active", "gmu": "active", "dpu": "active", "brightness": "362", "kwin_2990": "msleep"}
+{"t": 1295.503023172, "kind": "state", "dpms": "Off", "gpu": "active", "gmu": "active", "dpu": "suspended", "brightness": "362", "kwin_2990": "do_sys_poll"}
+{"t": 1300.059080038, "kind": "request", "mode": "off"}
+{"t": 1312.040714866, "kind": "request", "mode": "on"}
+{"t": 1312.151495259, "kind": "state", "dpms": "Off", "gpu": "active", "gmu": "active", "dpu": "suspended", "brightness": "362", "kwin_2990": "0"}
+{"t": 1312.203552406, "kind": "state", "dpms": "On", "gpu": "active", "gmu": "active", "dpu": "active", "brightness": "362", "kwin_2990": "panel_samsung_amb670yf07_1440_3216_dsc_prepare"}
+{"t": 1312.255363416, "kind": "state", "dpms": "On", "gpu": "active", "gmu": "active", "dpu": "active", "brightness": "362", "kwin_2990": "msleep"}
+{"t": 1312.359268759, "kind": "state", "dpms": "On", "gpu": "active", "gmu": "active", "dpu": "active", "brightness": "360", "kwin_2990": "msleep"}
+{"t": 1312.410128805, "kind": "state", "dpms": "On", "gpu": "active", "gmu": "active", "dpu": "active", "brightness": "360", "kwin_2990": "do_sys_poll"}
+{"t": 1312.460651915, "kind": "state", "dpms": "On", "gpu": "active", "gmu": "active", "dpu": "active", "brightness": "358", "kwin_2990": "do_sys_poll"}
+{"t": 1312.512167183, "kind": "state", "dpms": "On", "gpu": "active", "gmu": "active", "dpu": "active", "brightness": "340", "kwin_2990": "do_sys_poll"}
+{"t": 1312.562890443, "kind": "state", "dpms": "On", "gpu": "active", "gmu": "active", "dpu": "active", "brightness": "334", "kwin_2990": "do_sys_poll"}
+{"t": 1312.613883383, "kind": "state", "dpms": "On", "gpu": "active", "gmu": "active", "dpu": "active", "brightness": "320", "kwin_2990": "do_sys_poll"}
+{"t": 1312.664578623, "kind": "state", "dpms": "On", "gpu": "active", "gmu": "active", "dpu": "active", "brightness": "314", "kwin_2990": "do_sys_poll"}
+{"t": 1312.715268394, "kind": "state", "dpms": "On", "gpu": "active", "gmu": "active", "dpu": "active", "brightness": "300", "kwin_2990": "do_sys_poll"}
+{"t": 1312.765920719, "kind": "state", "dpms": "On", "gpu": "active", "gmu": "active", "dpu": "active", "brightness": "294", "kwin_2990": "do_sys_poll"}
+{"t": 1312.816716893, "kind": "state", "dpms": "On", "gpu": "active", "gmu": "active", "dpu": "active", "brightness": "280", "kwin_2990": "do_sys_poll"}
+{"t": 1312.867393228, "kind": "state", "dpms": "On", "gpu": "active", "gmu": "active", "dpu": "active", "brightness": "274", "kwin_2990": "do_sys_poll"}
+{"t": 1312.918358095, "kind": "state", "dpms": "On", "gpu": "active", "gmu": "active", "dpu": "active", "brightness": "262", "kwin_2990": "do_sys_poll"}
+{"t": 1312.969743732, "kind": "state", "dpms": "On", "gpu": "active", "gmu": "active", "dpu": "active", "brightness": "255", "kwin_2990": "do_sys_poll"}
+{"t": 1313.020355016, "kind": "state", "dpms": "On", "gpu": "active", "gmu": "active", "dpu": "active", "brightness": "240", "kwin_2990": "do_sys_poll"}
+{"t": 1313.071017965, "kind": "state", "dpms": "On", "gpu": "active", "gmu": "active", "dpu": "active", "brightness": "234", "kwin_2990": "do_sys_poll"}
+{"t": 1313.121819921, "kind": "state", "dpms": "On", "gpu": "active", "gmu": "active", "dpu": "active", "brightness": "220", "kwin_2990": "do_sys_poll"}
+{"t": 1313.172539692, "kind": "state", "dpms": "On", "gpu": "active", "gmu": "active", "dpu": "active", "brightness": "214", "kwin_2990": "do_sys_poll"}
+{"t": 1313.223304513, "kind": "state", "dpms": "On", "gpu": "active", "gmu": "active", "dpu": "active", "brightness": "201", "kwin_2990": "do_sys_poll"}
+{"t": 1313.273839966, "kind": "state", "dpms": "On", "gpu": "active", "gmu": "active", "dpu": "active", "brightness": "187", "kwin_2990": "do_sys_poll"}
+{"t": 1313.324348597, "kind": "state", "dpms": "On", "gpu": "active", "gmu": "active", "dpu": "active", "brightness": "182", "kwin_2990": "do_sys_poll"}
+{"t": 1313.374846655, "kind": "state", "dpms": "On", "gpu": "active", "gmu": "active", "dpu": "active", "brightness": "167", "kwin_2990": "do_sys_poll"}
+{"t": 1313.426927918, "kind": "state", "dpms": "On", "gpu": "active", "gmu": "active", "dpu": "active", "brightness": "161", "kwin_2990": "do_sys_poll"}
+{"t": 1313.479068772, "kind": "state", "dpms": "On", "gpu": "active", "gmu": "active", "dpu": "active", "brightness": "147", "kwin_2990": "do_sys_poll"}
+{"t": 1313.535240504, "kind": "state", "dpms": "On", "gpu": "active", "gmu": "active", "dpu": "active", "brightness": "141", "kwin_2990": "do_sys_poll"}
+{"t": 1313.585720726, "kind": "state", "dpms": "On", "gpu": "active", "gmu": "active", "dpu": "active", "brightness": "129", "kwin_2990": "do_sys_poll"}
+{"t": 1313.636486356, "kind": "state", "dpms": "On", "gpu": "active", "gmu": "active", "dpu": "active", "brightness": "121", "kwin_2990": "do_sys_poll"}
+{"t": 1321.393931284, "kind": "state", "dpms": "On", "gpu": "active", "gmu": "active", "dpu": "active", "brightness": "121", "kwin_2990": "0"}
+{"t": 1321.449158069, "kind": "state", "dpms": "On", "gpu": "active", "gmu": "active", "dpu": "active", "brightness": "121", "kwin_2990": "do_sys_poll"}
+{"t": 1328.038720107, "kind": "end"}
+GPU_CONTROL_RESTORED
+auto

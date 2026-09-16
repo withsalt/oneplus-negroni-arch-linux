@@ -1,0 +1,28 @@
+[   21.921881] oneplus-negroni kernel: [drm] Loaded GMU firmware v4.0.7
+[  127.516775] oneplus-negroni kernel: platform 3d6a000.gmu: [drm:a6xx_hfi_wait_for_msg_interrupt] *ERROR* Message HFI_H2F_MSG_GX_BW_PERF_VOTE id 1784 timed out waiting for response
+[  214.525230] oneplus-negroni kernel: platform 3d6a000.gmu: [drm:a6xx_gmu_set_oob] *ERROR* Timeout waiting for GMU OOB set GPU_SET: 0x0
+[  224.733949] oneplus-negroni kernel: msm_dpu ae01000.display-controller: 07030001: preemption timed out
+[  224.737710] oneplus-negroni kernel: msm_dpu ae01000.display-controller: [drm:recover_worker] *ERROR* 07030001: hangcheck recover!
+[  616.124980] oneplus-negroni kernel: platform 3d6a000.gmu: [drm:a6xx_gmu_set_oob] *ERROR* Timeout waiting for GMU OOB set GPU_SET: 0x0
+[  618.160057] oneplus-negroni kernel: platform 3d6a000.gmu: [drm:a6xx_gmu_set_oob] *ERROR* Timeout waiting for GMU OOB set GPU_SET: 0x0
+[  618.168033] oneplus-negroni kernel: platform 3d6a000.gmu: [drm:a6xx_gmu_set_oob] *ERROR* Timeout waiting for GMU OOB set GPU_SET: 0x0
+[  618.180435] oneplus-negroni kernel: platform 3d6a000.gmu: [drm:a6xx_gmu_set_oob] *ERROR* Timeout waiting for GMU OOB set GPU_SET: 0x0
+[  618.188299] oneplus-negroni kernel: platform 3d6a000.gmu: [drm:a6xx_gmu_set_oob] *ERROR* Timeout waiting for GMU OOB set GPU_SET: 0x0
+[  618.200525] oneplus-negroni kernel: platform 3d6a000.gmu: [drm:a6xx_gmu_set_oob] *ERROR* Timeout waiting for GMU OOB set GPU_SET: 0x0
+[  621.821557] oneplus-negroni kernel: msm_dpu ae01000.display-controller: [drm:hangcheck_handler] *ERROR* 07030001: hangcheck detected gpu lockup rb 0!
+[  621.821940] oneplus-negroni kernel: msm_dpu ae01000.display-controller: [drm:hangcheck_handler] *ERROR* 07030001:     completed fence: 782
+[  621.822082] oneplus-negroni kernel: msm_dpu ae01000.display-controller: [drm:hangcheck_handler] *ERROR* 07030001:     submitted fence: 786
+[  621.822211] oneplus-negroni kernel: msm_dpu ae01000.display-controller: [drm:recover_worker] *ERROR* 07030001: hangcheck recover!
+[  621.822337] oneplus-negroni kernel: msm_dpu ae01000.display-controller: [drm:recover_worker] *ERROR* 07030001: offending task: kwin_wayland (/usr/bin/kwin_wayland --drm --no-lockscreen --no-global-shortcuts --locale1 --inputmethod /usr/bin/plasma-keyboard)
+[  621.900412] oneplus-negroni kernel: platform 3d6a000.gmu: [drm:a6xx_gmu_set_oob] *ERROR* Timeout waiting for GMU OOB set GPU_SET: 0x0
+[  645.093533] oneplus-negroni kwin_wayland[2990]: atomic commit failed: Device or resource busy
+[  645.451332] oneplus-negroni kwin_wayland[2990]: atomic commit failed: Device or resource busy
+[  854.073640] oneplus-negroni systemd-logind[2385]: Power key pressed short.
+[  859.230798] oneplus-negroni systemd-logind[2385]: Power key pressed short.
+[  866.874958] oneplus-negroni systemd-logind[2385]: Power key pressed short.
+[ 1049.614980] oneplus-negroni kwin_wayland[2990]: The main thread was hanging temporarily!
+[ 1049.618261] oneplus-negroni kernel: platform 3d6a000.gmu: [drm:a6xx_hfi_wait_for_msg_interrupt] *ERROR* Message HFI_H2F_MSG_GX_BW_PERF_VOTE id 281 timed out waiting for response
+[ 1050.912904] oneplus-negroni kwin_wayland[2990]: atomic commit failed: Device or resource busy
+[ 1074.290651] oneplus-negroni kwin_wayland[2990]: The main thread was hanging temporarily!
+[ 1074.293453] oneplus-negroni kernel: platform 3d6a000.gmu: [drm:a6xx_hfi_wait_for_msg_interrupt] *ERROR* Message HFI_H2F_MSG_GX_BW_PERF_VOTE id 1388 timed out waiting for response
+[ 1175.188386] oneplus-negroni kernel: platform 3d6a000.gmu: [drm:a6xx_hfi_wait_for_msg_interrupt] *ERROR* Message HFI_H2F_MSG_GX_BW_PERF_VOTE id 1806 timed out waiting for response

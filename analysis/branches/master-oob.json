@@ -1,0 +1,113 @@
+{
+  "sha": "76f6729b499e3e6195c923323673901df543db42",
+  "node_id": "C_kwDOQbHa-9oAKDc2ZjY3MjliNDk5ZTNlNjE5NWM5MjMzMjM2NzM5MDFkZjU0M2RiNDI",
+  "commit": {
+    "author": {
+      "name": "Nazar Kompanets",
+      "email": "xlie7669@gmail.com",
+      "date": "2026-09-01T21:00:57Z"
+    },
+    "committer": {
+      "name": "Nazar Kompanets",
+      "email": "xlie7669@gmail.com",
+      "date": "2026-09-13T20:06:28Z"
+    },
+    "message": "drm/msm/adreno: solve issue with SET_OOB on a730 and ifpc",
+    "tree": {
+      "sha": "9505a3969ec49e4099d933a5f6c53175513c59fc",
+      "url": "https://api.github.com/repos/Xlie-Electronic-Customs/linux/git/trees/9505a3969ec49e4099d933a5f6c53175513c59fc"
+    },
+    "url": "https://api.github.com/repos/Xlie-Electronic-Customs/linux/git/commits/76f6729b499e3e6195c923323673901df543db42",
+    "comment_count": 0,
+    "verification": {
+      "verified": false,
+      "reason": "unsigned",
+      "signature": null,
+      "payload": null,
+      "verified_at": null
+    }
+  },
+  "url": "https://api.github.com/repos/Xlie-Electronic-Customs/linux/commits/76f6729b499e3e6195c923323673901df543db42",
+  "html_url": "https://github.com/Xlie-Electronic-Customs/linux/commit/76f6729b499e3e6195c923323673901df543db42",
+  "comments_url": "https://api.github.com/repos/Xlie-Electronic-Customs/linux/commits/76f6729b499e3e6195c923323673901df543db42/comments",
+  "author": {
+    "login": "ZXlieC",
+    "id": 209260556,
+    "node_id": "U_kgDODHkQDA",
+    "avatar_url": "https://avatars.githubusercontent.com/u/209260556?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/ZXlieC",
+    "html_url": "https://github.com/ZXlieC",
+    "followers_url": "https://api.github.com/users/ZXlieC/followers",
+    "following_url": "https://api.github.com/users/ZXlieC/following{/other_user}",
+    "gists_url": "https://api.github.com/users/ZXlieC/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/ZXlieC/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/ZXlieC/subscriptions",
+    "organizations_url": "https://api.github.com/users/ZXlieC/orgs",
+    "repos_url": "https://api.github.com/users/ZXlieC/repos",
+    "events_url": "https://api.github.com/users/ZXlieC/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/ZXlieC/received_events",
+    "type": "User",
+    "user_view_type": "public",
+    "site_admin": false
+  },
+  "committer": {
+    "login": "ZXlieC",
+    "id": 209260556,
+    "node_id": "U_kgDODHkQDA",
+    "avatar_url": "https://avatars.githubusercontent.com/u/209260556?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/ZXlieC",
+    "html_url": "https://github.com/ZXlieC",
+    "followers_url": "https://api.github.com/users/ZXlieC/followers",
+    "following_url": "https://api.github.com/users/ZXlieC/following{/other_user}",
+    "gists_url": "https://api.github.com/users/ZXlieC/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/ZXlieC/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/ZXlieC/subscriptions",
+    "organizations_url": "https://api.github.com/users/ZXlieC/orgs",
+    "repos_url": "https://api.github.com/users/ZXlieC/repos",
+    "events_url": "https://api.github.com/users/ZXlieC/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/ZXlieC/received_events",
+    "type": "User",
+    "user_view_type": "public",
+    "site_admin": false
+  },
+  "parents": [
+    {
+      "sha": "733223f36fa2eede5c87723abd36de098ca54d0f",
+      "url": "https://api.github.com/repos/Xlie-Electronic-Customs/linux/commits/733223f36fa2eede5c87723abd36de098ca54d0f",
+      "html_url": "https://github.com/Xlie-Electronic-Customs/linux/commit/733223f36fa2eede5c87723abd36de098ca54d0f"
+    }
+  ],
+  "stats": {
+    "total": 77,
+    "additions": 75,
+    "deletions": 2
+  },
+  "files": [
+    {
+      "sha": "73632cdcf1c9e59cc9d2a3fa96eeea9a1ca265cc",
+      "filename": "drivers/gpu/drm/msm/adreno/a6xx_catalog.c",
+      "status": "modified",
+      "additions": 72,
+      "deletions": 2,
+      "changes": 74,
+      "blob_url": "https://github.com/Xlie-Electronic-Customs/linux/blob/76f6729b499e3e6195c923323673901df543db42/drivers%2Fgpu%2Fdrm%2Fmsm%2Fadreno%2Fa6xx_catalog.c",
+      "raw_url": "https://github.com/Xlie-Electronic-Customs/linux/raw/76f6729b499e3e6195c923323673901df543db42/drivers%2Fgpu%2Fdrm%2Fmsm%2Fadreno%2Fa6xx_catalog.c",
+      "contents_url": "https://api.github.com/repos/Xlie-Electronic-Customs/linux/contents/drivers%2Fgpu%2Fdrm%2Fmsm%2Fadreno%2Fa6xx_catalog.c?ref=76f6729b499e3e6195c923323673901df543db42",
+      "patch": "@@ -1133,6 +1133,15 @@ static const struct adreno_info a6xx_gpus[] = {\n };\n DECLARE_ADRENO_GPULIST(a6xx);\n \n+static const struct adreno_reglist a730_gbif[] = {\n+\t{ REG_A6XX_GBIF_QSB_SIDE0, 0x00071620 },\n+\t{ REG_A6XX_GBIF_QSB_SIDE1, 0x00071620 },\n+\t{ REG_A6XX_GBIF_QSB_SIDE2, 0x00071620 },\n+\t{ REG_A6XX_GBIF_QSB_SIDE3, 0x00071620 },\n+\t{ REG_A6XX_RBBM_GBIF_CLIENT_QOS_CNTL, 0x2120212 },\n+\t{ },\n+};\n+\n static const struct adreno_reglist a702_hwcg[] = {\n \t{ REG_A6XX_RBBM_CLOCK_CNTL_SP0, 0x22222222 },\n \t{ REG_A6XX_RBBM_CLOCK_CNTL2_SP0, 0x02222220 },\n@@ -1382,6 +1391,64 @@ static const uint32_t a7xx_pwrup_reglist_regs[] = {\n \n DECLARE_ADRENO_REGLIST_LIST(a7xx_pwrup_reglist);\n \n+static const u32 a7xx_ifpc_reglist_regs[] = {\n+\tREG_A6XX_TPL1_NC_MODE_CNTL,\n+\tREG_A6XX_CP_DBG_ECO_CNTL,\n+\tREG_A6XX_CP_PROTECT_CNTL,\n+\tREG_A7XX_CP_LPAC_PROTECT_CNTL,\n+\tREG_A6XX_CP_PROTECT(0),\n+\tREG_A6XX_CP_PROTECT(1),\n+\tREG_A6XX_CP_PROTECT(2),\n+\tREG_A6XX_CP_PROTECT(3),\n+\tREG_A6XX_CP_PROTECT(4),\n+\tREG_A6XX_CP_PROTECT(5),\n+\tREG_A6XX_CP_PROTECT(6),\n+\tREG_A6XX_CP_PROTECT(7),\n+\tREG_A6XX_CP_PROTECT(8),\n+\tREG_A6XX_CP_PROTECT(9),\n+\tREG_A6XX_CP_PROTECT(10),\n+\tREG_A6XX_CP_PROTECT(11),\n+\tREG_A6XX_CP_PROTECT(12),\n+\tREG_A6XX_CP_PROTECT(13),\n+\tREG_A6XX_CP_PROTECT(14),\n+\tREG_A6XX_CP_PROTECT(15),\n+\tREG_A6XX_CP_PROTECT(16),\n+\tREG_A6XX_CP_PROTECT(17),\n+\tREG_A6XX_CP_PROTECT(18),\n+\tREG_A6XX_CP_PROTECT(19),\n+\tREG_A6XX_CP_PROTECT(20),\n+\tREG_A6XX_CP_PROTECT(21),\n+\tREG_A6XX_CP_PROTECT(22),\n+\tREG_A6XX_CP_PROTECT(23),\n+\tREG_A6XX_CP_PROTECT(24),\n+\tREG_A6XX_CP_PROTECT(25),\n+\tREG_A6XX_CP_PROTECT(26),\n+\tREG_A6XX_CP_PROTECT(27),\n+\tREG_A6XX_CP_PROTECT(28),\n+\tREG_A6XX_CP_PROTECT(29),\n+\tREG_A6XX_CP_PROTECT(30),\n+\tREG_A6XX_CP_PROTECT(31),\n+\tREG_A6XX_CP_PROTECT(32),\n+\tREG_A6XX_CP_PROTECT(33),\n+\tREG_A6XX_CP_PROTECT(34),\n+\tREG_A6XX_CP_PROTECT(35),\n+\tREG_A6XX_CP_PROTECT(36),\n+\tREG_A6XX_CP_PROTECT(37),\n+\tREG_A6XX_CP_PROTECT(38),\n+\tREG_A6XX_CP_PROTECT(39),\n+\tREG_A6XX_CP_PROTECT(40),\n+\tREG_A6XX_CP_PROTECT(41),\n+\tREG_A6XX_CP_PROTECT(42),\n+\tREG_A6XX_CP_PROTECT(43),\n+\tREG_A6XX_CP_PROTECT(44),\n+\tREG_A6XX_CP_PROTECT(45),\n+\tREG_A6XX_CP_PROTECT(46),\n+\tREG_A6XX_CP_PROTECT(47),\n+\tREG_A6XX_CP_AHB_CNTL,\n+};\n+\n+DECLARE_ADRENO_REGLIST_LIST(a7xx_ifpc_reglist);\n+\n /* Applicable for X185, A750 */\n static const u32 a750_ifpc_reglist_regs[] = {\n \tREG_A6XX_TPL1_BICUBIC_WEIGHTS_TABLE(0),\n@@ -1488,15 +1555,18 @@ static const struct adreno_info a7xx_gpus[] = {\n \t\t.inactive_period = DRM_MSM_INACTIVE_PERIOD,\n \t\t.quirks = ADRENO_QUIRK_HAS_CACHED_COHERENT |\n \t\t\t  ADRENO_QUIRK_HAS_HW_APRIV |\n-\t\t\t  ADRENO_QUIRK_PREEMPTION,\n+\t\t\t  ADRENO_QUIRK_PREEMPTION |\n+\t\t\t  ADRENO_QUIRK_IFPC,\n \t\t.funcs = &a7xx_gpu_funcs,\n \t\t.zapfw = \"a730_zap.mdt\",\n \t\t.a6xx = &(const struct a6xx_info) {\n \t\t\t.hwcg = a730_hwcg,\n \t\t\t.protect = &a730_protect,\n \t\t\t.pwrup_reglist = &a7xx_pwrup_reglist,\n \t\t\t.dyn_pwrup_reglist = &a7xx_dyn_pwrup_reglist,\n-\t\t\t.gbif_cx = a640_gbif,\n+\t\t\t.ifpc_reglist = &a7xx_ifpc_reglist,\n+\t\t\t.gbif_cx = a730_gbif,\n+\t\t\t.gmu_chipid = 0x7030100,\n \t\t\t.gmu_cgc_mode = 0x00020000,\n \t\t},\n \t\t.preempt_record_size = 2860 * SZ_1K,"
+    },
+    {
+      "sha": "89a7fc71b01b3d48f96ee5956acc35024feaaef5",
+      "filename": "drivers/gpu/drm/msm/registers/adreno/a6xx.xml",
+      "status": "modified",
+      "additions": 3,
+      "deletions": 0,
+      "changes": 3,
+      "blob_url": "https://github.com/Xlie-Electronic-Customs/linux/blob/76f6729b499e3e6195c923323673901df543db42/drivers%2Fgpu%2Fdrm%2Fmsm%2Fregisters%2Fadreno%2Fa6xx.xml",
+      "raw_url": "https://github.com/Xlie-Electronic-Customs/linux/raw/76f6729b499e3e6195c923323673901df543db42/drivers%2Fgpu%2Fdrm%2Fmsm%2Fregisters%2Fadreno%2Fa6xx.xml",
+      "contents_url": "https://api.github.com/repos/Xlie-Electronic-Customs/linux/contents/drivers%2Fgpu%2Fdrm%2Fmsm%2Fregisters%2Fadreno%2Fa6xx.xml?ref=76f6729b499e3e6195c923323673901df543db42",
+      "patch": "@@ -513,6 +513,9 @@ by a particular renderpass/blit.\n \t<reg32 offset=\"0x0ad0\" name=\"CP_BV_APRIV_CNTL\" variants=\"A7XX\"/>\n \t<reg32 offset=\"0x0ada\" name=\"CP_BV_CHICKEN_DBG\" variants=\"A7XX\"/>\n \n+\t<reg32 offset=\"0x0b06\" name=\"CP_LPAC_RB_RPTR\" variants=\"A7XX\"/>\n+\t<reg32 offset=\"0x0b07\" name=\"CP_LPAC_RB_WPTR\" variants=\"A7XX\"/>\n+\t<reg32 offset=\"0x0b09\" name=\"CP_LPAC_PROTECT_CNTL\" variants=\"A7XX\"/>\n \t<reg32 offset=\"0x0b0a\" name=\"CP_LPAC_DRAW_STATE_ADDR\" variants=\"A7XX\"/>\n \t<reg32 offset=\"0x0b0b\" name=\"CP_LPAC_DRAW_STATE_DATA\" variants=\"A7XX\"/>\n \t<reg32 offset=\"0x0b0c\" name=\"CP_LPAC_ROQ_DBG_ADDR\" variants=\"A7XX\"/>"
+    }
+  ]
+}
