@@ -18,7 +18,7 @@
 
 `master` 的版本号仍是 7.3-rc2；名称不代表稳定版，也不能据此将它理解成 7.3 正式版。其 HEAD 补丁的作者时间早于提交时间，是判断补丁重放时需要注意的区别。
 
-本次读取了远端提交快照、GitHub 提交/API 元数据、实际源码和 [postmarketOS Wiki](https://wiki.postmarketos.org/wiki/OnePlus_10_Pro_(oneplus-negroni))。Wiki 当前构建命令仍指定 `--branch 7.2`；本地文本快照见 [branch-review-wiki.txt](../logs/branch-review-wiki.txt)。
+本次读取了远端提交快照、GitHub 提交/API 元数据、实际源码和 [postmarketOS Wiki](https://wiki.postmarketos.org/wiki/OnePlus_10_Pro_(oneplus-negroni))。Wiki 当前构建命令仍指定 `--branch 7.2`；本地文本快照见 `logs/branch-review-wiki.txt`（本地文件）。
 
 比较以 **两个端点的完整文件树 `git diff A B`** 为准。仓库有合并与补丁重放，GitHub 将三组比较均判为 `diverged`；不能把 ahead 提交数解释为新增手机功能，也不能把重放后的旧补丁再次计作相对 7.2 的改进。本地是浅克隆，GitHub compare 的文件清单还有数量上限，因此下列统计来自本地完整文件树，不来自 API 的截断文件列表。
 
@@ -211,7 +211,7 @@ done
 
 现有 `linux/` 工作树仍在原 7.2 提交，本次没有修改其源码；`images/` 中完整镜像仍对应已构建的 `7.2.0-sm8450+`。`analysis/validation/` 的 DTB 是本次离线检查产物，**不构成一套可以直接替换原镜像的新分支刷机包**。
 
-如果后续决定升级，须让新内核、DTB、模块目录、initramfs 和使用它们的 boot/recovery/vendor_boot 镜像保持一致。不要只替换一个 boot 文件后继续使用 7.2 的模块，也不应将“更换内核”自动等同于需要重新擦除 userdata。ColorOS/ABL/槽位/根分区条件仍按 [README](../README.md) 核对，分支更新本身没有绕过这些启动条件。
+如果后续决定升级，须让新内核、DTB、模块目录、initramfs 和使用它们的 boot/recovery/vendor_boot 镜像保持一致。不要只替换一个 boot 文件后继续使用 7.2 的模块，也不应将“更换内核”自动等同于需要重新擦除 userdata。ColorOS/ABL/槽位/根分区条件仍按[刷机说明](../docs/flashing.md)核对，分支更新本身没有绕过这些启动条件。
 
 ## 5. 后续分支选择与验证重点
 

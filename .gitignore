@@ -2,18 +2,33 @@
 /image-credentials.json
 /.codex-askpass.sh
 /.codex-ssh-askpass
+/.codex-*askpass*
 /.agents/
 /.codex/
+/.env
+/.env.*
+!/.env.example
 
 # Downloaded inputs, rootfs, images and build/diagnostic output
 /alarm
 /downloads/
 /images/
 /logs/
+/backups/
+/flash-prep/
+/images-ready/
 /analysis/validation/
 __pycache__/
 *.py[cod]
 *.ko
+*.img
+*.img.*
+
+# Local editor state
+/.idea/
+/.vscode/
+*.swp
+*~
 
 # Host-specific migration verification
 /migration-verification.json

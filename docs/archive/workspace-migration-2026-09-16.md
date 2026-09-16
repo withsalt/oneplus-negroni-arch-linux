@@ -1,8 +1,10 @@
 # 工作区迁移（2026-09-16）
 
+> 历史记录：保留当时的构建与设备状态；文中的本地文件不随 Git 分发。当前操作入口见[文档索引](../README.md)。
+
 源目录：`/home/ubuntu/oneplus-negroni`。目标仓库：`/home/ubuntu/oneplus-negroni-arch-linux`，远端为 <https://github.com/withsalt/oneplus-negroni-arch-linux>。
 
-构建入口、脚本、配置、测试、键盘修复、调研资料和文档纳入父仓库。`linux/` 使用 <https://github.com/withsalt/linux> 子模块，固定在 `2c092365fd5c72efcedc29a578601b0a41ce45c4`；本地 `7.2`、`7.3-rc2` 分支与原有对象库均保留。迁移时 `7.3-rc2` 比本地记录的 `origin/7.3-rc2` 多两个提交，没有未提交的内核修改。两个提交另外存入 [Git bundle](patches/linux/README.md)，新克隆无需等待内核提交推送即可恢复。
+构建入口、脚本、配置、测试、键盘修复、调研资料和文档纳入父仓库。`linux/` 使用 <https://github.com/withsalt/linux> 子模块，固定在 `2c092365fd5c72efcedc29a578601b0a41ce45c4`；本地 `7.2`、`7.3-rc2` 分支与原有对象库均保留。迁移时 `7.3-rc2` 比本地记录的 `origin/7.3-rc2` 多两个提交，没有未提交的内核修改。两个提交另外存入 [Git bundle](../../patches/linux/README.md)，新克隆无需等待内核提交推送即可恢复。
 
 已有的 `tools/avb` 和 `tools/msm-firmware-loader` 也按现有提交注册为子模块，保留工具来源和版本。
 
@@ -27,4 +29,4 @@ cd oneplus-negroni-arch-linux
 bash scripts/init-submodules.sh
 ```
 
-之后按 [README](README.md) 安装宿主依赖、下载 rootfs 归档、创建本地镜像凭据并构建。镜像、下载缓存、历史日志和凭据不会随 Git 克隆传输。
+之后按[构建指南](../building.md)安装宿主依赖、下载 rootfs 归档、创建本地镜像凭据并构建。镜像、下载缓存、历史日志和凭据不会随 Git 克隆传输。

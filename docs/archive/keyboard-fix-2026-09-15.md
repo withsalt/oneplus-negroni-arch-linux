@@ -1,5 +1,7 @@
 # OnePlus 10 Pro 登录界面虚拟键盘修复说明
 
+> 历史记录：保留当时的构建与设备状态；文中的本地文件不随 Git 分发。当前操作入口见[文档索引](../README.md)。
+
 日期：2026-09-15。设备：OnePlus 10 Pro NE2210（oneplus-negroni）。
 
 **修复结果：用户已确认虚拟键盘能够弹出并输入。修正已写入手机的 SDDM 配置，当前可直接登录，不需要再次刷入或立即重启。**
@@ -66,7 +68,7 @@ CompositorCommand=kwin_wayland --drm --no-lockscreen --no-global-shortcuts --loc
 
 其中，`InputMethod=` 清空此前的错误配置；`--inputmethod /usr/bin/plasma-keyboard` 让 KWin 启动虚拟键盘；`QT_WAYLAND_SHELL_INTEGRATION=layer-shell` 配置登录界面的 Wayland 层集成。
 
-本地配置副本：[keyboard-fix/10-mobile.conf](keyboard-fix/10-mobile.conf)。
+本地配置副本：[keyboard-fix/10-mobile.conf](../../config/sddm/10-mobile.conf)。
 
 ## 4. 本次实际修复过程
 
@@ -74,7 +76,7 @@ CompositorCommand=kwin_wayland --drm --no-lockscreen --no-global-shortcuts --loc
 
 ### 4.1 制作修复镜像
 
-构建脚本 [build_repair.py](keyboard-fix/build_repair.py) 读取本次成功刷入的 `flash-prep/boot.img` 和 `flash-prep/initramfs-linux.img`，向 initramfs 增加以下内容：
+构建脚本 `keyboard-fix/build_repair.py`（本地文件） 读取本次成功刷入的 `flash-prep/boot.img` 和 `flash-prep/initramfs-linux.img`，向 initramfs 增加以下内容：
 
 | 新增项 | 用途 |
 | --- | --- |
@@ -149,7 +151,7 @@ Finished. Total time: 0.373s
 c222afb30684b38994b2555605cf6d48700d71a13ddbfb012ae3e518dc8bec2e
 ```
 
-依据：[镜像验证记录](keyboard-fix/verification.json)、[临时启动日志](keyboard-fix/boot-log.json)。本次确认的是登录界面的键盘输入；登录后的桌面输入法、中文输入等属于后续功能验证范围。
+依据：`keyboard-fix/verification.json`（本地文件）、`keyboard-fix/boot-log.json`（本地文件）。本次确认的是登录界面的键盘输入；登录后的桌面输入法、中文输入等属于后续功能验证范围。
 
 ## 6. 是否需要重启或重新刷入
 
@@ -159,7 +161,7 @@ c222afb30684b38994b2555605cf6d48700d71a13ddbfb012ae3e518dc8bec2e
 
 ## 7. 后续重建与再次刷机
 
-**更新：修复已接入 `build.sh`，并生成单独的 `images-ready/` 完整镜像集。** 新镜像首次启动即使用修正配置；当前只有产物时的重新打包命令及完整源码构建接入方式见 [构建集成说明](BUILD-INTEGRATION.md)。下述旧镜像限制仍适用于原 `images/` 和 `flash-prep/`。
+**更新：修复已接入 `build.sh`，并生成单独的 `images-ready/` 完整镜像集。** 新镜像首次启动即使用修正配置；当前只有产物时的重新打包命令及完整源码构建接入方式见 [构建集成说明](../build-integration.md)。下述旧镜像限制仍适用于原 `images/` 和 `flash-prep/`。
 
 电脑上的 `images/root.img`、`images/sparse_root.img` 以及 `flash-prep/root.img`、`flash-prep/sparse_root.img` **尚未合入此次键盘修复**。它们与手机当前 rootfs 的键盘配置已有差异。
 
@@ -175,11 +177,11 @@ c222afb30684b38994b2555605cf6d48700d71a13ddbfb012ae3e518dc8bec2e
 
 | 本地文件 | 内容 |
 | --- | --- |
-| [10-mobile.conf](keyboard-fix/10-mobile.conf) | 正确的 SDDM/KWin 配置 |
-| [repair-keyboard.sh](keyboard-fix/repair-keyboard.sh) | 写入配置和保存备份的脚本 |
-| [negroni-keyboard-repair.service](keyboard-fix/negroni-keyboard-repair.service) | initramfs 修复服务 |
-| [build_repair.py](keyboard-fix/build_repair.py) | 临时修复镜像构建脚本 |
-| [verification.json](keyboard-fix/verification.json) | 构建校验和用户验证结果 |
-| [boot-log.json](keyboard-fix/boot-log.json) | 设备状态及临时启动输出 |
+| [10-mobile.conf](../../config/sddm/10-mobile.conf) | 正确的 SDDM/KWin 配置 |
+| `keyboard-fix/repair-keyboard.sh`（本地文件） | 写入配置和保存备份的脚本 |
+| `keyboard-fix/negroni-keyboard-repair.service`（本地文件） | initramfs 修复服务 |
+| `keyboard-fix/build_repair.py`（本地文件） | 临时修复镜像构建脚本 |
+| `keyboard-fix/verification.json`（本地文件） | 构建校验和用户验证结果 |
+| `keyboard-fix/boot-log.json`（本地文件） | 设备状态及临时启动输出 |
 
 上游说明：[ArchWiki：SDDM 的 Wayland 虚拟键盘设置](https://wiki.archlinux.org/title/SDDM#Virtual_keyboards)。设备背景：[postmarketOS Wiki：OnePlus 10 Pro](https://wiki.postmarketos.org/wiki/OnePlus_10_Pro_%28oneplus-negroni%29)。

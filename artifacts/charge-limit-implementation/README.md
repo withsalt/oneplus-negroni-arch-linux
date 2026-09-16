@@ -2,11 +2,11 @@
 
 2026-09-16 已完成源码修改、内核编译和固件封装。手机未刷写，服务未在手机上启用；新镜像默认关闭限制，默认阈值 75/80。
 
-- [操作与实现说明](../../CHARGE-LIMIT.md)
-- [固件目录](../../images/7.3-rc2/)及 [SHA256SUMS](../../images/7.3-rc2/SHA256SUMS)
-- [构建报告](../../logs/7.3-rc2/build-result.json)
-- [镜像内容验证](../../logs/7.3-rc2/charge-limit-verification.json)
-- [内核编译日志](../../logs/7.3-rc2/kernel-build.log)、[rootfs 更新日志](../../logs/7.3-rc2/kernel-image-update.log)、[封装日志](../../logs/7.3-rc2/image-pack.log)
+- [操作与实现说明](../../docs/charge-limit.md)
+- `images/7.3-rc2`（本地文件）及 `images/7.3-rc2/SHA256SUMS`（本地文件）
+- `logs/7.3-rc2/build-result.json`（本地文件）
+- `logs/7.3-rc2/charge-limit-verification.json`（本地文件）
+- `logs/7.3-rc2/kernel-build.log`（本地文件）、`logs/7.3-rc2/kernel-image-update.log`（本地文件）、`logs/7.3-rc2/image-pack.log`（本地文件）
 - [内核提交补丁](qcom-battmgr-charge-limit.patch)，提交 `2c092365fd5c72efcedc29a578601b0a41ce45c4`，父提交 `593ad628e5b838457d6a316cc08ba5dcc924a01f`，包含新增头文件
 - [源码补丁与构建配置包](charge-limit-source.tar.gz)，不包含登录凭据
 

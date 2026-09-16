@@ -1,0 +1,40 @@
+name: 问题报告
+description: 报告构建失败、系统行为或设备问题
+title: "[Bug] "
+body:
+  - type: markdown
+    attributes:
+      value: 请先阅读 README 和设备状态文档。日志中请移除密码、序列号和个人网络信息。
+  - type: textarea
+    id: environment
+    attributes:
+      label: 环境与版本
+      description: 填写与问题有关的环境；仅文档问题可注明不适用。
+      placeholder: |
+        手机型号 / 固件升级历史：
+        构建主机系统与架构：
+        父仓库提交（git rev-parse HEAD）：
+        内核提交（git -C linux rev-parse HEAD）：
+        镜像构建日期 / 内核版本：
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: 复现步骤
+      description: 包含执行的命令、失败阶段或设备操作。
+    validations:
+      required: true
+  - type: textarea
+    id: behavior
+    attributes:
+      label: 预期与实际结果
+      description: 明确区分本地构建、模拟测试与实机现象。
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: 相关日志
+      description: 粘贴必要片段，保留出错前后的上下文。
+      render: text

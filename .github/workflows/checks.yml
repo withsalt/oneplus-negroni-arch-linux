@@ -1,0 +1,31 @@
+name: Checks
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: checks-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  host-checks:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - name: Check out the project
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+          submodules: false
+          persist-credentials: false
+      - name: Restore pinned submodules and local kernel commits
+        run: bash scripts/init-submodules.sh
+      - name: Check scripts and run charge-limit tests
+        run: bash scripts/check.sh --with-kernel
+      - name: Check patch whitespace
+        run: git diff --check HEAD^ HEAD
