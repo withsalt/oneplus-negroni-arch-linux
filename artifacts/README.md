@@ -9,5 +9,6 @@
 | [charge-limit-implementation](charge-limit-implementation/README.md) | 实现补丁、源码归档与本地验证说明 |
 | [usb2-diagnosis-20260916-030952](usb2-diagnosis-20260916-030952/README.md) | USB2 Hub 断连、绑定关系与寄存器诊断 |
 | [wake-latency-20260916](wake-latency-20260916/) | GPU 唤醒超时和 runtime PM 规避的采集记录 |
+| [cpu-performance-20260916](cpu-performance-20260916/README.md) | CPU Boost / 性能模式实测、硬件限频边界与已重启验证的大小核调度修复 |
 
 这些文件反映采集时刻的设备状态，不能直接作为其他设备的配置。当前使用入口见[文档索引](../docs/README.md)。新增常规诊断输出应先放在 `logs/`，整理并去除个人信息后再考虑归档。

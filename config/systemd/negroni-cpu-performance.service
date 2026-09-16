@@ -1,0 +1,15 @@
+[Unit]
+Description=Enable supported CPU boost and performance governor on OnePlus Negroni
+ConditionPathExists=/sys/devices/system/cpu/cpufreq/policy7/scaling_governor
+After=systemd-modules-load.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/negroni-cpu-performance start
+ExecStop=/usr/local/sbin/negroni-cpu-performance stop
+RemainAfterExit=yes
+TimeoutStartSec=30
+TimeoutStopSec=30
+
+[Install]
+WantedBy=multi-user.target

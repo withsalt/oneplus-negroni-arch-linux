@@ -27,5 +27,9 @@ jobs:
         run: bash scripts/init-submodules.sh
       - name: Check scripts and run charge-limit tests
         run: bash scripts/check.sh --with-kernel
+      - name: Install CPU device-tree build tools
+        run: sudo apt-get update && sudo apt-get install -y device-tree-compiler mkbootimg
+      - name: Rebuild and verify optional CPU device-tree images
+        run: python3 scripts/build-cpu-performance-dtb.py --output "$RUNNER_TEMP/cpu-performance"
       - name: Check patch whitespace
         run: git diff --check HEAD^ HEAD

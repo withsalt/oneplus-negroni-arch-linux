@@ -11,6 +11,7 @@
 | [设备状态](status.md) | 已验证功能、已知问题、SSH 和 GPU 配置 |
 | [充电限制](charge-limit.md) | 默认行为、启停、阈值配置及验证范围 |
 | [屏幕默认设置](screen-defaults.md) | 默认关闭调暗和休眠、5 分钟熄屏及续建更新 |
+| [CPU 性能与调度](cpu-performance.md) | Boost / performance 服务、设备树构建、部署验证与恢复 |
 | [构建集成说明](build-integration.md) | 各配置如何进入 rootfs，已有镜像如何更新 |
 | [贡献指南](../CONTRIBUTING.md) | 开发检查、问题报告与 Pull Request |
 | [来源与许可](licensing.md) | 子模块、补丁及第三方资料的许可边界 |
@@ -20,7 +21,7 @@
 | 资料 | 内容 |
 | --- | --- |
 | [内核分支比较](../analysis/kernel-branches.md) | 7.2、7.3-rc2、master 的源码差异与判断依据 |
-| [实机与实现记录索引](../artifacts/README.md) | 充电、USB2、GPU 唤醒相关资料 |
+| [实机与实现记录索引](../artifacts/README.md) | 充电、USB2、GPU 唤醒及 CPU 性能与调度实测资料 |
 | [2026-09-16 构建记录](archive/build-notes-2026-09-16.md) | 整理前的完整 README，含历史版本、命令和产物哈希 |
 | [2026-09-15 键盘修复](archive/keyboard-fix-2026-09-15.md) | SDDM 故障原因、临时修复过程及验证 |
 | [2026-09-16 工作区迁移](archive/workspace-migration-2026-09-16.md) | 本地工作区迁移与缓存情况 |

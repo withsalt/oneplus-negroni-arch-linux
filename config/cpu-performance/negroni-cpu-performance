@@ -1,0 +1,110 @@
+#!/usr/bin/env python3
+"""Reversible performance governor and hardware-supported boost for Negroni."""
+import json
+import os
+import sys
+import time
+from pathlib import Path
+
+BASE = Path('/sys/devices/system/cpu/cpufreq')
+STATE = Path('/run/negroni-cpu-performance/state.json')
+FIELDS = ('scaling_governor', 'scaling_min_freq', 'scaling_max_freq')
+
+
+def read(path):
+    return path.read_text().strip()
+
+
+def write(path, value):
+    path.write_text(str(value) + '\n')
+    # Frequency QoS updates are applied asynchronously by the cpufreq worker.
+    deadline = time.monotonic() + 2
+    while True:
+        actual = read(path)
+        if actual == str(value):
+            return
+        if time.monotonic() >= deadline:
+            raise RuntimeError(f'{path}: requested {value}, read back {actual}')
+        time.sleep(0.02)
+
+
+def capture():
+    return {
+        'boost': read(BASE / 'boost'),
+        'policies': {
+            p.name: {key: read(p / key) for key in FIELDS + ('boost',)}
+            for p in sorted(BASE.glob('policy*'))
+        },
+    }
+
+
+def restore(state):
+    # A global boost write updates all boost-capable policies.
+    write(BASE / 'boost', state['boost'])
+    for name, settings in state['policies'].items():
+        p = BASE / name
+        if read(p / 'boost') != settings['boost']:
+            write(p / 'boost', settings['boost'])
+        write(p / 'scaling_min_freq', read(p / 'cpuinfo_min_freq'))
+        write(p / 'scaling_max_freq', settings['scaling_max_freq'])
+        write(p / 'scaling_min_freq', settings['scaling_min_freq'])
+        write(p / 'scaling_governor', settings['scaling_governor'])
+    if capture() != state:
+        raise RuntimeError('Restored CPU configuration does not match snapshot')
+
+
+def start():
+    if STATE.exists():
+        raise RuntimeError('Saved configuration already exists; stop the service first')
+    compatible = Path('/proc/device-tree/compatible').read_bytes().split(b'\0')
+    if b'oplus,negroni' not in compatible:
+        raise RuntimeError('This configuration is only validated on OnePlus Negroni')
+    state = capture()
+    if set(state['policies']) != {'policy0', 'policy4', 'policy7'}:
+        raise RuntimeError('Unexpected CPU frequency policy layout')
+    for name in state['policies']:
+        p = BASE / name
+        if read(p / 'scaling_driver') != 'qcom-cpufreq-hw':
+            raise RuntimeError('Unexpected CPU frequency driver')
+        if 'performance' not in read(p / 'scaling_available_governors').split():
+            raise RuntimeError('Performance governor unavailable')
+    STATE.parent.mkdir(mode=0o700, parents=True, exist_ok=True)
+    with STATE.open('x') as stream:
+        json.dump(state, stream, indent=2)
+    STATE.chmod(0o600)
+    try:
+        write(BASE / 'boost', '1')
+        for name in state['policies']:
+            p = BASE / name
+            write(p / 'scaling_max_freq', read(p / 'cpuinfo_max_freq'))
+            write(p / 'scaling_governor', 'performance')
+    except Exception:
+        restore(state)
+        STATE.unlink()
+        raise
+    print(json.dumps(capture(), indent=2))
+
+
+def stop():
+    if not STATE.exists():
+        print('No saved CPU settings to restore')
+        return
+    state = json.loads(STATE.read_text())
+    restore(state)
+    STATE.unlink()
+    print('Original CPU governors, frequency limits and boost settings restored')
+
+
+def main():
+    if len(sys.argv) != 2 or sys.argv[1] not in ('start', 'stop', 'status'):
+        raise SystemExit('Usage: negroni-cpu-performance {start|stop|status}')
+    if sys.argv[1] == 'status':
+        print(json.dumps(capture(), indent=2))
+        return
+    if os.geteuid() != 0:
+        raise SystemExit('Root privileges required')
+    {'start': start, 'stop': stop}[sys.argv[1]]()
+
+
+if __name__ == '__main__':
+    main()

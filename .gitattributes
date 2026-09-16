@@ -11,3 +11,6 @@
 *.bundle binary
 *.tar.gz binary
 *.img binary
+
+# Unified diff context lines prefix the original tab indentation with a space.
+patches/linux/*.patch whitespace=-space-before-tab

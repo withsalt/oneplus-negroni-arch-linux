@@ -19,6 +19,7 @@
 | 熄屏后慢亮屏 | GPU runtime PM 规避服务已部署，并集成到镜像 |
 | 屏幕默认设置 | 调暗关闭、5 分钟熄屏、自动休眠关闭；构建集成及本地镜像校验通过，待真机验证 |
 | 常用命令行工具 | 已集成并在本地镜像内检查 |
+| CPU 性能与大小核调度 | Boost / performance 与大小核能力修复已在实机重启验证；提供[独立复现流程](docs/cpu-performance.md)，尚未默认集成 |
 | 75% / 80% 充电限制 | 默认关闭；构建和逻辑测试通过，待真机验证 |
 | USB2 / OTG | 存在 Hub 断连问题，保留诊断记录 |
 | 音频、相机、GPS | 尚无本机恢复可用的验证记录 |
@@ -52,6 +53,7 @@ bash scripts/init-submodules.sh
 | 使用 SSH、了解已知问题 | [设备状态与使用说明](docs/status.md) |
 | 开启、配置和关闭充电限制 | [充电限制](docs/charge-limit.md) |
 | 调整屏幕和休眠的固件默认值 | [屏幕默认设置](docs/screen-defaults.md) |
+| 复现 CPU 性能与大小核调度优化 | [CPU 性能与调度指南](docs/cpu-performance.md) |
 | 查找调研与历史操作记录 | [文档索引](docs/README.md) |
 | 提交问题或改动 | [贡献指南](CONTRIBUTING.md) |
 | 了解代码来源与许可 | [来源与许可](docs/licensing.md) |

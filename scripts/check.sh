@@ -27,6 +27,7 @@ from pathlib import Path
 
 paths = sorted(Path("scripts").glob("*.py")) + sorted(Path("tests").glob("*.py"))
 paths.append(Path("config/charge-limit/negroni-charge-limit"))
+paths.append(Path("config/cpu-performance/negroni-cpu-performance"))
 for path in paths:
     compile(path.read_bytes(), str(path), "exec")
 print(f"{len(paths)} Python files passed")

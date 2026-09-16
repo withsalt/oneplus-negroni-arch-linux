@@ -1,0 +1,14 @@
+{
+  "kernel_commit": "2c092365fd5c72efcedc29a578601b0a41ce45c4",
+  "patch_sha256": "702ba0170db1dcc77c8ecfb9c5da6594b9c7fef63aa01a71a818c2c9742e8f68",
+  "dtc": "Version: DTC 1.7.2",
+  "gcc": "15.2.0",
+  "mkbootimg_sha256": "b682574d42fd5c5cb852e7e76996b0e460808f10f47d81fc01e7f6db1697da4e",
+  "verification": "Original DT properties preserved; exactly 16 CPU properties added; vendor_boot verified",
+  "sha256": {
+    "baseline.dtb": "4797091fe0d7d6719b5c85f69ae1aa95a62a6767eb46a8efff82333057e03ad3",
+    "sm8450-oneplus-negroni.dtb": "cde95916e22ea57bd662fdf26cdee995302d5d4b19c8b24ebbdf0cb5780b3675",
+    "vendor_boot-original.img": "5a1d42ca81fd839b769baeba89ecac7feef1559fec1f11ba332cb6599c9fdce0",
+    "vendor_boot-cpu-capacity.img": "203b7d18ae310cbb576b88962062e1d500b555aef04da5275fb33750109cb554"
+  }
+}
