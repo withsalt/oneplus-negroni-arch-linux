@@ -12,7 +12,8 @@ unit_target="$target_dir/etc/systemd/system/$unit_name"
 
 test -x "$target_dir/usr/bin/sh"
 test -f "$unit_source"
-install -d -o 0 -g 0 -m 0755 "$target_dir/etc/systemd/system" "$log_dir"
+install -d -o 0 -g 0 -m 0755 "$target_dir/etc/systemd/system"
+mkdir -p "$log_dir"
 install -o 0 -g 0 -m 0644 "$unit_source" "$unit_target"
 chroot "$target_dir" systemctl enable "$unit_name"
 chroot "$target_dir" systemctl is-enabled "$unit_name" | grep -Fxq enabled

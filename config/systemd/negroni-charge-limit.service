@@ -7,7 +7,9 @@ StartLimitIntervalSec=0
 [Service]
 Type=notify
 NotifyAccess=all
-ExecStart=/usr/bin/systemd-inhibit --what=sleep --mode=block --who=negroni-charge-limit "--why=Battery charge limit requires SOC monitoring" /usr/local/libexec/negroni-charge-limit run
+# systemd-inhibit removes NOTIFY_SOCKET from the child's environment. Expand it
+# here and restore it after the wrapper so READY and WATCHDOG reach systemd.
+ExecStart=/usr/bin/systemd-inhibit --what=sleep --mode=block --who=negroni-charge-limit "--why=Battery charge limit requires SOC monitoring" /usr/bin/env NOTIFY_SOCKET=${NOTIFY_SOCKET} /usr/local/libexec/negroni-charge-limit run
 ExecStopPost=/usr/local/libexec/negroni-charge-limit disable
 TimeoutStartSec=75
 TimeoutStopSec=20

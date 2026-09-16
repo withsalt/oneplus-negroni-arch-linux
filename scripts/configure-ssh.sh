@@ -7,7 +7,8 @@ log_dir=${2:?Usage: configure-ssh.sh ROOTFS_DIRECTORY LOG_DIRECTORY}
 [[ $EUID == 0 && $target_dir != / ]] || exit 1
 chroot "$target_dir" pacman -Q openssh
 chroot "$target_dir" id oneplus >/dev/null
-install -d -m 0755 "$target_dir/etc/ssh/sshd_config.d" "$log_dir"
+install -d -m 0755 "$target_dir/etc/ssh/sshd_config.d"
+mkdir -p "$log_dir"
 install -o 0 -g 0 -m 0644 "$project_dir/config/ssh/00-negroni.conf" \
     "$target_dir/etc/ssh/sshd_config.d/00-negroni.conf"
 chroot "$target_dir" systemctl enable sshd.service

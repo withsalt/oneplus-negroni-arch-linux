@@ -1,6 +1,6 @@
 # OnePlus 10 Pro 充电限制
 
-已将可选充电限制加入当前 Arch Linux ARM 固件源码，镜像统一位于 `images/7.3-rc2/`，日志位于 `logs/7.3-rc2/`。内核改动已提交到本地 `7.3-rc2` 分支的 `2c092365fd5c72efcedc29a578601b0a41ce45c4`，版本为 `7.3.0-rc2-sm8450+`。本次未刷入手机，也未在手机上启用服务。
+已将可选充电限制加入当前 Arch Linux ARM 固件源码，镜像统一位于 `images/7.3-rc2/`，日志位于 `logs/7.3-rc2/`。内核改动已提交到本地 `7.3-rc2` 分支的 `2c092365fd5c72efcedc29a578601b0a41ce45c4`，版本为 `7.3.0-rc2-sm8450+`。2026-09-16 已刷入 OnePlus 10 Pro NE2210，并完成下述服务启停与 USB PD 停充验证。
 
 ## 行为
 
@@ -15,7 +15,7 @@
 
 上下限均可配置，要求 `0 <= START_THRESHOLD < END_THRESHOLD <= 100`。边界按整数 SOC 判断，75% 恢复、80% 停止；大约每 5 秒检查一次，通知和配置变化会触发额外检查。这是软件阈值控制，不能保证实际电池电量绝不短暂超过设定值。
 
-停充使用一加电池充电开关 `BATT_OPLUS_CHG_EN`，不把 USB 输入电流设为零，不主动改变 PD 电压，也不强制电池放电。DCP/SuperVOOC 路径会先请求关闭 VoocPHY 快充。设计目的是停充后继续利用适配器供电；**当前尚未测量新驱动下的实际输入功率和电池电流，不能把命令确认等同于已验证稳定直供。** SuperVOOC 下的电量计连续更新和无线充电也尚未实测。
+停充使用一加电池充电开关 `BATT_OPLUS_CHG_EN`，不把 USB 输入电流设为零，不主动改变 PD 电压，也不强制电池放电。DCP/SuperVOOC 路径会先请求关闭 VoocPHY 快充。设计目的是停充后继续利用适配器供电；USB PD 真机采样中，停充时电池报告电流为 0、USB 输入保持在线。**这些是驱动遥测值，尚未用功率表或负载测试验证长期稳定直供。** SuperVOOC 下的电量计连续更新和无线充电也尚未实测。
 
 启用服务期间，systemd 抑制器与驱动挂起检查会阻止系统 suspend/hibernate，确保主机持续监测电量；熄屏和 CPU idle 仍可用。停止服务即可解除这一限制。即使拔掉电源，只要服务仍启用，挂起限制也仍存在。当前没有使用未经验证的 ADSP 自主阈值功能。
 
@@ -90,4 +90,23 @@ IMAGE_DIR=images/7.3-rc2 LOG_DIR=logs/7.3-rc2 bash scripts/pack-images.sh
 
 最终镜像检查核对驱动模块、内核、服务、配置与源码一致，模块版本匹配、服务无启用链接，默认阈值 75/80。封装过程检查 ext4、Android 启动镜像解包结果、sparse 往返一致性及 SHA-256。结果见 `logs/7.3-rc2/build-result.json`（本地文件）和`logs/7.3-rc2/charge-limit-verification.json`（本地文件）。
 
-真机仍需先用当前普通 USB PD 电源验证停充、恢复、拔插和停止服务后的行为，同时观察 USB `online`、电压/电流、电池 `current_now` 和电量随时间的变化；最好结合 USB 功率表与有负载时的电池电流。随后再单独验证 SuperVOOC。调研依据及原厂代码引用见 [调研报告](../artifacts/charge-limit-research-20260916/README.md)。日常取消限制只需停止服务。
+### 服务启动等待问题与真机结果（2026-09-16）
+
+原单元使用 `Type=notify`，但 `systemd-inhibit` 会从子进程环境中清除 `NOTIFY_SOCKET`，使 Python 服务无法发送 `READY=1` 和看门狗通知。表现为驱动已经停充，而 `systemctl start` 一直等待；达到 75 秒启动超时后服务被重启。按 Ctrl+C 只结束客户端等待，不会停止后台服务。
+
+单元现在先由 systemd 将 `${NOTIFY_SOCKET}` 展开为参数，再通过抑制器之后的 `/usr/bin/env` 恢复子进程环境。保留 `Type=notify`、30 秒看门狗和睡眠抑制器。真机上通过 `systemd-analyze verify`，并确认 Python 子进程收到通知地址。
+
+USB PD 电源、电池 88%、阈值 75/80 下的实测结果：
+
+| 检查 | 结果 |
+| --- | --- |
+| 首次启动 / 停止后再次启动 | 0.326 秒 / 0.916 秒，均正常返回 |
+| 持续运行 | 首次运行 190 秒以上无重启；再次启动后连续四次看门狗时间戳递增，状态为 `active/running`、`NRestarts=0` |
+| 停止服务 | 0.513 秒返回；`enabled=0 state=released error=0`，睡眠抑制器解除 |
+| 停止后电池 | `Charging`，驱动报告电流约 563 mA |
+| 再次启动后电池 | `Not charging`，报告电流 0，`enabled=1 state=holding error=0` |
+| 停充时 USB 输入 | `online=1`，约 9.01 V / 159 mA |
+
+验证后手机服务保持运行，开机自启仍为 `disabled`。本地原始镜像与 sparse 镜像同步更新服务单元，默认仍不启用；手机通过 SSH 应用同一修复，无需重刷或重启。详细记录位于本地 `logs/charge-notify-fix-20260916/deploy-result.json` 和 `verify-live-result.json`。
+
+仍需验证电量自然降到 75% 后自动恢复、从低电量充到 80% 时自动停充、USB 拔插、负载变化及长时间稳定性；最好结合 USB 功率表。SuperVOOC 和无线充电需单独实测。调研依据及原厂代码引用见 [调研报告](../artifacts/charge-limit-research-20260916/README.md)。日常取消限制只需停止服务。
