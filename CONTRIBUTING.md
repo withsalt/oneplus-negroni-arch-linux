@@ -14,6 +14,16 @@ git diff --check
 
 检查需要 Bash、Python 3、Git；内核测试另需主机 C 编译器（`cc`）。`--with-kernel` 会编译并执行阈值状态机测试，以及从真实驱动提取函数、模拟 ADSP 传输的测试。服务测试覆盖配置解析、写入顺序、设备重建和退出恢复。
 
+修改 CPU 默认安装或镜像检查时，运行真实 rootfs 安装/校验测试（需要 `systemctl`、`mkfs.ext4`、`debugfs`）：
+
+```sh
+sudo python3 -B tests/test-cpu-performance-image.py
+# 支持无特权 user namespace 的主机也可用：
+unshare --user --map-root-user python3 -B tests/test-cpu-performance-image.py
+```
+
+该测试检查全新安装、已有镜像补装、开机启用、封装失效，以及缺失链接、错误权限和内容变化的拒绝行为。CI 还会用固定内核源码从干净目录编译并核对 8 核设备树参数。
+
 GitHub Actions 在推送和 Pull Request 中恢复固定子模块，并执行同一组检查。CI 不构建整个 ARM64 内核或 rootfs，也不代表实机验证通过。
 
 ## 改动范围

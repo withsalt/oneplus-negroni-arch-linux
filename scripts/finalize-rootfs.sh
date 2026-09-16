@@ -58,6 +58,7 @@ bash "$project_dir/scripts/configure-ssh.sh" "$target_dir" "$project_dir/$log_di
 bash "$project_dir/scripts/configure-gpu-runtime-active.sh" "$target_dir" "$project_dir/$log_dir"
 bash "$project_dir/scripts/configure-charge-limit.sh" "$target_dir" "$project_dir/$log_dir"
 bash "$project_dir/scripts/configure-screen-defaults.sh" "$target_dir" "$project_dir/$log_dir"
+bash "$project_dir/scripts/configure-cpu-performance.sh" "$target_dir" "$project_dir/$log_dir"
 install -d "$target_dir/etc/sddm.conf.d"
 install -m 0644 config/sddm/10-mobile.conf "$target_dir/etc/sddm.conf.d/10-mobile.conf"
 install -d -o 0 -g 0 "$target_dir/var/lib/sddm"

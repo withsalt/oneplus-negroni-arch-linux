@@ -2,6 +2,8 @@
 
 首次构建请先读[构建指南](building.md)。下文解释脚本接入方式；带日期的实机与镜像结果为历史记录，本地 `logs/` 不随 Git 分发。
 
+CPU 性能与调度已默认集成：固定内核 `05e876f60a304` 包含 8 核能力和功耗模型；全新 rootfs 通过 `configure-cpu-performance.sh` 安装并启用 Boost / performance 服务。已有 rootfs 通过源文件指纹触发 `update-cpu-performance-image.sh`，补装服务并重新打包。构建及封装阶段分别检查 DTB 参数、镜像文件和开机链接，构建报告记录结果。详见 [CPU 默认构建与恢复](cpu-performance.md#默认固件构建与续建)。
+
 屏幕默认设置已接入全新 rootfs 与已有镜像续建：降低亮度时间关闭、关闭屏幕时间 5 分钟、休眠时间关闭，三种供电模式一致。`finalize-rootfs.sh` 安装 `/etc/xdg/powerdevilrc`；`build.sh` 根据配置及脚本的内容指纹调用 `update-screen-defaults-image.sh`，更新后重新打包。`pack-images.sh` 强制检查镜像内配置与源文件一致、权限正确，并把配置值写入构建报告。用户已有设置优先；锁屏后的独立熄屏计时沿用上游默认值。配置键、验证范围与单独更新命令见[屏幕默认设置](screen-defaults.md)。
 
 充电限制已同时接入全新 rootfs 与已有镜像续建：`prepare-rootfs.sh` 显式安装 Python，`finalize-rootfs.sh` 安装服务与默认配置；`build.sh` 每次运行增量 Kbuild，并用内核产物指纹、服务源文件校验值判断是否调用 `update-kernel-image.sh`。更新会复制模块、内核并重建 initramfs，再使旧的封装完成标记失效。每次构建安装后服务均为 `disabled`，默认开始 75%、停止 80%。

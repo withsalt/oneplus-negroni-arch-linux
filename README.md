@@ -19,7 +19,7 @@
 | 熄屏后慢亮屏 | GPU runtime PM 规避服务已部署，并集成到镜像 |
 | 屏幕默认设置 | 调暗关闭、5 分钟熄屏、自动休眠关闭；构建集成及本地镜像校验通过，待真机验证 |
 | 常用命令行工具 | 已集成并在本地镜像内检查 |
-| CPU 性能与大小核调度 | Boost / performance 与大小核能力修复已在实机重启验证；提供[独立复现流程](docs/cpu-performance.md)，尚未默认集成 |
+| CPU 性能与大小核调度 | 默认启用 Boost / performance，大小核能力修复已进入固定内核；现场配置已重启验证，见[构建与恢复](docs/cpu-performance.md) |
 | 75% / 80% 充电限制 | 默认关闭；构建和逻辑测试通过，待真机验证 |
 | USB2 / OTG | 存在 Hub 断连问题，保留诊断记录 |
 | 音频、相机、GPS | 尚无本机恢复可用的验证记录 |
@@ -34,7 +34,7 @@ cd oneplus-negroni-arch-linux
 bash scripts/init-submodules.sh
 ```
 
-内核固定在 `2c092365fd5c72efcedc29a578601b0a41ce45c4`。其中两个提交尚未发布到内核远端，初始化脚本会从随仓库提供的 [Git bundle](patches/linux/README.md) 恢复；首次克隆请使用上述方式。
+内核固定在 `05e876f60a304a400bc1b44da2de3b155c2bc829`。其中三个提交尚未发布到内核远端，初始化脚本会从随仓库提供的 [Git bundle](patches/linux/README.md) 恢复；首次克隆请使用上述方式。
 
 接着按[构建指南](docs/building.md)安装依赖、下载 rootfs 并创建本地登录凭据，再执行：
 

@@ -1,0 +1,56 @@
+{
+  "kernel_commit": "05e876f60a304a400bc1b44da2de3b155c2bc829",
+  "default_cpu_governor": "performance",
+  "default_cpu_boost": true,
+  "service_enabled_in_rootfs": true,
+  "cpu_capacity_properties_verified": true,
+  "validation": {
+    "incremental_kernel_build": true,
+    "clean_kbuild_dtb_build": true,
+    "clean_bundle_restore": true,
+    "fresh_and_existing_rootfs_installer_tests": 4,
+    "reject_missing_capacity_dtb": true,
+    "default_build_sh_resume": true,
+    "ext4_check": true,
+    "sparse_roundtrip": true,
+    "new_complete_image_boot_tested": false
+  },
+  "image_update_method": "Offline copy update using debugfs; installer separately exercised as root in a user namespace. Privileged mounted updater not executed on this host.",
+  "images": [
+    {
+      "name": "boot.img",
+      "bytes": 29532160,
+      "sha256": "9c9b6d268ec7a3e3c6763e5373615652460e96def4bb8c3423edf7ad9c9c30ba"
+    },
+    {
+      "name": "vendor_boot.img",
+      "bytes": 180224,
+      "sha256": "203b7d18ae310cbb576b88962062e1d500b555aef04da5275fb33750109cb554"
+    },
+    {
+      "name": "recovery.img",
+      "bytes": 18690048,
+      "sha256": "7b7a9e790b835618ac34dfceebd4043a89df2197757934f07a16e2ca86fb3340"
+    },
+    {
+      "name": "vbmeta.img",
+      "bytes": 256,
+      "sha256": "8b282508cd8bb372194cd577f7404e095a2a4f204136ac4adb31325db88ebdc7"
+    },
+    {
+      "name": "root.img",
+      "bytes": 5368709120,
+      "sha256": "2b7005d9ccbae88ba7edde6a48b78a684ac2f03e614857a3adc571914db33dcf"
+    },
+    {
+      "name": "sparse_root.img",
+      "bytes": 3603153620,
+      "sha256": "ff8a08814a7ec2c6b59c412f99c6b39ac3b054c718abdfd8da7a26944dd277c8"
+    },
+    {
+      "name": "initramfs-linux.img",
+      "bytes": 18685404,
+      "sha256": "6c20651c96bfbb4c66581dd93f73fcbf94c19b81c0071cd95abbd94c5ba69b08"
+    }
+  ]
+}

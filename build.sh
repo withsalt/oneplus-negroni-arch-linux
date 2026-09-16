@@ -17,6 +17,11 @@ else
     image_dir=images
     log_dir=logs
 fi
+pin=$(git ls-files --stage linux | awk '$1 == "160000" { print $2 }')
+if ! git -C linux merge-base --is-ancestor "$pin" HEAD; then
+    echo 'The kernel checkout lacks the pinned fixes. Run bash scripts/init-submodules.sh first.' >&2
+    exit 1
+fi
 # Let Kbuild check changed sources even when a previous build completed.
 bash scripts/build-kernel.sh
 if [[ ! -f "$log_dir/rootfs.packages-complete" ]]; then
@@ -39,6 +44,10 @@ fi
 if [[ ! -f "$log_dir/screen-defaults-sources.sha256" ]] ||
    ! sha256sum --check --status "$log_dir/screen-defaults-sources.sha256"; then
     sudo env IMAGE_DIR="$image_dir" LOG_DIR="$log_dir" bash scripts/update-screen-defaults-image.sh
+fi
+if [[ ! -f "$log_dir/cpu-performance-sources.sha256" ]] ||
+   ! sha256sum --check --status "$log_dir/cpu-performance-sources.sha256"; then
+    sudo env IMAGE_DIR="$image_dir" LOG_DIR="$log_dir" bash scripts/update-cpu-performance-image.sh
 fi
 if ! cmp -s config/packages/common-tools.txt "$log_dir/common-tools.list"; then
     sudo env IMAGE_DIR="$image_dir" LOG_DIR="$log_dir" bash scripts/install-common-tools-image.sh

@@ -66,6 +66,14 @@ if kernel_patch.exists():
     }
 charge_verification = log_directory / "charge-limit-verification.json"
 screen_verification = log_directory / "screen-defaults-verification.json"
+cpu_verification = log_directory / "cpu-performance-verification.json"
+capacity_verification = log_directory / "cpu-capacity-verification.json"
+report["validation"]["cpu_performance_configuration"] = cpu_verification.exists()
+report["validation"]["cpu_capacity_device_tree"] = capacity_verification.exists()
+if cpu_verification.exists():
+    report["cpu_performance"] = json.loads(cpu_verification.read_text())
+if capacity_verification.exists():
+    report["cpu_capacity"] = json.loads(capacity_verification.read_text())
 report["validation"]["screen_defaults_configuration"] = screen_verification.exists()
 if screen_verification.exists():
     report["screen_defaults"] = json.loads(screen_verification.read_text())

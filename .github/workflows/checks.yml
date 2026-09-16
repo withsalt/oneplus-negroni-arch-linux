@@ -29,7 +29,14 @@ jobs:
         run: bash scripts/check.sh --with-kernel
       - name: Install CPU device-tree build tools
         run: sudo apt-get update && sudo apt-get install -y device-tree-compiler mkbootimg
-      - name: Rebuild and verify optional CPU device-tree images
+      - name: Verify CPU defaults in fresh and existing rootfs images
+        run: sudo python3 -B tests/test-cpu-performance-image.py
+      - name: Rebuild CPU device-tree reference images
         run: python3 scripts/build-cpu-performance-dtb.py --output "$RUNNER_TEMP/cpu-performance"
+      - name: Build and check the pinned kernel CPU device tree
+        run: |
+          make -C linux O=output ARCH=arm64 defconfig
+          make -C linux O=output ARCH=arm64 qcom/sm8450-oneplus-negroni.dtb
+          python3 scripts/verify-cpu-performance-dtb.py linux/output/arch/arm64/boot/dts/qcom/sm8450-oneplus-negroni.dtb "$RUNNER_TEMP/cpu-performance"
       - name: Check patch whitespace
         run: git diff --check HEAD^ HEAD

@@ -12,6 +12,8 @@ if [[ ! -f output/.config ]]; then
     make "${make_args[@]}" -j"$(nproc)" sm8450.config
 fi
 make "${make_args[@]}" -j"${JOBS:-8}"
+python3 "$project_dir/scripts/verify-cpu-performance-dtb.py" \
+    output/arch/arm64/boot/dts/qcom/sm8450-oneplus-negroni.dtb "$project_dir/$log_dir"
 make "${make_args[@]}" INSTALL_MOD_PATH=out-modules modules_install
 make -s "${make_args[@]}" kernelrelease > "$project_dir/$log_dir/kernel-release.txt"
 git rev-parse HEAD > "$project_dir/$log_dir/kernel-commit.txt"

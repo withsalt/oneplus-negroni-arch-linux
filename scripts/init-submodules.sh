@@ -35,6 +35,11 @@ git submodule absorbgitdirs linux
 git submodule update --init --no-fetch linux
 if ! git -C linux show-ref --verify --quiet refs/heads/7.3-rc2; then
     git -C linux branch 7.3-rc2 "$pin"
+elif [[ $(git -C linux rev-parse 7.3-rc2) != "$pin" ]] &&
+     git -C linux merge-base --is-ancestor 7.3-rc2 "$pin"; then
+    # submodule update detached HEAD at the pin; advance an older local build
+    # branch so build.sh cannot switch back to the previous bundled kernel.
+    git -C linux branch -f 7.3-rc2 "$pin"
 fi
 if [[ $(git -C linux rev-parse 7.3-rc2) == "$pin" ]]; then
     git -C linux checkout 7.3-rc2

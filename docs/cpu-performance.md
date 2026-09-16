@@ -6,12 +6,42 @@
 
 | 部分 | 改动 | 生效方式 |
 | --- | --- | --- |
-| CPU 性能服务 | 开启硬件已有 Boost，三组 CPU 使用 `performance`，频率上限取硬件支持值 | 启动服务立即生效，可开机自启 |
-| 大小核设备树 | 补充 8 核的 `capacity-dmips-mhz` 和 `dynamic-power-coefficient` | 更新 `vendor_boot_a` 后重启 |
+| CPU 性能服务 | 开启硬件已有 Boost，三组 CPU 使用 `performance`，频率上限取硬件支持值 | 固件默认安装并开机自启，停止服务可恢复 |
+| 大小核设备树 | 补充 8 核的 `capacity-dmips-mhz` 和 `dynamic-power-coefficient` | 默认内核包含修复，刷入新的 vendor_boot 后生效 |
 
 修复后的能力值为 **小核 276、大核 849、超大核 1024**；原配置错误地把全部核心标为 1024。超大核频率上限从 2.8416 GHz 提高到 2.9952 GHz，但硬件/固件仍可能限制实际频率。实测全核负载主要为 1.7856 / 2.4192 / 2.8416 GHz。热保护继续生效；性能模式可能增加待机耗电。
 
-以下步骤复现已验证的现场优化。常规 `./build.sh 7.3-rc2` **尚未默认集成**这两项变更；重刷旧 `vendor_boot.img` 会覆盖设备树修复，重刷 rootfs 会覆盖现场安装的性能服务。没有对 Android 原厂系统、其他槽位布局或其他 NE221x 型号进行验证。固件升级历史与 bootloader 条件沿用[刷机说明](flashing.md#必须先核对的条件)。
+常规 `./build.sh 7.3-rc2` **默认集成并启用**这两项变更。新固件无需再通过 SSH 手动安装服务或单独打补丁。没有对 Android 原厂系统、其他槽位布局或其他 NE221x 型号进行验证。固件升级历史与 bootloader 条件沿用[刷机说明](flashing.md#必须先核对的条件)。
+
+## 默认固件构建与续建
+
+从当前仓库构建时执行：
+
+```sh
+bash scripts/init-submodules.sh
+./build.sh 7.3-rc2
+```
+
+固定内核为 `05e876f60a304a400bc1b44da2de3b155c2bc829`，已经包含本设备树修复。三个未发布到内核远端的提交均保存在仓库 Git bundle；初始化脚本会将落后的 `7.3-rc2` 分支快进到固定版本。构建入口拒绝缺少固定修复的旧内核。
+
+- 全新 rootfs：`finalize-rootfs.sh` 调用 `configure-cpu-performance.sh` 安装 helper / unit，并在镜像内启用 `multi-user.target.wants` 链接；构建期间不运行手机性能策略。
+- 已有镜像：`build.sh` 检测 CPU 配置/脚本指纹缺失或变化时，调用 `update-cpu-performance-image.sh` 补装并启用服务，使旧封装标记失效。内核产物指纹包含 DTB，设备树变化也会触发镜像更新。
+- 打包门槛：必须检查 rootfs 中 helper / unit 与源码一致、root 所有权和权限正确、自启链接存在，以及 DTB 中全部 16 个 CPU 参数正确。结果写入 `build-result.json` 的 `cpu_performance`、`cpu_capacity` 及 `validation`。
+
+产物仍在 `images/7.3-rc2/`。首次或完整重刷按项目[刷机说明](flashing.md)使用配套 rootfs 和 vendor_boot。已有系统只需更新设备树及服务时，可以继续采用下方独立部署流程。重刷优化之前保存的旧镜像仍会撤销相应变更。
+
+手动刷新已有 rootfs 的 CPU 服务（需先构建含修复的内核，最终打包会检查 DTB）：
+
+```sh
+sudo env IMAGE_DIR=images/7.3-rc2 LOG_DIR=logs/7.3-rc2 bash scripts/update-cpu-performance-image.sh
+IMAGE_DIR=images/7.3-rc2 LOG_DIR=logs/7.3-rc2 bash scripts/pack-images.sh
+```
+
+独立服务可以随时 `disable --now`，但后续配置源文件变化所触发的镜像更新会重新应用默认启用策略。CPU 温控及硬件保护仍保留。
+
+2026-09-16 已完成默认内核增量构建、干净目录的 Kbuild DTB 编译、Git bundle 恢复、4 项 rootfs 安装/拒绝测试、完整镜像封装与 sparse 往返校验，并成功执行常规 `./build.sh 7.3-rc2` 续建。本地 `images/7.3-rc2/` 已更新为默认启用版本，原产物保存在 `logs/7.3-rc2/pre-cpu-defaults/`。因宿主 sudo 需交互认证，本次用已验证的安装器在 user namespace 中生成配置，再以 debugfs 更新镜像副本；挂载式镜像更新脚本未在此主机实际运行。新完整镜像未再次刷入手机，手机已验证的现场服务和 DTB 与新镜像对应文件相同。[校验与产物摘要](../artifacts/cpu-performance-20260916/default-build.json)
+
+以下独立步骤用于复现现场部署和恢复旧设备树，不是新固件启用性能所必需的步骤。
 
 ## 1. 构建主机：从固定源码生成镜像
 

@@ -26,9 +26,9 @@ bash scripts/init-submodules.sh
 git submodule status
 ```
 
-已经克隆时，从初始化脚本开始即可。脚本按父仓库固定提交恢复 `linux/`、`tools/avb/` 和 `tools/msm-firmware-loader/`；内核的两个本地提交通过 [Git bundle](../patches/linux/README.md) 恢复。若 `linux/` 有未提交改动，脚本会停止，需先保存改动。
+已经克隆时，从初始化脚本开始即可。脚本按父仓库固定提交恢复 `linux/`、`tools/avb/` 和 `tools/msm-firmware-loader/`；内核的三个本地提交通过 [Git bundle](../patches/linux/README.md) 恢复。若 `linux/` 有未提交改动，脚本会停止，需先保存改动。
 
-预期内核 HEAD 为 `2c092365fd5c72efcedc29a578601b0a41ce45c4`。不要使用 `git submodule update --remote` 替代固定版本初始化。
+预期内核 HEAD 为 `05e876f60a304a400bc1b44da2de3b155c2bc829`。不要使用 `git submodule update --remote` 替代固定版本初始化。
 
 ## 3. 下载 rootfs
 
@@ -81,13 +81,13 @@ PY
 
 构建依次完成：
 
-1. 使用 `defconfig` 与 `sm8450.config` 编译内核、DTB 和模块。
+1. 使用 `defconfig` 与 `sm8450.config` 编译内核、DTB 和模块；强制核对 8 核能力及功耗参数。
 2. 创建 `alarm/` 构建 chroot 与 `images/7.3-rc2/root.img`，安装系统和 Plasma Mobile。
-3. 配置账号、SDDM、SSH、GPU 服务、屏幕默认设置、默认关闭的充电限制和 initramfs。
-4. 更新有变化的内核产物、充电服务、屏幕默认设置和常用工具。
+3. 配置账号、SDDM、SSH、GPU 服务、默认启用的 CPU 性能服务、屏幕默认设置、默认关闭的充电限制和 initramfs。
+4. 更新有变化的内核产物、CPU / 充电服务、屏幕默认设置和常用工具。
 5. 封装 Android 镜像，检查 ext4、sparse 往返、启动镜像内容并生成 SHA-256 与构建报告。
 
-中断后可重新执行同一命令。各阶段使用 `logs/7.3-rc2/` 下的完成标记；每次仍会运行增量 Kbuild，内核、充电配置或屏幕默认设置更新会使镜像封装失效并重新生成。SSH、GPU、SDDM 等配置并非全部通过内容指纹自动更新，修改后应按[集成说明](build-integration.md)处理，或在全新工作区构建。
+中断后可重新执行同一命令。各阶段使用 `logs/7.3-rc2/` 下的完成标记；每次仍会运行增量 Kbuild，内核、CPU / 充电配置或屏幕默认设置更新会使镜像封装失效并重新生成。SSH、GPU、SDDM 等配置并非全部通过内容指纹自动更新，修改后应按[集成说明](build-integration.md)处理，或在全新工作区构建。
 
 镜像和日志按分支分目录，**`linux/output/` 与 `alarm/` 仍共享**。切换其他内核分支请使用独立克隆与构建输出；不要同时运行多个构建，也不要将删除完成标记当成无条件安全的重建方式。无参数 `./build.sh` 使用 `images/` 和 `logs/`，建议始终明确传入 `7.3-rc2`。
 
@@ -108,4 +108,4 @@ python3 -m json.tool logs/7.3-rc2/build-result.json
 | `images/7.3-rc2/root.img` | 5 GiB 原始 ext4 根文件系统 |
 | `logs/7.3-rc2/build-result.json` | 内核提交、配置、验证结果与镜像大小/哈希 |
 
-脚本不会自动刷写手机。构建和离线检查通过后，继续阅读[刷机说明](flashing.md)。
+脚本不会自动刷写手机。构建和离线检查通过后，继续阅读[刷机说明](flashing.md)。CPU Boost / performance 与大小核调度修复默认随新固件生效，启停及旧镜像续建见 [CPU 性能说明](cpu-performance.md)。
