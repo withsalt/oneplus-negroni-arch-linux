@@ -4,25 +4,47 @@
 
 基于 [postmarketOS 设备 Wiki](https://wiki.postmarketos.org/wiki/OnePlus_10_Pro_%28oneplus-negroni%29) 的 Arch Linux ARM / XEC 方案，使用 `7.3-rc2` 内核。本仓库维护构建工具与设备配置；Linux、AVB 和固件加载工具以固定提交的 Git 子模块管理。
 
-> 项目处于实验阶段。当前含充电限制的完整镜像已通过本地构建与离线检查，尚未真机启动验证。刷入 rootfs 会覆盖 `userdata`，操作前请阅读[刷机说明](docs/flashing.md)，特别是固件升级历史与 qbootctl 的限制。
+## 优化项目
 
-## 功能与状态
+### 充电限制
 
-以下状态截至 **2026-09-16**；详细依据见[设备状态](docs/status.md)。
+集成可选的电池充电限制，镜像默认关闭。启用后，电量达到 **80%** 时请求停充，降到 **75%** 时允许恢复充电；两者之间保持上一状态，首次启用时在此区间先停充。停充保留 USB 输入通路，不主动将电池放电到目标电量。
 
-| 功能 | 当前状态 |
+在手机上执行：
+
+```sh
+sudo systemctl start negroni-charge-limit.service          # 仅本次启动
+sudo systemctl enable --now negroni-charge-limit.service   # 启动并设置开机自启
+sudo systemctl disable --now negroni-charge-limit.service  # 停止限制并取消自启
+```
+
+按需选择上述命令。阈值可在 `/etc/negroni-charge-limit.conf` 中通过 `START_THRESHOLD` 和 `END_THRESHOLD` 修改，修改后重启服务生效。停止服务会解除本策略的停充要求，充电仍受固件温控等条件约束。
+
+已修复服务启动一直等待的问题；实机两次启动均不到 1 秒，看门狗通知正常。USB PD、电池 88% 时，启用后电池报告电流为 0，停止后恢复充电，USB 输入持续在线。自然跨越 75% / 80% 阈值、长期直供、SuperVOOC 和无线充电仍待验证。配置、状态查询与验证详情见[充电限制说明](docs/charge-limit.md)。
+
+### 电源策略
+
+插电、电池和低电量三种模式统一预置以下空闲策略：
+
+| 项目 | 默认策略 |
 | --- | --- |
-| 内核、DTB、模块、rootfs、启动镜像 | 完整构建与离线校验通过 |
-| Plasma Mobile / SDDM 虚拟键盘 | 修复已集成；7.2 实机确认可输入，7.3-rc2 待单独记录 |
-| 默认 SSH | 早期 7.3-rc2 镜像已在实机确认生效 |
-| 电池充电状态 | 电流符号修复已通过实机拔插验证 |
-| 熄屏后慢亮屏 | GPU runtime PM 规避服务已部署，并集成到镜像 |
-| 屏幕默认设置 | 调暗关闭、5 分钟熄屏、自动休眠关闭；构建集成及本地镜像校验通过，待真机验证 |
-| 常用命令行工具 | 已集成并在本地镜像内检查 |
-| CPU 性能与大小核调度 | 默认启用 Boost / performance，大小核能力修复已进入固定内核；现场配置已重启验证，见[构建与恢复](docs/cpu-performance.md) |
-| 75% / 80% 充电限制 | 默认关闭；构建和逻辑测试通过，待真机验证 |
-| USB2 / OTG | 存在 Hub 断连问题，保留诊断记录 |
-| 音频、相机、GPS | 尚无本机恢复可用的验证记录 |
+| 空闲调暗 | 关闭 |
+| 空闲熄屏 | 5 分钟 |
+| 空闲自动休眠 | 关闭 |
+| GPU 电源管理 | 默认启用 `gpu-runtime-active.service`，保持 GPU 处于 active，规避熄屏后慢亮屏；可能增加待机耗电 |
+| 充电限制运行期间 | 阻止系统挂起与休眠，保证持续监测电量；熄屏和 CPU idle 仍可用，停止服务后解除此限制 |
+
+屏幕与休眠配置安装到 `/etc/xdg/powerdevilrc`，可在系统设置中修改，已有用户配置优先。锁屏后的独立熄屏时间沿用上游默认值（当前为 60 秒），手动电源键及低电量临界保护不受上述空闲默认值影响。详见[屏幕与休眠默认设置](docs/screen-defaults.md)和 [GPU 唤醒诊断](artifacts/wake-latency-20260916/)。
+
+### 其他已集成优化
+
+| 项目 | 改进 |
+| --- | --- |
+| 电池状态显示 | 修正 Negroni 电池电流符号，改善充放电状态判断；已通过实机拔插验证 |
+| 登录界面虚拟键盘 | 配置 SDDM / KWin 使用 Plasma Keyboard 和 layer-shell，修复触屏登录输入问题 |
+| 远程维护 | 默认启用 SSH，允许 `oneplus` 密码或公钥登录，禁止 root 和空密码登录，首次启动生成主机密钥 |
+| 常用工具 | 预装 nano、curl、wget、htop、rsync、git、tmux、ripgrep 等 19 项[命令行工具](config/packages/common-tools.txt) |
+| 构建与校验 | 通过源码和产物指纹识别需要更新的镜像，核对内核模块及配置，检查 ext4、启动镜像、sparse 往返和 SHA-256 |
 
 ## 从这里开始
 
