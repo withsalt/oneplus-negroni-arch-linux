@@ -6,6 +6,7 @@ log_dir=${LOG_DIR:-logs}
 [[ -f "$log_dir/kernel.complete" && -f "$log_dir/rootfs.complete" ]]
 mkdir -p "$image_dir" "$log_dir"
 exec > >(tee "$log_dir/image-pack.log") 2>&1
+python3 scripts/verify-screen-defaults-image.py "$image_dir" "$log_dir"
 if [[ -f "$log_dir/charge-limit-config.complete" ]]; then
     python3 scripts/verify-charge-limit-image.py "$image_dir" "$log_dir"
 fi

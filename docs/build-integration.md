@@ -2,6 +2,8 @@
 
 首次构建请先读[构建指南](building.md)。下文解释脚本接入方式；带日期的实机与镜像结果为历史记录，本地 `logs/` 不随 Git 分发。
 
+屏幕默认设置已接入全新 rootfs 与已有镜像续建：降低亮度时间关闭、关闭屏幕时间 5 分钟、休眠时间关闭，三种供电模式一致。`finalize-rootfs.sh` 安装 `/etc/xdg/powerdevilrc`；`build.sh` 根据配置及脚本的内容指纹调用 `update-screen-defaults-image.sh`，更新后重新打包。`pack-images.sh` 强制检查镜像内配置与源文件一致、权限正确，并把配置值写入构建报告。用户已有设置优先；锁屏后的独立熄屏计时沿用上游默认值。配置键、验证范围与单独更新命令见[屏幕默认设置](screen-defaults.md)。
+
 充电限制已同时接入全新 rootfs 与已有镜像续建：`prepare-rootfs.sh` 显式安装 Python，`finalize-rootfs.sh` 安装服务与默认配置；`build.sh` 每次运行增量 Kbuild，并用内核产物指纹、服务源文件校验值判断是否调用 `update-kernel-image.sh`。更新会复制模块、内核并重建 initramfs，再使旧的封装完成标记失效。每次构建安装后服务均为 `disabled`，默认开始 75%、停止 80%。
 
 2026-09-16 的产物统一在 `images/7.3-rc2/`，日志在 `logs/7.3-rc2/`，未刷入手机。`pack-images.sh` 会检查镜像中的驱动、配置、服务内容与默认关闭状态；构建报告记录内核提交及充电配置。内核改动已提交到本地 `7.3-rc2` 分支的 `2c092365fd5c`；配套服务、配置、构建脚本和文档已纳入本父仓库，`linux/` 作为固定提交的子模块，未推送提交另有 [Git bundle](../patches/linux/README.md) 备份。使用方式、实现边界和迁移源码说明见 [充电限制说明](charge-limit.md)。

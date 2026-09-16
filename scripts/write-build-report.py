@@ -65,6 +65,10 @@ if kernel_patch.exists():
         "sha256": hashlib.sha256(kernel_patch.read_bytes()).hexdigest(),
     }
 charge_verification = log_directory / "charge-limit-verification.json"
+screen_verification = log_directory / "screen-defaults-verification.json"
+report["validation"]["screen_defaults_configuration"] = screen_verification.exists()
+if screen_verification.exists():
+    report["screen_defaults"] = json.loads(screen_verification.read_text())
 if (log_directory / "charge-limit-config.complete").exists():
     report["charge_limit"] = {
         "service": "negroni-charge-limit.service",

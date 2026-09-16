@@ -1,0 +1,29 @@
+# Plasma 6 system defaults. User settings may override these values.
+# Timeouts are in seconds; zero disables automatic suspend in the mobile UI.
+
+[AC][Display]
+DimDisplayWhenIdle=false
+DimDisplayIdleTimeoutSec=0
+TurnOffDisplayWhenIdle=true
+TurnOffDisplayIdleTimeoutSec=300
+
+[AC][SuspendAndShutdown]
+AutoSuspendIdleTimeoutSec=0
+
+[Battery][Display]
+DimDisplayWhenIdle=false
+DimDisplayIdleTimeoutSec=0
+TurnOffDisplayWhenIdle=true
+TurnOffDisplayIdleTimeoutSec=300
+
+[Battery][SuspendAndShutdown]
+AutoSuspendIdleTimeoutSec=0
+
+[LowBattery][Display]
+DimDisplayWhenIdle=false
+DimDisplayIdleTimeoutSec=0
+TurnOffDisplayWhenIdle=true
+TurnOffDisplayIdleTimeoutSec=300
+
+[LowBattery][SuspendAndShutdown]
+AutoSuspendIdleTimeoutSec=0

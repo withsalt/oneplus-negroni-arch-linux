@@ -36,6 +36,10 @@ fi
 if [[ ! -f "$log_dir/gpu-runtime-pm.complete" ]]; then
     sudo env IMAGE_DIR="$image_dir" LOG_DIR="$log_dir" bash scripts/enable-gpu-runtime-active-image.sh
 fi
+if [[ ! -f "$log_dir/screen-defaults-sources.sha256" ]] ||
+   ! sha256sum --check --status "$log_dir/screen-defaults-sources.sha256"; then
+    sudo env IMAGE_DIR="$image_dir" LOG_DIR="$log_dir" bash scripts/update-screen-defaults-image.sh
+fi
 if ! cmp -s config/packages/common-tools.txt "$log_dir/common-tools.list"; then
     sudo env IMAGE_DIR="$image_dir" LOG_DIR="$log_dir" bash scripts/install-common-tools-image.sh
 fi
