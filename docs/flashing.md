@@ -34,7 +34,7 @@ Wiki 和[上游 issue #4](https://github.com/linux-msm/qbootctl/issues/4)警告�
 
 ## 产物与分区
 
-所有产物来自同一次构建，位于本地 `images/7.3-rc2/`。大小与哈希以该次 `SHA256SUMS` 和 `logs/7.3-rc2/build-result.json` 为准，不使用历史文档中的固定哈希。
+所有产物来自同一次构建，当前分支的输出目录为本地 `images/7.3/`。大小与哈希以该次 `SHA256SUMS` 和 `logs/7.3/build-result.json` 为准，不使用历史文档中的固定哈希。
 
 | 文件 | 写入分区 / 用途 |
 | --- | --- |
@@ -55,7 +55,7 @@ Wiki 和[上游 issue #4](https://github.com/linux-msm/qbootctl/issues/4)警告�
 以下命令从项目根目录执行，主机需已安装 `adb`、`fastboot`：
 
 ```sh
-(cd images/7.3-rc2 && sha256sum -c SHA256SUMS)
+(cd images/7.3 && sha256sum -c SHA256SUMS)
 ```
 
 结果必须全部为 `OK`。重新生成或修改镜像后需使用新的校验清单。
@@ -109,23 +109,23 @@ DEVICE_SERIAL='填写已核实的 fastboot 序列号'
 EXPECTED_SLOT='填写已核实的当前槽位 a 或 b'
 case "$EXPECTED_SLOT" in a|b) ;; *) echo '必须先填写已核实的槽位'; exit 1 ;; esac
 
-(cd images/7.3-rc2 && sha256sum -c SHA256SUMS)
+(cd images/7.3 && sha256sum -c SHA256SUMS)
 slot_report=$(fastboot -s "$DEVICE_SERIAL" getvar current-slot 2>&1)
 printf '%s\n' "$slot_report"
 actual_slot=$(printf '%s\n' "$slot_report" | sed -nE 's/.*current-slot:[[:space:]]*([ab])[[:space:]]*$/\1/p')
 [[ "$actual_slot" == "$EXPECTED_SLOT" ]] || { echo '当前槽位与记录不一致，停止'; exit 1; }
 
 fastboot -s "$DEVICE_SERIAL" erase dtbo
-fastboot -s "$DEVICE_SERIAL" flash vbmeta images/7.3-rc2/vbmeta.img
-fastboot -s "$DEVICE_SERIAL" flash vbmeta_vendor images/7.3-rc2/vbmeta.img
-fastboot -s "$DEVICE_SERIAL" flash vbmeta_system images/7.3-rc2/vbmeta.img
-fastboot -s "$DEVICE_SERIAL" flash vendor_boot images/7.3-rc2/vendor_boot.img
-fastboot -s "$DEVICE_SERIAL" flash recovery images/7.3-rc2/recovery.img
-fastboot -s "$DEVICE_SERIAL" flash boot images/7.3-rc2/boot.img
+fastboot -s "$DEVICE_SERIAL" flash vbmeta images/7.3/vbmeta.img
+fastboot -s "$DEVICE_SERIAL" flash vbmeta_vendor images/7.3/vbmeta.img
+fastboot -s "$DEVICE_SERIAL" flash vbmeta_system images/7.3/vbmeta.img
+fastboot -s "$DEVICE_SERIAL" flash vendor_boot images/7.3/vendor_boot.img
+fastboot -s "$DEVICE_SERIAL" flash recovery images/7.3/recovery.img
+fastboot -s "$DEVICE_SERIAL" flash boot images/7.3/boot.img
 
 # 清除现有 userdata，再写入 Linux 根文件系统。
 fastboot -s "$DEVICE_SERIAL" erase userdata
-fastboot -s "$DEVICE_SERIAL" flash userdata images/7.3-rc2/sparse_root.img
+fastboot -s "$DEVICE_SERIAL" flash userdata images/7.3/sparse_root.img
 ```
 
 每条命令均需成功；出现 USB 传输失败、分区不存在或容量不足时，停在 fastboot 保留输出并排查。全部成功后，再单独执行：

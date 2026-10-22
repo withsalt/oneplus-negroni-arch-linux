@@ -7,7 +7,7 @@
 | 内容 | 许可依据与来源 |
 | --- | --- |
 | Linux 子模块与内核补丁 | [Linux 子模块](../linux)中的 `COPYING`、`LICENSES/` 和每个文件的 SPDX 声明 |
-| `patches/linux/local-7.3-rc2.bundle` | 保存内核 Git 提交，导入后保留原有版权和 SPDX 信息；见[提交说明](../patches/linux/README.md) |
+| `patches/linux/local-7.3.bundle`、`local-7.3-rc2.bundle` | 保存内核 Git 提交，导入后保留原有版权和 SPDX 信息；见[提交说明](../patches/linux/README.md) |
 | AVB 工具 | [AVB 子模块](../tools/avb)中的 `LICENSE` 和各组件许可声明 |
 | 固件加载工具 | [msm-firmware-loader 子模块](../tools/msm-firmware-loader)中的 `LICENSE` |
 | 调研目录中的上游源码快照 | 各源文件许可头，以及对应报告和 `sources.json` 的来源记录 |

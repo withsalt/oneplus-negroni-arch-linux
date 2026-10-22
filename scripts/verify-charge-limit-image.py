@@ -35,6 +35,8 @@ files = {
     f"/etc/systemd/system/{service}": f"config/systemd/{service}",
     f"/usr/lib/modules/{release}/kernel/drivers/power/supply/qcom_battmgr.ko":
         "linux/output/drivers/power/supply/qcom_battmgr.ko",
+    f"/usr/lib/modules/{release}/kernel/drivers/power/supply/oplus_battmgr.ko":
+        "linux/output/drivers/power/supply/oplus_battmgr.ko",
     "/boot/Image.gz": "linux/output/arch/arm64/boot/Image.gz",
 }
 checksums = {}

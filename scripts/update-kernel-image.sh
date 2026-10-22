@@ -39,7 +39,9 @@ bash "$project_dir/scripts/configure-charge-limit.sh" "$target_dir" "$project_di
 chroot "$target_dir" mkinitcpio -k "$release" -g /boot/initramfs-linux.img
 cp "$target_dir/boot/initramfs-linux.img" "$image_dir/initramfs-linux.img"
 chroot "$target_dir" lsinitcpio /boot/initramfs-linux.img > "$log_dir/initramfs-contents.txt"
-cmp linux/output/drivers/power/supply/qcom_battmgr.ko "$target_dir/usr/lib/modules/$release/kernel/drivers/power/supply/qcom_battmgr.ko"
+for module in qcom_battmgr oplus_battmgr; do
+    cmp "linux/output/drivers/power/supply/$module.ko" "$target_dir/usr/lib/modules/$release/kernel/drivers/power/supply/$module.ko"
+done
 chroot "$target_dir" /usr/bin/python3 -c 'compile(open("/usr/local/libexec/negroni-charge-limit").read(), "negroni-charge-limit", "exec")'
 chroot "$target_dir" systemctl list-unit-files --state=enabled --no-pager > "$log_dir/rootfs-enabled-services.txt"
 sync

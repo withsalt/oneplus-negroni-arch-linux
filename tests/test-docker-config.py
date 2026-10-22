@@ -27,6 +27,7 @@ class DockerConfigTests(unittest.TestCase):
     def test_fresh_configuration_and_repeat_build(self):
         run("bash", CONFIGURE, self.output)
         config = (self.output / ".config").read_bytes()
+        self.assertIn(b"CONFIG_BATTERY_OPLUS_BATTMGR=m\n", config)
         run("bash", CONFIGURE, self.output)
         self.assertEqual(config, (self.output / ".config").read_bytes())
 
@@ -42,7 +43,10 @@ class DockerConfigTests(unittest.TestCase):
         self.assertIn("CONFIG_NETFILTER_XT_TARGET_MASQUERADE", before.stderr)
         run("bash", PROJECT / "linux/scripts/config", "--file", self.output / ".config",
             "--set-str", "LOCALVERSION", "-sm8450-preserve-custom-setting")
+        run("bash", PROJECT / "linux/scripts/config", "--file", self.output / ".config",
+            "--disable", "BATTERY_OPLUS_BATTMGR")
         run("bash", CONFIGURE, self.output)
+        self.assertIn("CONFIG_BATTERY_OPLUS_BATTMGR=m\n", (self.output / ".config").read_text())
         self.assertIn('CONFIG_LOCALVERSION="-sm8450-preserve-custom-setting"',
                       (self.output / ".config").read_text())
 

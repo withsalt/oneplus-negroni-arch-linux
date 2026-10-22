@@ -33,10 +33,11 @@ jobs:
         run: sudo python3 -B tests/test-cpu-performance-image.py
       - name: Rebuild CPU device-tree reference images
         run: python3 scripts/build-cpu-performance-dtb.py --output "$RUNNER_TEMP/cpu-performance"
-      - name: Build and check the pinned kernel CPU device tree
+      - name: Build and check the pinned kernel battery drivers and CPU device tree
         run: |
-          make -C linux O=output ARCH=arm64 defconfig
-          make -C linux O=output ARCH=arm64 qcom/sm8450-oneplus-negroni.dtb
+          make -C linux O=output ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- defconfig
+          make -C linux O=output ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- sm8450.config
+          make -C linux O=output ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- -j2 drivers/power/supply/qcom_battmgr.o drivers/power/supply/oplus_battmgr.o qcom/sm8450-oneplus-negroni.dtb
           python3 scripts/verify-cpu-performance-dtb.py linux/output/arch/arm64/boot/dts/qcom/sm8450-oneplus-negroni.dtb "$RUNNER_TEMP/cpu-performance"
       - name: Check patch whitespace
         run: git diff --check HEAD^ HEAD

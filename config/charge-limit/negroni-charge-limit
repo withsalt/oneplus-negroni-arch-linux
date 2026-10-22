@@ -10,7 +10,7 @@ import sys
 import threading
 import time
 
-BATTERY = Path("/sys/class/power_supply/qcom-battmgr-bat")
+BATTERY = Path("/sys/class/power_supply/battery")
 CONFIG = Path("/etc/negroni-charge-limit.conf")
 
 

@@ -1,7 +1,7 @@
 [submodule "linux"]
 	path = linux
 	url = https://github.com/withsalt/linux.git
-	branch = 7.3-rc2
+	branch = 7.3
 [submodule "tools/avb"]
 	path = tools/avb
 	url = https://android.googlesource.com/platform/external/avb

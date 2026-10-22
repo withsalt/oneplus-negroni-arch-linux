@@ -13,6 +13,6 @@ if [[ ! -f "$output_dir/.config" ]]; then
     make "${make_args[@]}" sm8450.config
 fi
 KCONFIG_CONFIG="$output_dir/.config" bash scripts/kconfig/merge_config.sh \
-    -m -O "$output_dir" "$output_dir/.config" "$project_dir/config/kernel/docker.config"
+    -m -O "$output_dir" "$output_dir/.config" "$project_dir/config/kernel/negroni.config" "$project_dir/config/kernel/docker.config"
 make "${make_args[@]}" olddefconfig
 python3 "$project_dir/scripts/verify-docker-kernel.py" --config-only "$output_dir/.config"

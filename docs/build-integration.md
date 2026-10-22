@@ -2,9 +2,11 @@
 
 首次构建请先读[构建指南](building.md)。下文解释脚本接入方式；带日期的实机与镜像结果为历史记录，本地 `logs/` 不随 Git 分发。
 
+每次构建先补齐 `config/kernel/negroni.config` 中的 Oplus 电池模块，覆盖全新配置和旧配置续建。
+
 Docker 内核支持已接入每次构建：`configure-docker-kernel.sh` 在基础配置上合并 `config/kernel/docker.config`，随后运行 `olddefconfig` 和必需项检查。已有 `.config` 同样会更新。正常 Kbuild 生成的 nftables 兼容、IPv4/IPv6 FIB 和 NAT 模块通过内核产物指纹进入 rootfs；打包前核对镜像内核、模块哈希、依赖索引和自动加载别名，结果写入构建报告。镜像中的 Docker 软件按需安装，见[Docker 内核支持](docker.md)。
 
-CPU 性能与调度已默认集成：固定内核 `05e876f60a304` 包含 8 核能力和功耗模型；全新 rootfs 通过 `configure-cpu-performance.sh` 安装并启用 Boost / performance 服务。已有 rootfs 通过源文件指纹触发 `update-cpu-performance-image.sh`，补装服务并重新打包。构建及封装阶段分别检查 DTB 参数、镜像文件和开机链接，构建报告记录结果。详见 [CPU 默认构建与恢复](cpu-performance.md#默认固件构建与续建)。
+CPU 性能与调度已默认集成：固定内核 `7.3`（`2c66a117babf`） 包含 8 核能力和功耗模型；全新 rootfs 通过 `configure-cpu-performance.sh` 安装并启用 Boost / performance 服务。已有 rootfs 通过源文件指纹触发 `update-cpu-performance-image.sh`，补装服务并重新打包。构建及封装阶段分别检查 DTB 参数、镜像文件和开机链接，构建报告记录结果。详见 [CPU 默认构建与恢复](cpu-performance.md#默认固件构建与续建)。
 
 屏幕默认设置已接入全新 rootfs 与已有镜像续建：降低亮度时间关闭、关闭屏幕时间 5 分钟、休眠时间关闭，三种供电模式一致。`finalize-rootfs.sh` 安装 `/etc/xdg/powerdevilrc`；`build.sh` 根据配置及脚本的内容指纹调用 `update-screen-defaults-image.sh`，更新后重新打包。`pack-images.sh` 强制检查镜像内配置与源文件一致、权限正确，并把配置值写入构建报告。用户已有设置优先；锁屏后的独立熄屏计时沿用上游默认值。配置键、验证范围与单独更新命令见[屏幕默认设置](screen-defaults.md)。
 
@@ -12,13 +14,13 @@ CPU 性能与调度已默认集成：固定内核 `05e876f60a304` 包含 8 核�
 
 2026-09-16 的产物统一在 `images/7.3-rc2/`，日志在 `logs/7.3-rc2/`，未刷入手机。`pack-images.sh` 会检查镜像中的驱动、配置、服务内容与默认关闭状态；构建报告记录内核提交及充电配置。内核改动已提交到本地 `7.3-rc2` 分支的 `2c092365fd5c`；配套服务、配置、构建脚本和文档已纳入本父仓库，`linux/` 作为固定提交的子模块，未推送提交另有 [Git bundle](../patches/linux/README.md) 备份。使用方式、实现边界和迁移源码说明见 [充电限制说明](charge-limit.md)。
 
-`build.sh` 支持把内核分支和镜像产物隔离到对应目录。构建 `7.3-rc2`：
+`build.sh` 支持把内核分支和镜像产物隔离到对应目录。构建 `7.3`：
 
 ```sh
-./build.sh 7.3-rc2
+./build.sh 7.3
 ```
 
-产物写入 `images/7.3-rc2/`，日志和校验记录写入 `logs/7.3-rc2/`。脚本通过 `IMAGE_DIR`、`LOG_DIR` 传递目录给各阶段；未指定分支时保留原来的 `images/`、`logs/` 默认路径。
+产物写入 `images/7.3/`，日志和校验记录写入 `logs/7.3/`。脚本通过 `IMAGE_DIR`、`LOG_DIR` 传递目录给各阶段；未指定分支时保留原来的 `images/`、`logs/` 默认路径。
 
 最终 rootfs 的 `/etc/sddm.conf.d/10-mobile.conf` 从 [config/sddm/10-mobile.conf](../config/sddm/10-mobile.conf) 安装，使用 KWin 启动 Plasma Keyboard：清空 `InputMethod`，设置 `GreeterEnvironment=QT_WAYLAND_SHELL_INTEGRATION=layer-shell`，并在 `CompositorCommand` 加入 `--inputmethod /usr/bin/plasma-keyboard`。已有 `rootfs.complete` 的镜像不会自动重装 SDDM 配置；修改此文件后需单独更新镜像或使用全新工作区重建。
 
@@ -37,8 +39,8 @@ ssh oneplus@手机IP
 对已有完整镜像，`build.sh` 检测到缺少 `ssh.complete` 时会调用 `scripts/enable-ssh-image.sh` 补装 OpenSSH，再重新封装镜像、生成 sparse 和 SHA256SUMS，无需重新编译内核。提权时显式传递 `IMAGE_DIR`、`LOG_DIR`，确保处理对应分支目录。也可以手动运行：
 
 ```sh
-sudo env IMAGE_DIR=images/7.3-rc2 LOG_DIR=logs/7.3-rc2 bash scripts/enable-ssh-image.sh
-IMAGE_DIR=images/7.3-rc2 LOG_DIR=logs/7.3-rc2 bash scripts/pack-images.sh
+sudo env IMAGE_DIR=images/7.3 LOG_DIR=logs/7.3 bash scripts/enable-ssh-image.sh
+IMAGE_DIR=images/7.3 LOG_DIR=logs/7.3 bash scripts/pack-images.sh
 ```
 
 2026-09-15 22:33，已将包含键盘修复和默认 SSH 的镜像重新刷入手机并执行重启，见 `logs/flash-7.3-rc2-ssh-2026-09-15-2228/result.json`（本地文件）。用户随后确认“ssh默认生效”，见 `logs/flash-7.3-rc2-ssh-2026-09-15-2228/ssh-hardware-verification.json`（本地文件）。该确认对应添加常用软件前的 617 包镜像。对于其他尚未启用 SSH 的旧系统，也可在手机联网后直接安装并启动 SSH：
@@ -52,13 +54,13 @@ sudo systemctl enable --now sshd
 
 常用软件统一维护在 [config/packages/common-tools.txt](../config/packages/common-tools.txt)：`nano`、`zip`、`unzip`、`curl`、`wget`、`htop`、`rsync`、`git`、`less`、`file`、`tree`、`jq`、`tmux`、`ripgrep`、`fd`、`bash-completion`、`lsof`、`strace`、`which`。`build.sh` 在 SSH 配置之后、打包之前调用 [scripts/install-common-tools-image.sh](../scripts/install-common-tools-image.sh)，为最终 rootfs 安装软件并执行 ARM64/QEMU 检查。
 
-完成后将清单写入 `logs/7.3-rc2/common-tools.list`；它与配置清单一致时续建跳过该阶段，清单改变时重新安装、验证并打包。从清单删除条目不会自动卸载软件。脚本使用现有仓库数据库执行 `pacman -S --needed`，不执行整套系统升级。构建环境和最终镜像均使用 [config/pacman/mirrorlist](../config/pacman/mirrorlist)，优先选择 `de3.mirror.archlinuxarm.org`，加拿大镜像站为备用，保留 TLS 和包签名校验。
+完成后将清单写入 `logs/7.3/common-tools.list`；它与配置清单一致时续建跳过该阶段，清单改变时重新安装、验证并打包。从清单删除条目不会自动卸载软件。脚本使用现有仓库数据库执行 `pacman -S --needed`，不执行整套系统升级。构建环境和最终镜像均使用 [config/pacman/mirrorlist](../config/pacman/mirrorlist)，优先选择 `de3.mirror.archlinuxarm.org`，加拿大镜像站为备用，保留 TLS 和包签名校验。
 
 已有镜像可手动更新：
 
 ```sh
-sudo env IMAGE_DIR=images/7.3-rc2 LOG_DIR=logs/7.3-rc2 bash scripts/install-common-tools-image.sh
-IMAGE_DIR=images/7.3-rc2 LOG_DIR=logs/7.3-rc2 bash scripts/pack-images.sh
+sudo env IMAGE_DIR=images/7.3 LOG_DIR=logs/7.3 bash scripts/install-common-tools-image.sh
+IMAGE_DIR=images/7.3 LOG_DIR=logs/7.3 bash scripts/pack-images.sh
 ```
 
 2026-09-15 22:46，包含常用软件的本地镜像已重新打包至 `images/7.3-rc2/`，rootfs 共 639 个包。19 项常用软件全部存在，ZIP 压缩解压、rsync 复制、JSON 处理、文件搜索和 Git 初始化通过，见 `logs/7.3-rc2/common-tools-verification.json`（本地文件） 和 `logs/7.3-rc2/build-result.json`（本地文件）。本次新增 16 个工具包及 6 个依赖，已有包版本保持不变，只有 `root.img` 和 `sparse_root.img` 的哈希改变。**该软件更新尚未刷入手机，手机仍运行前述已确认 SSH 生效的版本。**

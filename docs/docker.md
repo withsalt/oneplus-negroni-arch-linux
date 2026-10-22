@@ -18,7 +18,7 @@ docker compose version
 从项目根目录运行：
 
 ```sh
-./build.sh 7.3-rc2
+./build.sh 7.3
 ```
 
 [configure-docker-kernel.sh](../scripts/configure-docker-kernel.sh) 在首次生成 `defconfig` 和 `sm8450.config` 后，以及每次已有配置续建时，都合并 [docker.config](../config/kernel/docker.config)，运行 `olddefconfig` 并检查最终配置。自定义内核设置会保留，不需要删除 `.config` 或重新安装 rootfs。
@@ -38,24 +38,24 @@ Kconfig 自动选择共用的 `nft_fib`。构建同时检查现有 namespaces、
 
 所有模块通过正常内核构建安装到 `kernel/` 目录，使用 depmod 索引和内核自动加载别名；不依赖手机临时修复使用的 `updates/docker/` 或手工 modprobe。构建后的模块配置及产物指纹会触发现有 `update-kernel-image.sh`，更新 root.img、重建 initramfs，并重新封装镜像。
 
-本次维持 `7.3.0-rc2-sm8450+` release 名称，但启用 IPv6 FIB 会改变内核符号导出，因此新模块应与本次内核一起使用，不能只按 release 字符串判断二进制兼容性。源码提交保持不变，实际配置和模块哈希写入构建报告。
+2026-09-16 的 Docker 集成使用 `7.3.0-rc2-sm8450+`；当前源码已升级到 `7.3`。模块应与对应内核配套使用，不能只按 release 字符串判断二进制兼容性。实际配置、源码提交和模块哈希写入构建报告。
 
 ## 检查与结果
 
 ```sh
 bash scripts/check.sh --with-kernel
-python3 scripts/verify-docker-kernel.py linux/output logs/7.3-rc2
-python3 scripts/verify-docker-image.py images/7.3-rc2 logs/7.3-rc2
-(cd images/7.3-rc2 && sha256sum -c SHA256SUMS)
+python3 scripts/verify-docker-kernel.py linux/output logs/7.3
+python3 scripts/verify-docker-image.py images/7.3 logs/7.3
+(cd images/7.3 && sha256sum -c SHA256SUMS)
 ```
 
 内核检查验证必需配置、`fib6_lookup` 导出、模块 vermagic、依赖文件和自动加载别名。镜像检查通过 debugfs 提取真实镜像内容，比对内核及模块哈希，再用 `modprobe --show-depends` 离线验证镜像自己的依赖索引；不会向构建主机加载 ARM 模块。旧临时模块覆盖正式模块、依赖缺失或索引过期都会被拒绝。
 
 结果记录到本地：
 
-- `logs/7.3-rc2/docker-kernel-verification.json`
-- `logs/7.3-rc2/docker-image-verification.json`
-- `logs/7.3-rc2/build-result.json` 的 `docker_kernel`、`docker_image` 和对应 `validation` 字段
+- `logs/7.3/docker-kernel-verification.json`
+- `logs/7.3/docker-image-verification.json`
+- `logs/7.3/build-result.json` 的 `docker_kernel`、`docker_image` 和对应 `validation` 字段
 
 回归测试使用固定内核的真实 Kconfig，检查首次配置、重复执行不改变配置、旧配置自动补齐且保留自定义设置，以及缺少网络命名空间时明确失败。`--with-kernel` 因此还需要构建指南中的 ARM64 交叉编译器、flex 和 bison。
 

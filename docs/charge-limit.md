@@ -1,6 +1,6 @@
 # OnePlus 10 Pro 充电限制
 
-已将可选充电限制加入当前 Arch Linux ARM 固件源码，镜像统一位于 `images/7.3-rc2/`，日志位于 `logs/7.3-rc2/`。内核改动已提交到本地 `7.3-rc2` 分支的 `2c092365fd5c72efcedc29a578601b0a41ce45c4`，版本为 `7.3.0-rc2-sm8450+`。2026-09-16 已刷入 OnePlus 10 Pro NE2210，并完成下述服务启停与 USB PD 停充验证。
+当前 `7.3` 源码将可选充电限制适配到 `oplus_battmgr`，镜像输出目录为 `images/7.3/`，日志为 `logs/7.3/`。服务使用 `/sys/class/power_supply/battery`，默认仍关闭。2026-09-16 的服务启停与 USB PD 停充实测基于旧 `7.3-rc2` 驱动；新驱动的模拟测试和交叉编译已通过，完整固件与真机行为待验证。
 
 ## 行为
 
@@ -15,7 +15,7 @@
 
 上下限均可配置，要求 `0 <= START_THRESHOLD < END_THRESHOLD <= 100`。边界按整数 SOC 判断，75% 恢复、80% 停止；大约每 5 秒检查一次，通知和配置变化会触发额外检查。这是软件阈值控制，不能保证实际电池电量绝不短暂超过设定值。
 
-停充使用一加电池充电开关 `BATT_OPLUS_CHG_EN`，不把 USB 输入电流设为零，不主动改变 PD 电压，也不强制电池放电。DCP/SuperVOOC 路径会先请求关闭 VoocPHY 快充。设计目的是停充后继续利用适配器供电；USB PD 真机采样中，停充时电池报告电流为 0、USB 输入保持在线。**这些是驱动遥测值，尚未用功率表或负载测试验证长期稳定直供。** SuperVOOC 下的电量计连续更新和无线充电也尚未实测。
+停充使用一加电池充电开关 `BATT_CHG_EN`（属性 24），不把 USB 输入电流设为零，不主动改变 PD 电压，也不强制电池放电。DCP/SuperVOOC 路径会先请求关闭 VoocPHY 快充。设计目的是停充后继续利用适配器供电；USB PD 真机采样中，停充时电池报告电流为 0、USB 输入保持在线。**这些是驱动遥测值，尚未用功率表或负载测试验证长期稳定直供。** SuperVOOC 下的电量计连续更新和无线充电也尚未实测。
 
 启用服务期间，systemd 抑制器与驱动挂起检查会阻止系统 suspend/hibernate，确保主机持续监测电量；熄屏和 CPU idle 仍可用。停止服务即可解除这一限制。即使拔掉电源，只要服务仍启用，挂起限制也仍存在。当前没有使用未经验证的 ADSP 自主阈值功能。
 
@@ -63,28 +63,32 @@ sudo systemctl disable --now negroni-charge-limit.service
 
 ## 源码与重新构建
 
-- 内核子模块中的 `linux/drivers/power/supply/qcom_battmgr.c`（驱动）与 `qcom_battmgr_charge_limit.h`（同目录下的阈值状态机）：仅对 `oplus,negroni` 提供控制；统一约束初始化、热插拔、ADSP 充电许可回复和快充重试中的重新充电动作。先运行初始化脚本，再在本地查看这些源码。
+- 内核子模块中的 `linux/drivers/power/supply/oplus_battmgr.c`（设备驱动）、`qcom_battmgr.c`（共享传输）与 `qcom_battmgr_charge_limit.h`（同目录下的阈值状态机）：仅对 `oplus,negroni` 提供控制；统一约束初始化、热插拔、ADSP 充电许可回复和快充重试中的重新充电动作。先运行初始化脚本，再在本地查看这些源码。
 - [服务脚本](../config/charge-limit/negroni-charge-limit)、[默认配置](../config/charge-limit/negroni-charge-limit.conf)、[systemd 单元](../config/systemd/negroni-charge-limit.service)：配置校验、启动就绪检查、设备重建后的配置恢复、退出时解除限制。
 - [安装脚本](../scripts/configure-charge-limit.sh)与[镜像更新脚本](../scripts/update-kernel-image.sh)：全新 rootfs 和已有镜像都会安装以上文件，并确认服务默认关闭。
 - [构建入口](../build.sh)：每次调用 Kbuild 检查源码变化；通过内核产物和服务源文件的校验值识别旧 rootfs，更新模块与启动文件后重新封装，避免完成标记跳过新驱动。
 
-继续使用当前已修改源码构建：
+继续使用当前源码构建：
 
 ```sh
-./build.sh 7.3-rc2
+./build.sh 7.3
 ```
 
-该命令更新 `images/7.3-rc2/`，日志写入 `logs/7.3-rc2/`。已有 rootfs 可以按阶段更新：
+该命令更新 `images/7.3/`，日志写入 `logs/7.3/`。已有 rootfs 可以按阶段更新：
 
 ```sh
-LOG_DIR=logs/7.3-rc2 bash scripts/build-kernel.sh
-sudo env IMAGE_DIR=images/7.3-rc2 LOG_DIR=logs/7.3-rc2 bash scripts/update-kernel-image.sh
-IMAGE_DIR=images/7.3-rc2 LOG_DIR=logs/7.3-rc2 bash scripts/pack-images.sh
+LOG_DIR=logs/7.3 bash scripts/build-kernel.sh
+sudo env IMAGE_DIR=images/7.3 LOG_DIR=logs/7.3 bash scripts/update-kernel-image.sh
+IMAGE_DIR=images/7.3 LOG_DIR=logs/7.3 bash scripts/pack-images.sh
 ```
 
-`linux/` 仓库仅提交内核驱动与新增状态机头文件，提交尚未推送远端。服务、配置、构建脚本、测试和文档已纳入本父仓库，`linux/` 作为子模块；首次克隆后运行 `bash scripts/init-submodules.sh`，从随仓库提供的 Git bundle 恢复未推送提交。迁移到新工作区时，使用内核提交 `2c092365fd5c72efcedc29a578601b0a41ce45c4` 并保留这些配套文件；也可在父提交 `593ad628e5b838457d6a316cc08ba5dcc924a01f` 上应用 [导出的提交补丁](../artifacts/charge-limit-implementation/qcom-battmgr-charge-limit.patch)。构建报告记录实际源码提交；干净工作区的 `kernel-local.patch` 为空。
+内核合并提交由父仓库 gitlink 固定，并保存在 [Git bundle](../patches/linux/README.md) 中。首次克隆后运行 `bash scripts/init-submodules.sh`。每次构建补齐 `BATTERY_OPLUS_BATTMGR=m`，镜像校验同时核对 Oplus 驱动及其共享 Qualcomm 模块。构建报告记录实际源码提交；干净工作区的 `kernel-local.patch` 为空。
+
+旧 `7.3-rc2` 充电限制提交为 `2c092365fd5c72efcedc29a578601b0a41ce45c4`，历史补丁见 [导出的提交补丁](../artifacts/charge-limit-implementation/qcom-battmgr-charge-limit.patch)。它已通过合并历史保留，不能直接应用到重构后的 `7.3` 驱动。
 
 ## 已完成验证及真机验证范围
+
+以下完整镜像与实机结果对应 2026-09-16 的 `7.3-rc2`。当前 `7.3` 已通过服务、阈值策略、真实驱动函数模拟、USB 属性映射及驱动交叉编译检查，尚未构建完整镜像或刷入手机。
 
 已完成完整交叉编译和模块安装、状态机边界与滞回测试、实际驱动函数的模拟传输测试、8 项服务测试、systemd 单元检查。ARM64 rootfs 中的 Python 脚本编译及 initramfs 生成成功。
 

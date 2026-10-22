@@ -29,8 +29,8 @@
 已有完整镜像也可单独更新并重新打包：
 
 ```sh
-sudo env IMAGE_DIR=images/7.3-rc2 LOG_DIR=logs/7.3-rc2 bash scripts/update-screen-defaults-image.sh
-IMAGE_DIR=images/7.3-rc2 LOG_DIR=logs/7.3-rc2 bash scripts/pack-images.sh
+sudo env IMAGE_DIR=images/7.3 LOG_DIR=logs/7.3 bash scripts/update-screen-defaults-image.sh
+IMAGE_DIR=images/7.3 LOG_DIR=logs/7.3 bash scripts/pack-images.sh
 ```
 
 `pack-images.sh` 必须通过 `verify-screen-defaults-image.py` 的离线检查：直接读取 ext4 镜像中的配置，核对源文件一致性、root 所有权和 `0644` 权限，并记录三种模式的配置值。缺失或不匹配时停止打包。验证写入 `screen-defaults-verification.json`，并纳入 `build-result.json`。

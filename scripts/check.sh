@@ -37,7 +37,7 @@ printf 'Running charge-limit service tests...\n'
 python3 -B tests/test-charge-limit-service.py
 
 if [[ $with_kernel == true ]]; then
-    for source in qcom_battmgr.c qcom_battmgr_charge_limit.h; do
+    for source in qcom_battmgr.c oplus_battmgr.c qcom_battmgr_charge_limit.h; do
         [[ -f "linux/drivers/power/supply/$source" ]] || {
             printf 'Missing kernel source. Run: bash scripts/init-submodules.sh\n' >&2
             exit 1

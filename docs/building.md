@@ -1,6 +1,6 @@
 # 构建指南
 
-本指南针对 OnePlus 10 Pro NE2210 的 `7.3-rc2` 配置。已使用的构建环境为 Ubuntu 26.04 x86_64、8 个逻辑 CPU、约 14 GiB 内存；其他环境尚未验证。预留足够空间存放 Linux 源码及输出、ARM chroot、包缓存和多个镜像，其中原始 rootfs 本身为 5 GiB。
+本指南针对 OnePlus 10 Pro NE2210 的 `7.3` 配置。已使用的构建环境为 Ubuntu 26.04 x86_64、8 个逻辑 CPU、约 14 GiB 内存；其他环境尚未验证。预留足够空间存放 Linux 源码及输出、ARM chroot、包缓存和多个镜像，其中原始 rootfs 本身为 5 GiB。
 
 构建流程需要网络，以及用于 loop 挂载、私有挂载命名空间和 chroot 的 sudo 权限。ARM64 用户空间通过 QEMU/binfmt 执行。所有命令从项目根目录执行。
 
@@ -26,14 +26,14 @@ bash scripts/init-submodules.sh
 git submodule status
 ```
 
-已经克隆时，从初始化脚本开始即可。脚本按父仓库固定提交恢复 `linux/`、`tools/avb/` 和 `tools/msm-firmware-loader/`；内核的三个本地提交通过 [Git bundle](../patches/linux/README.md) 恢复。若 `linux/` 有未提交改动，脚本会停止，需先保存改动。
+已经克隆时，从初始化脚本开始即可。脚本按父仓库固定提交恢复 `linux/`、`tools/avb/` 和 `tools/msm-firmware-loader/`；内核合并提交及三个设备修复通过 [Git bundle](../patches/linux/README.md) 恢复。若 `linux/` 有未提交改动，脚本会停止，需先保存改动。
 
-预期内核 HEAD 为 `05e876f60a304a400bc1b44da2de3b155c2bc829`。不要使用 `git submodule update --remote` 替代固定版本初始化。
+预期内核 HEAD 为 `2c66a117babfa1c90b44efaee96ce9da7c109fab`。不要使用 `git submodule update --remote` 替代固定版本初始化。
 
 ## 3. 下载 rootfs
 
 ```sh
-mkdir -p downloads logs/7.3-rc2 images/7.3-rc2
+mkdir -p downloads logs/7.3 images/7.3
 curl -L --fail --retry 3 -C - \
   -o downloads/ArchLinuxARM-aarch64-latest.tar.gz \
   https://ca.us.mirror.archlinuxarm.org/os/ArchLinuxARM-aarch64-latest.tar.gz
@@ -74,38 +74,38 @@ PY
 ## 5. 构建与续建
 
 ```sh
-./build.sh 7.3-rc2
+./build.sh 7.3
 ```
 
-需要限制主编译阶段的并行度时，可使用 `JOBS=4 ./build.sh 7.3-rc2`。构建入口会获取分支并切换到已有本地分支，**不会自动将已有分支重置到远端最新提交**；构建前可用 `git -C linux rev-parse HEAD` 核对源码。
+需要限制主编译阶段的并行度时，可使用 `JOBS=4 ./build.sh 7.3`。构建入口会获取分支并切换到已有本地分支，**不会自动将已有分支重置到远端最新提交**；构建前可用 `git -C linux rev-parse HEAD` 核对源码。
 
 构建依次完成：
 
-1. 首次生成 `defconfig` 与 `sm8450.config`，每次构建合并 `config/kernel/docker.config` 并解析依赖，再编译内核、DTB 和模块；强制核对 Docker 配置、模块及自动加载别名和 8 核能力、功耗参数。
-2. 创建 `alarm/` 构建 chroot 与 `images/7.3-rc2/root.img`，安装系统和 Plasma Mobile。
+1. 首次生成 `defconfig` 与 `sm8450.config`，每次构建合并 `config/kernel/negroni.config` 和 `config/kernel/docker.config` 并解析依赖，再编译内核、DTB 和模块；强制核对 Docker 配置、模块及自动加载别名和 8 核能力、功耗参数。
+2. 创建 `alarm/` 构建 chroot 与 `images/7.3/root.img`，安装系统和 Plasma Mobile。
 3. 配置账号、SDDM、SSH、GPU 服务、默认启用的 CPU 性能服务、屏幕默认设置、默认关闭的充电限制和 initramfs。
 4. 更新有变化的内核产物、CPU / 充电服务、屏幕默认设置和常用工具。
 5. 核对镜像内 Docker 模块及依赖索引，封装 Android 镜像，检查 ext4、sparse 往返、启动镜像内容并生成 SHA-256 与构建报告。
 
-中断后可重新执行同一命令。各阶段使用 `logs/7.3-rc2/` 下的完成标记；每次仍会运行增量 Kbuild，内核、CPU / 充电配置或屏幕默认设置更新会使镜像封装失效并重新生成。SSH、GPU、SDDM 等配置并非全部通过内容指纹自动更新，修改后应按[集成说明](build-integration.md)处理，或在全新工作区构建。
+中断后可重新执行同一命令。各阶段使用 `logs/7.3/` 下的完成标记；每次仍会运行增量 Kbuild，内核、CPU / 充电配置或屏幕默认设置更新会使镜像封装失效并重新生成。SSH、GPU、SDDM 等配置并非全部通过内容指纹自动更新，修改后应按[集成说明](build-integration.md)处理，或在全新工作区构建。
 
-镜像和日志按分支分目录，**`linux/output/` 与 `alarm/` 仍共享**。切换其他内核分支请使用独立克隆与构建输出；不要同时运行多个构建，也不要将删除完成标记当成无条件安全的重建方式。无参数 `./build.sh` 使用 `images/` 和 `logs/`，建议始终明确传入 `7.3-rc2`。
+镜像和日志按分支分目录，**`linux/output/` 与 `alarm/` 仍共享**。切换其他内核分支请使用独立克隆与构建输出；不要同时运行多个构建，也不要将删除完成标记当成无条件安全的重建方式。无参数 `./build.sh` 使用 `images/` 和 `logs/`，建议始终明确传入 `7.3`。
 
 ## 6. 检查产物
 
 ```sh
-(cd images/7.3-rc2 && sha256sum -c SHA256SUMS)
-python3 -m json.tool logs/7.3-rc2/build-result.json
+(cd images/7.3 && sha256sum -c SHA256SUMS)
+python3 -m json.tool logs/7.3/build-result.json
 ```
 
 | 本地文件 | 用途 |
 | --- | --- |
-| `images/7.3-rc2/boot.img` | 内核、initramfs 和根设备命令行 |
-| `images/7.3-rc2/vendor_boot.img` | 设备树 |
-| `images/7.3-rc2/recovery.img` | recovery ramdisk |
-| `images/7.3-rc2/vbmeta.img` | AVB 元数据，Flags=2 |
-| `images/7.3-rc2/sparse_root.img` | 写入 userdata 的 sparse 根文件系统 |
-| `images/7.3-rc2/root.img` | 5 GiB 原始 ext4 根文件系统 |
-| `logs/7.3-rc2/build-result.json` | 内核提交、配置、验证结果与镜像大小/哈希 |
+| `images/7.3/boot.img` | 内核、initramfs 和根设备命令行 |
+| `images/7.3/vendor_boot.img` | 设备树 |
+| `images/7.3/recovery.img` | recovery ramdisk |
+| `images/7.3/vbmeta.img` | AVB 元数据，Flags=2 |
+| `images/7.3/sparse_root.img` | 写入 userdata 的 sparse 根文件系统 |
+| `images/7.3/root.img` | 5 GiB 原始 ext4 根文件系统 |
+| `logs/7.3/build-result.json` | 内核提交、配置、验证结果与镜像大小/哈希 |
 
 脚本不会自动刷写手机。构建和离线检查通过后，继续阅读[刷机说明](flashing.md)。CPU Boost / performance 与大小核调度修复默认随新固件生效，启停及旧镜像续建见 [CPU 性能说明](cpu-performance.md)。
