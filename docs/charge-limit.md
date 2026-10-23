@@ -82,13 +82,15 @@ sudo env IMAGE_DIR=images/7.3 LOG_DIR=logs/7.3 bash scripts/update-kernel-image.
 IMAGE_DIR=images/7.3 LOG_DIR=logs/7.3 bash scripts/pack-images.sh
 ```
 
-内核合并提交由父仓库 gitlink 固定，并保存在 [Git bundle](../patches/linux/README.md) 中。首次克隆后运行 `bash scripts/init-submodules.sh`。每次构建补齐 `BATTERY_OPLUS_BATTMGR=m`，镜像校验同时核对 Oplus 驱动及其共享 Qualcomm 模块。构建报告记录实际源码提交；干净工作区的 `kernel-local.patch` 为空。
+内核提交由父仓库 gitlink 固定，并与合并历史一起保存在 [Git bundle](../patches/linux/README.md) 中。首次克隆后运行 `bash scripts/init-submodules.sh`。每次构建补齐 `BATTERY_OPLUS_BATTMGR=m`，镜像校验同时核对 Oplus 驱动及其共享 Qualcomm 模块。构建报告记录实际源码提交；干净工作区的 `kernel-local.patch` 为空。
 
 旧 `7.3-rc2` 充电限制提交为 `2c092365fd5c72efcedc29a578601b0a41ce45c4`，历史补丁见 [导出的提交补丁](../artifacts/charge-limit-implementation/qcom-battmgr-charge-limit.patch)。它已通过合并历史保留，不能直接应用到重构后的 `7.3` 驱动。
 
 ## 已完成验证及真机验证范围
 
 以下完整镜像与实机结果对应 2026-09-16 的 `7.3-rc2`。当前 `7.3` 已通过服务、阈值策略、真实驱动函数模拟、USB 属性映射及驱动交叉编译检查，尚未构建完整镜像或刷入手机。
+
+2026-10-24 的源码修复补齐了恢复路径：有效充电状态与 ADSP 许可回复保持一致；限充停充时，VOOC 通知与错误恢复不会把 USB 输入电流设为零；初始化阶段被拦截的 VoocPHY 启用请求在策略放行后补发；电量计初始化失败后每 5 秒重试，直到成功、固件掉线或驱动停止。新增测试运行实际通知及后台任务，并检查固件禁止充电、命令失败和重连期间的保守行为。这些结果属于主机模拟验证。
 
 已完成完整交叉编译和模块安装、状态机边界与滞回测试、实际驱动函数的模拟传输测试、8 项服务测试、systemd 单元检查。ARM64 rootfs 中的 Python 脚本编译及 initramfs 生成成功。
 

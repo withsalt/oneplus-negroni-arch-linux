@@ -57,7 +57,7 @@ cd oneplus-negroni-arch-linux
 bash scripts/init-submodules.sh
 ```
 
-内核固定在 `7.3` 合并提交 `2c66a117babfa1c90b44efaee96ce9da7c109fab`，保留 `7.3-rc2` 的设备修复，并将充电限制适配到新电池驱动。该合并尚未推送到内核远端，初始化脚本会从随仓库提供的 [Git bundle](patches/linux/README.md) 恢复；首次克隆请使用上述方式。
+内核固定在 `7.3` 修复提交 `1ebe1068669e9f55325bc84fe18f8f0aa2e5a92e`，包含 `7.3-rc2` 的合并及充电限制适配后的恢复修复。这些本地提交尚未推送到内核远端，初始化脚本会从随仓库提供的 [Git bundle](patches/linux/README.md) 恢复；首次克隆请使用上述方式。
 
 接着按[构建指南](docs/building.md)安装依赖、下载 rootfs 并创建本地登录凭据，再执行：
 

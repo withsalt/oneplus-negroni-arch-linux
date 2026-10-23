@@ -1,4 +1,4 @@
-int main(void)
+static void test_commands(void)
 {
     /* The actual SM8450 protocol must retain the previously tested IDs. */
     assert(oplus_battmgr_usb_wire_property(USB_VOOCPHY_ENABLE) == 13);
@@ -8,7 +8,9 @@ int main(void)
     for (int property = 0; property < USB_PROP_MAX; property++)
         assert(oplus_battmgr_usb_logical_property(
             oplus_battmgr_usb_wire_property(property)) == property);
-    struct qcom_battmgr b = {.charge_limit_supported=true, .service_up=true,
+    struct oplus_chg_chip chip = {0};
+    struct battery_chg_dev bcdev = {.chip = &chip};
+    struct qcom_battmgr b = {.lock=1, .bcdev=&bcdev, .charge_limit_supported=true, .service_up=true,
         .gauge_init_done=true, .charge_limit={.start=75,.end=80}};
     assert(!oplus_battmgr_refresh_negroni_charge_limit(&b));
     assert(trace[calls-1].value == 1); /* policy defaults off, even at 100% */
@@ -22,7 +24,8 @@ int main(void)
     assert(trace[1].value==0);
     assert(!oplus_battmgr_request_property_locked(&b,BC_USB_STATUS_SET,USB_VOOCPHY_ENABLE,1));
     assert(!oplus_battmgr_request_property_locked(&b,BC_USB_STATUS_SET,USB_VOOCPHY_RESET_AGAIN,1));
-    assert(!oplus_battmgr_request_property_locked(&b,BC_USB_STATUS_SET,USB_SUSPEND_PMIC,0));
+    assert(!oplus_battmgr_request_property_locked(&b,BC_USB_STATUS_SET,USB_SUSPEND_PMIC,1));
+    assert(!oplus_battmgr_request_property_locked(&b,BC_USB_STATUS_SET,USB_INPUT_CURR_LIMIT,0));
     assert(calls==2); /* hold blocks fast-charge retry and retains USB input */
     assert(!oplus_battmgr_request_property_locked(&b,BC_USB_STATUS_SET,USB_INPUT_CURR_LIMIT,3000000));
     assert(trace[2].value==3000000); /* external input is retained */
@@ -60,9 +63,6 @@ int main(void)
     reset_on_set=1; soc=8000;
     assert(oplus_battmgr_refresh_negroni_charge_limit(&b)==-EAGAIN);
     assert(b.charge_limit_generation != b.service_generation);
-    struct test_chip chip = {0};
-    struct battery_chg_dev bcdev = {.chip = &chip};
-    b.bcdev = &bcdev;
     b.ack = 0;
     b.pending_opcode = BC_BATTERY_STATUS_GET;
     b.pending_property = BATT_CAPACITY;
