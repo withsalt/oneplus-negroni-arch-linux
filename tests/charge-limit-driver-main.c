@@ -1,3 +1,52 @@
+static void test_telemetry(void)
+{
+    struct oplus_chg_chip chip = {0};
+    struct battery_chg_dev bcdev = {.chip = &chip};
+    struct qcom_battmgr b = {.bcdev = &bcdev, .charge_limit_supported = true,
+        .invert_current = true, .service_up = true,
+        .charge_limit = {.start = 75, .end = 80}};
+    struct power_supply psy = {.drvdata = &b};
+    union power_supply_propval value;
+    struct qcom_battmgr_message response = {
+        .hdr.opcode = BC_BATTERY_STATUS_GET,
+        .intval = {.property = BATT_TEMP, .value = 4000},
+    };
+
+    b.pending_opcode = BC_BATTERY_STATUS_GET;
+    b.pending_property = BATT_TEMP;
+    battmgr_callback(&b, &response, sizeof(response.hdr) + sizeof(response.intval));
+    assert(!battery_get_property(&psy, POWER_SUPPLY_PROP_TEMP, &value));
+    assert(value.intval == 400); /* 40 C in power_supply's tenths of a degree */
+    b.status.current_now = 563000;
+    assert(!battery_get_property(&psy, POWER_SUPPLY_PROP_CURRENT_NOW, &value));
+    assert(value.intval == -563000); /* Negroni: positive wire current is discharge */
+    b.status.current_now = -563000;
+    assert(!battery_get_property(&psy, POWER_SUPPLY_PROP_CURRENT_NOW, &value));
+    assert(value.intval == 563000);
+    b.invert_current = false;
+    assert(!battery_get_property(&psy, POWER_SUPPLY_PROP_CURRENT_NOW, &value));
+    assert(value.intval == -563000); /* other devices retain their polarity */
+
+    calls = 0;
+    assert(!oplus_battmgr_usb_update(&b, POWER_SUPPLY_PROP_ONLINE));
+    assert(trace[0].hdr.opcode == BC_USB_STATUS_GET && trace[0].property == USB_ONLINE);
+    assert(!oplus_battmgr_usb_update(&b, POWER_SUPPLY_PROP_TEMP));
+    assert(trace[1].hdr.opcode == BC_USB_STATUS_GET && trace[1].property == 49);
+    b.usb.online = true;
+    b.charge_limit_applied_valid = b.charge_limit_applied = true;
+    assert(!battery_get_property(&psy, POWER_SUPPLY_PROP_STATUS, &value));
+    assert(value.intval == POWER_SUPPLY_STATUS_NOT_CHARGING);
+    b.service_generation++;
+    assert(!battery_get_property(&psy, POWER_SUPPLY_PROP_STATUS, &value));
+    assert(value.intval == (int)b.status.status); /* stale acknowledgement is not holding */
+    b.service_up = false;
+    assert(!battery_get_property(&psy, POWER_SUPPLY_PROP_CHARGE_CONTROL_START_THRESHOLD, &value));
+    assert(value.intval == 75);
+    assert(!battery_get_property(&psy, POWER_SUPPLY_PROP_CHARGE_CONTROL_END_THRESHOLD, &value));
+    assert(value.intval == 80);
+    assert(battery_get_property(&psy, POWER_SUPPLY_PROP_CURRENT_NOW, &value) == -EAGAIN);
+}
+
 static void test_commands(void)
 {
     /* The actual SM8450 protocol must retain the previously tested IDs. */

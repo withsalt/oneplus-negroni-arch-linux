@@ -6,7 +6,7 @@
 
 Docker 内核支持已接入每次构建：`configure-docker-kernel.sh` 在基础配置上合并 `config/kernel/docker.config`，随后运行 `olddefconfig` 和必需项检查。已有 `.config` 同样会更新。正常 Kbuild 生成的 nftables 兼容、IPv4/IPv6 FIB 和 NAT 模块通过内核产物指纹进入 rootfs；打包前核对镜像内核、模块哈希、依赖索引和自动加载别名，结果写入构建报告。镜像中的 Docker 软件按需安装，见[Docker 内核支持](docker.md)。
 
-CPU 性能与调度已默认集成：固定内核 `7.3`（`2c66a117babf`） 包含 8 核能力和功耗模型；全新 rootfs 通过 `configure-cpu-performance.sh` 安装并启用 Boost / performance 服务。已有 rootfs 通过源文件指纹触发 `update-cpu-performance-image.sh`，补装服务并重新打包。构建及封装阶段分别检查 DTB 参数、镜像文件和开机链接，构建报告记录结果。详见 [CPU 默认构建与恢复](cpu-performance.md#默认固件构建与续建)。
+CPU 性能与调度已默认集成：固定内核 `7.3`（`3ca85b51d20fc9287aec159998e6b871887bb839`）基于重新同步的上游直接补齐 8 核能力和功耗模型；全新 rootfs 通过 `configure-cpu-performance.sh` 安装并启用 Boost / performance 服务。已有 rootfs 通过源文件指纹触发 `update-cpu-performance-image.sh`，补装服务并重新打包。构建及封装阶段分别检查 DTB 参数、镜像文件和开机链接，构建报告记录结果。详见 [CPU 默认构建与恢复](cpu-performance.md#默认固件构建与续建)。
 
 屏幕默认设置已接入全新 rootfs 与已有镜像续建：降低亮度时间关闭、关闭屏幕时间 5 分钟、休眠时间关闭，三种供电模式一致。`finalize-rootfs.sh` 安装 `/etc/xdg/powerdevilrc`；`build.sh` 根据配置及脚本的内容指纹调用 `update-screen-defaults-image.sh`，更新后重新打包。`pack-images.sh` 强制检查镜像内配置与源文件一致、权限正确，并把配置值写入构建报告。用户已有设置优先；锁屏后的独立熄屏计时沿用上游默认值。配置键、验证范围与单独更新命令见[屏幕默认设置](screen-defaults.md)。
 

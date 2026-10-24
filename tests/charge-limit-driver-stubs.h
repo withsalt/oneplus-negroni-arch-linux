@@ -25,6 +25,8 @@ typedef uint8_t u8;
 #define lockdep_assert_held(x) assert(*(x) == 1)
 #define mutex_lock(x) do { assert(*(x) == 0); *(x) = 1; } while (0)
 #define mutex_unlock(x) do { assert(*(x) == 1); *(x) = 0; } while (0)
+#define spin_lock_irqsave(x,flags) do { (flags) = 0; mutex_lock(x); } while (0)
+#define spin_unlock_irqrestore(x,flags) do { (void)(flags); mutex_unlock(x); } while (0)
 #define dev_info(...) ((void)0)
 #define dev_err(...) ((void)0)
 #define dev_warn_ratelimited(...) ((void)0)
@@ -41,6 +43,8 @@ typedef uint8_t u8;
 #define SERVREG_SERVICE_STATE_DOWN 0
 #define POWER_SUPPLY_USB_TYPE_DCP 2
 #define POWER_SUPPLY_TYPE_UNKNOWN 0
+#define POWER_SUPPLY_STATUS_NOT_CHARGING 3
+#define ARRAY_SIZE(a) (sizeof(a) / sizeof((a)[0]))
 #define BIT(n) (1UL << (n))
 #define system_wq 0
 #define msecs_to_jiffies(ms) (ms)
@@ -72,7 +76,13 @@ static int schedule_delayed_work(struct delayed_work *w, unsigned delay)
     if (w->work.pending) return 0;
     return mod_delayed_work(0,w,delay);
 }
-static void cancel_delayed_work_sync(struct delayed_work *w) { w->work.pending = false; }
+static void (*cancel_hook)(struct work_struct *w);
+static void cancel_work_sync(struct work_struct *w)
+{
+    if (cancel_hook) cancel_hook(w);
+    w->pending = false;
+}
+static void cancel_delayed_work_sync(struct delayed_work *w) { cancel_work_sync(&w->work); }
 static unsigned long test_xchg(unsigned long *p, unsigned long v)
 {
     unsigned long old = *p;
@@ -83,7 +93,11 @@ static unsigned long test_xchg(unsigned long *p, unsigned long v)
 #define set_bit(n,p) (*(p) |= BIT(n))
 struct pmic_glink_hdr { u32 owner, type, opcode; };
 /* SHARED_STRUCTURES */
-struct oplus_chg_chip { bool adsp_notify_ap_suspend; int charger_type; };
+struct oplus_chg_chip {
+    bool adsp_notify_ap_suspend;
+    int charger_type;
+    struct delayed_work check_pd_svooc_work;
+};
 struct test_vooc_chip { bool adspvoocphy_fastchg_start; };
 struct battery_chg_dev {
     struct { unsigned usb_in_status, usb_suspend_pmic, usb_subtype; } usb;
@@ -101,15 +115,18 @@ struct battery_chg_dev {
 static int opchg_get_charger_type(struct battery_chg_dev *b) { (void)b; return 0; }
 static int oplus_chg_get_charger_subtype(struct battery_chg_dev *b) { (void)b; return 0; }
 struct qcom_battmgr_property_request { struct pmic_glink_hdr hdr; u32 battery, property, value; };
+struct power_supply { struct qcom_battmgr *drvdata; };
+union power_supply_propval { int intval; const char *strval; };
+#define power_supply_get_drvdata(psy) ((psy)->drvdata)
 struct qcom_battmgr {
-    int lock, dev, bat_psy, usb_psy, wls_psy, ack, error, charge_limit_error;
+    int lock, event_lock, dev, bat_psy, usb_psy, wls_psy, ack, error, charge_limit_error;
     bool stopping;
     struct work_struct enable_work, notification_work;
     struct delayed_work charge_limit_work;
     unsigned long pending_notifications;
     struct battery_chg_dev *bcdev;
     unsigned pending_opcode;
-    bool charge_limit_supported, service_up, gauge_init_done;
+    bool charge_limit_supported, service_up, gauge_init_done, invert_current;
     struct qcom_battmgr_charge_limit charge_limit;
     bool charge_limit_applied, charge_limit_applied_valid, charge_limit_vooc_disabled;
     bool adsp_suspended_chg;

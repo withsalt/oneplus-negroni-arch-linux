@@ -22,7 +22,7 @@ bash scripts/init-submodules.sh
 ./build.sh 7.3
 ```
 
-固定内核为 `7.3` 的合并提交 `2c66a117babfa1c90b44efaee96ce9da7c109fab`，已经包含本设备树修复及旧 `7.3-rc2` 的三个设备修复提交。未推送的合并保存在仓库 Git bundle；初始化脚本会将落后的 `7.3` 分支快进到固定版本。构建入口拒绝缺少固定修复的旧内核。
+固定内核为 `7.3` 修复提交 `3ca85b51d20fc9287aec159998e6b871887bb839`，基于上游 `476a4a89843` 直接重做设备修复，8 核的 16 个能力与功耗参数与历史实测值一致。Git bundle 同时提供线性的 `7.3` 修复和独立的 `7.3-rc2` 历史引用，供下方对比脚本使用；rc2 提交不在新 `7.3` 的祖先历史中。初始化脚本会将可快进的 `7.3` 分支更新到固定版本；旧合并分支若已分叉则保留，固定源码检出为 detached HEAD。构建入口拒绝缺少固定修复的旧内核。
 
 - 全新 rootfs：`finalize-rootfs.sh` 调用 `configure-cpu-performance.sh` 安装 helper / unit，并在镜像内启用 `multi-user.target.wants` 链接；构建期间不运行手机性能策略。
 - 已有镜像：`build.sh` 检测 CPU 配置/脚本指纹缺失或变化时，调用 `update-cpu-performance-image.sh` 补装并启用服务，使旧封装标记失效。内核产物指纹包含 DTB，设备树变化也会触发镜像更新。

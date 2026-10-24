@@ -18,6 +18,7 @@ static void reset_workers(void)
     INIT_DELAYED_WORK(&worker_bcdev.adsp_voocphy_err_work, oplus_adsp_voocphy_err_work);
     calls=0; fail_set=0; fail_sample=0; reset_on_set=0; fail_gauge=0;
     gauge_attempts=0; fail_usb_read=0; fail_vooc=0; down_on_gauge=false; stop_on_gauge=false;
+    cancel_hook = NULL;
     soc=7500; adapter=6; hw_chg_en=false; hw_vooc_enable=false; hw_input_limit=3000000;
 }
 
@@ -230,14 +231,56 @@ static void test_gauge_retry(void)
     assert(gauge_attempts==2 && worker_battmgr.gauge_init_done);
 }
 
+static void finish_inflight_recovery(struct work_struct *work)
+{
+    assert(worker_battmgr.stopping && !worker_battmgr.event_lock);
+    /* Model a producer that passed its last stopping check before teardown. */
+    if (work == &worker_bcdev.adsp_crash_recover_work.work) {
+        mod_delayed_work(system_wq, &worker_battmgr.charge_limit_work, 0);
+        notify_worker(BC_CHG_STATUS_GET);
+        qcom_battmgr_pdr_notify(&worker_battmgr, SERVREG_SERVICE_STATE_UP);
+    }
+}
+
+static void test_shutdown(void)
+{
+    reset_workers();
+    cancel_hook = finish_inflight_recovery;
+    oplus_battmgr_stop_workers(&worker_battmgr);
+    cancel_hook = NULL;
+    assert(worker_battmgr.stopping && !worker_battmgr.event_lock);
+    assert(!worker_battmgr.charge_limit_work.work.pending);
+    assert(!worker_battmgr.enable_work.pending);
+    assert(!worker_bcdev.chg_status_send_work.work.pending);
+    notify_worker(BC_VOOC_VBUS_ADC_ENABLE);
+    assert(!worker_battmgr.notification_work.pending);
+    assert(!worker_battmgr.pending_notifications);
+    assert(oplus_battmgr_negroni_set_threshold(&worker_battmgr,
+        POWER_SUPPLY_PROP_CHARGE_CONTROL_START_THRESHOLD, 70) == -ENODEV);
+    assert(worker_battmgr.charge_limit.start == 75);
+    assert(!worker_battmgr.charge_limit_work.work.pending);
+
+    /* In-flight command replies must still reach waiters while stopping. */
+    struct qcom_battmgr_message reply = {
+        .hdr.opcode = BC_BATTERY_STATUS_SET,
+        .intval = {.property = BATT_CHG_EN},
+    };
+    worker_battmgr.pending_opcode = BC_BATTERY_STATUS_SET;
+    worker_battmgr.pending_property = BATT_CHG_EN;
+    oplus_battmgr_callback(&reply, sizeof(reply.hdr) + sizeof(reply.intval), &worker_battmgr);
+    assert(worker_battmgr.ack == 1);
+}
+
 int main(int argc, char **argv)
 {
     assert(argc==2);
     if (!strcmp(argv[1],"commands")) test_commands();
+    else if (!strcmp(argv[1],"telemetry")) test_telemetry();
     else if (!strcmp(argv[1],"charge-status")) test_charge_status();
     else if (!strcmp(argv[1],"usb-input")) test_usb_input();
     else if (!strcmp(argv[1],"vooc-replay")) test_vooc_replay();
     else if (!strcmp(argv[1],"gauge-retry")) test_gauge_retry();
+    else if (!strcmp(argv[1],"shutdown")) test_shutdown();
     else return 2;
     printf("driver regression: %s passed\n",argv[1]);
 }

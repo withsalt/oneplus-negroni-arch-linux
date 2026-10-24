@@ -16,9 +16,20 @@ if [[ ! -e linux/.git ]]; then
     git init linux
     git -C linux remote add origin "$(git config submodule.linux.url)"
 fi
+restore_bundle=false
 if ! git -C linux cat-file -e "$pin^{commit}" 2>/dev/null; then
+    restore_bundle=true
+fi
+# The independent rc2 head keeps the historical CPU comparison reproducible.
+# It is deliberately not an ancestor of the reimplemented 7.3 branch.
+while read -r bundled_pin bundled_ref; do
+    if ! git -C linux cat-file -e "$bundled_pin^{commit}" 2>/dev/null; then
+        restore_bundle=true
+    fi
+done < <(git bundle list-heads "$bundle")
+if [[ $restore_bundle == true ]]; then
     # Bundle prerequisites are published commits; stop at the blank line
-    # before the binary pack data. A merge can have multiple prerequisites.
+    # before the binary pack data. Independent heads have separate prerequisites.
     while IFS=' ' read -r entry rest; do
         [[ -n $entry ]] || break
         [[ $entry == -* ]] || continue
@@ -28,7 +39,7 @@ if ! git -C linux cat-file -e "$pin^{commit}" 2>/dev/null; then
         fi
     done < "$bundle"
     git -C linux bundle verify "$bundle"
-    git -C linux fetch "$bundle" "refs/heads/$branch:refs/remotes/migration/$branch"
+    git -C linux fetch "$bundle" '+refs/heads/*:refs/remotes/migration/*'
 fi
 git -C linux cat-file -e "$pin^{commit}"
 if [[ -n $(git -C linux status --porcelain) ]]; then

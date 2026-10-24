@@ -33,6 +33,10 @@ functions = [(core, "int qcom_battmgr_request_property"),
              (source, "static int oplus_battmgr_apply_negroni_charge_limit"),
              (source, "static int oplus_battmgr_refresh_negroni_charge_limit"),
              (source, "static void oplus_battmgr_charge_limit_worker"),
+             (source, "static int oplus_battmgr_negroni_set_threshold"),
+             (source, "static int bat_update"),
+             (source, "static int battery_get_property"),
+             (source, "static int oplus_battmgr_usb_update"),
              (source, "static int oplus_ap_init_adsp_gague"),
              (source, "static int oplus_adsp_voocphy_enable"),
              (source, "static int smbchg_charging_disable"),
@@ -48,9 +52,12 @@ functions = [(core, "int qcom_battmgr_request_property"),
              (source, "static void battmgr_callback"),
              (source, "static void oplus_battmgr_callback"),
              (source, "static void oplus_battmgr_enable_worker"),
-             (source, "static void oplus_adsp_crash_recover_func")]
-start = source.index("static const u8 usb_prop_map[USB_PROP_MAX] = {")
-parts.append(source[start:source.index("\n};", start) + 3])
+             (source, "static void oplus_adsp_crash_recover_func"),
+             (source, "static void oplus_battmgr_stop_workers")]
+for declaration in ("static const u8 usb_prop_map[USB_PROP_MAX] = {",
+                    "static const u8 bat_prop_map[] = {"):
+    start = source.index(declaration)
+    parts.append(source[start:source.index("\n};", start) + 3])
 for content, declaration in functions:
     start = content.index(declaration + "(")
     end = content.index("\n}\n", start) + 3
@@ -62,5 +69,5 @@ with tempfile.TemporaryDirectory(prefix="negroni-driver-test-") as tmp:
     path.write_text("\n".join(parts))
     binary = Path(tmp) / "driver-test"
     subprocess.run(["cc", "-std=c11", "-Wall", "-Wextra", "-Werror", "-I", str(root / "tests"), str(path), "-o", str(binary)], check=True)
-    for case in sys.argv[1:] or ("commands", "charge-status", "usb-input", "vooc-replay", "gauge-retry"):
+    for case in sys.argv[1:] or ("commands", "telemetry", "charge-status", "usb-input", "vooc-replay", "gauge-retry", "shutdown"):
         subprocess.run([str(binary), case], check=True)
