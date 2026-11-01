@@ -81,7 +81,12 @@ test -f "$target_dir/usr/share/wayland-sessions/plasma-mobile.desktop"
 test -x "$target_dir/usr/bin/kwin_wayland"
 test -d "$target_dir/usr/share/sddm/themes/breeze"
 test -f "$target_dir/usr/lib/firmware/ath11k/WCN6855/hw2.1/board-2.bin" || test -f "$target_dir/usr/lib/firmware/ath11k/WCN6855/hw2.1/board-2.bin.zst" || test -f "$target_dir/usr/lib/firmware/ath11k/WCN6855/hw2.1/board.bin"
-grep -q 'phy-qcom-qmp-ufs.ko' "$log_dir/initramfs-contents.txt"
+if grep -Fxq 'CONFIG_PHY_QCOM_QMP_UFS=y' "$log_dir/kernel.config"; then
+    echo 'UFS PHY is built into the kernel; no initramfs module is required.'
+else
+    grep -Fxq 'CONFIG_PHY_QCOM_QMP_UFS=m' "$log_dir/kernel.config"
+    grep -q 'phy-qcom-qmp-ufs.ko' "$log_dir/initramfs-contents.txt"
+fi
 truncate -s 0 "$target_dir/etc/machine-id"
 sync
 touch "$log_dir/rootfs.complete"

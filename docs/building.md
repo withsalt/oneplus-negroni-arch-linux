@@ -28,7 +28,7 @@ git submodule status
 
 已经克隆时，从初始化脚本开始即可。脚本按父仓库固定提交恢复 `linux/`、`tools/avb/` 和 `tools/msm-firmware-loader/`；基于上游 `7.3` 重做的设备修复及独立保留的历史 rc2 提交通过 [Git bundle](../patches/linux/README.md) 恢复。若 `linux/` 有未提交改动，脚本会停止，需先保存改动。
 
-预期内核 HEAD 为 `3ca85b51d20fc9287aec159998e6b871887bb839`，它直接基于上游 `7.3` 修改，未合并 `7.3-rc2`。不要使用 `git submodule update --remote` 替代固定版本初始化。
+预期内核 HEAD 为 `1eaec99b04a54c0a6ac42f16a83a606a6d2248a4`，包含完整构建所需的触觉驱动 trace 头文件；修复直接基于上游 `7.3` 修改，未合并 `7.3-rc2`。不要使用 `git submodule update --remote` 替代固定版本初始化。
 
 ## 3. 下载 rootfs
 

@@ -20,7 +20,7 @@ sudo systemctl disable --now negroni-charge-limit.service  # 停止限制并取�
 
 按需选择上述命令。阈值可在 `/etc/negroni-charge-limit.conf` 中通过 `START_THRESHOLD` 和 `END_THRESHOLD` 修改，修改后重启服务生效。停止服务会解除本策略的停充要求，充电仍受固件温控等条件约束。
 
-已修复服务启动一直等待的问题；实机两次启动均不到 1 秒，看门狗通知正常。USB PD、电池 88% 时，启用后电池报告电流为 0，停止后恢复充电，USB 输入持续在线。自然跨越 75% / 80% 阈值、长期直供、SuperVOOC 和无线充电仍待验证。上述实机结果基于旧 `7.3-rc2` 驱动；当前 `7.3` 适配已通过模拟测试与驱动交叉编译，完整镜像及实机验证待完成。配置、状态查询与验证详情见[充电限制说明](docs/charge-limit.md)。
+已修复服务启动一直等待的问题；实机两次启动均不到 1 秒，看门狗通知正常。USB PD、电池 88% 时，启用后电池报告电流为 0，停止后恢复充电，USB 输入持续在线。自然跨越 75% / 80% 阈值、长期直供、SuperVOOC 和无线充电仍待验证。上述实机结果基于旧 `7.3-rc2` 驱动；当前 `7.3` 适配已通过模拟测试、完整镜像构建与离线校验，实机验证待完成。配置、状态查询与验证详情见[充电限制说明](docs/charge-limit.md)。
 
 ### 电源策略
 
@@ -57,7 +57,7 @@ cd oneplus-negroni-arch-linux
 bash scripts/init-submodules.sh
 ```
 
-内核固定在 `7.3` 修复提交 `3ca85b51d20fc9287aec159998e6b871887bb839`，基于重新同步的上游 `476a4a89843` 重做电流符号、充电限制和 CPU 参数修复，提交历史保持线性。内核提交通过随仓库提供的 [Git bundle](patches/linux/README.md) 恢复；首次克隆请使用上述方式。
+内核固定在 `7.3` 修复提交 `1eaec99b04a54c0a6ac42f16a83a606a6d2248a4`，基于重新同步的上游 `476a4a89843` 重做电流符号、充电限制和 CPU 参数修复，并补齐触觉驱动缺失的 trace 头文件，提交历史保持线性。内核提交通过随仓库提供的 [Git bundle](patches/linux/README.md) 恢复；首次克隆请使用上述方式。
 
 接着按[构建指南](docs/building.md)安装依赖、下载 rootfs 并创建本地登录凭据，再执行：
 

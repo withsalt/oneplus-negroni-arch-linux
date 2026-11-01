@@ -1,8 +1,8 @@
 # 7.3 设备修复与源码恢复
 
-当前 `linux` 子模块固定到 `7.3` 修复提交 `3ca85b51d20fc9287aec159998e6b871887bb839`。本次从重新同步的上游 `476a4a8984395a77b6b6508f849dfb7b786d86b3` 直接修改，新增提交均只有一个父提交；没有 merge 或 cherry-pick `7.3-rc2`。之前的本地合并版本不再作为固定内核。
+当前 `linux` 子模块固定到 `7.3` 修复提交 `1eaec99b04a54c0a6ac42f16a83a606a6d2248a4`。本次从重新同步的上游 `476a4a8984395a77b6b6508f849dfb7b786d86b3` 直接修改，新增提交均只有一个父提交；没有 merge 或 cherry-pick `7.3-rc2`。之前的本地合并版本不再作为固定内核。
 
-新增提交为 `835c18d2739`（电池驱动及限充）和 `3ca85b51d20`（CPU 参数）。
+新增提交为 `835c18d2739`（电池驱动及限充）、`3ca85b51d20`（CPU 参数）和 `1eaec99b04a`（补齐触觉驱动 trace 头文件）。
 
 ## 重做范围
 
@@ -14,7 +14,7 @@
 
 7.3 的 Negroni 已切换到 `oplus_battmgr`。适配同时修正充电开关与 USB 查询的 opcode、SM8450 USB 属性编号及电池温度的重复缩放；将等待回复的通知处理放到工作队列，统一在固件请求锁下管理充电状态和许可回复。限充期间的 VOOC 通知和错误恢复不能关闭 USB 输入；被拦截的 VoocPHY 启用请求在放行后补发；电量计初始化失败每 5 秒重试，连接代次变化、固件掉线或停止时不误报成功。
 
-未修改的上游 Oplus 驱动对象编译失败，包含不存在的厂商结构成员和函数、指针成员访问错误以及未定义的 `chip`。本次移除未调用且缺少依赖的厂商辅助函数，并修正有效调用点。`sm8450.config` 启用 Oplus 驱动及共享 Qualcomm 模块。其余 7.3 GPU、haptics/PBS、Negroni 设备树及 Kconfig/Makefile 沿用当前上游。
+未修改的上游 Oplus 驱动对象编译失败，包含不存在的厂商结构成员和函数、指针成员访问错误以及未定义的 `chip`。本次移除未调用且缺少依赖的厂商辅助函数，并修正有效调用点。`sm8450.config` 启用 Oplus 驱动及共享 Qualcomm 模块。触觉驱动补齐下述 trace 头文件；其余 7.3 GPU、haptics/PBS 驱动、Negroni 设备树及 Kconfig/Makefile 沿用当前上游。
 
 ## 恢复与历史复现
 
@@ -41,4 +41,12 @@
 - 历史 CPU DTB / vendor_boot 对比构建；恢复 bundle 的独立前置提交导入和初始化脚本验证。
 - 父仓库与内核 `git diff --check`；新内核提交区间无 merge，rc2 头不是新 7.3 的祖先。
 
-尚未构建完整新固件或进行真机验证；历史实测仍对应 `7.3-rc2`。
+截至 2026-10-24，尚未构建完整新固件或进行真机验证；历史实测仍对应 `7.3-rc2`。
+
+## 完整构建修复与验证（2026-11-01）
+
+完整编译发现 `qcom-hv-haptics.c` 引用的 `include/trace/events/qcom_haptics.h` 缺失。`1eaec99b04a` 从[一加公开 SM8450 内核的固定提交](https://github.com/OnePlusOSS/android_kernel_oneplus_sm8450/blob/449760504b3a75728eb60479f5b34dc51cb263ce/include/trace/events/qcom_haptics.h) 补齐四个 trace 事件，保留版权与 GPL-2.0-only 声明，并将 `__assign_str()` 适配为当前内核的单参数形式。恢复 bundle 已包含此提交。
+
+构建脚本同时补齐未跟踪头文件的本地补丁记录，并按 `CONFIG_PHY_QCOM_QMP_UFS` 区分内置与模块配置：内置驱动不要求 initramfs 再包含 `.ko`，模块配置仍强制检查对应文件。
+
+包含上述修复的 `7.3.0-sm8450+` 完整内核、设备树、模块及 641 包 rootfs 已构建完成；Docker、CPU、屏幕默认值、充电限制、ext4、sparse 往返、启动镜像内容和 SHA-256 离线校验通过，`bash scripts/check.sh --with-kernel` 也通过。该次镜像在提交前构建，报告保留 `3ca85b51d20` 与本地头文件补丁的真实记录。镜像尚未刷入，真机启动待验证。

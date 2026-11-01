@@ -18,8 +18,10 @@ make -s "${make_args[@]}" kernelrelease > "$project_dir/$log_dir/kernel-release.
 git rev-parse HEAD > "$project_dir/$log_dir/kernel-commit.txt"
 cp output/.config "$project_dir/$log_dir/kernel.config"
 git diff --binary HEAD > "$project_dir/$log_dir/kernel-local.patch"
-if ! git ls-files --error-unmatch drivers/power/supply/qcom_battmgr_charge_limit.h >/dev/null 2>&1; then
-    git diff --no-index -- /dev/null drivers/power/supply/qcom_battmgr_charge_limit.h >> "$project_dir/$log_dir/kernel-local.patch" || [[ $? == 1 ]]
-fi
+for header in drivers/power/supply/qcom_battmgr_charge_limit.h include/trace/events/qcom_haptics.h; do
+    if [[ -f $header ]] && ! git ls-files --error-unmatch "$header" >/dev/null 2>&1; then
+        git diff --no-index -- /dev/null "$header" >> "$project_dir/$log_dir/kernel-local.patch" || [[ $? == 1 ]]
+    fi
+done
 python3 "$project_dir/scripts/kernel-artifacts-id.py" > "$project_dir/$log_dir/kernel-artifacts.sha256"
 touch "$project_dir/$log_dir/kernel.complete"
