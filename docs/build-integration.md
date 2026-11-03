@@ -10,7 +10,7 @@ Docker 内核支持已接入每次构建：`configure-docker-kernel.sh` 在基�
 
 CPU 性能与调度已默认集成：固定内核 `7.3`（`1eaec99b04a54c0a6ac42f16a83a606a6d2248a4`）基于重新同步的上游直接补齐 8 核能力和功耗模型；全新 rootfs 通过 `configure-cpu-performance.sh` 安装并启用 Boost / performance 服务。已有 rootfs 通过源文件指纹触发 `update-cpu-performance-image.sh`，补装服务并重新打包。构建及封装阶段分别检查 DTB 参数、镜像文件和开机链接，构建报告记录结果。详见 [CPU 默认构建与恢复](cpu-performance.md#默认固件构建与续建)。
 
-屏幕默认设置已接入全新 rootfs 与已有镜像续建：降低亮度时间关闭、关闭屏幕时间 5 分钟、休眠时间关闭，三种供电模式一致。`finalize-rootfs.sh` 安装 `/etc/xdg/powerdevilrc`；`build.sh` 根据配置及脚本的内容指纹调用 `update-screen-defaults-image.sh`，更新后重新打包。`pack-images.sh` 强制检查镜像内配置与源文件一致、权限正确，并把配置值写入构建报告。用户已有设置优先；锁屏后的独立熄屏计时沿用上游默认值。配置键、验证范围与单独更新命令见[屏幕默认设置](screen-defaults.md)。
+屏幕默认设置已接入全新 rootfs 与已有镜像续建：桌面降低亮度时间关闭、关闭屏幕时间 5 分钟、休眠时间关闭，三种供电模式一致；SDDM 登录前单独运行 PowerDevil，空闲 2 分钟熄屏、电源键切换亮灭屏。`finalize-rootfs.sh` 安装 `/etc/xdg/powerdevilrc`、SDDM 启动脚本和独立配置、logind 短按不关机配置；`build.sh` 根据配置及脚本的内容指纹调用 `update-screen-defaults-image.sh`，更新后重新打包。`pack-images.sh` 强制检查镜像内配置与源文件一致、权限正确、运行依赖可执行，并把配置值写入构建报告。桌面用户已有设置优先；锁屏后的独立熄屏计时沿用上游默认值。配置键、验证范围与单独更新命令见[屏幕默认设置](screen-defaults.md)。
 
 充电限制已同时接入全新 rootfs 与已有镜像续建：`prepare-rootfs.sh` 显式安装 Python，`finalize-rootfs.sh` 安装服务与默认配置；`build.sh` 每次运行增量 Kbuild，并用内核产物指纹、服务源文件校验值判断是否调用 `update-kernel-image.sh`。更新会复制模块、内核并重建 initramfs，再使旧的封装完成标记失效。每次构建安装后服务均为 `disabled`，默认开始 75%、停止 80%。
 
@@ -24,7 +24,7 @@ CPU 性能与调度已默认集成：固定内核 `7.3`（`1eaec99b04a54c0a6ac42
 
 产物写入 `images/7.3/`，日志和校验记录写入 `logs/7.3/`。脚本通过 `IMAGE_DIR`、`LOG_DIR` 传递目录给各阶段；未指定分支时保留原来的 `images/`、`logs/` 默认路径。
 
-最终 rootfs 的 `/etc/sddm.conf.d/10-mobile.conf` 从 [config/sddm/10-mobile.conf](../config/sddm/10-mobile.conf) 安装，使用 KWin 启动 Plasma Keyboard：清空 `InputMethod`，设置 `GreeterEnvironment=QT_WAYLAND_SHELL_INTEGRATION=layer-shell`，并在 `CompositorCommand` 加入 `--inputmethod /usr/bin/plasma-keyboard`。已有 `rootfs.complete` 的镜像不会自动重装 SDDM 配置；修改此文件后需单独更新镜像或使用全新工作区重建。
+最终 rootfs 的 `/etc/sddm.conf.d/10-mobile.conf` 从 [config/sddm/10-mobile.conf](../config/sddm/10-mobile.conf) 安装，清空 `InputMethod`，设置 `GreeterEnvironment=QT_WAYLAND_SHELL_INTEGRATION=layer-shell`，通过 `negroni-sddm-compositor` 向 KWin 传入 `--inputmethod /usr/bin/plasma-keyboard`。配置及启动脚本均纳入屏幕默认值指纹，已有 `rootfs.complete` 的镜像续建时也会更新。
 
 新镜像默认安装 OpenSSH 并启用 `sshd.service`，监听 TCP 22。使用现有 `oneplus` 账号和图形登录密码连接，也支持该账号的 SSH 公钥；禁用 root 远程登录和空密码。配置源文件为 `config/ssh/00-negroni.conf`，构建时安装到 `/etc/ssh/sshd_config.d/00-negroni.conf`。
 

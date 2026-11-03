@@ -1,0 +1,42 @@
+# SDDM-only Plasma 6 power policy, with timeouts in seconds.
+# PowerButtonAction/PowerDownAction=128: ToggleScreenOnOff; LidAction=64: TurnOffScreen.
+# Keep button actions nonzero: PowerDevil otherwise skips loading this action.
+
+[AC][Display]
+DimDisplayWhenIdle=false
+DimDisplayIdleTimeoutSec=0
+TurnOffDisplayWhenIdle=true
+TurnOffDisplayIdleTimeoutSec=120
+LockBeforeTurnOffDisplay=false
+
+[AC][SuspendAndShutdown]
+AutoSuspendIdleTimeoutSec=0
+PowerButtonAction=128
+PowerDownAction=128
+LidAction=64
+
+[Battery][Display]
+DimDisplayWhenIdle=false
+DimDisplayIdleTimeoutSec=0
+TurnOffDisplayWhenIdle=true
+TurnOffDisplayIdleTimeoutSec=120
+LockBeforeTurnOffDisplay=false
+
+[Battery][SuspendAndShutdown]
+AutoSuspendIdleTimeoutSec=0
+PowerButtonAction=128
+PowerDownAction=128
+LidAction=64
+
+[LowBattery][Display]
+DimDisplayWhenIdle=false
+DimDisplayIdleTimeoutSec=0
+TurnOffDisplayWhenIdle=true
+TurnOffDisplayIdleTimeoutSec=120
+LockBeforeTurnOffDisplay=false
+
+[LowBattery][SuspendAndShutdown]
+AutoSuspendIdleTimeoutSec=0
+PowerButtonAction=128
+PowerDownAction=128
+LidAction=64

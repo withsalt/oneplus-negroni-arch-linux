@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Give the greeter its own bus; PowerDevil's power-key shortcut needs KWin's
+# global-shortcut support. KWin starts the daemon only once Wayland is ready.
+set -euo pipefail
+exec /usr/bin/dbus-run-session -- /usr/bin/kwin_wayland \
+    --drm --no-lockscreen --locale1 \
+    --inputmethod /usr/bin/plasma-keyboard \
+    --exit-with-session /usr/local/libexec/negroni-sddm-power

@@ -7,24 +7,34 @@
 | 降低亮度时间 | 关闭 |
 | 关闭屏幕时间 | 5 分钟 |
 | 休眠时间 | 关闭 |
+| SDDM 登录前空闲熄屏 | 2 分钟 |
+| SDDM 登录前电源键 | 切换熄屏 / 亮屏 |
 
 配置源文件为 [config/powerdevil/powerdevilrc](../config/powerdevil/powerdevilrc)，安装到 rootfs 的 `/etc/xdg/powerdevilrc`。这是可由用户覆盖的系统默认值；首次使用新镜像时生效，之后可在设置界面修改。已有 `~/.config/powerdevilrc` 中的对应设置优先，构建脚本不会改写用户配置。
 
 ## 配置与适用范围
 
-当前镜像使用 PowerDevil 6.7.5，配置采用 Plasma 6 的分组和秒数单位：
+配置采用 Plasma 6 的分组和秒数单位，已对照 PowerDevil 6.7.5 和当前 `7.3` 镜像中的 6.8.2：
 
 - 各模式的 `[Display]` 分组设置 `DimDisplayWhenIdle=false`、`DimDisplayIdleTimeoutSec=0`，关闭空闲调暗。
 - 同一分组设置 `TurnOffDisplayWhenIdle=true`、`TurnOffDisplayIdleTimeoutSec=300`，空闲 5 分钟后熄屏。
 - 各模式的 `[SuspendAndShutdown]` 分组设置 `AutoSuspendIdleTimeoutSec=0`，关闭空闲自动休眠。保留休眠动作的原有默认值，使用户以后在手机界面选回休眠时间时仍可启用。
 
-锁屏后的独立熄屏时间沿用上游默认值，PowerDevil 6.7.5 为 60 秒，配置键为 `TurnOffDisplayIdleTimeoutWhenLockedSec`。本配置对应设置界面的三个空闲计时选项，不改变手动电源键、自动锁屏、低电量临界保护或低电量模式的亮度策略。
+锁屏后的独立熄屏时间沿用上游默认值，PowerDevil 6.7.5 为 60 秒，配置键为 `TurnOffDisplayIdleTimeoutWhenLockedSec`。桌面默认配置对应设置界面的三个空闲计时选项，不改变自动锁屏、低电量临界保护或低电量模式的亮度策略。
 
 配置依据：[移动端设置界面](https://github.com/KDE/powerdevil/blob/v6.7.5/kcm_mobile/mobilepower.cpp)、[配置定义](https://github.com/KDE/powerdevil/blob/v6.7.5/PowerDevilProfileSettings.kcfg)、[自动休眠实现](https://github.com/KDE/powerdevil/blob/v6.7.5/daemon/actions/bundled/suspendsession.cpp)。其中移动端界面把休眠时间 `0` 显示为“关闭 / Never”，守护进程也不会为该值注册空闲休眠计时器。
 
+## 登录界面的息屏与电源键
+
+SDDM 通过 [negroni-sddm-compositor](../config/sddm/negroni-sddm-compositor)在私有 D-Bus 会话中启动 KWin，待 Wayland 就绪后运行独立的 PowerDevil。为接收电源键快捷键，KWin 启用全局快捷键支持；Plasma Keyboard 和 layer-shell 配置继续生效。
+
+登录界面的 PowerDevil 使用 `XDG_CONFIG_HOME=/etc/xdg/negroni-greeter`，读取独立的 [powerdevilrc](../config/sddm/powerdevilrc)。三种供电模式均为空闲 120 秒熄屏，触摸或输入会重置计时；`PowerButtonAction=128`（`ToggleScreenOnOff`）控制亮灭屏。不调暗、不空闲休眠，也不另起桌面锁屏。登录后桌面使用自己的 PowerDevil 配置，注销回到 SDDM 时重新应用登录界面策略。
+
+[logind 配置](../config/logind/60-negroni-power-key.conf)安装到 `/etc/systemd/logind.conf.d/60-negroni-power-key.conf`，全局设置 `HandlePowerKey=ignore`，避免图形电源管理启动、退出时短按电源键关机。正常图形会话由 PowerDevil 接管按键；关机使用登录界面或桌面的关机菜单，硬件强制关机不受此配置影响。
+
 ## 全新构建与续建
 
-`finalize-rootfs.sh` 调用 `configure-screen-defaults.sh` 安装默认配置。`build.sh` 通过 `screen-defaults-sources.sha256` 检测配置及安装、更新、校验脚本的变化；缺少记录或内容改变时，自动更新已有 `root.img`，使 `images.complete` 失效并重新封装。安装仅写入系统默认配置，无需重新编译内核或执行 ARM 程序。
+`finalize-rootfs.sh` 调用 `configure-screen-defaults.sh` 安装桌面默认值、SDDM 启动脚本及独立配置和 logind 配置。`build.sh` 通过 `screen-defaults-sources.sha256` 检测这些配置及安装、更新、校验脚本的变化；缺少记录或内容改变时，自动更新已有 `root.img`，使 `images.complete` 失效并重新封装。安装无需重新编译内核或执行 ARM 程序，也不会改写普通用户的配置。
 
 已有完整镜像也可单独更新并重新打包：
 
@@ -33,7 +43,7 @@ sudo env IMAGE_DIR=images/7.3 LOG_DIR=logs/7.3 bash scripts/update-screen-defaul
 IMAGE_DIR=images/7.3 LOG_DIR=logs/7.3 bash scripts/pack-images.sh
 ```
 
-`pack-images.sh` 必须通过 `verify-screen-defaults-image.py` 的离线检查：直接读取 ext4 镜像中的配置，核对源文件一致性、root 所有权和 `0644` 权限，并记录三种模式的配置值。缺失或不匹配时停止打包。验证写入 `screen-defaults-verification.json`，并纳入 `build-result.json`。
+`pack-images.sh` 必须通过 `verify-screen-defaults-image.py` 的离线检查：直接读取 ext4 镜像中的配置与启动脚本，核对源文件一致性、root 所有权、配置的 `0644` 和脚本的 `0755` 权限，检查四个运行时程序可执行，并记录桌面及 SDDM 三种模式的配置值。缺失或不匹配时停止打包。验证写入 `screen-defaults-verification.json`，并纳入 `build-result.json`。
 
 配置随 `root.img` / `sparse_root.img` 交付，仅更新 `boot.img` 不会带入。离线校验不代表真机上的计时与设置界面已验证；实际刷机请按[刷机说明](flashing.md)操作。
 

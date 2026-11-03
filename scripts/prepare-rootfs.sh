@@ -60,7 +60,7 @@ fi
 mount -o loop "$image_dir/root.img" alarm/mnt
 chroot alarm /bin/bash -euo pipefail <<'CHROOT'
 pacstrap -c /mnt --needed --noconfirm base pacman archlinuxarm-keyring systemd-sysvcompat networkmanager openssh python usbutils linux-firmware-realtek msm-firmware-loader msm-modem-uim-selection linux-firmware-oplus-negroni rmtfs-oplus tqftpserv
-pacstrap -c /mnt --needed --noconfirm sddm plasma-mobile plasma-desktop bluedevil spacebar qmlkonsole plasma-dialer plasma-settings kscreen plasma-nm modemmanager mkinitcpio sudo qt6-virtualkeyboard
+pacstrap -c /mnt --needed --noconfirm sddm plasma-mobile plasma-desktop powerdevil bluedevil spacebar qmlkonsole plasma-dialer plasma-settings kscreen plasma-nm modemmanager mkinitcpio sudo qt6-virtualkeyboard
 if pacman -r /mnt -Q iio-sensor-proxy >/dev/null 2>&1; then
     pacman -r /mnt -Rdd --noconfirm iio-sensor-proxy
 fi

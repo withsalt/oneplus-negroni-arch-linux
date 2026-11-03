@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Only the greeter daemon reads these defaults. The desktop uses its own config.
+set -euo pipefail
+export XDG_CONFIG_HOME=/etc/xdg/negroni-greeter
+export QT_QPA_PLATFORM=wayland
+exec /usr/lib/org_kde_powerdevil
