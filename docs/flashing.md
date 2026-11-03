@@ -15,7 +15,7 @@
 | Bootloader | 已解锁，处于 bootloader fastboot；`is-userspace=yes` 表示 fastbootd |
 | ABL / 固件组合 | 能支持本流程的 boot / vendor_boot / recovery 布局；不能因机型相同就假定 ABL 适用 |
 | 槽位与分区 | 重新查询当前槽位、分槽情况与容量，不沿用历史设备的槽位 |
-| 根设备映射 | 当前打包脚本使用 `root=/dev/sda14`，必须与目标设备的主线 Linux 映射相符 |
+| 根分区身份 | 打包时从 `root.img` 读取 ext4 UUID，并写入 `boot.img` 的 `root=UUID=…`；两者必须配套 |
 | 数据与恢复 | 保存需要的数据，准备匹配具体机型的恢复材料 |
 
 ### qbootctl 限制
@@ -30,7 +30,9 @@ Wiki 和[上游 issue #4](https://github.com/linux-msm/qbootctl/issues/4)警告�
 
 若设备无法进入合适的 fastboot 模式，先阅读 [Wiki 启动模式说明](https://wiki.postmarketos.org/index.php?title=OnePlus_10_Pro_%28oneplus-negroni%29&oldid=106143#How_to_enter_flash_mode)。本项目未验证自动回退或更换 ABL 的流程。
 
-在可用的 root recovery 中，`readlink -f /dev/block/by-name/userdata` 和 `ls -l /dev/block/by-name/` 可辅助检查布局，但 Android recovery 的设备名仍需结合主线 UFS/LUN 枚举核对。若目标根设备不是 `/dev/sda14`，先修改 [pack-images.sh](../scripts/pack-images.sh) 中的 `root=` 并重新封装、校验；历史记录未单独保存主线系统中的根分区映射实测结果。
+在可用的 root recovery 中，`readlink -f /dev/block/by-name/userdata` 和 `ls -l /dev/block/by-name/` 可辅助检查布局。主线 UFS 逻辑盘使用异步扫描，`/dev/sdX` 编号可能在重启后变化；启动参数使用文件系统 UUID，避免依赖固定的 `/dev/sda14`。可以用 `blkid -p -s UUID -o value images/7.3/root.img` 核对待刷镜像的 UUID。
+
+单独更新已有手机的 `boot.img` 时，必须使用手机当前根文件系统的 UUID（在手机上执行 `findmnt -n -o UUID /`），不能直接采用另一份 `root.img` 的 UUID。如果 UFS 本身未初始化，UUID 也无法使磁盘出现，仍需保留根设备超时之前的存储／PHY 日志继续排查。
 
 ## 产物与分区
 
