@@ -36,6 +36,7 @@ install -m 0644 linux/output/.config "$target_dir/boot/config-$release"
 install -m 0644 linux/output/System.map "$target_dir/boot/System.map-$release"
 chroot "$target_dir" depmod -a "$release"
 bash "$project_dir/scripts/configure-charge-limit.sh" "$target_dir" "$project_dir/$log_dir"
+bash "$project_dir/scripts/configure-boot-success.sh" "$target_dir" "$project_dir/$log_dir"
 chroot "$target_dir" mkinitcpio -k "$release" -g /boot/initramfs-linux.img
 cp "$target_dir/boot/initramfs-linux.img" "$image_dir/initramfs-linux.img"
 chroot "$target_dir" lsinitcpio /boot/initramfs-linux.img > "$log_dir/initramfs-contents.txt"

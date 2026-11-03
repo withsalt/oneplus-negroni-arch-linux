@@ -1,0 +1,14 @@
+[Unit]
+Description=Mark validated Negroni Linux slot boot successful
+Documentation=https://github.com/linux-msm/qbootctl
+ConditionPathExists=/etc/negroni-boot-success.json
+After=multi-user.target sshd.service NetworkManager.service display-manager.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/libexec/negroni-boot-success
+RemainAfterExit=yes
+TimeoutStartSec=60
+
+[Install]
+WantedBy=graphical.target

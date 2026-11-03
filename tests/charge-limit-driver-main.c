@@ -75,12 +75,13 @@ static void test_commands(void)
     assert(!oplus_battmgr_request_property_locked(&b,BC_USB_STATUS_SET,USB_VOOCPHY_RESET_AGAIN,1));
     assert(!oplus_battmgr_request_property_locked(&b,BC_USB_STATUS_SET,USB_SUSPEND_PMIC,1));
     assert(!oplus_battmgr_request_property_locked(&b,BC_USB_STATUS_SET,USB_INPUT_CURR_LIMIT,0));
-    assert(calls==2); /* hold blocks fast-charge retry and retains USB input */
+    assert(calls==4 && trace[3].property==13 && !trace[3].value);
+    /* Holding still permits disabling VOOC on a data connection. */
     assert(!oplus_battmgr_request_property_locked(&b,BC_USB_STATUS_SET,USB_INPUT_CURR_LIMIT,3000000));
-    assert(trace[2].value==3000000); /* external input is retained */
+    assert(trace[4].value==3000000); /* external input is retained */
     calls=0; soc=7500;
     assert(!oplus_battmgr_refresh_negroni_charge_limit(&b));
-    assert(!b.charge_limit_applied && trace[calls-1].value==1);
+    assert(!b.charge_limit_applied && hw_chg_en && !hw_vooc_enable);
     calls=0; soc=8000; fail_set=1;
     assert(oplus_battmgr_refresh_negroni_charge_limit(&b)==-EREMOTEIO);
     assert(b.charge_limit.cutoff && !b.charge_limit_applied);
@@ -103,7 +104,7 @@ static void test_commands(void)
     assert(trace[3].property==BATT_CHG_EN && trace[3].value==0);
     calls=0; soc=7500;
     assert(!oplus_battmgr_refresh_negroni_charge_limit(&b));
-    assert(calls==3 && trace[1].value==1 && trace[2].property==13 && trace[2].value==1);
+    assert(calls==4 && trace[1].value==1 && trace[3].property==13 && trace[3].value==1);
     b.service_generation++; calls=0;
     assert(!oplus_battmgr_request_property_locked(&b,BC_BATTERY_STATUS_SET,BATT_CHG_EN,1));
     assert(trace[0].value==0); /* reconnection must wait for fresh SOC */

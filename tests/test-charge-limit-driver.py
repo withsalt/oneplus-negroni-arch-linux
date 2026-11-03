@@ -9,12 +9,14 @@ source = (root / "linux/drivers/power/supply/oplus_battmgr.c").read_text()
 core = (root / "linux/drivers/power/supply/qcom_battmgr.c").read_text()
 header = (root / "linux/drivers/power/supply/oplus_battmgr.h").read_text()
 parts = []
-for name in ("oplus_opcodes", "oplus_notifications", "battery_property_id", "usb_property_id", "wireless_property_id"):
+for name in ("oplus_opcodes", "oplus_notifications", "battery_property_id", "usb_property_id", "wireless_property_id", "oplus_power_supply_usb_type"):
     start = header.index("enum " + name + " {")
     end = header.index("\n};", start) + 3
     parts.append(header[start:end])
 power_supply = (root / "linux/include/linux/power_supply.h").read_text()
 start = power_supply.index("enum power_supply_property {")
+parts.append(power_supply[start:power_supply.index("\n};", start) + 3])
+start = power_supply.index("enum power_supply_usb_type {")
 parts.append(power_supply[start:power_supply.index("\n};", start) + 3])
 shared = (root / "linux/drivers/power/supply/qcom_battmgr.h").read_text()
 stubs = (root / "tests/charge-limit-driver-stubs.h").read_text()
@@ -37,6 +39,7 @@ functions = [(core, "int qcom_battmgr_request_property"),
              (source, "static int bat_update"),
              (source, "static int battery_get_property"),
              (source, "static int oplus_battmgr_usb_update"),
+             (source, "static int oplus_battmgr_negroni_usb_fcc"),
              (source, "static int oplus_ap_init_adsp_gague"),
              (source, "static int oplus_adsp_voocphy_enable"),
              (source, "static int smbchg_charging_disable"),

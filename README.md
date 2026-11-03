@@ -20,7 +20,11 @@ sudo systemctl disable --now negroni-charge-limit.service  # 停止限制并取�
 
 按需选择上述命令。阈值可在 `/etc/negroni-charge-limit.conf` 中通过 `START_THRESHOLD` 和 `END_THRESHOLD` 修改，修改后重启服务生效。停止服务会解除本策略的停充要求，充电仍受固件温控等条件约束。
 
-已修复服务启动一直等待的问题；实机两次启动均不到 1 秒，看门狗通知正常。USB PD、电池 88% 时，启用后电池报告电流为 0，停止后恢复充电，USB 输入持续在线。自然跨越 75% / 80% 阈值、长期直供、SuperVOOC 和无线充电仍待验证。上述实机结果基于旧 `7.3-rc2` 驱动；当前 `7.3` 适配已通过模拟测试、完整镜像构建与离线校验，实机验证待完成。配置、状态查询与验证详情见[充电限制说明](docs/charge-limit.md)。
+已修复服务启动一直等待的问题；旧 `7.3-rc2` 实机两次启动均不到 1 秒，看门狗通知正常。当前 `7.3` 也已实测 PD Hub 下启用停充、解除后恢复充电，USB 输入与外设保持在线。自然跨越 75% / 80% 阈值、长期直供、SuperVOOC 和无线充电仍待验证。配置与验证详情见[充电限制说明](docs/charge-limit.md)。
+
+### USB Hub 与 PD 充电
+
+已补齐 USB2 参考时钟恢复、PHY 配置、OTG GPIO、USB/PD 充电初始化及角色切换处理。带 PD 的 Hub 已验证 USB2 接收器、USB3 网卡和充电同时工作；物理热插拔仍存在偶发 SMMU 错误与 xHCI 挂死，尚未彻底解决，见[设备状态](docs/status.md)。
 
 ### 电源策略
 
@@ -43,7 +47,7 @@ sudo systemctl disable --now negroni-charge-limit.service  # 停止限制并取�
 | 电池状态显示 | 修正 Negroni 电池电流符号，改善充放电状态判断；已通过实机拔插验证 |
 | 登录界面虚拟键盘 | 配置 SDDM / KWin 使用 Plasma Keyboard 和 layer-shell，修复触屏登录输入问题 |
 | 远程维护 | 默认启用 SSH，允许 `oneplus` 密码或公钥登录，禁止 root 和空密码登录，首次启动生成主机密钥 |
-| 常用工具 | 预装 nano、curl、wget、htop、rsync、git、tmux、ripgrep 等 19 项[命令行工具](config/packages/common-tools.txt) |
+| 常用工具与 USB 固件 | 预装 nano、curl、wget、htop、rsync、git、tmux、ripgrep、usbutils 与 Realtek 固件，见[安装列表](config/packages/common-tools.txt) |
 | Docker 内核支持 | 每次构建补齐 nftables 兼容与 NAT 模块，支持全新构建和续建；Docker / Compose 按需安装，详见[使用说明](docs/docker.md) |
 | 构建与校验 | 通过源码和产物指纹识别需要更新的镜像，核对内核模块及配置，检查 ext4、启动镜像、sparse 往返和 SHA-256 |
 
@@ -57,7 +61,7 @@ cd oneplus-negroni-arch-linux
 bash scripts/init-submodules.sh
 ```
 
-内核固定在 `7.3` 修复提交 `1eaec99b04a54c0a6ac42f16a83a606a6d2248a4`，基于重新同步的上游 `476a4a89843` 重做电流符号、充电限制和 CPU 参数修复，并补齐触觉驱动缺失的 trace 头文件，提交历史保持线性。内核提交通过随仓库提供的 [Git bundle](patches/linux/README.md) 恢复；首次克隆请使用上述方式。
+内核固定在 `7.3` 修复提交 `fc09f1b2e7e91e81865ca06a6f2ebd8e5d08d50b`，包含电池、CPU、触觉驱动及 USB/PD 与角色切换修复，直接基于上游 `476a4a89843`，提交历史保持线性。内核提交通过随仓库提供的 [Git bundle](patches/linux/README.md) 恢复；首次克隆请使用上述方式。
 
 接着按[构建指南](docs/building.md)安装依赖、下载 rootfs 并创建本地登录凭据，再执行：
 
@@ -73,6 +77,7 @@ bash scripts/init-submodules.sh
 | --- | --- |
 | 从源码构建或续建 | [构建指南](docs/building.md) · [构建集成细节](docs/build-integration.md) |
 | 核对分区、刷入及首次启动 | [刷机说明](docs/flashing.md) |
+| 配置 A/B 启动成功标记 | [启动成功服务](docs/boot-success.md) |
 | 使用 SSH、了解已知问题 | [设备状态与使用说明](docs/status.md) |
 | 开启、配置和关闭充电限制 | [充电限制](docs/charge-limit.md) |
 | 调整屏幕和休眠的固件默认值 | [屏幕默认设置](docs/screen-defaults.md) |

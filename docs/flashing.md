@@ -157,4 +157,18 @@ journalctl -b -p warning
 
 核对内核、根设备映射、虚拟键盘、联网及各项硬件功能。离线校验与刷写成功不等于全部硬件可用；充电限制默认关闭，需在确认新系统运行后按[专门说明](charge-limit.md)测试。
 
+### 确认 A/B 启动成功
+
+Linux 正常运行后还必须把实际启动槽标记成功，否则 ABL 可能在数次正常重启后耗尽重试次数，进入 recovery 或改选另一槽。
+
+仅在前述 qbootctl 固件历史条件满足、Linux 启动槽已核实且系统可用时，为本机建立 `/etc/negroni-boot-success.json`，格式见[启动成功服务](boot-success.md)。不要把示例 `a` 作为所有设备的默认槽位。然后执行：
+
+```sh
+sudo systemctl enable --now negroni-boot-success.service
+sudo journalctl -b -u negroni-boot-success.service
+sudo qbootctl
+```
+
+核对该槽 `Active=1 / Successful=1 / Bootable=1`。镜像默认安装服务，缺少设备本地确认配置时跳过，不调用 qbootctl。槽位或运行内核归属不明时服务拒绝写入，应先解决识别问题，避免反复重启消耗重试次数。
+
 无法启动时先保存屏幕现象、槽位和刷入输出，检查 DTB、boot/recovery、根设备与 ABL 组合；根设备找不到与桌面服务失败应分别定位。历史命令及记录见[构建归档](archive/build-notes-2026-09-16.md)。

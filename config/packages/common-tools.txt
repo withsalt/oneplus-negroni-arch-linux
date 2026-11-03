@@ -17,3 +17,5 @@ bash-completion
 lsof
 strace
 which
+usbutils
+linux-firmware-realtek

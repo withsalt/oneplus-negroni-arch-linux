@@ -1,0 +1,150 @@
+#!/usr/bin/env python3
+"""Mark a validated Negroni boot successful using qbootctl, never switch slots."""
+import fcntl
+import gzip
+import io
+import json
+import os
+import re
+import shlex
+import stat
+import struct
+import subprocess
+import sys
+from pathlib import Path
+
+CONFIG = Path('/etc/negroni-boot-success.json')
+COMPATIBLE = Path('/proc/device-tree/compatible')
+CMDLINE = Path('/proc/cmdline')
+BOOTCONFIG = Path('/proc/bootconfig')
+VERSION = Path('/proc/version')
+PARTLABEL = Path('/dev/disk/by-partlabel')
+LIMIT = 128 * 1024 * 1024
+
+
+def run(*args):
+    return subprocess.run(args, check=True, text=True, capture_output=True,
+                          timeout=20).stdout.strip()
+
+
+def configuration():
+    info = CONFIG.lstat()
+    if not stat.S_ISREG(info.st_mode) or info.st_uid != 0 or info.st_mode & 0o022:
+        raise RuntimeError('Boot-success configuration must be a root-owned, non-writable regular file')
+    conf = json.loads(CONFIG.read_text())
+    if conf.get('firmware_history') != 'coloros14-never15':
+        raise RuntimeError('Confirmed compatible firmware history is required; see docs/flashing.md')
+    if conf.get('slot') not in ('a', 'b'):
+        raise RuntimeError('Configure the verified Linux boot slot: a or b')
+    return conf['slot']
+
+
+def slot_state():
+    report = run('/usr/bin/qbootctl')
+    current = re.findall(r'^Current slot: _([ab])$', report, re.M)
+    blocks = re.findall(r'^SLOT _([ab]):\n(.*?)(?=^SLOT |\Z)', report, re.M | re.S)
+    states = {}
+    for slot, block in blocks:
+        fields = re.findall(r'^\s*(Active|Successful|Bootable)\s*:\s*([01])\s*$', block, re.M)
+        if slot in states or len(fields) != 3 or len(dict(fields)) != 3:
+            raise RuntimeError('Invalid qbootctl slot fields')
+        states[slot] = {name: int(value) for name, value in fields}
+    if len(current) != 1 or len(blocks) != 2 or set(states) != {'a', 'b'}:
+        raise RuntimeError('Cannot determine both A/B slot states')
+    return current[0], states
+
+
+def checked_state(slot):
+    current, states = slot_state()
+    if (current != slot or states[slot]['Active'] != 1 or
+            states['b' if slot == 'a' else 'a']['Active'] != 0 or
+            states[slot]['Bootable'] != 1):
+        raise RuntimeError('Configured slot must be current, uniquely active and bootable')
+    return states
+
+
+def kernel_image(path):
+    # Android boot v0-v2 use page_size; v3-v4 have a fixed 4096-byte page.
+    with path.open('rb') as stream:
+        header = stream.read(48)
+        if len(header) != 48 or header[:8] != b'ANDROID!':
+            raise RuntimeError('Unrecognized Android boot header')
+        size = struct.unpack_from('<I', header, 8)[0]
+        version = struct.unpack_from('<I', header, 40)[0]
+        if version > 4:
+            raise RuntimeError('Unsupported Android boot header version')
+        page = 4096 if version >= 3 else struct.unpack_from('<I', header, 36)[0]
+        if not 2048 <= page <= 65536 or page & (page - 1) or not 0 < size <= LIMIT:
+            raise RuntimeError('Invalid boot kernel size/page')
+        stream.seek(page)
+        data = stream.read(size)
+        if len(data) != size:
+            raise RuntimeError('Truncated boot kernel')
+    if data[:2] == b'\x1f\x8b':
+        with gzip.GzipFile(fileobj=io.BytesIO(data)) as stream:
+            data = stream.read(LIMIT + 1)
+    if len(data) > LIMIT or data[56:60] != b'ARMd':
+        raise RuntimeError('Expected an ARM64 Image or gzip-compressed Image')
+    return data
+
+
+def verify_running_slot(slot):
+    values = []
+    for token in shlex.split(CMDLINE.read_text()):
+        key, sep, value = token.partition('=')
+        if sep and key in ('androidboot.slot_suffix', 'slot_suffix'):
+            values.append(value)
+    if BOOTCONFIG.exists():
+        values += re.findall(r'^\s*(?:androidboot\.)?slot_suffix\s*=\s*"?(_?[ab])"?\s*$',
+                             BOOTCONFIG.read_text(), re.M)
+    if values:
+        if any(value not in (slot, '_' + slot) for value in values):
+            raise RuntimeError('Bootloader slot suffix disagrees with configured slot')
+        return
+    # This device's ABL omits slot_suffix. Do not equate GPT active with running:
+    # require the running kernel banner to match exactly one installed boot image.
+    banner = VERSION.read_bytes().rstrip(b'\n') + b'\n'
+    if not banner.startswith(b'Linux version '):
+        raise RuntimeError('Unrecognized running kernel version')
+    matches = [candidate for candidate in ('a', 'b')
+               if banner in kernel_image(PARTLABEL / ('boot_' + candidate))]
+    if matches != [slot]:
+        raise RuntimeError('No slot_suffix; running kernel must uniquely match configured boot partition')
+    print('No slot_suffix; running kernel uniquely matches boot_' + slot)
+
+
+def start():
+    slot = configuration()  # No qbootctl access before explicit device opt-in.
+    if b'oplus,negroni' not in COMPATIBLE.read_bytes().split(b'\0'):
+        raise RuntimeError('Only validated on OnePlus Negroni')
+    for unit in ('multi-user.target', 'sshd.service', 'NetworkManager.service', 'display-manager.service'):
+        if run('/usr/bin/systemctl', 'is-active', unit) != 'active':
+            raise RuntimeError('Required userspace service is not active: ' + unit)
+    states = checked_state(slot)
+    if states[slot]['Successful']:
+        print('Slot ' + slot + ' is already successful; no GPT write needed')
+        return
+    verify_running_slot(slot)
+    if checked_state(slot) != states:
+        raise RuntimeError('Slot state changed during validation')
+    print(run('/usr/bin/qbootctl', '-m', slot))
+    if checked_state(slot)[slot]['Successful'] != 1:
+        raise RuntimeError('Boot-success readback failed')
+    os.sync()
+    print('Slot ' + slot + ' boot success verified')
+
+
+def main():
+    if os.geteuid() != 0:
+        raise RuntimeError('Run as root')
+    with open('/run/negroni-boot-success.lock', 'a') as lock:
+        fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        start()
+
+
+if __name__ == '__main__':
+    try:
+        main()
+    except Exception as error:
+        print('Boot-success marking refused: ' + str(error), file=sys.stderr)
+        sys.exit(1)

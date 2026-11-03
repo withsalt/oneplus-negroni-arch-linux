@@ -9,6 +9,7 @@
 | [构建指南](building.md) | 主机依赖、子模块、rootfs 输入、凭据和续建 |
 | [刷机说明](flashing.md) | 固件限制、分区映射、校验、刷入和首次启动 |
 | [设备状态](status.md) | 已验证功能、已知问题、SSH 和 GPU 配置 |
+| [启动成功服务](boot-success.md) | A/B 成功标记、设备确认配置及状态检查 |
 | [充电限制](charge-limit.md) | 默认行为、启停、阈值配置及验证范围 |
 | [屏幕默认设置](screen-defaults.md) | 默认关闭调暗和休眠、5 分钟熄屏及续建更新 |
 | [CPU 性能与调度](cpu-performance.md) | Boost / performance 服务、设备树构建、部署验证与恢复 |

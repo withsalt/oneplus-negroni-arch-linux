@@ -2,6 +2,8 @@
 
 首次构建请先读[构建指南](building.md)。下文解释脚本接入方式；带日期的实机与镜像结果为历史记录，本地 `logs/` 不随 Git 分发。
 
+A/B 启动成功标记已接入全新 rootfs 和内核更新。单独修改服务时，`build.sh` 通过内容指纹调用 `update-boot-success-image.sh` 补装并使封装失效。服务启用但要求设备本地确认配置；镜像不预设任何设备的固件历史和 Linux 槽位，见[启动成功服务](boot-success.md)。
+
 每次构建先补齐 `config/kernel/negroni.config` 中的 Oplus 电池模块，覆盖全新配置和旧配置续建。
 
 Docker 内核支持已接入每次构建：`configure-docker-kernel.sh` 在基础配置上合并 `config/kernel/docker.config`，随后运行 `olddefconfig` 和必需项检查。已有 `.config` 同样会更新。正常 Kbuild 生成的 nftables 兼容、IPv4/IPv6 FIB 和 NAT 模块通过内核产物指纹进入 rootfs；打包前核对镜像内核、模块哈希、依赖索引和自动加载别名，结果写入构建报告。镜像中的 Docker 软件按需安装，见[Docker 内核支持](docker.md)。

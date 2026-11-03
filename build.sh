@@ -35,6 +35,10 @@ if ! cmp -s "$log_dir/kernel-artifacts.sha256" "$log_dir/rootfs-kernel.sha256" |
    ! sha256sum --check --status "$log_dir/charge-limit-sources.sha256"; then
     sudo env IMAGE_DIR="$image_dir" LOG_DIR="$log_dir" bash scripts/update-kernel-image.sh
 fi
+if [[ ! -f "$log_dir/boot-success-sources.sha256" ]] ||
+   ! sha256sum --check --status "$log_dir/boot-success-sources.sha256"; then
+    sudo env IMAGE_DIR="$image_dir" LOG_DIR="$log_dir" bash scripts/update-boot-success-image.sh
+fi
 if [[ ! -f "$log_dir/ssh.complete" ]]; then
     sudo env IMAGE_DIR="$image_dir" LOG_DIR="$log_dir" bash scripts/enable-ssh-image.sh
 fi
