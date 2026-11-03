@@ -42,7 +42,6 @@ typedef uint8_t u8;
 #define SERVREG_SERVICE_STATE_UP 1
 #define SERVREG_SERVICE_STATE_DOWN 0
 #define POWER_SUPPLY_TYPE_UNKNOWN 0
-#define POWER_SUPPLY_STATUS_NOT_CHARGING 3
 #define ARRAY_SIZE(a) (sizeof(a) / sizeof((a)[0]))
 #define BIT(n) (1UL << (n))
 #define system_wq 0

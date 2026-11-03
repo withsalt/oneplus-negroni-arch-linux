@@ -62,7 +62,7 @@ cd oneplus-negroni-arch-linux
 bash scripts/init-submodules.sh
 ```
 
-内核固定在 `7.3` 修复提交 `fc09f1b2e7e91e81865ca06a6f2ebd8e5d08d50b`，包含电池、CPU、触觉驱动及 USB/PD 与角色切换修复，直接基于上游 `476a4a89843`，提交历史保持线性。内核提交通过随仓库提供的 [Git bundle](patches/linux/README.md) 恢复；首次克隆请使用上述方式。
+内核固定在 `7.3` 修复提交 `0466d55fd34890d4f4b6f7c40d8e4b1da4ea8b52`，包含电池、CPU、触觉驱动及 USB/PD 与角色切换修复，直接基于上游 `476a4a89843`，提交历史保持线性。内核提交通过随仓库提供的 [Git bundle](patches/linux/README.md) 恢复；首次克隆请使用上述方式。
 
 接着按[构建指南](docs/building.md)安装依赖、下载 rootfs 并创建本地登录凭据，再执行：
 

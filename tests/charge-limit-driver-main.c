@@ -3,7 +3,7 @@ static void test_telemetry(void)
     struct oplus_chg_chip chip = {0};
     struct battery_chg_dev bcdev = {.chip = &chip};
     struct qcom_battmgr b = {.bcdev = &bcdev, .charge_limit_supported = true,
-        .invert_current = true, .service_up = true,
+        .invert_current = true, .service_up = true, .gauge_init_done = true,
         .charge_limit = {.start = 75, .end = 80}};
     struct power_supply psy = {.drvdata = &b};
     union power_supply_propval value;
@@ -38,7 +38,7 @@ static void test_telemetry(void)
     assert(value.intval == POWER_SUPPLY_STATUS_NOT_CHARGING);
     b.service_generation++;
     assert(!battery_get_property(&psy, POWER_SUPPLY_PROP_STATUS, &value));
-    assert(value.intval == (int)b.status.status); /* stale acknowledgement is not holding */
+    assert(value.intval == POWER_SUPPLY_STATUS_CHARGING); /* stale acknowledgement is not holding */
     b.service_up = false;
     assert(!battery_get_property(&psy, POWER_SUPPLY_PROP_CHARGE_CONTROL_START_THRESHOLD, &value));
     assert(value.intval == 75);

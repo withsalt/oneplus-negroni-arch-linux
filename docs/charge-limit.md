@@ -17,6 +17,10 @@
 
 停充使用一加电池充电开关 `BATT_CHG_EN`（属性 24），不把 USB 输入电流设为零，不主动改变 PD 电压，也不强制电池放电。DCP/SuperVOOC 路径会先请求关闭 VoocPHY 快充。设计目的是停充后继续利用适配器供电；USB PD 真机采样中，停充时电池报告电流为 0、USB 输入保持在线。**这些是驱动遥测值，尚未用功率表或负载测试验证长期稳定直供。** SuperVOOC 下的电量计连续更新和无线充电也尚未实测。
 
+Negroni 的充电状态由驱动结合当前 USB／无线输入、电池电流和限充确认结果计算。[原厂 Oplus 驱动](https://github.com/OnePlusOSS/android_kernel_modules_and_devicetree_oneplus_sm8450/blob/92531016cafaad24ee1a7f739f4dff192cfc24a3/vendor/oplus/kernel/charger/charger_ic/oplus_battery_sm8450.c)同样在主机端提供最终状态；直接使用固件 `BATT_STATUS` 曾导致电池实际充电而内核、桌面均显示放电。现在充电显示 `Charging`，已确认停充显示 `Not charging`，供电不足导致电池净放电时仍显示 `Discharging`。读数失败或固件重连时不使用旧状态。电池电流遵循 Linux 的正值充电、负值放电约定。
+
+USB 数据角色为 host 时仍可作为受电端充电。实机已验证 Hub 提供约 4.85 V／1 A 输入时缓慢充电；`power_operation_mode=usb_power_delivery` 表示手机与 Hub 之间的协商方式，不能据此判断 Hub 上游充电头的协议或功率。低功率电源下，充电速度还取决于系统及外设耗电。
+
 启用服务期间，systemd 抑制器与驱动挂起检查会阻止系统 suspend/hibernate，确保主机持续监测电量；熄屏和 CPU idle 仍可用。停止服务即可解除这一限制。即使拔掉电源，只要服务仍启用，挂起限制也仍存在。当前没有使用未经验证的 ADSP 自主阈值功能。
 
 如果目前电量为 100%，开启后只会请求停充，不会主动放电到 80%；持续外接供电时，电量可能长时间高于 80%。

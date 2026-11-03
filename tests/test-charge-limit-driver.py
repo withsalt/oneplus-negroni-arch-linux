@@ -14,6 +14,8 @@ for name in ("oplus_opcodes", "oplus_notifications", "battery_property_id", "usb
     end = header.index("\n};", start) + 3
     parts.append(header[start:end])
 power_supply = (root / "linux/include/linux/power_supply.h").read_text()
+start = power_supply.index("enum {\n\tPOWER_SUPPLY_STATUS_UNKNOWN")
+parts.append(power_supply[start:power_supply.index("\n};", start) + 3])
 start = power_supply.index("enum power_supply_property {")
 parts.append(power_supply[start:power_supply.index("\n};", start) + 3])
 start = power_supply.index("enum power_supply_usb_type {")
@@ -37,6 +39,7 @@ functions = [(core, "int qcom_battmgr_request_property"),
              (source, "static void oplus_battmgr_charge_limit_worker"),
              (source, "static int oplus_battmgr_negroni_set_threshold"),
              (source, "static int bat_update"),
+             (source, "static int oplus_battmgr_negroni_get_status"),
              (source, "static int battery_get_property"),
              (source, "static int oplus_battmgr_usb_update"),
              (source, "static int oplus_battmgr_negroni_usb_fcc"),

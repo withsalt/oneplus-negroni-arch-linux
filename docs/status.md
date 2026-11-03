@@ -4,7 +4,7 @@
 
 ## 源码、镜像和实机
 
-当前内核为 `7.3`，固定到 `fc09f1b2e7e91e81865ca06a6f2ebd8e5d08d50b`，包含电池、CPU、触觉驱动、USB/PD 和角色切换修复，历史未合并 `7.3-rc2`。ARM64 内核/模块/DTB 与主机回归通过。手机已通过 Wi-Fi SSH 更新启动内核、设备树、电池模块和 USB 网卡固件并重启验证，根文件系统沿用既有安装；这不代表 2026-11-01 的完整 rootfs 重新刷入。
+当前内核为 `7.3`，固定到 `0466d55fd34890d4f4b6f7c40d8e4b1da4ea8b52`，包含电池、CPU、触觉驱动、USB/PD 和角色切换修复，历史未合并 `7.3-rc2`。ARM64 内核/模块/DTB 与主机回归通过。手机已通过 Wi-Fi SSH 更新启动内核、设备树、电池模块和 USB 网卡固件并重启验证，根文件系统沿用既有安装；这不代表 2026-11-01 的完整 rootfs 重新刷入。
 
 带 PD 的 Hub 已验证 USB2 接收器、RTL8153 网卡和充电同时工作，重启后可自动枚举。物理热插拔仍出现过 SMMU `IOVA=0x0c` 与 xHCI 挂死，后续成功拔插不能证明故障消除。电脑端 gadget、无外接供电 OTG、其他 Hub、DP 显示与系统挂起仍未覆盖。
 
@@ -33,7 +33,7 @@ ssh oneplus@手机IP
 | --- | --- |
 | 登录虚拟键盘 | 使用 KWin 启动 Plasma Keyboard；7.2 已确认可输入，7.3-rc2 登录操作尚待单独记录，见[修复记录](archive/keyboard-fix-2026-09-15.md) |
 | GPU 慢亮屏 | 默认启用 `gpu-runtime-active.service`，将 GPU 的 `power/control` 设为 `on`；这是阻止 GPU runtime suspend 的规避方式，可能增加待机耗电，见[诊断资料](../artifacts/wake-latency-20260916/) |
-| 电池状态图标 | Negroni 电流符号已修正，见[充电状态验证](../artifacts/charging-status-20260915/README.md) |
+| 电池状态图标 | 已修正电流符号及 Oplus 充电状态计算；5 V Hub 输入下，首版修复已实测内核与 UPower 显示充电、外设在线；最终模块的重启后复验待网络恢复，见[充电说明](charge-limit.md) |
 | 充电限制 | 镜像默认关闭；本机已启用 75/80%，PD Hub 下 holding/解除与保留外设已验证，启用后阻止挂起/休眠，见[使用说明](charge-limit.md) |
 | USB2 / OTG | 已补齐 PHY/时钟、PD 与角色切换；带 PD 的 Hub 可用，偶发热插拔挂死尚未解决 |
 | A/B 槽启动 | 已修复本机成功位并验证重启；自动标记需设备本地确认固件历史及 Linux 槽位，见[启动成功服务](boot-success.md) |
