@@ -74,6 +74,10 @@ modem_uim_verification = log_directory / "modem-uim-verification.json"
 report["validation"]["modem_uim_configuration"] = modem_uim_verification.exists()
 if modem_uim_verification.exists():
     report["modem_uim"] = json.loads(modem_uim_verification.read_text())
+runtime_verification = log_directory / "runtime-fixes-verification.json"
+report["validation"]["runtime_fixes"] = runtime_verification.exists()
+if runtime_verification.exists():
+    report["runtime_fixes"] = json.loads(runtime_verification.read_text())
 cpu_verification = log_directory / "cpu-performance-verification.json"
 capacity_verification = log_directory / "cpu-capacity-verification.json"
 docker_kernel_verification = log_directory / "docker-kernel-verification.json"

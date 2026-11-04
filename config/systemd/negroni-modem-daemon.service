@@ -1,0 +1,8 @@
+[Unit]
+Description=Plasma Mobile modem daemon
+
+[Service]
+Type=dbus
+BusName=org.kde.telephony.DeviceUtils
+ExecStart=/usr/lib/modem-daemon
+TimeoutStartSec=30

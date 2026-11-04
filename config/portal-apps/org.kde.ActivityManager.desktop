@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Activity Manager
+Exec=/usr/lib/kactivitymanagerd
+NoDisplay=true
+OnlyShowIn=KDE;
+StartupNotify=false

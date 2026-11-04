@@ -8,6 +8,17 @@ A/B 启动成功标记已接入全新 rootfs 和内核更新。单独修改服�
 
 Wi-Fi 默认关闭省电、采用设备和连接固定的本地 MAC，国家域按当前部署地点设为 CN。新 rootfs 与旧镜像续建均安装 `iw`、`wireless-regdb` 和签名；配置内容变更触发镜像更新，封装前检查依赖和配置一致性，见 [Wi-Fi 默认设置](wifi.md)。
 
+固件加载器、Plasma 快捷设置和电话/portal 元数据修复通过 `configure-runtime-fixes.sh` 接入全新 rootfs；已有镜像由 `build.sh` 根据源文件指纹触发增量更新，封装前校验文件、权限、运行依赖和安装清单。加载器修正 A/B 蓝牙路径、固件分组与目录链接；快捷设置修正尺寸未就绪时的分页计算，并移除模块的 qrc 优先声明，使修复后的 QML 实际生效。电话组件的三个真实总线名与 autostart 共用一个 systemd 用户服务；四个后台组件的隐藏应用描述安装到 `/usr/local/share/applications`，供 portal 识别。
+
+安装前校验原版或已记录管理版本的内容，拒绝覆盖未知软件包版本和未记录的本地修改；被替换原件保存在 `/var/lib/negroni-runtime-fixes/backups/<内容哈希>/`，当前内容记录在 `installed-files.json`。软件包升级可能覆盖加载器、QML、qmldir 或 modem autostart，需要重新核验。已有镜像可单独更新并重新封装，无需重编内核，也不会自动刷机：
+
+```sh
+sudo env IMAGE_DIR=images/7.3 LOG_DIR=logs/7.3 bash scripts/update-runtime-fixes-image.sh
+IMAGE_DIR=images/7.3 LOG_DIR=logs/7.3 bash scripts/pack-images.sh
+```
+
+修复范围限于固件加载路径、快捷设置启动布局和桌面元数据。蓝牙缺少 public address、上游 C++ PaginateModel 清空末页时的边界缺陷仍需另行处理；不放宽 polkit 的进程保护，不修改 portal 对重复注册的身份校验，也不删除上游 Notifications 等待服务。
+
 SIM 初始化默认允许无卡使用：`configure-modem-uim.sh` 将软件包脚本的无卡分支改为打印“无卡，跳过配置”并成功退出，基带和 QMI 错误仍按原逻辑报错。修复覆盖全新 rootfs 和已有镜像续建，源文件指纹触发更新，封装前校验脚本内容和权限；未知脚本版本拒绝自动修改。设备上单独升级 `msm-modem-uim-selection` 软件包可能覆盖此修改，需要重新应用修复。
 
 Docker 内核支持已接入每次构建：`configure-docker-kernel.sh` 在基础配置上合并 `config/kernel/docker.config`，随后运行 `olddefconfig` 和必需项检查。已有 `.config` 同样会更新。正常 Kbuild 生成的 nftables 兼容、IPv4/IPv6 FIB 和 NAT 模块通过内核产物指纹进入 rootfs；打包前核对镜像内核、模块哈希、依赖索引和自动加载别名，结果写入构建报告。镜像中的 Docker 软件按需安装，见[Docker 内核支持](docker.md)。

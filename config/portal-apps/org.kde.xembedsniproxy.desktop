@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=XembedSniProxy
+Exec=/usr/bin/xembedsniproxy
+NoDisplay=true
+OnlyShowIn=KDE;
+StartupNotify=false

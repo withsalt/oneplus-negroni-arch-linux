@@ -1,0 +1,4 @@
+[D-BUS Service]
+Name=org.kde.telephony.DeviceUtils
+Exec=/usr/lib/modem-daemon
+SystemdService=negroni-modem-daemon.service

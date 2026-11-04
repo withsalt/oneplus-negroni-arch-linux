@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Power Management
+Exec=/usr/lib/org_kde_powerdevil
+NoDisplay=true
+OnlyShowIn=KDE;
+StartupNotify=false
