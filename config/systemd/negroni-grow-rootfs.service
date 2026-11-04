@@ -1,0 +1,15 @@
+[Unit]
+Description=Expand Negroni root filesystem to the userdata partition
+After=systemd-remount-fs.service local-fs.target
+Before=display-manager.service
+ConditionPathExists=!/var/lib/negroni-grow-rootfs/done.json
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/libexec/negroni-grow-rootfs
+RemainAfterExit=yes
+# Do not interrupt a filesystem resize because of the normal startup timeout.
+TimeoutStartSec=infinity
+
+[Install]
+WantedBy=multi-user.target

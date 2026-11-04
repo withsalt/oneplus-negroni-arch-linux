@@ -2,6 +2,17 @@
 
 首次构建请先读[构建指南](building.md)。下文解释脚本接入方式；带日期的实机与镜像结果为历史记录，本地 `logs/` 不随 Git 分发。
 
+根文件系统自动扩容默认接入全新 rootfs 和已有镜像续建：`configure-grow-rootfs.sh` 安装脚本、启用 `negroni-grow-rootfs.service`，清除镜像内的完成标记；构建镜像仍为 5 GiB，不在构建机执行扩容。`build.sh` 根据内容指纹调用 `update-grow-rootfs-image.sh`，封装前核对文件、依赖、权限、开机链接及首次启动待执行状态，结果进入构建报告。
+
+首次启动时，服务在本地文件系统就绪后、显示管理器之前，通过当前 `/` 的挂载源识别可写 ext4 和 userdata 分区，不依赖固定设备名。服务调用 `resize2fs` 在线扩容，确认容量及 UUID 后写入 `/var/lib/negroni-grow-rootfs/done.json`；后续启动跳过，失败时保留日志并在下次启动重试。它不调整分区表、不格式化、不改变 UUID 或保留块比例。手机上可用 `df -h /` 和 `journalctl -u negroni-grow-rootfs.service -b --no-pager` 检查结果。
+
+已有完整 root.img 可单独补装并重新封装，无需重编内核：
+
+```sh
+sudo env IMAGE_DIR=images/7.3 LOG_DIR=logs/7.3 bash scripts/update-grow-rootfs-image.sh
+IMAGE_DIR=images/7.3 LOG_DIR=logs/7.3 bash scripts/pack-images.sh
+```
+
 A/B 启动成功标记已接入全新 rootfs 和内核更新。单独修改服务时，`build.sh` 通过内容指纹调用 `update-boot-success-image.sh` 补装并使封装失效。服务启用但要求设备本地确认配置；镜像不预设任何设备的固件历史和 Linux 槽位，见[启动成功服务](boot-success.md)。
 
 每次构建先补齐 `config/kernel/negroni.config` 中的 Oplus 电池模块和 ath11k 用户国家域支持，覆盖全新配置和旧配置续建，并检查 Kconfig 接受全部必需项。

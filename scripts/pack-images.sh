@@ -13,6 +13,7 @@ root_uuid=$(blkid -p -s UUID -o value "$image_dir/root.img")
 }
 boot_cmdline="console=tty0 root=UUID=$root_uuid rootwait rw bootconfig"
 printf 'Root filesystem: UUID=%s\n' "$root_uuid"
+python3 scripts/verify-grow-rootfs-image.py "$image_dir" "$log_dir"
 python3 scripts/verify-docker-image.py "$image_dir" "$log_dir"
 python3 scripts/verify-screen-defaults-image.py "$image_dir" "$log_dir"
 python3 scripts/verify-wifi-image.py "$image_dir" "$log_dir"

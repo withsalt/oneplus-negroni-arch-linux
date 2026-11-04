@@ -48,7 +48,7 @@ Wiki 和[上游 issue #4](https://github.com/linux-msm/qbootctl/issues/4)警告�
 | `root.img` | 原始 ext4 镜像，供本地检查与修改，不需另外刷一次 |
 | `initramfs-linux.img` | 已封装进 boot/recovery，不单独刷入 |
 
-展开后的 rootfs 为 **5 GiB（5,368,709,120 字节）**，userdata 容量需按展开大小判断。刷入更大分区不会自动扩容文件系统。
+展开后的 rootfs 为 **5 GiB（5,368,709,120 字节）**，userdata 容量需按展开大小判断。新固件在首次启动时通过 `negroni-grow-rootfs.service` 将 ext4 扩展到所在 userdata 分区，成功后跳过，失败下次启动重试；详见[构建集成说明](build-integration.md)。旧镜像未安装此服务时，刷入更大分区不会自动扩容。
 
 本流程按 Wiki 擦除 dtbo；没有可刷入的 `dtbo.img`。固件加载依赖设备保留的 modem/bluetooth/persist 等原厂内容，不要清空 `super`、`modem`、`persist`、`abl` 或其他未列为写入目标的分区。
 

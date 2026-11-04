@@ -1,0 +1,120 @@
+#!/usr/bin/env python3
+"""Grow the mounted Negroni ext4 root to its existing userdata partition."""
+import fcntl
+import json
+import os
+from pathlib import Path
+import stat
+import subprocess
+import sys
+
+MARKER = Path('/var/lib/negroni-grow-rootfs/done.json')
+LOCK = Path('/run/negroni-grow-rootfs.lock')
+
+
+def run(*args):
+    return subprocess.run(args, check=True, text=True, stdout=subprocess.PIPE,
+                          env=dict(os.environ, LC_ALL='C')).stdout.strip()
+
+
+def root_partition():
+    report = json.loads(run('findmnt', '--json', '--mountpoint', '/',
+                            '--output', 'SOURCE,FSTYPE,OPTIONS,MAJ:MIN'))
+    mounts = report['filesystems']
+    if len(mounts) != 1:
+        raise RuntimeError('Expected exactly one root mount')
+    mount = mounts[0]
+    if mount['fstype'] != 'ext4' or 'rw' not in mount['options'].split(','):
+        raise RuntimeError('Root must be a writable ext4 filesystem')
+    device = Path(mount['source']).resolve(strict=True)
+    info = device.stat()
+    if (not stat.S_ISBLK(info.st_mode) or
+            f'{os.major(info.st_rdev)}:{os.minor(info.st_rdev)}' != mount['maj:min']):
+        raise RuntimeError('Root source does not match the mounted block device')
+    devices = json.loads(run('lsblk', '--json', '--bytes', '--nodeps',
+                             '--output', 'TYPE,PARTLABEL,RO', str(device)))['blockdevices']
+    if (len(devices) != 1 or devices[0]['type'] != 'part' or
+            devices[0]['partlabel'] != 'userdata' or devices[0]['ro']):
+        raise RuntimeError('Root must be the writable userdata partition')
+    return device
+
+
+def geometry(device):
+    fields = {}
+    for line in run('dumpe2fs', '-h', str(device)).splitlines():
+        key, separator, value = line.partition(':')
+        if separator:
+            fields[key.strip()] = value.strip()
+    if 'error' in fields['Filesystem state'].lower():
+        raise RuntimeError('Root has filesystem errors; offline repair is required')
+    result = {key: int(fields[key]) for key in ('Block count', 'Block size', 'Blocks per group')}
+    if any(value <= 0 for value in result.values()):
+        raise RuntimeError('Invalid ext4 geometry')
+    result['uuid'] = fields['Filesystem UUID']
+    return result
+
+
+def grow():
+    if MARKER.exists():
+        print('Root expansion already completed; skipping', flush=True)
+        return
+    device = root_partition()
+    before = geometry(device)
+    partition_bytes = int(run('blockdev', '--getsize64', str(device)))
+    maximum_blocks = partition_bytes // before['Block size']
+    if before['Block count'] > maximum_blocks:
+        raise RuntimeError('Filesystem is larger than its partition; refusing to resize')
+    print(f'Root {device}: filesystem {before["Block count"] * before["Block size"]} bytes, '
+          f'partition {partition_bytes} bytes', flush=True)
+    if before['Block count'] < maximum_blocks:
+        # With no size argument resize2fs uses this partition's available size.
+        # It grows the mounted filesystem online; never repartitions or formats.
+        subprocess.run(['resize2fs', str(device)], check=True)
+    if root_partition() != device:
+        raise RuntimeError('Root device changed during expansion')
+    after = geometry(device)
+    remaining = maximum_blocks - after['Block count']
+    if (after['uuid'] != before['uuid'] or after['Block size'] != before['Block size'] or
+            after['Block count'] < before['Block count'] or remaining < 0 or
+            remaining >= after['Blocks per group'] or
+            (remaining and after['Block count'] % after['Blocks per group']) or
+            int(run('blockdev', '--getsize64', str(device))) != partition_bytes):
+        raise RuntimeError('Root did not grow to the partition size; will retry next boot')
+    # ext4 may omit an incomplete final block group that cannot hold metadata.
+    result = {
+        'device': str(device), 'uuid': after['uuid'], 'partition_bytes': partition_bytes,
+        'filesystem_bytes': after['Block count'] * after['Block size'],
+        'previous_filesystem_bytes': before['Block count'] * before['Block size'],
+    }
+    MARKER.parent.mkdir(mode=0o755, parents=True, exist_ok=True)
+    temporary = MARKER.with_suffix('.tmp')
+    with temporary.open('w') as stream:
+        json.dump(result, stream, indent=2)
+        stream.write('\n')
+        stream.flush()
+        os.fsync(stream.fileno())
+    temporary.replace(MARKER)
+    directory = os.open(MARKER.parent, os.O_RDONLY | os.O_DIRECTORY)
+    try:
+        os.fsync(directory)
+    finally:
+        os.close(directory)
+    print(f'Root expansion complete: {result["filesystem_bytes"]} bytes; '
+          f'completion recorded in {MARKER}', flush=True)
+
+
+def main():
+    if os.geteuid() != 0:
+        raise RuntimeError('Run as root')
+    os.environ['PATH'] = '/usr/bin:/usr/sbin'
+    with LOCK.open('a') as lock:
+        fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        grow()
+
+
+if __name__ == '__main__':
+    try:
+        main()
+    except Exception as error:
+        print('Root expansion failed: ' + str(error), file=sys.stderr, flush=True)
+        sys.exit(1)

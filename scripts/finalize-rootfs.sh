@@ -55,6 +55,7 @@ printf '%%wheel ALL=(ALL:ALL) ALL\n' > "$target_dir/etc/sudoers.d/10-wheel"
 chmod 440 "$target_dir/etc/sudoers.d/10-wheel"
 chroot "$target_dir" visudo -c
 bash "$project_dir/scripts/configure-ssh.sh" "$target_dir" "$project_dir/$log_dir"
+bash "$project_dir/scripts/configure-grow-rootfs.sh" "$target_dir" "$project_dir/$log_dir"
 bash "$project_dir/scripts/configure-gpu-runtime-active.sh" "$target_dir" "$project_dir/$log_dir"
 bash "$project_dir/scripts/configure-charge-limit.sh" "$target_dir" "$project_dir/$log_dir"
 bash "$project_dir/scripts/configure-screen-defaults.sh" "$target_dir" "$project_dir/$log_dir"

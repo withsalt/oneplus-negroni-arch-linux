@@ -45,6 +45,7 @@ sudo systemctl disable --now negroni-charge-limit.service  # 停止限制并取�
 
 | 项目 | 改进 |
 | --- | --- |
+| 根文件系统自动扩容 | 刷入后首次启动将 5 GiB ext4 扩展到整个 userdata 分区，成功后跳过、失败下次重试，见[构建集成说明](docs/build-integration.md) |
 | 电池状态显示 | 修正 Negroni 电池电流符号，改善充放电状态判断；已通过实机拔插验证 |
 | 登录界面虚拟键盘 | 配置 SDDM / KWin 使用 Plasma Keyboard 和 layer-shell，修复触屏登录输入问题 |
 | 远程维护 | 默认启用 SSH，允许 `oneplus` 密码或公钥登录，禁止 root 和空密码登录，首次启动生成主机密钥 |

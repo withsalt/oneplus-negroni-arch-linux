@@ -52,6 +52,10 @@ report = {
     "images": images,
 }
 ssh_verification = log_directory / "ssh-verification.json"
+grow_verification = log_directory / "grow-rootfs-verification.json"
+report["validation"]["grow_rootfs_configuration"] = grow_verification.exists()
+if grow_verification.exists():
+    report["grow_rootfs"] = json.loads(grow_verification.read_text())
 if ssh_verification.exists():
     report["ssh_validation"] = json.loads(ssh_verification.read_text())
 tools_verification = log_directory / "common-tools-verification.json"
