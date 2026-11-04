@@ -12,6 +12,7 @@
 | [启动成功服务](boot-success.md) | A/B 成功标记、设备确认配置及状态检查 |
 | [充电限制](charge-limit.md) | 默认行为、启停、阈值配置及验证范围 |
 | [屏幕默认设置](screen-defaults.md) | 默认关闭调暗和休眠、5 分钟熄屏及续建更新 |
+| [Wi-Fi 默认设置](wifi.md) | 关闭省电、固定本地 MAC、CN 国家域与已知限制 |
 | [CPU 性能与调度](cpu-performance.md) | Boost / performance 服务、设备树构建、部署验证与恢复 |
 | [Docker 内核支持](docker.md) | Docker 安装、网络模块配置、续建和镜像验证 |
 | [构建集成说明](build-integration.md) | 各配置如何进入 rootfs，已有镜像如何更新 |

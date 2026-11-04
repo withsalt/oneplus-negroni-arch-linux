@@ -4,7 +4,9 @@
 
 A/B 启动成功标记已接入全新 rootfs 和内核更新。单独修改服务时，`build.sh` 通过内容指纹调用 `update-boot-success-image.sh` 补装并使封装失效。服务启用但要求设备本地确认配置；镜像不预设任何设备的固件历史和 Linux 槽位，见[启动成功服务](boot-success.md)。
 
-每次构建先补齐 `config/kernel/negroni.config` 中的 Oplus 电池模块，覆盖全新配置和旧配置续建。
+每次构建先补齐 `config/kernel/negroni.config` 中的 Oplus 电池模块和 ath11k 用户国家域支持，覆盖全新配置和旧配置续建，并检查 Kconfig 接受全部必需项。
+
+Wi-Fi 默认关闭省电、采用设备和连接固定的本地 MAC，国家域按当前部署地点设为 CN。新 rootfs 与旧镜像续建均安装 `iw`、`wireless-regdb` 和签名；配置内容变更触发镜像更新，封装前检查依赖和配置一致性，见 [Wi-Fi 默认设置](wifi.md)。
 
 Docker 内核支持已接入每次构建：`configure-docker-kernel.sh` 在基础配置上合并 `config/kernel/docker.config`，随后运行 `olddefconfig` 和必需项检查。已有 `.config` 同样会更新。正常 Kbuild 生成的 nftables 兼容、IPv4/IPv6 FIB 和 NAT 模块通过内核产物指纹进入 rootfs；打包前核对镜像内核、模块哈希、依赖索引和自动加载别名，结果写入构建报告。镜像中的 Docker 软件按需安装，见[Docker 内核支持](docker.md)。
 

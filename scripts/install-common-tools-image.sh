@@ -67,6 +67,10 @@ tmux -V >/dev/null
 lsof -v >/dev/null 2>&1
 strace -V >/dev/null
 which nano >/dev/null
+iw --version >/dev/null
+test -s /usr/lib/firmware/regulatory.db
+test -s /usr/lib/firmware/regulatory.db.p7s
+test -x /usr/bin/set-wireless-regdom
 test -r /usr/share/bash-completion/bash_completion
 echo 'Common tools verified: ARM executables, ZIP round trip, rsync copy, JSON, search, and Git repository.'
 CHROOT
@@ -86,7 +90,7 @@ versions = dict(line.split(' ', 1) for line in (logs / 'common-tools-versions.tx
     'checked_at': datetime.now(timezone.utc).isoformat(),
     'environment': 'ARM64 chroot under QEMU',
     'packages': versions,
-    'checks': ['executables', 'zip_roundtrip', 'rsync_copy', 'jq_json', 'ripgrep_search', 'fd_search', 'git_repository', 'bash_completion_present'],
+    'checks': ['executables', 'zip_roundtrip', 'rsync_copy', 'jq_json', 'ripgrep_search', 'fd_search', 'git_repository', 'bash_completion_present', 'iw_executable', 'signed_regdb_present'],
     'hardware_tested': False,
 }, indent=2) + '\n')
 PY

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Apply the Docker requirements to both new and existing kernel configurations.
+# Apply the device and Docker requirements to new and existing configurations.
 set -euo pipefail
 cd "$(dirname "$0")/.."
 project_dir=$PWD
@@ -15,4 +15,11 @@ fi
 KCONFIG_CONFIG="$output_dir/.config" bash scripts/kconfig/merge_config.sh \
     -m -O "$output_dir" "$output_dir/.config" "$project_dir/config/kernel/negroni.config" "$project_dir/config/kernel/docker.config"
 make "${make_args[@]}" olddefconfig
+while IFS= read -r option; do
+    [[ $option == CONFIG_*=* ]] || continue
+    grep -Fxq "$option" "$output_dir/.config" || {
+        printf 'Required device setting was rejected by Kconfig: %s\n' "$option" >&2
+        exit 1
+    }
+done < "$project_dir/config/kernel/negroni.config"
 python3 "$project_dir/scripts/verify-docker-kernel.py" --config-only "$output_dir/.config"

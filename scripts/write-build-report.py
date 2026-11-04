@@ -66,6 +66,10 @@ if kernel_patch.exists():
     }
 charge_verification = log_directory / "charge-limit-verification.json"
 screen_verification = log_directory / "screen-defaults-verification.json"
+wifi_verification = log_directory / "wifi-verification.json"
+report["validation"]["wifi_configuration"] = wifi_verification.exists()
+if wifi_verification.exists():
+    report["wifi"] = json.loads(wifi_verification.read_text())
 cpu_verification = log_directory / "cpu-performance-verification.json"
 capacity_verification = log_directory / "cpu-capacity-verification.json"
 docker_kernel_verification = log_directory / "docker-kernel-verification.json"

@@ -49,6 +49,7 @@ sudo systemctl disable --now negroni-charge-limit.service  # 停止限制并取�
 | 登录界面虚拟键盘 | 配置 SDDM / KWin 使用 Plasma Keyboard 和 layer-shell，修复触屏登录输入问题 |
 | 远程维护 | 默认启用 SSH，允许 `oneplus` 密码或公钥登录，禁止 root 和空密码登录，首次启动生成主机密钥 |
 | 常用工具与 USB 固件 | 预装 nano、curl、wget、htop、rsync、git、tmux、ripgrep、usbutils 与 Realtek 固件，见[安装列表](config/packages/common-tools.txt) |
+| Wi-Fi 默认设置 | 关闭省电，生成固定本地 MAC，按当前部署地点使用 CN 国家域，见 [Wi-Fi 说明](docs/wifi.md) |
 | Docker 内核支持 | 每次构建补齐 nftables 兼容与 NAT 模块，支持全新构建和续建；Docker / Compose 按需安装，详见[使用说明](docs/docker.md) |
 | 构建与校验 | 通过源码和产物指纹识别需要更新的镜像，核对内核模块及配置，检查 ext4、启动镜像、sparse 往返和 SHA-256 |
 

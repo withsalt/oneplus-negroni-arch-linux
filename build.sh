@@ -56,5 +56,9 @@ fi
 if ! cmp -s config/packages/common-tools.txt "$log_dir/common-tools.list"; then
     sudo env IMAGE_DIR="$image_dir" LOG_DIR="$log_dir" bash scripts/install-common-tools-image.sh
 fi
+if [[ ! -f "$log_dir/wifi-sources.sha256" ]] ||
+   ! sha256sum --check --status "$log_dir/wifi-sources.sha256"; then
+    sudo env IMAGE_DIR="$image_dir" LOG_DIR="$log_dir" bash scripts/update-wifi-image.sh
+fi
 if [[ ! -f "$log_dir/images.complete" ]]; then bash scripts/pack-images.sh; fi
 printf '\nImages are in %s/%s\n' "$PWD" "$image_dir"

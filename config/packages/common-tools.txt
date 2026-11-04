@@ -19,3 +19,5 @@ strace
 which
 usbutils
 linux-firmware-realtek
+iw
+wireless-regdb
