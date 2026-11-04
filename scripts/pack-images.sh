@@ -16,6 +16,7 @@ printf 'Root filesystem: UUID=%s\n' "$root_uuid"
 python3 scripts/verify-docker-image.py "$image_dir" "$log_dir"
 python3 scripts/verify-screen-defaults-image.py "$image_dir" "$log_dir"
 python3 scripts/verify-wifi-image.py "$image_dir" "$log_dir"
+python3 scripts/verify-modem-uim-image.py "$image_dir" "$log_dir"
 python3 scripts/verify-cpu-performance-image.py "$image_dir" "$log_dir"
 python3 scripts/verify-cpu-performance-dtb.py linux/output/arch/arm64/boot/dts/qcom/sm8450-oneplus-negroni.dtb "$log_dir"
 if [[ -f "$log_dir/charge-limit-config.complete" ]]; then

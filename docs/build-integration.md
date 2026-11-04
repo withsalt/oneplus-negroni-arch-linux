@@ -8,6 +8,8 @@ A/B 启动成功标记已接入全新 rootfs 和内核更新。单独修改服�
 
 Wi-Fi 默认关闭省电、采用设备和连接固定的本地 MAC，国家域按当前部署地点设为 CN。新 rootfs 与旧镜像续建均安装 `iw`、`wireless-regdb` 和签名；配置内容变更触发镜像更新，封装前检查依赖和配置一致性，见 [Wi-Fi 默认设置](wifi.md)。
 
+SIM 初始化默认允许无卡使用：`configure-modem-uim.sh` 将软件包脚本的无卡分支改为打印“无卡，跳过配置”并成功退出，基带和 QMI 错误仍按原逻辑报错。修复覆盖全新 rootfs 和已有镜像续建，源文件指纹触发更新，封装前校验脚本内容和权限；未知脚本版本拒绝自动修改。设备上单独升级 `msm-modem-uim-selection` 软件包可能覆盖此修改，需要重新应用修复。
+
 Docker 内核支持已接入每次构建：`configure-docker-kernel.sh` 在基础配置上合并 `config/kernel/docker.config`，随后运行 `olddefconfig` 和必需项检查。已有 `.config` 同样会更新。正常 Kbuild 生成的 nftables 兼容、IPv4/IPv6 FIB 和 NAT 模块通过内核产物指纹进入 rootfs；打包前核对镜像内核、模块哈希、依赖索引和自动加载别名，结果写入构建报告。镜像中的 Docker 软件按需安装，见[Docker 内核支持](docker.md)。
 
 CPU 性能与调度已默认集成：固定内核 `7.3`（`1eaec99b04a54c0a6ac42f16a83a606a6d2248a4`）基于重新同步的上游直接补齐 8 核能力和功耗模型；全新 rootfs 通过 `configure-cpu-performance.sh` 安装并启用 Boost / performance 服务。已有 rootfs 通过源文件指纹触发 `update-cpu-performance-image.sh`，补装服务并重新打包。构建及封装阶段分别检查 DTB 参数、镜像文件和开机链接，构建报告记录结果。详见 [CPU 默认构建与恢复](cpu-performance.md#默认固件构建与续建)。
