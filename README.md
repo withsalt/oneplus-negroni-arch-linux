@@ -24,7 +24,7 @@ sudo systemctl disable --now negroni-charge-limit.service  # 停止限制并取�
 
 ### USB Hub 与 PD 充电
 
-已补齐 USB2 参考时钟恢复、PHY 配置、OTG GPIO、USB/PD 充电初始化及角色切换处理。带 PD 的 Hub 已验证 USB2 接收器、USB3 网卡和充电同时工作；物理热插拔仍存在偶发 SMMU 错误与 xHCI 挂死，尚未彻底解决，见[设备状态](docs/status.md)。
+已补齐 USB2 参考时钟恢复、PHY 配置、OTG GPIO、USB/PD 充电初始化及角色切换处理。另已复现并修复控制器失电后未通知 xHCI 的挂起恢复问题，修复版连续 3 次电源域关闭测试通过。带 PD 的 Hub 可同时使用 USB2 接收器、USB3 网卡和充电；此前物理热插拔的 `IOVA=0xc` 故障仍未确认消除，见[设备状态](docs/status.md)。
 
 ### 电源策略
 
@@ -62,7 +62,7 @@ cd oneplus-negroni-arch-linux
 bash scripts/init-submodules.sh
 ```
 
-内核固定在 `7.3` 修复提交 `0466d55fd34890d4f4b6f7c40d8e4b1da4ea8b52`，包含电池、CPU、触觉驱动及 USB/PD 与角色切换修复，直接基于上游 `476a4a89843`，提交历史保持线性。内核提交通过随仓库提供的 [Git bundle](patches/linux/README.md) 恢复；首次克隆请使用上述方式。
+内核固定在 `7.3` 修复提交 `23a6b6d834e93dd54d9ec6f188761a208e1e1ed3`，包含电池、CPU、触觉驱动及 USB/PD 与角色切换修复，直接基于上游 `476a4a89843`，提交历史保持线性。内核提交通过随仓库提供的 [Git bundle](patches/linux/README.md) 恢复；首次克隆请使用上述方式。
 
 接着按[构建指南](docs/building.md)安装依赖、下载 rootfs 并创建本地登录凭据，再执行：
 
