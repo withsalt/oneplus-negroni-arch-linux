@@ -28,7 +28,9 @@
 
 SDDM 通过 [negroni-sddm-compositor](../config/sddm/negroni-sddm-compositor)在私有 D-Bus 会话中启动 KWin，待 Wayland 就绪后运行独立的 PowerDevil。为接收电源键快捷键，KWin 启用全局快捷键支持；Plasma Keyboard 和 layer-shell 配置继续生效。
 
-登录界面的 PowerDevil 使用 `XDG_CONFIG_HOME=/etc/xdg/negroni-greeter`，读取独立的 [powerdevilrc](../config/sddm/powerdevilrc)。三种供电模式均为空闲 120 秒熄屏，触摸或输入会重置计时；`PowerButtonAction=128`（`ToggleScreenOnOff`）控制亮灭屏。不调暗、不空闲休眠，也不另起桌面锁屏。登录后桌面使用自己的 PowerDevil 配置，注销回到 SDDM 时重新应用登录界面策略。
+登录专用 KWin 通过独立的配置搜索路径加载 [kwinrc](../config/sddm/kwinrc)，关闭概览、窗口总览、桌面网格、平铺编辑器和移动任务切换效果，避免触屏手势在登录前进入桌面模式。普通用户桌面的配置不受此路径影响。
+
+登录界面的 PowerDevil 使用 `XDG_CONFIG_HOME=/etc/xdg/negroni-greeter`，读取独立的 [powerdevilrc](../config/sddm/powerdevilrc)。三种供电模式均为空闲 120 秒熄屏，触摸或输入会重置计时；`PowerButtonAction=128`（`ToggleScreenOnOff`）控制亮灭屏。熄屏后可短按电源键或双击触摸唤醒，单次触摸不会亮屏，这是 KWin 6.8.2 的默认双击唤醒行为。不调暗、不空闲休眠，也不另起桌面锁屏。登录后桌面使用自己的 PowerDevil 配置，注销回到 SDDM 时重新应用登录界面策略。
 
 [logind 配置](../config/logind/60-negroni-power-key.conf)安装到 `/etc/systemd/logind.conf.d/60-negroni-power-key.conf`，全局设置 `HandlePowerKey=ignore`，避免图形电源管理启动、退出时短按电源键关机。正常图形会话由 PowerDevil 接管按键；关机使用登录界面或桌面的关机菜单，硬件强制关机不受此配置影响。
 

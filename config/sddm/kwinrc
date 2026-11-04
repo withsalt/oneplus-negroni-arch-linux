@@ -1,0 +1,14 @@
+# Login-only defaults. Desktop effects must not take over the greeter on touch.
+[Plugins]
+overviewEnabled=false
+windowviewEnabled=false
+desktopgridEnabled=false
+tileseditorEnabled=false
+mobiletaskswitcherEnabled=false
+
+[ModifierOnlyShortcuts]
+Meta=
+
+[TabBox]
+TouchBorderActivate=9
+TouchBorderAlternativeActivate=9

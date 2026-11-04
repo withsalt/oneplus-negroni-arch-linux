@@ -26,6 +26,7 @@ install -d -o 0 -g 0 -m 0755 "$target_dir/etc/sddm.conf.d" \
     "$target_dir/usr/local/libexec"
 install -o 0 -g 0 -m 0644 "$project_dir/config/sddm/10-mobile.conf" "$target_dir/etc/sddm.conf.d/10-mobile.conf"
 install -o 0 -g 0 -m 0644 "$project_dir/config/sddm/powerdevilrc" "$target_dir/etc/xdg/negroni-greeter/powerdevilrc"
+install -o 0 -g 0 -m 0644 "$project_dir/config/sddm/kwinrc" "$target_dir/etc/xdg/negroni-greeter/kwinrc"
 install -o 0 -g 0 -m 0644 "$project_dir/config/logind/60-negroni-power-key.conf" \
     "$target_dir/etc/systemd/logind.conf.d/60-negroni-power-key.conf"
 for helper in negroni-sddm-compositor negroni-sddm-power; do
@@ -33,7 +34,7 @@ for helper in negroni-sddm-compositor negroni-sddm-power; do
 done
 cd "$project_dir"
 sha256sum config/powerdevil/powerdevilrc config/sddm/10-mobile.conf config/sddm/powerdevilrc \
-    config/sddm/negroni-sddm-compositor config/sddm/negroni-sddm-power \
+    config/sddm/negroni-sddm-compositor config/sddm/negroni-sddm-power config/sddm/kwinrc \
     config/logind/60-negroni-power-key.conf scripts/configure-screen-defaults.sh \
     scripts/update-screen-defaults-image.sh scripts/verify-screen-defaults-image.py \
     > "$log_dir/screen-defaults-sources.sha256"

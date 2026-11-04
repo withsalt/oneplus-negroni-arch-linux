@@ -16,6 +16,7 @@ FILES = {
     "/etc/systemd/logind.conf.d/60-negroni-power-key.conf": ("config/logind/60-negroni-power-key.conf", "0644"),
     "/usr/local/libexec/negroni-sddm-compositor": ("config/sddm/negroni-sddm-compositor", "0755"),
     "/usr/local/libexec/negroni-sddm-power": ("config/sddm/negroni-sddm-power", "0755"),
+    "/etc/xdg/negroni-greeter/kwinrc": ("config/sddm/kwinrc", "0644"),
 }
 DEPENDENCIES = ("/usr/bin/dbus-run-session", "/usr/bin/kwin_wayland",
                 "/usr/bin/plasma-keyboard", "/usr/lib/org_kde_powerdevil")
